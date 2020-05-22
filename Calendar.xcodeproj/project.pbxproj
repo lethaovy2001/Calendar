@@ -82,9 +82,8 @@
 				38F90B832478886B005B0BEB /* AppDelegate.swift */,
 				38F90B852478886B005B0BEB /* SceneDelegate.swift */,
 				38F90B872478886B005B0BEB /* ViewController.swift */,
-				38F90B892478886B005B0BEB /* Main.storyboard */,
-				38F90B8C2478886F005B0BEB /* Assets.xcassets */,
-				38F90B8E2478886F005B0BEB /* LaunchScreen.storyboard */,
+				38F90BA624789964005B0BEB /* SupportingFiles */,
+				38F90BA5247898D5005B0BEB /* Storyboard */,
 				38F90B912478886F005B0BEB /* Info.plist */,
 			);
 			path = Calendar;
@@ -97,6 +96,23 @@
 				38F90B9C2478886F005B0BEB /* Info.plist */,
 			);
 			path = CalendarTests;
+			sourceTree = "<group>";
+		};
+		38F90BA5247898D5005B0BEB /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				38F90B892478886B005B0BEB /* Main.storyboard */,
+				38F90B8E2478886F005B0BEB /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		38F90BA624789964005B0BEB /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				38F90B8C2478886F005B0BEB /* Assets.xcassets */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
