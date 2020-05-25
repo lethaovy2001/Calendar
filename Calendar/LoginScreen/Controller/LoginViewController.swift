@@ -28,6 +28,7 @@ final class LoginViewController : UIViewController {
     // MARK: - View Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkIfAlreadyLogin()
         setup()
     }
     
@@ -56,6 +57,13 @@ final class LoginViewController : UIViewController {
     
     private func setSelectors() {
         loginView.setLoginSelector(selector: #selector(login), target: self)
+    }
+    
+    private func checkIfAlreadyLogin() {
+        if auth.getCurrentUserId() != nil {
+            let vc = DailyTaskViewController(database: self.database)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     // MARK: - Actions

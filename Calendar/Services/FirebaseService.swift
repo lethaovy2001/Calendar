@@ -24,6 +24,10 @@ class FirebaseService {
 
 // MARK: - Authentication
 extension FirebaseService : Authentication {
+    func getCurrentUserId() -> String? {
+        return auth.currentUser?.uid
+    }
+    
     func createUser(email: String, password: String, completion: @escaping (Error?) -> ()) {
         auth.createUser(withEmail: email, password: password) { authResult, error in
             if error != nil {

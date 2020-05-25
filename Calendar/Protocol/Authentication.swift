@@ -9,6 +9,7 @@
 import UIKit
 
 protocol Authentication {
+    func getCurrentUserId() -> String?
     func createUser(email: String, password: String, completion: @escaping(Error?)->())
     func logUserIn(withEmail email: String, password: String, completion: @escaping(Error?)->())
     func logout()
