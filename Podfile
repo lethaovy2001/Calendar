@@ -7,6 +7,9 @@ target 'Calendar' do
 
   # Pods for Calendar
   pod 'lottie-ios'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 
   target 'CalendarTests' do
     inherit! :search_paths
