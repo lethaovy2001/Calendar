@@ -71,6 +71,21 @@ final class LoginView : UIView {
         ])
     }
     
+    // MARK: - Public Functions
+    func addDelegate(viewController: LoginViewController) {
+        
+    }
+    
+    func addTapGesture(target: UIViewController, selector: Selector) {
+        let tapRecognizer = UITapGestureRecognizer(target: target, action: selector)
+        tapRecognizer.cancelsTouchesInView = false
+        self.addGestureRecognizer(tapRecognizer)
+    }
+    
+    func setLoginSelector(selector: Selector, target: UIViewController) {
+        loginButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
     func showError(message: String) {
         addSubview(errorLabel)
         NSLayoutConstraint.activate([
@@ -80,5 +95,14 @@ final class LoginView : UIView {
             errorLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
         errorLabel.setText(text: message)
+    }
+    
+    // MARK: Getters
+    func getEmailAddress() -> String? {
+        return emailInputView.getText()
+    }
+    
+    func getPassword() -> String? {
+        return passwordInputView.getText()
     }
 }

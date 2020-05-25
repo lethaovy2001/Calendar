@@ -63,4 +63,9 @@ final class InputView : CustomContainerView {
             textField.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
+    
+    // MARK: Getters
+    func getText() -> String? {
+        return textField.text
+    }
 }
