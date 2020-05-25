@@ -9,7 +9,7 @@
 import UIKit
 import Lottie
 
-class AppLogoView : UIView {
+final class AppLogoView : UIView {
     // MARK: - Properties
     private var appLogo: AnimationView = {
         let animationView = AnimationView(name: Constants.AnimationNames.app)

@@ -8,12 +8,13 @@
 
 import UIKit
 
-class LoginView : UIView {
+final class LoginView : UIView {
     // MARK: - Properties
     private let appLogo = AppLogoView()
     private let emailInputView = InputView(type: .email)
     private let passwordInputView = InputView(type: .password)
     private let loginButton = RoundedButton(title: "LOGIN", color: AppColor.primaryColor)
+    private let errorLabel = ErrorLabel()
     
     // MARK: - Initializer
     init() {
@@ -63,10 +64,21 @@ class LoginView : UIView {
             passwordInputView.heightAnchor.constraint(equalToConstant: 48)
         ])
         NSLayoutConstraint.activate([
-            loginButton.topAnchor.constraint(equalTo: passwordInputView.bottomAnchor, constant: 60),
+            loginButton.topAnchor.constraint(equalTo: passwordInputView.bottomAnchor, constant: 72),
             loginButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 36),
             loginButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -36),
-            loginButton.heightAnchor.constraint(equalToConstant: 48)
+            loginButton.heightAnchor.constraint(equalToConstant: 54)
         ])
+    }
+    
+    func showError(message: String) {
+        addSubview(errorLabel)
+        NSLayoutConstraint.activate([
+            errorLabel.topAnchor.constraint(equalTo: passwordInputView.bottomAnchor, constant: 6),
+            errorLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 48),
+            errorLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -48),
+            errorLabel.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        errorLabel.setText(text: message)
     }
 }
