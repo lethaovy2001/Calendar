@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController : UIViewController {
+final class LoginViewController : UIViewController {
     // MARK: - Properties
     private let loginView = LoginView()
     private let database: Database
@@ -40,6 +40,7 @@ class LoginViewController : UIViewController {
     private func setup() {
         setupUI()
         setSelectors()
+        loginView.addTapGesture(target: self, selector: #selector(dismissKeyboard))
     }
     
     private func setupUI() {
@@ -57,7 +58,7 @@ class LoginViewController : UIViewController {
         loginView.setLoginSelector(selector: #selector(login), target: self)
     }
     
-    // MARK: - Login
+    // MARK: - Actions
     @objc private func login() {
         guard
             let email = loginView.getEmailAddress(),
@@ -71,5 +72,9 @@ class LoginViewController : UIViewController {
             let vc = DailyTaskViewController(database: self.database)
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

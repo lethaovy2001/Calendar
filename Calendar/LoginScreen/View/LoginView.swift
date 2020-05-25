@@ -72,10 +72,6 @@ final class LoginView : UIView {
     }
     
     // MARK: - Public Functions
-    func addDelegate(viewController: LoginViewController) {
-        
-    }
-    
     func addTapGesture(target: UIViewController, selector: Selector) {
         let tapRecognizer = UITapGestureRecognizer(target: target, action: selector)
         tapRecognizer.cancelsTouchesInView = false
