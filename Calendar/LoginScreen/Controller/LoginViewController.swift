@@ -11,6 +11,19 @@ import UIKit
 class LoginViewController : UIViewController {
     // MARK: - Properties
     private let loginView = LoginView()
+    private let database: Database
+    private let auth: Authentication
+    
+    // MARK: - Initializer
+    init(authentication: Authentication, database: Database) {
+        self.auth = authentication
+        self.database = database
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - View Lifecycles
     override func viewDidLoad() {
@@ -18,9 +31,15 @@ class LoginViewController : UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     // MARK: - Setup
     private func setup() {
         setupUI()
+        setSelectors()
     }
     
     private func setupUI() {
@@ -32,5 +51,25 @@ class LoginViewController : UIViewController {
             loginView.rightAnchor.constraint(equalTo: view.rightAnchor),
             loginView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func setSelectors() {
+        loginView.setLoginSelector(selector: #selector(login), target: self)
+    }
+    
+    // MARK: - Login
+    @objc private func login() {
+        guard
+            let email = loginView.getEmailAddress(),
+            let password = loginView.getEmailAddress()
+        else { return }
+        auth.createUser(email: email, password: password) { signInError in
+            if let error = signInError {
+                self.loginView.showError(message: error.localizedDescription)
+                return
+            }
+            let vc = DailyTaskViewController(database: self.database)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
