@@ -13,6 +13,7 @@ class LoginView : UIView {
     private let appLogo = AppLogoView()
     private let emailInputView = InputView(type: .email)
     private let passwordInputView = InputView(type: .password)
+    private let loginButton = RoundedButton(title: "LOGIN", color: AppColor.primaryColor)
     
     // MARK: - Initializer
     init() {
@@ -39,14 +40,15 @@ class LoginView : UIView {
         addSubview(appLogo)
         addSubview(emailInputView)
         addSubview(passwordInputView)
+        addSubview(loginButton)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             appLogo.topAnchor.constraint(equalTo: topAnchor, constant: 90),
             appLogo.centerXAnchor.constraint(equalTo: centerXAnchor),
-            appLogo.heightAnchor.constraint(equalToConstant: 140),
-            appLogo.widthAnchor.constraint(equalToConstant: 140)
+            appLogo.heightAnchor.constraint(equalToConstant: 160),
+            appLogo.widthAnchor.constraint(equalToConstant: 160)
         ])
         NSLayoutConstraint.activate([
             emailInputView.topAnchor.constraint(equalTo: appLogo.bottomAnchor, constant: 72),
@@ -59,6 +61,12 @@ class LoginView : UIView {
             passwordInputView.leftAnchor.constraint(equalTo: leftAnchor, constant: 36),
             passwordInputView.rightAnchor.constraint(equalTo: rightAnchor, constant: -36),
             passwordInputView.heightAnchor.constraint(equalToConstant: 48)
+        ])
+        NSLayoutConstraint.activate([
+            loginButton.topAnchor.constraint(equalTo: passwordInputView.bottomAnchor, constant: 60),
+            loginButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 36),
+            loginButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -36),
+            loginButton.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
 }
