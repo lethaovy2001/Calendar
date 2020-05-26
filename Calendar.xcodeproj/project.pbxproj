@@ -28,7 +28,6 @@
 		3888D1D5247B81C9009B3966 /* calendar.json in Resources */ = {isa = PBXBuildFile; fileRef = 3888D1D4247B81C9009B3966 /* calendar.json */; };
 		3888D1D7247B824D009B3966 /* DailyTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1D6247B824D009B3966 /* DailyTaskViewController.swift */; };
 		3888D1DE247C48B7009B3966 /* DailyTasksMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1DD247C48B7009B3966 /* DailyTasksMainView.swift */; };
-		3888D1E0247C531C009B3966 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1DF247C531C009B3966 /* EventCell.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
@@ -70,7 +69,6 @@
 		3888D1D4247B81C9009B3966 /* calendar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = calendar.json; sourceTree = "<group>"; };
 		3888D1D6247B824D009B3966 /* DailyTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskViewController.swift; sourceTree = "<group>"; };
 		3888D1DD247C48B7009B3966 /* DailyTasksMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksMainView.swift; sourceTree = "<group>"; };
-		3888D1DF247C531C009B3966 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				3888D1DD247C48B7009B3966 /* DailyTasksMainView.swift */,
-				3888D1DF247C531C009B3966 /* EventCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -478,7 +475,6 @@
 				3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */,
 				3888D1B4247B181B009B3966 /* InputView.swift in Sources */,
 				3888D1BC247B460F009B3966 /* RoundedButton.swift in Sources */,
-				3888D1E0247C531C009B3966 /* EventCell.swift in Sources */,
 				38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */,
 				3888D1BA247B2C5C009B3966 /* IconButton.swift in Sources */,
 				3888D1AC247B110E009B3966 /* Constants.swift in Sources */,
