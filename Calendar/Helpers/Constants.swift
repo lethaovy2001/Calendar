@@ -16,4 +16,6 @@ struct Constants {
     struct Time {
         static let hours = 24
     }
+    
+    static let spaceBetweenTimeDivider: CGFloat = 84
 }
