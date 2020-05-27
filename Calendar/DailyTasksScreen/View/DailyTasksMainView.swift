@@ -13,8 +13,6 @@ final class DailyTasksMainView : UIView {
     private let scrollView = CustomScrollView()
     private let headerLabel = CustomLabel(text: "Daily Tasks", textColor: .darkGray, textSize: 36, textWeight: .heavy)
     
-    
-    
     // MARK: - Initializer
     init() {
         super.init(frame: .zero)
@@ -38,8 +36,8 @@ final class DailyTasksMainView : UIView {
         let start = Calendar.current.date(from: components) ?? Date()
         
         components = DateComponents()
-        components.hour = 5
-        components.minute = 15
+        components.hour = 6
+        components.minute = 0
         let end = Calendar.current.date(from: components) ?? Date()
         
         let event = Event(name: "Morning Exercise", startTime: start, endTime: end, location: "Social Science")
@@ -91,8 +89,6 @@ final class DailyTasksMainView : UIView {
     
     //TODO: write unit test
     private func setEvent(event: Event) {
-        let eventView = EventView()
-        scrollView.addSubview(eventView)
         let startComponents = Calendar.current.dateComponents([.hour, .minute], from: event.startTime)
         let hour = startComponents.hour ?? 0
         let minute = startComponents.minute ?? 0
@@ -105,6 +101,8 @@ final class DailyTasksMainView : UIView {
         let hourDifferences = hour.distance(to: endHour)
         let height: CGFloat = CGFloat(hourDifferences) +  convertedMinute - convertedStartMinute
         
+        let eventView = EventView(height: height)
+        scrollView.addSubview(eventView)
         NSLayoutConstraint.activate([
             eventView.heightAnchor.constraint(equalToConstant: height * 84),
             eventView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: CGFloat(84 * hour + 10) + convertedStartMinute * 84),

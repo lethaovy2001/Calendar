@@ -13,11 +13,24 @@ final class EventView : CustomContainerView {
     private let titleLabel = CustomLabel(text: "Morning Exercise", textColor: UIColor.darkGray, textSize: 18, textWeight: .bold)
     private var iconButton = IconButton(name: "mappin", size: 18, color: AppColor.gray)
     private var locationLabel = CustomLabel(text: "Location", textColor: .darkGray, textSize: 16, textWeight: .regular)
+    //private var type: EventType
+    
+    enum EventType {
+        case showTitleOnly
+        case centerTitleAndLocation
+    }
     
     // MARK: - Initializer
-    override init() {
+    init(height: CGFloat) {
         super.init(backgroundColor: AppColor.lightPurple, cornerRadius: 20)
         setup()
+        if height <= 0.5 {
+            self.showTitleOnly()
+        } else if height <= 0.75 {
+            self.centerTitleAndLocation()
+        } else {
+            self.setupConstraints()
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -27,7 +40,6 @@ final class EventView : CustomContainerView {
     //MARK: - Setup
     private func setup() {
         addSubviews()
-        setupConstraints()
     }
     
     private func addSubviews() {
@@ -53,5 +65,38 @@ final class EventView : CustomContainerView {
             locationLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
             locationLabel.centerYAnchor.constraint(equalTo: iconButton.centerYAnchor),
         ])
+    }
+    
+    private func showTitleOnly() {
+        NSLayoutConstraint.activate([
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
+        ])
+        iconButton.removeFromSuperview()
+        locationLabel.removeFromSuperview()
+    }
+
+    private func setupLocationConstraint() {
+        NSLayoutConstraint.activate([
+            iconButton.heightAnchor.constraint(equalToConstant: 20),
+            iconButton.widthAnchor.constraint(equalToConstant: 20),
+            iconButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            iconButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
+        ])
+        NSLayoutConstraint.activate([
+            locationLabel.leftAnchor.constraint(equalTo: iconButton.rightAnchor, constant: 4),
+            locationLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
+            locationLabel.centerYAnchor.constraint(equalTo: iconButton.centerYAnchor),
+        ])
+    }
+    
+    private func centerTitleAndLocation() {
+        NSLayoutConstraint.activate([
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -12),
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
+        ])
+        setupLocationConstraint()
     }
 }
