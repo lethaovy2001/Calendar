@@ -10,6 +10,7 @@ import UIKit
 
 class DailyTaskViewController : UIViewController {
     // MARK: - Properties
+    private let dailyTaskView = DailyTasksMainView()
     private let database: Database
     
     // MARK: - Initializer
@@ -26,5 +27,22 @@ class DailyTaskViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.navigationController?.isNavigationBarHidden = true
+        setup()
+    }
+    
+    // MARK: - Setup
+    private func setup() {
+        setupUI()
+    }
+    
+    private func setupUI() {
+        view.addSubview(dailyTaskView)
+        NSLayoutConstraint.activate([
+            dailyTaskView.topAnchor.constraint(equalTo: view.topAnchor),
+            dailyTaskView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            dailyTaskView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            dailyTaskView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
 }

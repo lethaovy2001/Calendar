@@ -12,4 +12,8 @@ struct Constants {
     struct AnimationNames {
         static let app = "calendar"
     }
+    
+    struct Time {
+        static let hours = 24
+    }
 }
