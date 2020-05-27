@@ -14,6 +14,7 @@ final class TimeLineView : UIView {
     private let dividerLine = CustomContainerView(backgroundColor: AppColor.dividerColor, cornerRadius: 0)
     
     // MARK: - Initializer
+    // TODO: write unit test
     init(time: Int) {
         super.init(frame: .zero)
         setup()

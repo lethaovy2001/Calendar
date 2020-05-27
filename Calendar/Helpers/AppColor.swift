@@ -15,6 +15,7 @@ struct AppColor {
     static let inputColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
     static let timeColor = UIColor(red: 119/255, green: 136/255, blue: 153/255, alpha: 0.75)
     static let dividerColor = UIColor(red: 119/255, green: 136/255, blue: 153/255, alpha: 0.12)
+    static let lightPurple = UIColor(red: 230/255, green: 230/255, blue: 250/255, alpha: 1)
 }
    
 
