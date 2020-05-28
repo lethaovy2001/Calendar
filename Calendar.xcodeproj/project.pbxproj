@@ -29,8 +29,9 @@
 		3888D1D7247B824D009B3966 /* DailyTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1D6247B824D009B3966 /* DailyTaskViewController.swift */; };
 		3888D1DE247C48B7009B3966 /* DailyTasksMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1DD247C48B7009B3966 /* DailyTasksMainView.swift */; };
 		3888D1FA247DE5AD009B3966 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1F9247DE5AD009B3966 /* CustomScrollView.swift */; };
-		3888D1FC247DE679009B3966 /* TimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1FB247DE679009B3966 /* TimeLineView.swift */; };
+		3888D1FC247DE679009B3966 /* TimeDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1FB247DE679009B3966 /* TimeDividerView.swift */; };
 		3888D1FE247E1E80009B3966 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1FD247E1E80009B3966 /* EventView.swift */; };
+		3888D202247F3BED009B3966 /* RunningTimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D201247F3BED009B3966 /* RunningTimeLineView.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
@@ -73,8 +74,9 @@
 		3888D1D6247B824D009B3966 /* DailyTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskViewController.swift; sourceTree = "<group>"; };
 		3888D1DD247C48B7009B3966 /* DailyTasksMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksMainView.swift; sourceTree = "<group>"; };
 		3888D1F9247DE5AD009B3966 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
-		3888D1FB247DE679009B3966 /* TimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineView.swift; sourceTree = "<group>"; };
+		3888D1FB247DE679009B3966 /* TimeDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDividerView.swift; sourceTree = "<group>"; };
 		3888D1FD247E1E80009B3966 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		3888D201247F3BED009B3966 /* RunningTimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimeLineView.swift; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,8 +203,9 @@
 			isa = PBXGroup;
 			children = (
 				3888D1DD247C48B7009B3966 /* DailyTasksMainView.swift */,
-				3888D1FB247DE679009B3966 /* TimeLineView.swift */,
 				3888D1FD247E1E80009B3966 /* EventView.swift */,
+				3888D1FB247DE679009B3966 /* TimeDividerView.swift */,
+				3888D201247F3BED009B3966 /* RunningTimeLineView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -478,11 +481,12 @@
 				3888D1C0247B501F009B3966 /* CustomLabel.swift in Sources */,
 				3888D1DE247C48B7009B3966 /* DailyTasksMainView.swift in Sources */,
 				3888D1CF247B7DF8009B3966 /* FirebaseService.swift in Sources */,
+				3888D202247F3BED009B3966 /* RunningTimeLineView.swift in Sources */,
 				3888D1D7247B824D009B3966 /* DailyTaskViewController.swift in Sources */,
 				3888D1B2247B155F009B3966 /* CustomContainerView.swift in Sources */,
 				3888D1A9247B1091009B3966 /* AppLogoView.swift in Sources */,
 				38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */,
-				3888D1FC247DE679009B3966 /* TimeLineView.swift in Sources */,
+				3888D1FC247DE679009B3966 /* TimeDividerView.swift in Sources */,
 				3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */,
 				3888D1B4247B181B009B3966 /* InputView.swift in Sources */,
 				3888D1BC247B460F009B3966 /* RoundedButton.swift in Sources */,

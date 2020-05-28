@@ -12,6 +12,7 @@ final class DailyTasksMainView : UIView {
     // MARK: - Properties
     private let scrollView = CustomScrollView()
     private let headerLabel = CustomLabel(text: "Daily Tasks", textColor: AppColor.darkGray, textSize: 36, textWeight: .heavy)
+    private let timeLine = RunningTimeLineView()
     
     // MARK: - Initializer
     init() {
@@ -26,10 +27,11 @@ final class DailyTasksMainView : UIView {
     // MARK: - Setup
     private func setup() {
         setupSelf()
-        addSubViews()
+        addSubviews()
         setupConstraints()
         addTimeLine()
         getMockEvents()
+        setupTimeLineConstraints()
     }
     
     // TODO: Remove this function
@@ -77,9 +79,10 @@ final class DailyTasksMainView : UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private func addSubViews() {
+    private func addSubviews() {
         addSubview(headerLabel)
         addSubview(scrollView)
+        scrollView.addSubview(timeLine)
     }
     
     private func setupConstraints() {
@@ -95,20 +98,31 @@ final class DailyTasksMainView : UIView {
         ])
     }
     
+    private func setupTimeLineConstraints() {
+        let date = Date()
+        let offset = estimateTopOffset(of: date)
+        NSLayoutConstraint.activate([
+            timeLine.heightAnchor.constraint(equalToConstant: 10),
+            timeLine.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: offset),
+            timeLine.rightAnchor.constraint(equalTo: rightAnchor),
+            timeLine.leftAnchor.constraint(equalTo: leftAnchor, constant: 84)
+        ])
+    }
+    
     private func addTimeLine() {
         for hour in 0...Constants.Time.hours {
-            let timeLine = TimeLineView(time: hour)
+            let divider = TimeDividerView(time: hour)
             let topOffset = Constants.spaceBetweenTimeDivider * CGFloat(hour)
-            scrollView.addSubview(timeLine)
+            scrollView.addSubview(divider)
             NSLayoutConstraint.activate([
-                timeLine.heightAnchor.constraint(equalToConstant: 20),
-                timeLine.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: topOffset),
-                timeLine.rightAnchor.constraint(equalTo: rightAnchor),
-                timeLine.leftAnchor.constraint(equalTo: leftAnchor, constant: 24)
+                divider.heightAnchor.constraint(equalToConstant: 20),
+                divider.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: topOffset),
+                divider.rightAnchor.constraint(equalTo: rightAnchor),
+                divider.leftAnchor.constraint(equalTo: leftAnchor, constant: 24)
             ])
             if hour == Constants.Time.hours {
                 NSLayoutConstraint.activate([
-                    timeLine.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -60)
+                    divider.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -60)
                 ])
             }
         }
