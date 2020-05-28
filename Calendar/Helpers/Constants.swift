@@ -26,6 +26,9 @@ struct Constants {
         static let search = "magnifyingglass"
     }
     
-    static let spaceBetweenTimeDivider: CGFloat = 84
+    struct CellId {
+        static let date = "dateCellId"
+    }
     
+    static let spaceBetweenTimeDivider: CGFloat = 84
 }

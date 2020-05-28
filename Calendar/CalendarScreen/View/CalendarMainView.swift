@@ -14,20 +14,20 @@ final class CalendarMainView : UIView {
     private let addButton = IconButton(name: Constants.IconNames.add, size: 24, color: AppColor.primaryColor)
     private let searchButton = IconButton(name: Constants.IconNames.search, size: 24, color: AppColor.primaryColor)
     private let monthLabel = TextButton(title: "Month")
-    //    var collectionView: UICollectionView = {
-    //        let flowLayout = UICollectionViewFlowLayout()
-    //        flowLayout.scrollDirection = .vertical
-    //        let cv = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-    //        cv.alwaysBounceVertical = true
-    //        cv.isScrollEnabled = true
-    //        cv.allowsSelection = true
-    //        cv.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-    //        cv.keyboardDismissMode = .onDrag
-    //        cv.backgroundColor = .white
-    //        cv.translatesAutoresizingMaskIntoConstraints = false
-    //        return cv
-    //    }()
-    
+    private let weekDaysView = WeekDaysView()
+    var collectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        cv.alwaysBounceVertical = true
+        cv.isScrollEnabled = true
+        cv.allowsSelection = true
+        cv.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        cv.keyboardDismissMode = .onDrag
+        cv.backgroundColor = .white
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        return cv
+    }()
     
     // MARK: - Initializer
     init() {
@@ -51,6 +51,8 @@ final class CalendarMainView : UIView {
         addSubview(addButton)
         addSubview(monthLabel)
         addSubview(searchButton)
+        addSubview(collectionView)
+        addSubview(weekDaysView)
     }
     
     private func setupConstraints() {
@@ -75,6 +77,18 @@ final class CalendarMainView : UIView {
             searchButton.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
             searchButton.widthAnchor.constraint(equalToConstant: 30),
             searchButton.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        NSLayoutConstraint.activate([
+            weekDaysView.topAnchor.constraint(equalTo: monthLabel.bottomAnchor, constant: 12),
+            weekDaysView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            weekDaysView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
+            weekDaysView.heightAnchor.constraint(equalToConstant: 40),
+        ])
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: weekDaysView.bottomAnchor, constant: 2),
+            collectionView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            collectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
+            collectionView.heightAnchor.constraint(equalToConstant: 300),
         ])
     }
 }

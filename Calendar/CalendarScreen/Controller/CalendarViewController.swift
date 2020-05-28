@@ -34,6 +34,7 @@ class CalendarViewController : UIViewController {
     // MARK: - Setup
     private func setup() {
         setupUI()
+        registerCellId()
     }
     
     private func setupUI() {
@@ -44,5 +45,42 @@ class CalendarViewController : UIViewController {
             mainView.rightAnchor.constraint(equalTo: view.rightAnchor),
             mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func registerCellId() {
+        mainView.collectionView.delegate = self
+        mainView.collectionView.dataSource = self
+        mainView.collectionView.register(DateCell.self, forCellWithReuseIdentifier: Constants.CellId.date)
+    }
+}
+
+extension CalendarViewController : UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let numOfWeekdays = 7
+        let numOfRows = 6
+        return numOfWeekdays * numOfRows
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellId.date, for: indexPath) as? DateCell else {
+            return UICollectionViewCell()
+        }
+        cell.dayLabel.text = "10"
+        return cell
+    }
+}
+
+extension CalendarViewController : UICollectionViewDelegate {
+    
+}
+
+extension CalendarViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let numberOfColumns: CGFloat = 7
+        let cellSpacing: CGFloat = 2
+        let collectionViewWidth = collectionView.frame.width
+        let totalSpaceBetweenCells = cellSpacing * (numberOfColumns - 1)
+        let width = collectionViewWidth/numberOfColumns - totalSpaceBetweenCells
+        return CGSize(width: width, height: width)
     }
 }
