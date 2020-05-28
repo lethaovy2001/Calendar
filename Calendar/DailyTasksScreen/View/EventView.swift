@@ -13,27 +13,14 @@ final class EventView : CustomContainerView {
     private let titleLabel = CustomLabel(text: "Title", textColor: AppColor.darkGray, textSize: 18, textWeight: .bold)
     private var iconButton = IconButton(name: "mappin", size: 18, color: AppColor.gray)
     private var locationLabel = CustomLabel(text: "Location", textColor: AppColor.gray, textSize: 16, textWeight: .semibold)
-    private var eventColors = [AppColor.pastelRed, AppColor.pastelGreen, AppColor.pastelOrange, AppColor.pastelRedPink, AppColor.pastelPurple, AppColor.pastelLimeGreen]
+    private var eventColors = AppColor.eventColors
+    private var height: CGFloat
     
     // MARK: - Initializer
     init(height: CGFloat) {
-        let randomNum = Int.random(in: 0..<eventColors.count)
-        super.init(backgroundColor: eventColors[randomNum])
+        self.height = height
+        super.init()
         setup()
-        // set constraints
-        if height <= 0.25 * Constants.spaceBetweenTimeDivider {
-            self.setCornerRadius(cornerRadius: 10)
-            self.showTitleOnly()
-        } else if height <= 0.5 * Constants.spaceBetweenTimeDivider {
-            self.showTitleOnly()
-            self.setCornerRadius(cornerRadius: 20)
-        } else if height <= 0.75 * Constants.spaceBetweenTimeDivider {
-            self.centerTitleAndLocation()
-            self.setCornerRadius(cornerRadius: 20)
-        } else {
-            self.setupConstraints()
-            self.setCornerRadius(cornerRadius: 20)
-        }
     }
     
     required init?(coder: NSCoder) {
@@ -42,7 +29,19 @@ final class EventView : CustomContainerView {
     
     // MARK: - Setup
     private func setup() {
+        setupSelf()
         addSubviews()
+        setupConstraints()
+    }
+    
+    private func setupSelf() {
+        if height <= 0.25 * Constants.spaceBetweenTimeDivider {
+            self.setCornerRadius(cornerRadius: 10)
+        } else {
+            self.setCornerRadius(cornerRadius: 20)
+        }
+        let randomNum = Int.random(in: 0..<eventColors.count)
+        self.setBackgroundColor(eventColors[randomNum])
     }
     
     private func addSubviews() {
@@ -51,8 +50,20 @@ final class EventView : CustomContainerView {
         addSubview(locationLabel)
     }
     
-    // MARK: - Constraints
     private func setupConstraints() {
+        if height <= 0.25 * Constants.spaceBetweenTimeDivider {
+            self.showTitleOnly()
+        } else if height <= 0.5 * Constants.spaceBetweenTimeDivider {
+            self.showTitleOnly()
+        } else if height <= 0.75 * Constants.spaceBetweenTimeDivider {
+            self.centerTitleAndLocation()
+        } else {
+            self.topConstraintTitleAndLocation()
+        }
+    }
+    
+    // MARK: - Constraints
+    private func topConstraintTitleAndLocation() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
@@ -79,7 +90,7 @@ final class EventView : CustomContainerView {
         ])
         setupLocationConstraint()
     }
-
+    
     private func setupLocationConstraint() {
         NSLayoutConstraint.activate([
             iconButton.heightAnchor.constraint(equalToConstant: 20),

@@ -33,8 +33,12 @@ class CustomContainerView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup
     func setCornerRadius(cornerRadius: CGFloat) {
         self.layer.cornerRadius = cornerRadius
     }
     
+    func setBackgroundColor(_ color: UIColor) {
+        self.backgroundColor = color
+    }
 }

@@ -18,11 +18,25 @@ struct AppColor {
     static let dividerColor = UIColor(red: 119/255, green: 136/255, blue: 153/255, alpha: 0.12)
     
     // MARK: Event Colors
-    static let pastelRed = UIColor(red: 255/255, green: 154/255, blue: 162/255, alpha: 1)
-    static let pastelRedPink = UIColor(red: 255/255, green: 183/255, blue: 178/255, alpha: 1)
-    static let pastelOrange = UIColor(red: 255/255, green: 218/255, blue: 193/255, alpha: 1)
-    static let pastelGreen = UIColor(red: 226/255, green: 240/255, blue: 203/255, alpha: 1)
-    static let pastelLimeGreen = UIColor(red: 181/255, green: 234/255, blue: 183/255, alpha: 1)
-    static let pastelPurple = UIColor(red: 199/255, green: 206/255, blue: 234/255, alpha: 1)
+    static let pastelOrange = UIColor(red: 255/255, green: 235/255, blue: 224/255, alpha: 1)
+    static let pastelGreen = UIColor(red: 240/255, green: 255/255, blue: 224/255, alpha: 1)
+    static let pastelLimeGreen = UIColor(red: 224/255, green: 255/255, blue: 234/255, alpha: 1)
+    static let pastelPurple = UIColor(red: 227/255, green: 224/255, blue: 255/255, alpha: 1)
+    static let pastelBlue = UIColor(red: 224/255, green: 247/255, blue: 255/255, alpha: 1)
+    static let pastelPink = UIColor(red: 255/255, green: 224/255, blue: 247/255, alpha: 1)
+    static let pastelYellow = UIColor(red: 252/255, green: 255/255, blue: 224/255, alpha: 1)
+    static let pastelRed = UIColor(red: 255/255, green: 224/255, blue: 224/255, alpha: 1)
+    
+    static let eventColors = [
+        pastelRed,
+        pastelGreen,
+        pastelOrange,
+        pastelPurple,
+        pastelLimeGreen,
+        pastelBlue,
+        pastelPink,
+        pastelYellow
+    ]
 }
+
 
