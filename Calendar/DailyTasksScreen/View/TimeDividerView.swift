@@ -12,16 +12,14 @@ final class TimeDividerView : UIView {
     // MARK: - Properties
     private let timeLabel = CustomLabel(text: "N/A", textColor: AppColor.timeColor, textSize: 16, textWeight: .bold)
     private let dividerLine = CustomContainerView(backgroundColor: AppColor.dividerColor)
+    private let stringConverter = StringConverter()
     
     // MARK: - Initializer
-    // TODO: write unit test
     init(time: Int) {
         super.init(frame: .zero)
         setup()
-        if time < 10 {
-            timeLabel.setText(text: "0\(time):00")
-        } else {
-            timeLabel.setText(text: "\(time):00")
+        if time <= 24 {
+            timeLabel.setText(text: stringConverter.convert(time))
         }
         self.translatesAutoresizingMaskIntoConstraints = false
     }
