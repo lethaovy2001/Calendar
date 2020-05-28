@@ -34,6 +34,7 @@ class DailyTaskViewController : UIViewController {
     // MARK: - Setup
     private func setup() {
         setupUI()
+        setupSelectors()
     }
     
     private func setupUI() {
@@ -44,5 +45,24 @@ class DailyTaskViewController : UIViewController {
             dailyTaskView.rightAnchor.constraint(equalTo: view.rightAnchor),
             dailyTaskView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func setupSelectors() {
+        dailyTaskView.setCalendarButtonSelector(selector: #selector(calendarButtonPressed), target: self)
+        dailyTaskView.setAddButtonSelector(selector: #selector(addButtonPressed), target: self)
+        dailyTaskView.setProfileButtonSelector(selector: #selector(profileButtonPressed), target: self)
+    }
+    
+    // MARK: Actions
+    @objc private func calendarButtonPressed() {
+
+    }
+    
+    @objc private func addButtonPressed() {
+        
+    }
+    
+    @objc private func profileButtonPressed() {
+        
     }
 }

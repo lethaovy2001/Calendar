@@ -13,6 +13,7 @@ final class DailyTasksMainView : UIView {
     private let scrollView = CustomScrollView()
     private let headerLabel = CustomLabel(text: "Daily Tasks", textColor: AppColor.darkGray, textSize: 36, textWeight: .heavy)
     private let timeLine = RunningTimeLineView()
+    private let bottomBar = BottomBarView()
     
     // MARK: - Initializer
     init() {
@@ -82,6 +83,7 @@ final class DailyTasksMainView : UIView {
     private func addSubviews() {
         addSubview(headerLabel)
         addSubview(scrollView)
+        addSubview(bottomBar)
         scrollView.addSubview(timeLine)
         scrollView.bringSubviewToFront(timeLine)
     }
@@ -96,6 +98,12 @@ final class DailyTasksMainView : UIView {
             scrollView.leftAnchor.constraint(equalTo: self.leftAnchor),
             scrollView.rightAnchor.constraint(equalTo: self.rightAnchor),
             scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+        ])
+        NSLayoutConstraint.activate([
+            bottomBar.heightAnchor.constraint(equalToConstant: 90),
+            bottomBar.leftAnchor.constraint(equalTo: leftAnchor),
+            bottomBar.rightAnchor.constraint(equalTo: rightAnchor),
+            bottomBar.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
@@ -163,6 +171,19 @@ final class DailyTasksMainView : UIView {
         let hour = CGFloat(startComponents.hour ?? 0)
         let minute = CGFloat(startComponents.minute ?? 0)/60.0
         return (hour + minute) * Constants.spaceBetweenTimeDivider + 10
+    }
+    
+    // MARK: Selectors
+    func setCalendarButtonSelector(selector: Selector, target: UIViewController) {
+        bottomBar.setCalendarButtonSelector(selector: selector, target: target)
+    }
+    
+    func setProfileButtonSelector(selector: Selector, target: UIViewController) {
+        bottomBar.setProfileButtonSelector(selector: selector, target: target)
+    }
+    
+    func setAddButtonSelector(selector: Selector, target: UIViewController) {
+        bottomBar.setAddButtonSelector(selector: selector, target: target)
     }
     
     // MARK: Actions
