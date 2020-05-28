@@ -32,6 +32,7 @@
 		3888D1FC247DE679009B3966 /* TimeDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1FB247DE679009B3966 /* TimeDividerView.swift */; };
 		3888D1FE247E1E80009B3966 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1FD247E1E80009B3966 /* EventView.swift */; };
 		3888D202247F3BED009B3966 /* RunningTimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D201247F3BED009B3966 /* RunningTimeLineView.swift */; };
+		3888D205247F46EC009B3966 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D204247F46EC009B3966 /* Event.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
@@ -77,6 +78,7 @@
 		3888D1FB247DE679009B3966 /* TimeDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDividerView.swift; sourceTree = "<group>"; };
 		3888D1FD247E1E80009B3966 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		3888D201247F3BED009B3966 /* RunningTimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimeLineView.swift; sourceTree = "<group>"; };
+		3888D204247F46EC009B3966 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -218,6 +220,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		3888D203247F46C6009B3966 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3888D204247F46EC009B3966 /* Event.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		38F90B772478886B005B0BEB = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +253,7 @@
 			children = (
 				38F90B832478886B005B0BEB /* AppDelegate.swift */,
 				38F90B852478886B005B0BEB /* SceneDelegate.swift */,
+				3888D203247F46C6009B3966 /* Model */,
 				3888D1CD247B7DDD009B3966 /* Services */,
 				3888D1B0247B154B009B3966 /* View */,
 				3888D1A0247AF84B009B3966 /* LoginScreen */,
@@ -498,6 +509,7 @@
 				3888D1C4247B5685009B3966 /* ErrorLabel.swift in Sources */,
 				3888D1B6247B1895009B3966 /* CustomTextField.swift in Sources */,
 				3888D1CA247B7C5C009B3966 /* Authentication.swift in Sources */,
+				3888D205247F46EC009B3966 /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

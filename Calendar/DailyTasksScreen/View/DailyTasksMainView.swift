@@ -83,6 +83,7 @@ final class DailyTasksMainView : UIView {
         addSubview(headerLabel)
         addSubview(scrollView)
         scrollView.addSubview(timeLine)
+        scrollView.bringSubviewToFront(timeLine)
     }
     
     private func setupConstraints() {
@@ -100,13 +101,16 @@ final class DailyTasksMainView : UIView {
     
     private func setupTimeLineConstraints() {
         let date = Date()
-        let offset = estimateTopOffset(of: date)
+        let offset = estimateTopOffset(of: date) - 4
         NSLayoutConstraint.activate([
-            timeLine.heightAnchor.constraint(equalToConstant: 10),
+            timeLine.heightAnchor.constraint(equalToConstant: 8),
             timeLine.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: offset),
             timeLine.rightAnchor.constraint(equalTo: rightAnchor),
-            timeLine.leftAnchor.constraint(equalTo: leftAnchor, constant: 84)
+            timeLine.leftAnchor.constraint(equalTo: leftAnchor, constant: Constants.spaceBetweenTimeDivider)
         ])
+        self.layoutIfNeeded()
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
+        Timer.scheduledTimer(timeInterval: Constants.Time.minutesInAHour, target: self, selector: #selector(animateTimeLineRunning), userInfo: nil, repeats: true)
     }
     
     private func addTimeLine() {
@@ -160,12 +164,12 @@ final class DailyTasksMainView : UIView {
         let minute = CGFloat(startComponents.minute ?? 0)/60.0
         return (hour + minute) * Constants.spaceBetweenTimeDivider + 10
     }
-}
-
-struct Event {
-    let name: String
-    let startTime: Date
-    let endTime: Date
-    let location: String?
+    
+    // MARK: Actions
+    @objc func animateTimeLineRunning() {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
+            self.timeLine.frame.origin.y += 1.4
+        }, completion: nil)
+    }
 }
 
