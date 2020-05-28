@@ -15,5 +15,9 @@ target 'Calendar' do
     inherit! :search_paths
     # Pods for testing
   end
+  
+end
 
+target 'CalendarUITests' do
+  inherit! :search_paths
 end

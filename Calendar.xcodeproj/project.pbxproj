@@ -38,16 +38,25 @@
 		3888D20D247F722F009B3966 /* EventLayoutGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D20C247F722F009B3966 /* EventLayoutGenerator.swift */; };
 		3888D210247F7C9E009B3966 /* StringConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D20F247F7C9E009B3966 /* StringConverter.swift */; };
 		3888D212247F7CE6009B3966 /* StringConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D211247F7CE6009B3966 /* StringConverterTests.swift */; };
+		3888D21A247F7FF3009B3966 /* CalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D219247F7FF3009B3966 /* CalendarUITests.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
 		38F90B8D2478886F005B0BEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B8C2478886F005B0BEB /* Assets.xcassets */; };
 		38F90B902478886F005B0BEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B8E2478886F005B0BEB /* LaunchScreen.storyboard */; };
 		38F90B9B2478886F005B0BEB /* CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B9A2478886F005B0BEB /* CalendarTests.swift */; };
+		66E610471553DDB2D1059F29 /* libPods-CalendarUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C645C04DEC357704DE52EC7E /* libPods-CalendarUITests.a */; };
 		B243BDF0145779CE5D7CD43E /* Pods_CalendarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF8D3221CE51D08077B9F83 /* Pods_CalendarTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3888D21C247F7FF3009B3966 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38F90B782478886B005B0BEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 38F90B7F2478886B005B0BEB;
+			remoteInfo = Calendar;
+		};
 		38F90B972478886F005B0BEB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 38F90B782478886B005B0BEB /* Project object */;
@@ -58,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		263537AFCBCAA24A0085A100 /* Pods-CalendarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarUITests.debug.xcconfig"; path = "Target Support Files/Pods-CalendarUITests/Pods-CalendarUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2CE487EBF5E05F4DC4182A7C /* Pods-CalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarTests.debug.xcconfig"; path = "Target Support Files/Pods-CalendarTests/Pods-CalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3888D1A1247AF88E009B3966 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3888D1A6247B0F28009B3966 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -89,6 +99,9 @@
 		3888D20C247F722F009B3966 /* EventLayoutGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLayoutGenerator.swift; sourceTree = "<group>"; };
 		3888D20F247F7C9E009B3966 /* StringConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConverter.swift; sourceTree = "<group>"; };
 		3888D211247F7CE6009B3966 /* StringConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConverterTests.swift; sourceTree = "<group>"; };
+		3888D217247F7FF3009B3966 /* CalendarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3888D219247F7FF3009B3966 /* CalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarUITests.swift; sourceTree = "<group>"; };
+		3888D21B247F7FF3009B3966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,14 +112,24 @@
 		38F90B962478886F005B0BEB /* CalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B9A2478886F005B0BEB /* CalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTests.swift; sourceTree = "<group>"; };
 		38F90B9C2478886F005B0BEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4473E30449CC78953091211E /* Pods-CalendarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarUITests.release.xcconfig"; path = "Target Support Files/Pods-CalendarUITests/Pods-CalendarUITests.release.xcconfig"; sourceTree = "<group>"; };
 		49DCB57DC0E54117EF4BAB37 /* Pods-CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarTests.release.xcconfig"; path = "Target Support Files/Pods-CalendarTests/Pods-CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 		55F0039F379E7D6F5FAFDB00 /* Pods-Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar.debug.xcconfig"; path = "Target Support Files/Pods-Calendar/Pods-Calendar.debug.xcconfig"; sourceTree = "<group>"; };
 		8CF8D3221CE51D08077B9F83 /* Pods_CalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0BEBF8BAB7593FFF4E1C9B9 /* Pods-Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar.release.xcconfig"; path = "Target Support Files/Pods-Calendar/Pods-Calendar.release.xcconfig"; sourceTree = "<group>"; };
 		B768A1183D97CBE4A0344DF6 /* Pods_Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C645C04DEC357704DE52EC7E /* libPods-CalendarUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CalendarUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3888D214247F7FF3009B3966 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E610471553DDB2D1059F29 /* libPods-CalendarUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		38F90B7D2478886B005B0BEB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,11 +281,21 @@
 			path = Logic;
 			sourceTree = "<group>";
 		};
+		3888D218247F7FF3009B3966 /* CalendarUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3888D219247F7FF3009B3966 /* CalendarUITests.swift */,
+				3888D21B247F7FF3009B3966 /* Info.plist */,
+			);
+			path = CalendarUITests;
+			sourceTree = "<group>";
+		};
 		38F90B772478886B005B0BEB = {
 			isa = PBXGroup;
 			children = (
 				38F90B822478886B005B0BEB /* Calendar */,
 				38F90B992478886F005B0BEB /* CalendarTests */,
+				3888D218247F7FF3009B3966 /* CalendarUITests */,
 				38F90B812478886B005B0BEB /* Products */,
 				66AA9BE2E04B7F531E91182C /* Pods */,
 				D0A4E0ABE4E233CF0F65FF47 /* Frameworks */,
@@ -274,6 +307,7 @@
 			children = (
 				38F90B802478886B005B0BEB /* Calendar.app */,
 				38F90B962478886F005B0BEB /* CalendarTests.xctest */,
+				3888D217247F7FF3009B3966 /* CalendarUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -333,6 +367,8 @@
 				B0BEBF8BAB7593FFF4E1C9B9 /* Pods-Calendar.release.xcconfig */,
 				2CE487EBF5E05F4DC4182A7C /* Pods-CalendarTests.debug.xcconfig */,
 				49DCB57DC0E54117EF4BAB37 /* Pods-CalendarTests.release.xcconfig */,
+				263537AFCBCAA24A0085A100 /* Pods-CalendarUITests.debug.xcconfig */,
+				4473E30449CC78953091211E /* Pods-CalendarUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -342,6 +378,7 @@
 			children = (
 				B768A1183D97CBE4A0344DF6 /* Pods_Calendar.framework */,
 				8CF8D3221CE51D08077B9F83 /* Pods_CalendarTests.framework */,
+				C645C04DEC357704DE52EC7E /* libPods-CalendarUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -349,6 +386,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3888D216247F7FF3009B3966 /* CalendarUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3888D21E247F7FF3009B3966 /* Build configuration list for PBXNativeTarget "CalendarUITests" */;
+			buildPhases = (
+				65B5837513BE2C3C78AB60A5 /* [CP] Check Pods Manifest.lock */,
+				3888D213247F7FF3009B3966 /* Sources */,
+				3888D214247F7FF3009B3966 /* Frameworks */,
+				3888D215247F7FF3009B3966 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3888D21D247F7FF3009B3966 /* PBXTargetDependency */,
+			);
+			name = CalendarUITests;
+			productName = CalendarUITests;
+			productReference = 3888D217247F7FF3009B3966 /* CalendarUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		38F90B7F2478886B005B0BEB /* Calendar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 38F90B9F2478886F005B0BEB /* Build configuration list for PBXNativeTarget "Calendar" */;
@@ -397,6 +453,10 @@
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Vy Le";
 				TargetAttributes = {
+					3888D216247F7FF3009B3966 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 38F90B7F2478886B005B0BEB;
+					};
 					38F90B7F2478886B005B0BEB = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -421,11 +481,19 @@
 			targets = (
 				38F90B7F2478886B005B0BEB /* Calendar */,
 				38F90B952478886F005B0BEB /* CalendarTests */,
+				3888D216247F7FF3009B3966 /* CalendarUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3888D215247F7FF3009B3966 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		38F90B7E2478886B005B0BEB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -464,6 +532,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Calendar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65B5837513BE2C3C78AB60A5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CalendarUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -512,6 +602,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3888D213247F7FF3009B3966 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3888D21A247F7FF3009B3966 /* CalendarUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		38F90B7C2478886B005B0BEB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -560,6 +658,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3888D21D247F7FF3009B3966 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 38F90B7F2478886B005B0BEB /* Calendar */;
+			targetProxy = 3888D21C247F7FF3009B3966 /* PBXContainerItemProxy */;
+		};
 		38F90B982478886F005B0BEB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 38F90B7F2478886B005B0BEB /* Calendar */;
@@ -587,6 +690,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3888D21F247F7FF3009B3966 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 263537AFCBCAA24A0085A100 /* Pods-CalendarUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CalendarUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.VyLe.CalendarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Calendar;
+			};
+			name = Debug;
+		};
+		3888D220247F7FF3009B3966 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4473E30449CC78953091211E /* Pods-CalendarUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CalendarUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.VyLe.CalendarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Calendar;
+			};
+			name = Release;
+		};
 		38F90B9D2478886F005B0BEB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -784,6 +925,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3888D21E247F7FF3009B3966 /* Build configuration list for PBXNativeTarget "CalendarUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3888D21F247F7FF3009B3966 /* Debug */,
+				3888D220247F7FF3009B3966 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		38F90B7B2478886B005B0BEB /* Build configuration list for PBXProject "Calendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
