@@ -135,7 +135,7 @@ final class DailyTasksMainView : UIView {
             ])
             if hour == Constants.Time.hours {
                 NSLayoutConstraint.activate([
-                    divider.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -60)
+                    divider.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -120)
                 ])
             }
         }
