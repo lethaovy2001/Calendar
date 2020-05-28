@@ -34,6 +34,8 @@
 		3888D202247F3BED009B3966 /* RunningTimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D201247F3BED009B3966 /* RunningTimeLineView.swift */; };
 		3888D205247F46EC009B3966 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D204247F46EC009B3966 /* Event.swift */; };
 		3888D207247F5741009B3966 /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D206247F5741009B3966 /* BottomBarView.swift */; };
+		3888D20B247F6C55009B3966 /* EventLayoutGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D20A247F6C55009B3966 /* EventLayoutGeneratorTests.swift */; };
+		3888D20D247F722F009B3966 /* EventLayoutGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D20C247F722F009B3966 /* EventLayoutGenerator.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
@@ -81,6 +83,8 @@
 		3888D201247F3BED009B3966 /* RunningTimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimeLineView.swift; sourceTree = "<group>"; };
 		3888D204247F46EC009B3966 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		3888D206247F5741009B3966 /* BottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
+		3888D20A247F6C55009B3966 /* EventLayoutGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLayoutGeneratorTests.swift; sourceTree = "<group>"; };
+		3888D20C247F722F009B3966 /* EventLayoutGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLayoutGenerator.swift; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 		3888D1DA247C47BD009B3966 /* DailyTasksScreen */ = {
 			isa = PBXGroup;
 			children = (
+				3888D20E247F7982009B3966 /* Logic */,
 				3888D1DB247C47DE009B3966 /* View */,
 				3888D1DC247C4818009B3966 /* Controller */,
 			);
@@ -229,6 +234,22 @@
 				3888D204247F46EC009B3966 /* Event.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3888D209247F6C29009B3966 /* DailyTaskTests */ = {
+			isa = PBXGroup;
+			children = (
+				3888D20A247F6C55009B3966 /* EventLayoutGeneratorTests.swift */,
+			);
+			path = DailyTaskTests;
+			sourceTree = "<group>";
+		};
+		3888D20E247F7982009B3966 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				3888D20C247F722F009B3966 /* EventLayoutGenerator.swift */,
+			);
+			path = Logic;
 			sourceTree = "<group>";
 		};
 		38F90B772478886B005B0BEB = {
@@ -274,6 +295,7 @@
 		38F90B992478886F005B0BEB /* CalendarTests */ = {
 			isa = PBXGroup;
 			children = (
+				3888D209247F6C29009B3966 /* DailyTaskTests */,
 				38F90B9A2478886F005B0BEB /* CalendarTests.swift */,
 				38F90B9C2478886F005B0BEB /* Info.plist */,
 			);
@@ -502,6 +524,7 @@
 				38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */,
 				3888D1FC247DE679009B3966 /* TimeDividerView.swift in Sources */,
 				3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */,
+				3888D20D247F722F009B3966 /* EventLayoutGenerator.swift in Sources */,
 				3888D1B4247B181B009B3966 /* InputView.swift in Sources */,
 				3888D1BC247B460F009B3966 /* RoundedButton.swift in Sources */,
 				38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */,
@@ -522,6 +545,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38F90B9B2478886F005B0BEB /* CalendarTests.swift in Sources */,
+				3888D20B247F6C55009B3966 /* EventLayoutGeneratorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

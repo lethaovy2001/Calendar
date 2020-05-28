@@ -14,6 +14,7 @@ final class DailyTasksMainView : UIView {
     private let headerLabel = CustomLabel(text: "Daily Tasks", textColor: AppColor.darkGray, textSize: 36, textWeight: .heavy)
     private let timeLine = RunningTimeLineView()
     private let bottomBar = BottomBarView()
+    private let eventLayoutGenerator = EventLayoutGenerator()
     
     // MARK: - Initializer
     init() {
@@ -109,7 +110,7 @@ final class DailyTasksMainView : UIView {
     
     private func setupTimeLineConstraints() {
         let date = Date()
-        let offset = estimateTopOffset(of: date) - 4
+        let offset = eventLayoutGenerator.estimateTopOffset(of: date) - 4
         NSLayoutConstraint.activate([
             timeLine.heightAnchor.constraint(equalToConstant: 8),
             timeLine.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: offset),
@@ -141,8 +142,8 @@ final class DailyTasksMainView : UIView {
     }
     
     private func setEvent(event: Event) {
-        let height = estimateEventHeight(event: event)
-        let offset = estimateTopOffset(of: event.startTime)
+        let height = eventLayoutGenerator.estimateHeight(event: event)
+        let offset = eventLayoutGenerator.estimateTopOffset(of: event.startTime)
         let eventView = EventView(height: height)
         scrollView.addSubview(eventView)
         NSLayoutConstraint.activate([
@@ -151,26 +152,6 @@ final class DailyTasksMainView : UIView {
             eventView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
             eventView.leftAnchor.constraint(equalTo: leftAnchor, constant: 106),
         ])
-    }
-    
-    //TODO: write unit test
-    private func estimateEventHeight(event: Event) -> CGFloat {
-        let startComponents = Calendar.current.dateComponents([.hour, .minute], from: event.startTime)
-        let startHour = CGFloat(startComponents.hour ?? 0)
-        let startMinute = CGFloat(startComponents.minute ?? 0)/60.0
-        let endComponents = Calendar.current.dateComponents([.hour, .minute], from: event.endTime)
-        let endHour = CGFloat(endComponents.hour ?? 0)
-        let endMinute = CGFloat(endComponents.minute ?? 0)/60.0
-        let timeInHour = endHour - startHour + endMinute -  startMinute
-        return timeInHour * Constants.spaceBetweenTimeDivider
-    }
-    
-    //TODO: write unit test
-    private func estimateTopOffset(of date: Date) -> CGFloat {
-        let startComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
-        let hour = CGFloat(startComponents.hour ?? 0)
-        let minute = CGFloat(startComponents.minute ?? 0)/60.0
-        return (hour + minute) * Constants.spaceBetweenTimeDivider + 10
     }
     
     // MARK: Selectors
