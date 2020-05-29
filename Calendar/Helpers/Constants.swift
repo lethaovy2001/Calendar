@@ -18,6 +18,12 @@ struct Constants {
         static let minutesInAHour: Double = 60
     }
     
+    struct Date {
+        static let maxYear = 2036
+        static let minMonth = 1
+        static let maxMonth = 12
+    }
+    
     struct IconNames {
         static let calendar = "calendar"
         static let profile = "person"
