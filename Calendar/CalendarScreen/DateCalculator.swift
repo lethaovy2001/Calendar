@@ -34,6 +34,41 @@ class DateCalculator {
         return dates[index]
     }
     
+    func getDayString(at index: Int) -> String {
+        if dates.count < index {
+            return "N/A"
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
+        let day = dateFormatter.string(from: dates[index])
+        return day
+    }
+    
+    func isNotInCurrentMonth(at index: Int) -> Bool {
+        if dates.count > index {
+            let dateComponents = Calendar.current.dateComponents([.month], from: dates[index])
+            guard let month = dateComponents.month else { return false }
+            if month == self.month {
+                return false
+            }
+        }
+        return true
+    }
+    
+    func isTodayDate(at index: Int) -> Bool {
+        if dates.count < index {
+            return false
+        }
+        let today = Date()
+        let todayComponents = calendar.dateComponents([.day, .month, .year], from: today)
+        let dateComponents = calendar.dateComponents([.day, .month, .year], from: dates[index])
+        if todayComponents == dateComponents {
+            return true
+        } else {
+           return false
+        }
+    }
+    
     func getDateFrom(day: Int, month: Int, year: Int) -> Date {
         let dateComponents = DateComponents(
             year: year,
