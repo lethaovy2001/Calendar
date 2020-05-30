@@ -44,15 +44,30 @@ class DateCalculator {
         return day
     }
     
-    func isNotInCurrentMonth(at index: Int) -> Bool {
+    func isInCurrentMonth(at index: Int) -> Bool {
         if dates.count > index {
             let dateComponents = Calendar.current.dateComponents([.month], from: dates[index])
             guard let month = dateComponents.month else { return false }
+            print(month)
+            print(self.month)
             if month == self.month {
-                return false
+                return true
             }
         }
-        return true
+        return false
+    }
+    
+    func isSelectedDate(at index: Int, date: Date) -> Bool {
+        if dates.count < index {
+            return false
+        }
+        let todayComponents = calendar.dateComponents([.day, .month, .year], from: date)
+        let dateComponents = calendar.dateComponents([.day, .month, .year], from: dates[index])
+        if todayComponents == dateComponents {
+            return true
+        } else {
+           return false
+        }
     }
     
     func isTodayDate(at index: Int) -> Bool {

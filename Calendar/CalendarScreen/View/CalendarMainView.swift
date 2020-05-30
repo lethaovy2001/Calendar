@@ -13,8 +13,16 @@ final class CalendarMainView : UIView {
     private let backButton = BackButton()
     private let addButton = IconButton(name: Constants.IconNames.add, size: 24, color: AppColor.primaryColor)
     private let searchButton = IconButton(name: Constants.IconNames.search, size: 24, color: AppColor.primaryColor)
-    private let monthLabel = TextButton(title: "Month")
+    private let monthLabel = CustomLabel(text: "Month", textColor: AppColor.darkGray, textSize: 30, textWeight: .bold)
     private let weekDaysView = WeekDaysView()
+    private let doneButton = TextButton(title: "DONE", color: AppColor.primaryColor)
+    private let datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker(frame: .zero)
+        datePicker.datePickerMode = .date
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        return datePicker
+    }()
+    private let containerView = CustomContainerView(backgroundColor: .white, cornerRadius: 10, hasShadow: true)
     var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -28,6 +36,11 @@ final class CalendarMainView : UIView {
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
+    var nameOfMonth: String? {
+        didSet {
+            monthLabel.text = nameOfMonth
+        }
+    }
     
     // MARK: - Initializer
     init() {
@@ -44,6 +57,15 @@ final class CalendarMainView : UIView {
     private func setup() {
         addSubviews()
         setupConstraints()
+        addTapGesture()
+    }
+    
+    private func addTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMonthLabelTapped))
+        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
+        monthLabel.isUserInteractionEnabled = true
+        monthLabel.addGestureRecognizer(tapGesture)
     }
     
     private func addSubviews() {
@@ -103,5 +125,43 @@ final class CalendarMainView : UIView {
     
     func setSearchButtonSelector(selector: Selector, target: UIViewController) {
         searchButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
+    func setDoneButtonSelector(selector: Selector, target: UIViewController) {
+        doneButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
+    // MARK: Actions
+    @objc private func handleMonthLabelTapped() {
+        addSubview(containerView)
+        containerView.addSubview(datePicker)
+        containerView.addSubview(doneButton)
+        NSLayoutConstraint.activate([
+            containerView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            containerView.heightAnchor.constraint(equalToConstant: 300),
+            containerView.leftAnchor.constraint(equalTo: leftAnchor, constant: 36),
+            containerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -36)
+        ])
+        NSLayoutConstraint.activate([
+            datePicker.topAnchor.constraint(equalTo: containerView.topAnchor),
+            datePicker.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+        ])
+        NSLayoutConstraint.activate([
+            doneButton.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: -12),
+            doneButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 16),
+            doneButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -16),
+            doneButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -16),
+            doneButton.heightAnchor.constraint(equalToConstant: 48)
+        ])
+    }
+    
+    func hideDatePicker() {
+        containerView.removeFromSuperview()
+        datePicker.removeFromSuperview()
+        doneButton.removeFromSuperview()
+    }
+    
+    func getDatePickerValue() -> Date {
+        return datePicker.date
     }
 }

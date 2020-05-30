@@ -12,7 +12,11 @@ final class DateCell : UICollectionViewCell {
     // MARK: - Properties
     let dayLabel = CustomLabel(text: "N/A", textColor: AppColor.darkGray, textSize: 22, textWeight: .bold)
     let circleView = CircleView()
-    var textColor = AppColor.darkGray
+    var textColor: UIColor? {
+        didSet {
+            dayLabel.textColor = textColor
+        }
+    }
     
     // MARK: - Initializer
     override init(frame: CGRect) {
@@ -23,19 +27,6 @@ final class DateCell : UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: isSelected
-    override var isSelected: Bool{
-        didSet {
-            if self.isSelected {
-                circleView.isHidden = false
-                dayLabel.textColor = .white
-            } else {
-                circleView.isHidden = true
-                dayLabel.textColor = textColor
-            }
-        }
     }
     
     //MARK: - Setup
@@ -61,5 +52,15 @@ final class DateCell : UICollectionViewCell {
             circleView.rightAnchor.constraint(equalTo: rightAnchor),
             circleView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
+    }
+    
+    func showSelectedCell() {
+        circleView.isHidden = false
+        dayLabel.textColor = .white
+    }
+    
+    func hideSelectedCell() {
+        circleView.isHidden = true
+        dayLabel.textColor = textColor
     }
 }

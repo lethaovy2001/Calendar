@@ -14,13 +14,16 @@ class CalendarViewController : UIViewController {
     private let database: Database
     private var dateCalculator: DateCalculator
     private var selectedTodayIndexPath: IndexPath?
+    private var selectedDate: Date
     
     // MARK: - Initializer
     init(database: Database) {
         self.database = database
-        let dateComponents = Calendar.current.dateComponents([.month, .year], from: Date())
+        selectedDate = Date()
+        let dateComponents = Calendar.current.dateComponents([.month, .year], from: selectedDate)
         self.dateCalculator = DateCalculator(month: dateComponents.month ?? 0, year: dateComponents.year ?? 0)
         super.init(nibName: nil, bundle: nil)
+        self.setupNameOfMonth(for: selectedDate)
     }
     
     required init?(coder: NSCoder) {
@@ -30,7 +33,6 @@ class CalendarViewController : UIViewController {
     // MARK: - View Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
     }
     
@@ -45,6 +47,13 @@ class CalendarViewController : UIViewController {
     private func setupSelf() {
         self.view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    private func setupNameOfMonth(for date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        let nameOfMonth = dateFormatter.string(from: date)
+        mainView.nameOfMonth = nameOfMonth
     }
     
     private func setupUI() {
@@ -67,6 +76,7 @@ class CalendarViewController : UIViewController {
         mainView.setAddButtonSelector(selector: #selector(tapAddButton), target: self)
         mainView.setSearchButtonSelector(selector: #selector(tapSearchButton), target: self)
         mainView.setBackButtonSelector(selector: #selector(tapBackButton), target: self)
+        mainView.setDoneButtonSelector(selector: #selector(tapDoneButton), target: self)
     }
     
     // MARK: Actions
@@ -81,6 +91,15 @@ class CalendarViewController : UIViewController {
     @objc private func tapBackButton() {
         
     }
+    
+    @objc private func tapDoneButton() {
+        selectedDate = mainView.getDatePickerValue()
+        let components = Calendar.current.dateComponents([.day, .month, .year], from: selectedDate)
+        dateCalculator = DateCalculator(month: components.month ?? 0, year: components.year ?? 0)
+        setupNameOfMonth(for: selectedDate)
+        mainView.collectionView.reloadData()
+        mainView.hideDatePicker()
+    }
 }
 
 extension CalendarViewController : UICollectionViewDataSource {
@@ -94,12 +113,18 @@ extension CalendarViewController : UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellId.date, for: indexPath) as? DateCell else { return UICollectionViewCell() }
         let date = dateCalculator.getDayString(at: indexPath.item)
         cell.dayLabel.text = date
+        cell.textColor = AppColor.darkGray
+        cell.hideSelectedCell()
+        cell.circleView.isHidden = true
         if dateCalculator.isTodayDate(at: indexPath.item) {
-            cell.isSelected = true
+            cell.showSelectedCell()
             selectedTodayIndexPath = indexPath
         }
-        if dateCalculator.isNotInCurrentMonth(at: indexPath.item) {
-            cell.dayLabel.textColor = AppColor.lightGray
+        if dateCalculator.isSelectedDate(at: indexPath.item, date: selectedDate) {
+            cell.showSelectedCell()
+            selectedTodayIndexPath = indexPath
+        }
+        if !dateCalculator.isInCurrentMonth(at: indexPath.item) {
             cell.textColor = AppColor.lightGray
         }
         return cell
@@ -110,17 +135,17 @@ extension CalendarViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let todayIndexPath = selectedTodayIndexPath {
             if let cell = collectionView.cellForItem(at: todayIndexPath) as? DateCell {
-                cell.isSelected = false
+                cell.hideSelectedCell()
             }
         }
         if let cell = collectionView.cellForItem(at: indexPath) as? DateCell {
-            cell.isSelected = true
+            cell.showSelectedCell()
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? DateCell {
-            cell.isSelected = false
+            cell.hideSelectedCell()
         }
     }
 }

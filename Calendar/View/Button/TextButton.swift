@@ -1,5 +1,5 @@
 //
-//  CustomButton.swift
+//  TextButton.swift
 //  Calendar
 //
 //  Created by Vy Le on 5/28/20.
@@ -17,6 +17,16 @@ final class TextButton : UIButton {
         self.setTitleColor(.darkGray, for: .normal)
         self.titleLabel?.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    init(title: String, color: UIColor) {
+        super.init(frame: .zero)
+        self.backgroundColor = color
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(.white, for: .normal)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.layer.masksToBounds = true
     }
     
     required init?(coder: NSCoder) {

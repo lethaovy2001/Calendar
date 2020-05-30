@@ -42,12 +42,13 @@
 		3888D225247F90B0009B3966 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D224247F90B0009B3966 /* CalendarViewController.swift */; };
 		3888D227247F910E009B3966 /* CalendarMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D226247F910E009B3966 /* CalendarMainView.swift */; };
 		3888D22A248028F9009B3966 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D229248028F9009B3966 /* BackButton.swift */; };
-		3888D22E2480444A009B3966 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D22D2480444A009B3966 /* CustomButton.swift */; };
+		3888D22E2480444A009B3966 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D22D2480444A009B3966 /* TextButton.swift */; };
 		3888D230248060D2009B3966 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D22F248060D2009B3966 /* DateCell.swift */; };
 		3888D23224806D30009B3966 /* WeekDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D23124806D30009B3966 /* WeekDaysView.swift */; };
 		3888D2362480B597009B3966 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D2352480B597009B3966 /* DateCalculator.swift */; };
 		3888D2382480B5C3009B3966 /* DateCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D2372480B5C2009B3966 /* DateCalculatorTests.swift */; };
 		3888D23A24819F54009B3966 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D23924819F53009B3966 /* CircleView.swift */; };
+		3888D23C2481B9A3009B3966 /* LabelTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D23B2481B9A3009B3966 /* LabelTapGestureDelegate.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
@@ -114,12 +115,13 @@
 		3888D224247F90B0009B3966 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		3888D226247F910E009B3966 /* CalendarMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMainView.swift; sourceTree = "<group>"; };
 		3888D229248028F9009B3966 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
-		3888D22D2480444A009B3966 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		3888D22D2480444A009B3966 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		3888D22F248060D2009B3966 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		3888D23124806D30009B3966 /* WeekDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDaysView.swift; sourceTree = "<group>"; };
 		3888D2352480B597009B3966 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
 		3888D2372480B5C2009B3966 /* DateCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculatorTests.swift; sourceTree = "<group>"; };
 		3888D23924819F53009B3966 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		3888D23B2481B9A3009B3966 /* LabelTapGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTapGestureDelegate.swift; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			children = (
 				3888D1C9247B7C5C009B3966 /* Authentication.swift */,
 				3888D1CB247B7C92009B3966 /* Database.swift */,
+				3888D23B2481B9A3009B3966 /* LabelTapGestureDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -342,7 +345,7 @@
 				3888D1B9247B2C5C009B3966 /* IconButton.swift */,
 				3888D1BB247B460F009B3966 /* RoundedButton.swift */,
 				3888D229248028F9009B3966 /* BackButton.swift */,
-				3888D22D2480444A009B3966 /* CustomButton.swift */,
+				3888D22D2480444A009B3966 /* TextButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -679,7 +682,7 @@
 				3888D1A2247AF88E009B3966 /* LoginViewController.swift in Sources */,
 				3888D1BE247B4D5D009B3966 /* UIView+Extension.swift in Sources */,
 				3888D1FA247DE5AD009B3966 /* CustomScrollView.swift in Sources */,
-				3888D22E2480444A009B3966 /* CustomButton.swift in Sources */,
+				3888D22E2480444A009B3966 /* TextButton.swift in Sources */,
 				3888D1B8247B29F3009B3966 /* AppColor.swift in Sources */,
 				3888D23224806D30009B3966 /* WeekDaysView.swift in Sources */,
 				3888D1C0247B501F009B3966 /* CustomLabel.swift in Sources */,
@@ -707,6 +710,7 @@
 				3888D210247F7C9E009B3966 /* StringConverter.swift in Sources */,
 				3888D1C4247B5685009B3966 /* ErrorLabel.swift in Sources */,
 				3888D1B6247B1895009B3966 /* CustomTextField.swift in Sources */,
+				3888D23C2481B9A3009B3966 /* LabelTapGestureDelegate.swift in Sources */,
 				3888D1CA247B7C5C009B3966 /* Authentication.swift in Sources */,
 				3888D205247F46EC009B3966 /* Event.swift in Sources */,
 			);
