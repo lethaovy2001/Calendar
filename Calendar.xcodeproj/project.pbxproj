@@ -48,7 +48,6 @@
 		3888D2362480B597009B3966 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D2352480B597009B3966 /* DateCalculator.swift */; };
 		3888D2382480B5C3009B3966 /* DateCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D2372480B5C2009B3966 /* DateCalculatorTests.swift */; };
 		3888D23A24819F54009B3966 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D23924819F53009B3966 /* CircleView.swift */; };
-		3888D23C2481B9A3009B3966 /* LabelTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D23B2481B9A3009B3966 /* LabelTapGestureDelegate.swift */; };
 		3888D24224822466009B3966 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D24124822466009B3966 /* DateConverter.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
@@ -122,7 +121,6 @@
 		3888D2352480B597009B3966 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
 		3888D2372480B5C2009B3966 /* DateCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculatorTests.swift; sourceTree = "<group>"; };
 		3888D23924819F53009B3966 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		3888D23B2481B9A3009B3966 /* LabelTapGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTapGestureDelegate.swift; sourceTree = "<group>"; };
 		3888D24124822466009B3966 /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -234,7 +232,6 @@
 			children = (
 				3888D1C9247B7C5C009B3966 /* Authentication.swift */,
 				3888D1CB247B7C92009B3966 /* Database.swift */,
-				3888D23B2481B9A3009B3966 /* LabelTapGestureDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -714,7 +711,6 @@
 				3888D210247F7C9E009B3966 /* StringConverter.swift in Sources */,
 				3888D1C4247B5685009B3966 /* ErrorLabel.swift in Sources */,
 				3888D1B6247B1895009B3966 /* CustomTextField.swift in Sources */,
-				3888D23C2481B9A3009B3966 /* LabelTapGestureDelegate.swift in Sources */,
 				3888D1CA247B7C5C009B3966 /* Authentication.swift in Sources */,
 				3888D205247F46EC009B3966 /* Event.swift in Sources */,
 			);
