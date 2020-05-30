@@ -15,13 +15,14 @@ class CalendarViewController : UIViewController {
     private var dateCalculator: DateCalculator
     private var selectedTodayIndexPath: IndexPath?
     private var selectedDate: Date
+    private var converter: DateConverter
     
     // MARK: - Initializer
     init(database: Database) {
         self.database = database
         selectedDate = Date()
-        let dateComponents = Calendar.current.dateComponents([.month, .year], from: selectedDate)
-        self.dateCalculator = DateCalculator(month: dateComponents.month ?? 0, year: dateComponents.year ?? 0)
+        converter = DateConverter(date: selectedDate)
+        dateCalculator = DateCalculator(month: converter.getMonth(), year: converter.getYear())
         super.init(nibName: nil, bundle: nil)
         self.setupNameOfMonth(for: selectedDate)
     }
@@ -94,8 +95,8 @@ class CalendarViewController : UIViewController {
     
     @objc private func tapDoneButton() {
         selectedDate = mainView.getDatePickerValue()
-        let components = Calendar.current.dateComponents([.day, .month, .year], from: selectedDate)
-        dateCalculator = DateCalculator(month: components.month ?? 0, year: components.year ?? 0)
+        converter = DateConverter(date: selectedDate)
+        dateCalculator = DateCalculator(month: converter.getMonth(), year: converter.getYear())
         setupNameOfMonth(for: selectedDate)
         mainView.collectionView.reloadData()
         mainView.hideDatePicker()
