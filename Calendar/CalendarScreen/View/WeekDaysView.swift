@@ -10,7 +10,7 @@ import UIKit
 
 final class WeekDaysView : UIStackView {
     // MARK: - Properties
-    private let weekdays = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"]
+    private let weekdays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
     
     // MARK: - Initializer
     init() {
