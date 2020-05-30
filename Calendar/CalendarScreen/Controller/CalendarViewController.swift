@@ -97,6 +97,7 @@ class CalendarViewController : UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension CalendarViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let numOfWeekdays = 7
@@ -122,6 +123,7 @@ extension CalendarViewController : UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension CalendarViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let todayIndexPath = selectedTodayIndexPath {
@@ -131,6 +133,8 @@ extension CalendarViewController : UICollectionViewDelegate {
         }
         if let cell = collectionView.cellForItem(at: indexPath) as? DateCell {
             cell.showSelectedCell()
+            let newDate = dateCalculator.calculateDate(at: indexPath.item)
+            mainView.setDatePickerValue(date: newDate)
         }
     }
 
@@ -141,6 +145,7 @@ extension CalendarViewController : UICollectionViewDelegate {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension CalendarViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfColumns: CGFloat = 7

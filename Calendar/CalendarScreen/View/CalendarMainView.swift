@@ -61,7 +61,7 @@ final class CalendarMainView : UIView {
     }
     
     private func addTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMonthLabelTapped))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showDatePicker))
         tapGesture.numberOfTapsRequired = 1
         tapGesture.numberOfTouchesRequired = 1
         monthLabel.isUserInteractionEnabled = true
@@ -132,7 +132,7 @@ final class CalendarMainView : UIView {
     }
     
     // MARK: Actions
-    @objc private func handleMonthLabelTapped() {
+    @objc private func showDatePicker() {
         addSubview(containerView)
         containerView.addSubview(datePicker)
         containerView.addSubview(doneButton)
@@ -163,5 +163,9 @@ final class CalendarMainView : UIView {
     
     func getDatePickerValue() -> Date {
         return datePicker.date
+    }
+    
+    func setDatePickerValue(date: Date) {
+        datePicker.setDate(date, animated: true)
     }
 }
