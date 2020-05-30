@@ -21,10 +21,10 @@ class CalendarViewController : UIViewController {
     init(database: Database) {
         self.database = database
         selectedDate = Date()
-        converter = DateConverter(date: selectedDate)
-        dateCalculator = DateCalculator(month: converter.getMonth(), year: converter.getYear())
+        converter = DateConverter()
+        converter.convert(date: selectedDate)
+        dateCalculator = DateCalculator(date: selectedDate)
         super.init(nibName: nil, bundle: nil)
-        self.setupNameOfMonth(for: selectedDate)
     }
     
     required init?(coder: NSCoder) {
@@ -49,15 +49,9 @@ class CalendarViewController : UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
     }
-    
-    private func setupNameOfMonth(for date: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "LLLL"
-        let nameOfMonth = dateFormatter.string(from: date)
-        mainView.nameOfMonth = nameOfMonth
-    }
-    
+
     private func setupUI() {
+        mainView.nameOfMonth = converter.getMonthName(from: selectedDate)
         view.addSubview(mainView)
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -95,9 +89,9 @@ class CalendarViewController : UIViewController {
     
     @objc private func tapDoneButton() {
         selectedDate = mainView.getDatePickerValue()
-        converter = DateConverter(date: selectedDate)
-        dateCalculator = DateCalculator(month: converter.getMonth(), year: converter.getYear())
-        setupNameOfMonth(for: selectedDate)
+        converter.convert(date: selectedDate)
+        dateCalculator = DateCalculator(date: selectedDate)
+        mainView.nameOfMonth = converter.getMonthName(from: selectedDate)
         mainView.collectionView.reloadData()
         mainView.hideDatePicker()
     }
@@ -117,11 +111,7 @@ extension CalendarViewController : UICollectionViewDataSource {
         cell.textColor = AppColor.darkGray
         cell.hideSelectedCell()
         cell.circleView.isHidden = true
-        if dateCalculator.isTodayDate(at: indexPath.item) {
-            cell.showSelectedCell()
-            selectedTodayIndexPath = indexPath
-        }
-        if dateCalculator.isSelectedDate(at: indexPath.item, date: selectedDate) {
+        if dateCalculator.isSelectedDate(at: indexPath.item) {
             cell.showSelectedCell()
             selectedTodayIndexPath = indexPath
         }

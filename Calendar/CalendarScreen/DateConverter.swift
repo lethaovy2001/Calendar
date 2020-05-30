@@ -9,25 +9,36 @@
 import UIKit
 
 final class DateConverter {
-    private let date: Date
     private let calendar: Calendar
     private var weekday: Int?
     private var day: Int?
     private var month: Int?
     private var year: Int?
     
-    init(date: Date) {
-        self.date = date
+    init() {
         self.calendar = Calendar.current
-        convert()
     }
     
-    private func convert() {
+    func convert(date: Date) {
         let components = calendar.dateComponents([.weekday, .day, .month, .year], from: date)
         self.weekday = components.weekday
         self.day = components.day
         self.month = components.month
         self.year = components.year
+    }
+    
+    func getMonthName(from date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLLL"
+        let nameOfMonth = dateFormatter.string(from: date)
+        return nameOfMonth
+    }
+    
+    func getDay(from date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
+        let day = dateFormatter.string(from: date)
+        return day
     }
     
     func getWeekday() -> Int {

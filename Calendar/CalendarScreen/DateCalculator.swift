@@ -8,22 +8,22 @@
 
 import UIKit
 
-class DateCalculator {
+final class DateCalculator {
+    private var date: Date
     private let calendar: Calendar
     private var year: Int
     private var month: Int
-    private var dates = [Date]()
+    private var dates: [Date]
+    private var converter: DateConverter
     
-    init(month: Int, year: Int) {
-        calendar = Calendar.current
-        self.month = month
-        self.year = year
-        checkValidDate()
-    }
-    
-    func set(month: Int, year: Int) {
-        self.month = month
-        self.year = year
+    init(date: Date) {
+        self.date = date
+        self.calendar = Calendar.current
+        self.converter = DateConverter()
+        converter.convert(date: date)
+        self.month = converter.getMonth()
+        self.year = converter.getYear()
+        self.dates = [Date]()
         checkValidDate()
     }
     
@@ -38,46 +38,26 @@ class DateCalculator {
         if dates.count < index {
             return "N/A"
         }
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d"
-        let day = dateFormatter.string(from: dates[index])
-        return day
+        return converter.getDay(from: dates[index])
     }
     
     func isInCurrentMonth(at index: Int) -> Bool {
         if dates.count > index {
-            let dateComponents = Calendar.current.dateComponents([.month], from: dates[index])
-            guard let month = dateComponents.month else { return false }
-            print(month)
-            print(self.month)
-            if month == self.month {
+            converter.convert(date: dates[index])
+            if converter.getMonth() == self.month {
                 return true
             }
         }
         return false
     }
     
-    func isSelectedDate(at index: Int, date: Date) -> Bool {
+    func isSelectedDate(at index: Int) -> Bool {
         if dates.count < index {
             return false
         }
-        let todayComponents = calendar.dateComponents([.day, .month, .year], from: date)
+        let selectedComponents = calendar.dateComponents([.day, .month, .year], from: date)
         let dateComponents = calendar.dateComponents([.day, .month, .year], from: dates[index])
-        if todayComponents == dateComponents {
-            return true
-        } else {
-           return false
-        }
-    }
-    
-    func isTodayDate(at index: Int) -> Bool {
-        if dates.count < index {
-            return false
-        }
-        let today = Date()
-        let todayComponents = calendar.dateComponents([.day, .month, .year], from: today)
-        let dateComponents = calendar.dateComponents([.day, .month, .year], from: dates[index])
-        if todayComponents == dateComponents {
+        if selectedComponents == dateComponents {
             return true
         } else {
            return false
@@ -96,13 +76,9 @@ class DateCalculator {
     private func checkValidDate() {
         if month > Constants.Date.maxMonth && year > Constants.Date.maxYear {
             let date = Date()
-            let components = calendar.dateComponents([.month, .year], from: date)
-            guard
-                let month = components.month,
-                let year = components.year
-            else { return }
-            self.month = month
-            self.year = year
+            converter.convert(date: date)
+            self.month = converter.getMonth()
+            self.year = converter.getYear()
         }
         getMonthlyCalendar()
     }
@@ -125,19 +101,16 @@ class DateCalculator {
             let day = numOfdaysOfLastMonth - (space - index)
             let date = getDateFrom(day: day, month: lastMonth, year: year)
             dates.append(date)
-            print("\(numOfdaysOfLastMonth - (space - index))")
         }
         // this month
         for day in 1...numOfDaysThisMonth {
             let date = getDateFrom(day: day, month: month, year: year)
             dates.append(date)
-            print("\(day)\t")
         }
         // next month
         for day in 1...(42 - numOfDaysThisMonth - space) {
             let date = getDateFrom(day: day, month: nextMonth, year: year)
             dates.append(date)
-            print("\(day)\t")
         }
     }
     
