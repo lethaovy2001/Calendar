@@ -19,6 +19,15 @@ final class TextButton : UIButton {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    init(title: String, textColor: UIColor, textSize: CGFloat, textWeight: UIFont.Weight) {
+        super.init(frame: .zero)
+        self.backgroundColor = .clear
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(textColor, for: .normal)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: textSize, weight: textWeight)
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     init(title: String, color: UIColor) {
         super.init(frame: .zero)
         self.backgroundColor = color

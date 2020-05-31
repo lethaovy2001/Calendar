@@ -54,6 +54,8 @@
 		3888D24824837F34009B3966 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D24724837F34009B3966 /* CustomHeaderView.swift */; };
 		3888D24F2483EC40009B3966 /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D24E2483EC40009B3966 /* NewEventViewController.swift */; };
 		3888D2512483EE7B009B3966 /* NewEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D2502483EE7B009B3966 /* NewEventView.swift */; };
+		3888D2542484154C009B3966 /* SectionTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D2532484154C009B3966 /* SectionTitleLabel.swift */; };
+		38CE861624842A000006D609 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE861524842A000006D609 /* CustomTextView.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
@@ -132,6 +134,8 @@
 		3888D24724837F34009B3966 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		3888D24E2483EC40009B3966 /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
 		3888D2502483EE7B009B3966 /* NewEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventView.swift; sourceTree = "<group>"; };
+		3888D2532484154C009B3966 /* SectionTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleLabel.swift; sourceTree = "<group>"; };
+		38CE861524842A000006D609 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 				3888D1BF247B501F009B3966 /* CustomLabel.swift */,
 				3888D1C3247B5685009B3966 /* ErrorLabel.swift */,
 				3888D1F9247DE5AD009B3966 /* CustomScrollView.swift */,
+				38CE861524842A000006D609 /* CustomTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -366,10 +371,19 @@
 		3888D24D2483EC23009B3966 /* NewEventScreen */ = {
 			isa = PBXGroup;
 			children = (
+				3888D2522484152D009B3966 /* View */,
 				3888D24E2483EC40009B3966 /* NewEventViewController.swift */,
-				3888D2502483EE7B009B3966 /* NewEventView.swift */,
 			);
 			path = NewEventScreen;
+			sourceTree = "<group>";
+		};
+		3888D2522484152D009B3966 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3888D2502483EE7B009B3966 /* NewEventView.swift */,
+				3888D2532484154C009B3966 /* SectionTitleLabel.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		38F90B772478886B005B0BEB = {
@@ -728,6 +742,7 @@
 				3888D1B4247B181B009B3966 /* InputView.swift in Sources */,
 				3888D1BC247B460F009B3966 /* RoundedButton.swift in Sources */,
 				38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */,
+				3888D2542484154C009B3966 /* SectionTitleLabel.swift in Sources */,
 				3888D207247F5741009B3966 /* BottomBarView.swift in Sources */,
 				3888D1BA247B2C5C009B3966 /* IconButton.swift in Sources */,
 				3888D1AC247B110E009B3966 /* Constants.swift in Sources */,
@@ -736,6 +751,7 @@
 				3888D2512483EE7B009B3966 /* NewEventView.swift in Sources */,
 				3888D1FE247E1E80009B3966 /* EventView.swift in Sources */,
 				3888D225247F90B0009B3966 /* CalendarViewController.swift in Sources */,
+				38CE861624842A000006D609 /* CustomTextView.swift in Sources */,
 				3888D210247F7C9E009B3966 /* StringConverter.swift in Sources */,
 				3888D1C4247B5685009B3966 /* ErrorLabel.swift in Sources */,
 				3888D1B6247B1895009B3966 /* CustomTextField.swift in Sources */,

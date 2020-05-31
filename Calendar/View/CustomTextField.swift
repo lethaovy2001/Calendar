@@ -22,6 +22,15 @@ class CustomTextField : UITextField {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    init(placeholder: String) {
+        super.init(frame: .zero)
+        self.backgroundColor = AppColor.inputColor
+        self.placeholder = placeholder
+        self.layer.cornerRadius = 10
+        self.keyboardType = keyboardType
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -37,5 +46,4 @@ class CustomTextField : UITextField {
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
       return bounds.inset(by: padding)
     }
-    
 }
