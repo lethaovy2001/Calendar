@@ -51,6 +51,7 @@
 		3888D24224822466009B3966 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D24124822466009B3966 /* DateConverter.swift */; };
 		3888D24424831B72009B3966 /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D24324831B72009B3966 /* SlideView.swift */; };
 		3888D246248325E0009B3966 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D245248325E0009B3966 /* ScheduleCell.swift */; };
+		3888D24824837F34009B3966 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D24724837F34009B3966 /* CustomHeaderView.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
@@ -126,6 +127,7 @@
 		3888D24124822466009B3966 /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		3888D24324831B72009B3966 /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
 		3888D245248325E0009B3966 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		3888D24724837F34009B3966 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				3888D23124806D30009B3966 /* WeekDaysView.swift */,
 				3888D23924819F53009B3966 /* CircleView.swift */,
 				3888D24324831B72009B3966 /* SlideView.swift */,
+				3888D24724837F34009B3966 /* CustomHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3888D24824837F34009B3966 /* CustomHeaderView.swift in Sources */,
 				3888D23A24819F54009B3966 /* CircleView.swift in Sources */,
 				3888D22A248028F9009B3966 /* BackButton.swift in Sources */,
 				3888D230248060D2009B3966 /* DateCell.swift in Sources */,

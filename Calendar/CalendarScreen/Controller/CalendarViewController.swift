@@ -104,7 +104,7 @@ extension CalendarViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellId.date, for: indexPath) as? DateCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Id.dateCellId, for: indexPath) as? DateCell else { return UICollectionViewCell() }
         let date = dateCalculator.getDayString(at: indexPath.item)
         cell.dayLabel.text = date
         cell.textColor = AppColor.darkGray
@@ -158,13 +158,12 @@ extension CalendarViewController : UICollectionViewDelegateFlowLayout {
 // MARK: - UITableViewDataSource
 extension CalendarViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //TODO: remove mock data
         return 30
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellId.schedule, for: indexPath) as! ScheduleCell
-//        cell.viewModel = ListMessageViewModel(listMessageModel: modelController.getListMessages()[indexPath.item])
-//        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Id.scheduleCellId, for: indexPath) as! ScheduleCell
         return cell
     }
 }
@@ -176,9 +175,13 @@ extension CalendarViewController : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vc = ChatViewController()
-//        vc.user = modelController.getListMessages()[indexPath.item].user
-//        self.navigationController?.pushViewController(vc, animated: true)
+        //TODO: Show details
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                    Constants.Id.sectionHeader) as! CustomHeaderView
+        return view
     }
 }
 

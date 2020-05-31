@@ -32,9 +32,10 @@ struct Constants {
         static let search = "magnifyingglass"
     }
     
-    struct CellId {
-        static let date = "dateCellId"
-        static let schedule = "scheduleCellId"
+    struct Id {
+        static let dateCellId = "dateCellId"
+        static let scheduleCellId = "scheduleCellId"
+        static let sectionHeader = "sectionHeader"
     }
     
     static let spaceBetweenTimeDivider: CGFloat = 84

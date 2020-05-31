@@ -186,7 +186,7 @@ final class CalendarMainView : UIView {
         slideView.registerTableViewCellId(viewController: viewController)
         collectionView.delegate = viewController
         collectionView.dataSource = viewController
-        collectionView.register(DateCell.self, forCellWithReuseIdentifier: Constants.CellId.date)
+        collectionView.register(DateCell.self, forCellWithReuseIdentifier: Constants.Id.dateCellId)
     }
     
     func reloadCollectionView() {
