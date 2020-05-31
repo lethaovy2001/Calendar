@@ -29,6 +29,11 @@ final class DateConverter {
         self.year = components.year
     }
     
+    func getDateString(from date: Date) -> String {
+        dateFormatter.dateFormat = "HH:mm a MMM dd, yyyy"
+        return dateFormatter.string(from: date)
+    }
+    
     func getMonthName(from date: Date) -> String {
         dateFormatter.dateFormat = "LLLL"
         return dateFormatter.string(from: date)

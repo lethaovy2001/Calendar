@@ -28,6 +28,9 @@ final class NewEventView : UIView {
     private let repeatButton = IconButton(name: Constants.IconNames.repeatName, size: 24, color: AppColor.gray)
     private let addAlertButton = TextButton(title: "Add alert", textColor: AppColor.gray, textSize: 18, textWeight: .regular)
     private let donotRepeatButton = TextButton(title: "Don't repeat", textColor: AppColor.gray, textSize: 18, textWeight: .regular)
+    private let datePickerView = DatePickerView()
+    private let dateConverter = DateConverter()
+    private var selectedTimeLabel: CustomLabel?
     
     // MARK: - Initializer
     init() {
@@ -44,6 +47,27 @@ final class NewEventView : UIView {
     private func setup() {
         addSubviews()
         setupConstraints()
+        addGesture()
+        addDelegate()
+        setupStartAndEndTime()
+    }
+    
+    private func addDelegate() {
+        datePickerView.tapDelegate = self
+    }
+    
+    private func addGesture() {
+        let startTimeTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        startTimeTapGesture.numberOfTapsRequired = 1
+        startTimeTapGesture.numberOfTouchesRequired = 1
+        startTime.isUserInteractionEnabled = true
+        startTime.addGestureRecognizer(startTimeTapGesture)
+        
+        let endTimeTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        endTimeTapGesture.numberOfTapsRequired = 1
+        endTimeTapGesture.numberOfTouchesRequired = 1
+        endTime.isUserInteractionEnabled = true
+        endTime.addGestureRecognizer(endTimeTapGesture)
     }
     
     private func addSubviews() {
@@ -153,5 +177,32 @@ final class NewEventView : UIView {
             donotRepeatButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -24),
             donotRepeatButton.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 12),
         ])
+    }
+    
+    private func setupStartAndEndTime() {
+        let date = datePickerView.getDatePickerDate()
+        let dateString = dateConverter.getDateString(from: date)
+        startTime.setText(text: dateString)
+        endTime.setText(text: dateString)
+    }
+    
+    // MARK: Actions
+    @objc private func handleTapGesture(sender: UITapGestureRecognizer) {
+        addSubview(datePickerView)
+        bringSubviewToFront(datePickerView)
+        NSLayoutConstraint.activate([
+            datePickerView.topAnchor.constraint(equalTo: topAnchor),
+            datePickerView.leftAnchor.constraint(equalTo: leftAnchor),
+            datePickerView.rightAnchor.constraint(equalTo: rightAnchor),
+            datePickerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
+        selectedTimeLabel = sender.view as? CustomLabel
+    }
+}
+
+extension NewEventView : DatePickerTapGestureDelegate {
+    func setDate(_ date: Date) {
+        let dateString = dateConverter.getDateString(from: date)
+        selectedTimeLabel?.setText(text: dateString)
     }
 }

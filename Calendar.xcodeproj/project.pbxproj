@@ -56,6 +56,8 @@
 		3888D2512483EE7B009B3966 /* NewEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D2502483EE7B009B3966 /* NewEventView.swift */; };
 		3888D2542484154C009B3966 /* SectionTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D2532484154C009B3966 /* SectionTitleLabel.swift */; };
 		38CE861624842A000006D609 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE861524842A000006D609 /* CustomTextView.swift */; };
+		38CE8618248443BB0006D609 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8617248443BB0006D609 /* DatePickerView.swift */; };
+		38CE861A24844B510006D609 /* DatePickerTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE861924844B510006D609 /* DatePickerTapGestureDelegate.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
@@ -136,6 +138,8 @@
 		3888D2502483EE7B009B3966 /* NewEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventView.swift; sourceTree = "<group>"; };
 		3888D2532484154C009B3966 /* SectionTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitleLabel.swift; sourceTree = "<group>"; };
 		38CE861524842A000006D609 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		38CE8617248443BB0006D609 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		38CE861924844B510006D609 /* DatePickerTapGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTapGestureDelegate.swift; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -247,6 +251,7 @@
 			children = (
 				3888D1C9247B7C5C009B3966 /* Authentication.swift */,
 				3888D1CB247B7C92009B3966 /* Database.swift */,
+				38CE861924844B510006D609 /* DatePickerTapGestureDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -382,6 +387,7 @@
 			children = (
 				3888D2502483EE7B009B3966 /* NewEventView.swift */,
 				3888D2532484154C009B3966 /* SectionTitleLabel.swift */,
+				38CE8617248443BB0006D609 /* DatePickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -748,12 +754,14 @@
 				3888D1AC247B110E009B3966 /* Constants.swift in Sources */,
 				3888D227247F910E009B3966 /* CalendarMainView.swift in Sources */,
 				3888D1CC247B7C92009B3966 /* Database.swift in Sources */,
+				38CE8618248443BB0006D609 /* DatePickerView.swift in Sources */,
 				3888D2512483EE7B009B3966 /* NewEventView.swift in Sources */,
 				3888D1FE247E1E80009B3966 /* EventView.swift in Sources */,
 				3888D225247F90B0009B3966 /* CalendarViewController.swift in Sources */,
 				38CE861624842A000006D609 /* CustomTextView.swift in Sources */,
 				3888D210247F7C9E009B3966 /* StringConverter.swift in Sources */,
 				3888D1C4247B5685009B3966 /* ErrorLabel.swift in Sources */,
+				38CE861A24844B510006D609 /* DatePickerTapGestureDelegate.swift in Sources */,
 				3888D1B6247B1895009B3966 /* CustomTextField.swift in Sources */,
 				3888D1CA247B7C5C009B3966 /* Authentication.swift in Sources */,
 				3888D205247F46EC009B3966 /* Event.swift in Sources */,
