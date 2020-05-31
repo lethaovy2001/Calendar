@@ -42,6 +42,7 @@ final class CalendarMainView : UIView {
         }
     }
     private var slideView = SlideView()
+    private var isShowingFullSchedule = false
     
     // MARK: - Initializer
     init() {
@@ -58,15 +59,19 @@ final class CalendarMainView : UIView {
     private func setup() {
         addSubviews()
         setupConstraints()
-        addTapGesture()
+        addGesture()
     }
     
-    private func addTapGesture() {
+    private func addGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showDatePicker))
         tapGesture.numberOfTapsRequired = 1
         tapGesture.numberOfTouchesRequired = 1
         monthLabel.isUserInteractionEnabled = true
         monthLabel.addGestureRecognizer(tapGesture)
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
+        slideView.isUserInteractionEnabled = true
+        slideView.addGestureRecognizer(panGesture)
     }
     
     private func addSubviews() {
@@ -118,7 +123,7 @@ final class CalendarMainView : UIView {
             slideView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
             slideView.leftAnchor.constraint(equalTo: leftAnchor),
             slideView.rightAnchor.constraint(equalTo: rightAnchor),
-            slideView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 40),
+            slideView.heightAnchor.constraint(equalTo: heightAnchor, constant: -100),
         ])
     }
     
@@ -186,5 +191,19 @@ final class CalendarMainView : UIView {
     
     func reloadCollectionView() {
         collectionView.reloadData()
+    }
+    
+    @objc private func handlePanGesture() {
+        if !isShowingFullSchedule {
+            UIView.animate(withDuration: 0.6) {
+                self.slideView.frame.origin.y = 100
+                
+            }
+        } else {
+            UIView.animate(withDuration: 0.6) {
+                self.slideView.frame.origin.y = 475
+            }
+        }
+        isShowingFullSchedule = !isShowingFullSchedule
     }
 }

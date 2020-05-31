@@ -51,7 +51,7 @@ final class SlideView : CustomContainerView {
             tableView.topAnchor.constraint(equalTo: topBarView.bottomAnchor, constant: 24),
             tableView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
             tableView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -36)
         ])
     }
     
