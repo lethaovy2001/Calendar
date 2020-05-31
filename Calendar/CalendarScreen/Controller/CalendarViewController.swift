@@ -62,9 +62,7 @@ class CalendarViewController : UIViewController {
     }
     
     private func registerCellId() {
-        mainView.collectionView.delegate = self
-        mainView.collectionView.dataSource = self
-        mainView.collectionView.register(DateCell.self, forCellWithReuseIdentifier: Constants.CellId.date)
+        mainView.registerCellId(viewController: self)
     }
     
     private func setSelectors() {
@@ -92,7 +90,7 @@ class CalendarViewController : UIViewController {
         converter.convert(date: selectedDate)
         dateCalculator = DateCalculator(date: selectedDate)
         mainView.nameOfMonth = converter.getMonthName(from: selectedDate)
-        mainView.collectionView.reloadData()
+        mainView.reloadCollectionView()
         mainView.hideDatePicker()
     }
 }
@@ -156,3 +154,32 @@ extension CalendarViewController : UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: width)
     }
 }
+
+// MARK: - UITableViewDataSource
+extension CalendarViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellId.schedule, for: indexPath) as! ScheduleCell
+//        cell.viewModel = ListMessageViewModel(listMessageModel: modelController.getListMessages()[indexPath.item])
+//        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension CalendarViewController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let vc = ChatViewController()
+//        vc.user = modelController.getListMessages()[indexPath.item].user
+//        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+

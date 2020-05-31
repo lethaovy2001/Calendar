@@ -34,6 +34,7 @@ struct Constants {
     
     struct CellId {
         static let date = "dateCellId"
+        static let schedule = "scheduleCellId"
     }
     
     static let spaceBetweenTimeDivider: CGFloat = 84

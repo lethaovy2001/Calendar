@@ -23,7 +23,7 @@ final class CalendarMainView : UIView {
         return datePicker
     }()
     private let containerView = CustomContainerView(backgroundColor: .white, cornerRadius: 10, hasShadow: true)
-    var collectionView: UICollectionView = {
+    private var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
@@ -41,6 +41,7 @@ final class CalendarMainView : UIView {
             monthLabel.text = nameOfMonth
         }
     }
+    private var slideView = SlideView()
     
     // MARK: - Initializer
     init() {
@@ -75,6 +76,7 @@ final class CalendarMainView : UIView {
         addSubview(searchButton)
         addSubview(collectionView)
         addSubview(weekDaysView)
+        addSubview(slideView)
     }
     
     private func setupConstraints() {
@@ -107,10 +109,16 @@ final class CalendarMainView : UIView {
             weekDaysView.heightAnchor.constraint(equalToConstant: 40),
         ])
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: weekDaysView.bottomAnchor, constant: 2),
+            collectionView.topAnchor.constraint(equalTo: weekDaysView.bottomAnchor),
             collectionView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
             collectionView.heightAnchor.constraint(equalToConstant: 300),
+        ])
+        NSLayoutConstraint.activate([
+            slideView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+            slideView.leftAnchor.constraint(equalTo: leftAnchor),
+            slideView.rightAnchor.constraint(equalTo: rightAnchor),
+            slideView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 40),
         ])
     }
     
@@ -167,5 +175,16 @@ final class CalendarMainView : UIView {
     
     func setDatePickerValue(date: Date) {
         datePicker.setDate(date, animated: true)
+    }
+    
+    func registerCellId(viewController: CalendarViewController) {
+        slideView.registerTableViewCellId(viewController: viewController)
+        collectionView.delegate = viewController
+        collectionView.dataSource = viewController
+        collectionView.register(DateCell.self, forCellWithReuseIdentifier: Constants.CellId.date)
+    }
+    
+    func reloadCollectionView() {
+        collectionView.reloadData()
     }
 }
