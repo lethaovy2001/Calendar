@@ -65,6 +65,7 @@ final class NewEventView : UIView {
         scrollView.addSubview(addAlertButton)
         scrollView.addSubview(repeatButton)
         scrollView.addSubview(donotRepeatButton)
+        bringSubviewToFront(titleTextField)
     }
     
     private func setupConstraints() {
@@ -149,6 +150,8 @@ final class NewEventView : UIView {
         NSLayoutConstraint.activate([
             donotRepeatButton.centerYAnchor.constraint(equalTo: repeatButton.centerYAnchor),
             donotRepeatButton.leftAnchor.constraint(equalTo: repeatButton.rightAnchor, constant: 12),
+            donotRepeatButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -24),
+            donotRepeatButton.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 12),
         ])
     }
 }
