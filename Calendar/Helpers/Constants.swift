@@ -30,6 +30,7 @@ struct Constants {
         static let add = "plus"
         static let back = "arrow.left"
         static let search = "magnifyingglass"
+        static let exit = "xMark"
     }
     
     struct Id {

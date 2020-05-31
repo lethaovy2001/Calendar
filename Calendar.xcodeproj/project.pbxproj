@@ -52,6 +52,8 @@
 		3888D24424831B72009B3966 /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D24324831B72009B3966 /* SlideView.swift */; };
 		3888D246248325E0009B3966 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D245248325E0009B3966 /* ScheduleCell.swift */; };
 		3888D24824837F34009B3966 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D24724837F34009B3966 /* CustomHeaderView.swift */; };
+		3888D24F2483EC40009B3966 /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D24E2483EC40009B3966 /* NewEventViewController.swift */; };
+		3888D2512483EE7B009B3966 /* NewEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D2502483EE7B009B3966 /* NewEventView.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
@@ -128,6 +130,8 @@
 		3888D24324831B72009B3966 /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
 		3888D245248325E0009B3966 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		3888D24724837F34009B3966 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
+		3888D24E2483EC40009B3966 /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
+		3888D2502483EE7B009B3966 /* NewEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventView.swift; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -329,12 +333,12 @@
 		3888D222247F9096009B3966 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3888D245248325E0009B3966 /* ScheduleCell.swift */,
 				3888D226247F910E009B3966 /* CalendarMainView.swift */,
+				3888D245248325E0009B3966 /* ScheduleCell.swift */,
 				3888D22F248060D2009B3966 /* DateCell.swift */,
-				3888D23124806D30009B3966 /* WeekDaysView.swift */,
-				3888D23924819F53009B3966 /* CircleView.swift */,
 				3888D24324831B72009B3966 /* SlideView.swift */,
+				3888D23924819F53009B3966 /* CircleView.swift */,
+				3888D23124806D30009B3966 /* WeekDaysView.swift */,
 				3888D24724837F34009B3966 /* CustomHeaderView.swift */,
 			);
 			path = View;
@@ -357,6 +361,15 @@
 				3888D22D2480444A009B3966 /* TextButton.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		3888D24D2483EC23009B3966 /* NewEventScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3888D24E2483EC40009B3966 /* NewEventViewController.swift */,
+				3888D2502483EE7B009B3966 /* NewEventView.swift */,
+			);
+			path = NewEventScreen;
 			sourceTree = "<group>";
 		};
 		38F90B772478886B005B0BEB = {
@@ -392,6 +405,7 @@
 				3888D1A0247AF84B009B3966 /* LoginScreen */,
 				3888D1DA247C47BD009B3966 /* DailyTasksScreen */,
 				3888D221247F9078009B3966 /* CalendarScreen */,
+				3888D24D2483EC23009B3966 /* NewEventScreen */,
 				3888D1C8247B7C46009B3966 /* Protocol */,
 				3888D1AA247B10F9009B3966 /* Helpers */,
 				38F90BA624789964005B0BEB /* SupportingFiles */,
@@ -694,6 +708,7 @@
 				3888D1BE247B4D5D009B3966 /* UIView+Extension.swift in Sources */,
 				3888D1FA247DE5AD009B3966 /* CustomScrollView.swift in Sources */,
 				3888D22E2480444A009B3966 /* TextButton.swift in Sources */,
+				3888D24F2483EC40009B3966 /* NewEventViewController.swift in Sources */,
 				3888D1B8247B29F3009B3966 /* AppColor.swift in Sources */,
 				3888D23224806D30009B3966 /* WeekDaysView.swift in Sources */,
 				3888D1C0247B501F009B3966 /* CustomLabel.swift in Sources */,
@@ -718,6 +733,7 @@
 				3888D1AC247B110E009B3966 /* Constants.swift in Sources */,
 				3888D227247F910E009B3966 /* CalendarMainView.swift in Sources */,
 				3888D1CC247B7C92009B3966 /* Database.swift in Sources */,
+				3888D2512483EE7B009B3966 /* NewEventView.swift in Sources */,
 				3888D1FE247E1E80009B3966 /* EventView.swift in Sources */,
 				3888D225247F90B0009B3966 /* CalendarViewController.swift in Sources */,
 				3888D210247F7C9E009B3966 /* StringConverter.swift in Sources */,
