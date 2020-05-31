@@ -16,6 +16,7 @@ final class ScheduleCell : UITableViewCell {
     private let titleLabel = CustomLabel(text: "Title", textColor: AppColor.darkGray, textSize: 18, textWeight: .bold)
     private var iconButton = IconButton(name: "mappin", size: 18, color: AppColor.gray)
     private var locationLabel = CustomLabel(text: "Location", textColor: AppColor.gray, textSize: 16, textWeight: .semibold)
+    private let eventColors = AppColor.eventColors
     
     // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -31,6 +32,12 @@ final class ScheduleCell : UITableViewCell {
     private func setup() {
         addSubviews()
         setupConstraints()
+        setRandomColor()
+    }
+    
+    private func setRandomColor() {
+        let randomNum = Int.random(in: 0..<eventColors.count)
+        self.verticalBar.setBackgroundColor(eventColors[randomNum])
     }
     
     private func addSubviews() {
