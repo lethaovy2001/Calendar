@@ -198,8 +198,18 @@ final class NewEventView : UIView {
         ])
         selectedTimeLabel = sender.view as? CustomLabel
     }
+    
+    // MARK: Selectors
+    func setExitButtonSelector(target: UIViewController, selector: Selector) {
+        exitButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
+    func setSaveButtonSelector(target: UIViewController, selector: Selector) {
+        saveButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
 }
 
+// MARK: DatePickerTapGestureDelegate
 extension NewEventView : DatePickerTapGestureDelegate {
     func setDate(_ date: Date) {
         let dateString = dateConverter.getDateString(from: date)
