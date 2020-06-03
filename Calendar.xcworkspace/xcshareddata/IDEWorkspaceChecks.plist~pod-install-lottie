@@ -2,6 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+<<<<<<< HEAD:Calendar.xcodeproj/xcuserdata/vyle.xcuserdatad/xcschemes/xcschememanagement.plist
 	<key>SchemeUserState</key>
 	<dict>
 		<key>Calendar.xcscheme_^#shared#^_</key>
@@ -10,5 +11,9 @@
 			<integer>3</integer>
 		</dict>
 	</dict>
+=======
+	<key>IDEDidComputeMac32BitWarning</key>
+	<true/>
+>>>>>>> pod-install-lottie:Calendar.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 </dict>
 </plist>
