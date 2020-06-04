@@ -29,6 +29,7 @@ final class NewEventView : UIView {
     private let addAlertButton = TextButton(title: "Add alert", textColor: AppColor.gray, textSize: 18, textWeight: .regular)
     private let donotRepeatButton = TextButton(title: "Don't repeat", textColor: AppColor.gray, textSize: 18, textWeight: .regular)
     private let datePickerView = DatePickerView()
+    private let notificationView = CustomNotificationView()
     private let dateConverter = DateConverter()
     private var selectedTimeLabel: CustomLabel?
     
@@ -68,6 +69,11 @@ final class NewEventView : UIView {
         endTimeTapGesture.numberOfTouchesRequired = 1
         endTime.isUserInteractionEnabled = true
         endTime.addGestureRecognizer(endTimeTapGesture)
+        
+        let addAlertTapGesture = UITapGestureRecognizer(target: self, action: #selector(showNotificationView))
+        addAlertTapGesture.numberOfTapsRequired = 1
+        addAlertTapGesture.numberOfTouchesRequired = 1
+        addAlertButton.addGestureRecognizer(addAlertTapGesture)
     }
     
     private func addSubviews() {
@@ -199,6 +205,17 @@ final class NewEventView : UIView {
         selectedTimeLabel = sender.view as? CustomLabel
     }
     
+    @objc private func showNotificationView() {
+        addSubview(notificationView)
+        bringSubviewToFront(notificationView)
+        NSLayoutConstraint.activate([
+            notificationView.topAnchor.constraint(equalTo: topAnchor),
+            notificationView.leftAnchor.constraint(equalTo: leftAnchor),
+            notificationView.rightAnchor.constraint(equalTo: rightAnchor),
+            notificationView.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
+    }
+    
     // MARK: Selectors
     func setExitButtonSelector(target: UIViewController, selector: Selector) {
         exitButton.addTarget(target, action: selector, for: .touchUpInside)
@@ -206,6 +223,10 @@ final class NewEventView : UIView {
     
     func setSaveButtonSelector(target: UIViewController, selector: Selector) {
         saveButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
+    func registerCellId(viewController: NewEventViewController) {
+        notificationView.registerCellId(viewController: viewController)
     }
 }
 

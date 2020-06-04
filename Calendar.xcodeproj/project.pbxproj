@@ -58,6 +58,8 @@
 		38CE861624842A000006D609 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE861524842A000006D609 /* CustomTextView.swift */; };
 		38CE8618248443BB0006D609 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8617248443BB0006D609 /* DatePickerView.swift */; };
 		38CE861E248579780006D609 /* DatePickerTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE861D248579780006D609 /* DatePickerTapGestureDelegate.swift */; };
+		38CE8622248842D90006D609 /* CustomNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8621248842D90006D609 /* CustomNotificationView.swift */; };
+		38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8623248845BB0006D609 /* NotificationCell.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
@@ -140,6 +142,8 @@
 		38CE861524842A000006D609 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		38CE8617248443BB0006D609 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		38CE861D248579780006D609 /* DatePickerTapGestureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTapGestureDelegate.swift; sourceTree = "<group>"; };
+		38CE8621248842D90006D609 /* CustomNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotificationView.swift; sourceTree = "<group>"; };
+		38CE8623248845BB0006D609 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -388,6 +392,8 @@
 				3888D2502483EE7B009B3966 /* NewEventView.swift */,
 				3888D2532484154C009B3966 /* SectionTitleLabel.swift */,
 				38CE8617248443BB0006D609 /* DatePickerView.swift */,
+				38CE8621248842D90006D609 /* CustomNotificationView.swift */,
+				38CE8623248845BB0006D609 /* NotificationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -728,6 +734,7 @@
 				3888D24424831B72009B3966 /* SlideView.swift in Sources */,
 				3888D1BE247B4D5D009B3966 /* UIView+Extension.swift in Sources */,
 				3888D1FA247DE5AD009B3966 /* CustomScrollView.swift in Sources */,
+				38CE8622248842D90006D609 /* CustomNotificationView.swift in Sources */,
 				3888D22E2480444A009B3966 /* TextButton.swift in Sources */,
 				3888D24F2483EC40009B3966 /* NewEventViewController.swift in Sources */,
 				3888D1B8247B29F3009B3966 /* AppColor.swift in Sources */,
@@ -758,6 +765,7 @@
 				38CE8618248443BB0006D609 /* DatePickerView.swift in Sources */,
 				3888D2512483EE7B009B3966 /* NewEventView.swift in Sources */,
 				3888D1FE247E1E80009B3966 /* EventView.swift in Sources */,
+				38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */,
 				3888D225247F90B0009B3966 /* CalendarViewController.swift in Sources */,
 				38CE861624842A000006D609 /* CustomTextView.swift in Sources */,
 				3888D210247F7C9E009B3966 /* StringConverter.swift in Sources */,

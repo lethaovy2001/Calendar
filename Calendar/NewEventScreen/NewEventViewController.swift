@@ -12,6 +12,7 @@ final class NewEventViewController : UIViewController {
     // MARK: - Properties
     private var database: Database
     private let mainView = NewEventView()
+    private var alertOptions = Constants.setAlertOptions
     
     // MARK: - Initializer
     init(database: Database) {
@@ -33,6 +34,7 @@ final class NewEventViewController : UIViewController {
     private func setup() {
         setupSelf()
         setupUI()
+        registerCellId()
     }
     
     private func setupSelf() {
@@ -50,4 +52,27 @@ final class NewEventViewController : UIViewController {
         ])
     }
     
+    private func registerCellId() {
+        mainView.registerCellId(viewController: self)
+    }
+}
+
+extension NewEventViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Id.notificationCellId, for: indexPath) as! NotificationCell
+        cell.options = alertOptions[indexPath.row]
+        cell.selectionStyle = .none
+        return cell
+    }
+}
+
+extension NewEventViewController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Id.notificationCellId, for: indexPath) as! NotificationCell
+        
+    }
 }
