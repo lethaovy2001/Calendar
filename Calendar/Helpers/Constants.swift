@@ -33,11 +33,14 @@ struct Constants {
         static let exit = "xmark"
         static let alarm = "alarm"
         static let repeatName = "repeat"
+        static let selectedRadio = "largecircle.fill.circle"
+        static let unselectedRadio = "circle"
     }
     
     struct Id {
         static let dateCellId = "dateCellId"
         static let scheduleCellId = "scheduleCellId"
+        static let notificationCellId = "notificationCellId"
         static let sectionHeader = "sectionHeader"
     }
     

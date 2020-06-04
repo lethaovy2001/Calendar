@@ -33,6 +33,7 @@ final class NewEventViewController : UIViewController {
     private func setup() {
         setupSelf()
         setupUI()
+        registerCellId()
     }
     
     private func setupSelf() {
@@ -50,4 +51,20 @@ final class NewEventViewController : UIViewController {
         ])
     }
     
+    private func registerCellId() {
+        mainView.registerCellId(viewController: self)
+    }
 }
+
+extension NewEventViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Id.notificationCellId, for: indexPath) as! NotificationCell
+        return cell
+    }
+}
+
+extension NewEventViewController : UITableViewDelegate { }
