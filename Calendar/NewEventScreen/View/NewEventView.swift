@@ -228,6 +228,22 @@ final class NewEventView : UIView {
     func registerCellId(viewController: NewEventViewController) {
         notificationView.registerCellId(viewController: viewController)
     }
+    
+    func getSavedEvent() -> Event? {
+        guard
+            let name = titleTextField.text,
+            let startTimeText = startTime.text,
+            let endTimeText = endTime.text,
+            let startTime = dateConverter.convertToDate(from: startTimeText),
+            let endTime = dateConverter.convertToDate(from: endTimeText)
+        else { return nil }
+        let event = Event(name: name, startTime: startTime, endTime: endTime, location: locationTextField.text, notes: noteTextView.text)
+        return event
+    }
+    
+    func getTimeSetForAlert() -> Int? {
+        return notificationView.getTimeTextField()
+    }
 }
 
 // MARK: DatePickerTapGestureDelegate

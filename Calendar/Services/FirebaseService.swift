@@ -66,5 +66,9 @@ extension FirebaseService : Authentication {
 
 // MARK: - Database
 extension FirebaseService : Database {
-    
+    func save(event: Event) {
+        guard let uid = getCurrentUserId() else { return }
+        let eventDictionary = event.getEventDictionary()
+        database.collection("users").document(uid).collection("events").addDocument(data: eventDictionary)
+    }
 }

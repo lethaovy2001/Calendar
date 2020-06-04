@@ -40,6 +40,7 @@ final class CustomNotificationView : UIView {
     private func setup() {
         addSubviews()
         setupConstraints()
+        addGesture()
     }
     
     private func addSubviews() {
@@ -96,6 +97,14 @@ final class CustomNotificationView : UIView {
         tableView.dataSource = viewController
         tableView.delegate = viewController
         tableView.register(NotificationCell.self, forCellReuseIdentifier: Constants.Id.notificationCellId)
+    }
+    
+    func getTimeTextField() -> Int? {
+        guard
+            let timeInput = timeTextField.text,
+            let convertedTime = Int(timeInput)
+        else { return nil }
+        return convertedTime
     }
 }
 

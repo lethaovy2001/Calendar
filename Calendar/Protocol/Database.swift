@@ -7,5 +7,5 @@
 //
 
 protocol Database {
-    
+    func save(event: Event)
 }

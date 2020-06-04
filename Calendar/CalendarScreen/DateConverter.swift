@@ -29,6 +29,11 @@ final class DateConverter {
         self.year = components.year
     }
     
+    func convertToDate(from text: String) -> Date? {
+        dateFormatter.dateFormat = "HH:mm a MMM dd, yyyy"
+        return dateFormatter.date(from: text)
+    }
+    
     func getDateString(from date: Date) -> String {
         dateFormatter.dateFormat = "HH:mm a MMM dd, yyyy"
         return dateFormatter.string(from: date)

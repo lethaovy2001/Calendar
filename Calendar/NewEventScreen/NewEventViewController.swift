@@ -13,6 +13,7 @@ final class NewEventViewController : UIViewController {
     private var database: Database
     private let mainView = NewEventView()
     private var alertOptions = Constants.setAlertOptions
+    private var selectedOption: AlertOptions?
     
     // MARK: - Initializer
     init(database: Database) {
@@ -35,6 +36,7 @@ final class NewEventViewController : UIViewController {
         setupSelf()
         setupUI()
         registerCellId()
+        setSelections()
     }
     
     private func setupSelf() {
@@ -55,6 +57,53 @@ final class NewEventViewController : UIViewController {
     private func registerCellId() {
         mainView.registerCellId(viewController: self)
     }
+    
+    private func setSelections() {
+        mainView.setSaveButtonSelector(target: self, selector: #selector(pressedSaveButton))
+    }
+    
+    // MARK: Actions
+    @objc private func pressedSaveButton() {
+        guard let savedEvent = mainView.getSavedEvent() else {
+            return
+        }
+        guard let time = mainView.getTimeSetForAlert() else {
+            database.save(event: savedEvent)
+            return
+        }
+        let startDate = savedEvent.startTime
+        let alertDate: Date?
+        var event = savedEvent
+        switch selectedOption {
+        case .minute:
+            alertDate = Calendar.current.date(
+                byAdding: .minute,
+                value: -time,
+                to: startDate)
+            event.alertTime = alertDate
+        case .hour:
+            alertDate = Calendar.current.date(
+                byAdding: .hour,
+                value: -time,
+                to: startDate)
+            event.alertTime = alertDate
+        case .day:
+            alertDate = Calendar.current.date(
+                byAdding: .day,
+                value: time,
+                to: startDate)
+            event.alertTime = alertDate
+        case .month:
+            alertDate = Calendar.current.date(
+                byAdding: .weekOfYear,
+                value: time,
+                to: startDate)
+            event.alertTime = alertDate
+        case .none:
+            break
+        }
+        database.save(event: event)
+    }
 }
 
 extension NewEventViewController : UITableViewDataSource {
@@ -73,6 +122,6 @@ extension NewEventViewController : UITableViewDataSource {
 extension NewEventViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Id.notificationCellId, for: indexPath) as! NotificationCell
-        
+        selectedOption = alertOptions[indexPath.row]
     }
 }
