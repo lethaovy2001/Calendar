@@ -14,7 +14,7 @@ class DailyTaskViewController : UIViewController {
     private let database: Database
     
     // MARK: - Initializer
-    init(database: Database) {
+    init(database: Database = FirebaseService.shared) {
         self.database = database
         super.init(nibName: nil, bundle: nil)
     }
