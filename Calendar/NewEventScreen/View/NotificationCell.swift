@@ -12,8 +12,23 @@ final class NotificationCell : UITableViewCell {
     // MARK: - Properties
     private var selectedRadioButton = IconButton(name: Constants.IconNames.selectedRadio, size: 18, color: AppColor.primaryColor)
     private var unselectedRadioButton = IconButton(name: Constants.IconNames.unselectedRadio, size: 18, color: AppColor.gray)
-    private let label = CustomLabel(text: "Minutes before", textColor: AppColor.darkGray, textSize: 18, textWeight: .regular)
-    
+    private let label = CustomLabel(text: "N/A", textColor: AppColor.darkGray, textSize: 18, textWeight: .regular)
+    var options: AlertOptions? {
+        didSet {
+            switch options {
+            case .minute:
+                label.text = "Minute before"
+            case .hour:
+                label.text = "Hour"
+            case .day:
+                label.text = "Day"
+            case .month:
+                label.text = "Month"
+            case .none:
+                label.text = "N/A"
+            }
+        }
+    }
     
     // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

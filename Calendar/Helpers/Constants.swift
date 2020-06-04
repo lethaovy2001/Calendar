@@ -44,5 +44,19 @@ struct Constants {
         static let sectionHeader = "sectionHeader"
     }
     
+    static let setAlertOptions: [AlertOptions] = [
+        .minute,
+        .hour,
+        .day,
+        .month
+    ]
+    
     static let spaceBetweenTimeDivider: CGFloat = 84
+}
+
+enum AlertOptions {
+    case minute
+    case hour
+    case day
+    case month
 }
