@@ -14,10 +14,12 @@ final class TimeDividerView : UIView {
     private let dividerLine = CustomContainerView(backgroundColor: AppColor.dividerColor)
     
     // MARK: - Initializer
-    // TODO: write unit test
     init(time: Int) {
         super.init(frame: .zero)
         setup()
+        if time > Constants.Time.hours {
+            return
+        }
         if time < 10 {
             timeLabel.setText(text: "0\(time):00")
         } else {

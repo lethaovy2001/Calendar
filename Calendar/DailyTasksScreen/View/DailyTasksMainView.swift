@@ -101,7 +101,7 @@ final class DailyTasksMainView : UIView {
         }
     }
     
-    private func setEvent(event: Event) {
+    func setEvent(event: Event) {
         let height = eventLayoutGenerator.estimateHeight(event: event)
         let offset = eventLayoutGenerator.estimateTopOffset(of: event.startTime)
         let eventView = EventView(height: height)
