@@ -12,6 +12,7 @@ final class DailyTasksMainView : UIView {
     // MARK: - Properties
     private let scrollView = CustomScrollView()
     private let headerLabel = CustomLabel(text: "Daily Tasks", textColor: AppColor.darkGray, textSize: 36, textWeight: .heavy)
+    private let timeLine = RunningTimeLineView()
     
     // MARK: - Initializer
     init() {
@@ -26,9 +27,10 @@ final class DailyTasksMainView : UIView {
     // MARK: - Setup
     private func setup() {
         setupSelf()
-        addSubViews()
+        addSubviews()
         setupConstraints()
-        addTimeLine()
+        addTimeDivider()
+        setupTimeLineConstraints()
     }
     
     private func setupSelf() {
@@ -36,9 +38,11 @@ final class DailyTasksMainView : UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private func addSubViews() {
+    private func addSubviews() {
         addSubview(headerLabel)
         addSubview(scrollView)
+        scrollView.addSubview(timeLine)
+        timeLine.layer.zPosition = 3
     }
     
     private func setupConstraints() {
@@ -54,20 +58,35 @@ final class DailyTasksMainView : UIView {
         ])
     }
     
-    private func addTimeLine() {
+    private func setupTimeLineConstraints() {
+        let date = Date()
+        let offset = estimateTopOffset(of: date) - 4
+        NSLayoutConstraint.activate([
+            timeLine.heightAnchor.constraint(equalToConstant: 8),
+            timeLine.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: offset),
+            timeLine.rightAnchor.constraint(equalTo: rightAnchor),
+            timeLine.leftAnchor.constraint(equalTo: leftAnchor, constant: Constants.spaceBetweenTimeDivider)
+        ])
+        self.layoutIfNeeded()
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
+        Timer.scheduledTimer(timeInterval: Constants.Time.minutesInAHour, target: self, selector: #selector(animateTimeLineRunning), userInfo: nil, repeats: true)
+    }
+    
+    private func addTimeDivider() {
         for hour in 0...Constants.Time.hours {
-            let timeLine = TimeLineView(time: hour)
+            let divider = TimeDividerView(time: hour)
             let topOffset = Constants.spaceBetweenTimeDivider * CGFloat(hour)
-            scrollView.addSubview(timeLine)
+            scrollView.addSubview(divider)
+            divider.layer.zPosition = 1
             NSLayoutConstraint.activate([
-                timeLine.heightAnchor.constraint(equalToConstant: 20),
-                timeLine.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: topOffset),
-                timeLine.rightAnchor.constraint(equalTo: rightAnchor),
-                timeLine.leftAnchor.constraint(equalTo: leftAnchor, constant: 24)
+                divider.heightAnchor.constraint(equalToConstant: 20),
+                divider.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: topOffset),
+                divider.rightAnchor.constraint(equalTo: rightAnchor),
+                divider.leftAnchor.constraint(equalTo: leftAnchor, constant: 24)
             ])
             if hour == Constants.Time.hours {
                 NSLayoutConstraint.activate([
-                    timeLine.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -60)
+                    divider.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -60)
                 ])
             }
         }
@@ -78,6 +97,7 @@ final class DailyTasksMainView : UIView {
         let offset = estimateTopOffset(of: event.startTime)
         let eventView = EventView(height: height)
         scrollView.addSubview(eventView)
+        eventView.layer.zPosition = 2	
         NSLayoutConstraint.activate([
             eventView.heightAnchor.constraint(equalToConstant: height),
             eventView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: offset),
@@ -105,12 +125,12 @@ final class DailyTasksMainView : UIView {
         let minute = CGFloat(startComponents.minute ?? 0)/60.0
         return (hour + minute) * Constants.spaceBetweenTimeDivider + 10
     }
-}
-
-struct Event {
-    let name: String
-    let startTime: Date
-    let endTime: Date
-    let location: String?
+    
+    // MARK: Actions
+    @objc func animateTimeLineRunning() {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
+            self.timeLine.frame.origin.y += 1.4
+        }, completion: nil)
+    }
 }
 

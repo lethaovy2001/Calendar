@@ -1,5 +1,5 @@
 //
-//  TimeLineView.swift
+//  TimeDividerView.swift
 //  Calendar
 //
 //  Created by Vy Le on 5/26/20.
@@ -11,7 +11,7 @@ import UIKit
 final class TimeDividerView : UIView {
     // MARK: - Properties
     private let timeLabel = CustomLabel(text: "N/A", textColor: AppColor.timeColor, textSize: 16, textWeight: .bold)
-    private let dividerLine = CustomContainerView(backgroundColor: AppColor.dividerColor, cornerRadius: 0)
+    private let dividerLine = CustomContainerView(backgroundColor: AppColor.dividerColor)
     
     // MARK: - Initializer
     // TODO: write unit test
