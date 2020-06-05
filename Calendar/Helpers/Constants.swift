@@ -30,10 +30,15 @@ struct Constants {
         static let add = "plus"
         static let back = "arrow.left"
         static let search = "magnifyingglass"
+        static let exit = "xmark"
+        static let alarm = "alarm"
+        static let repeatName = "repeat"
     }
     
-    struct CellId {
-        static let date = "dateCellId"
+    struct Id {
+        static let dateCellId = "dateCellId"
+        static let scheduleCellId = "scheduleCellId"
+        static let sectionHeader = "sectionHeader"
     }
     
     static let spaceBetweenTimeDivider: CGFloat = 84

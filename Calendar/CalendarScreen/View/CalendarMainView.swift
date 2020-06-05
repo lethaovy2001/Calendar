@@ -23,7 +23,7 @@ final class CalendarMainView : UIView {
         return datePicker
     }()
     private let containerView = CustomContainerView(backgroundColor: .white, cornerRadius: 10, hasShadow: true)
-    var collectionView: UICollectionView = {
+    private var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
@@ -41,6 +41,8 @@ final class CalendarMainView : UIView {
             monthLabel.text = nameOfMonth
         }
     }
+    private var slideView = SlideView()
+    private var isShowingFullSchedule = false
     
     // MARK: - Initializer
     init() {
@@ -57,15 +59,19 @@ final class CalendarMainView : UIView {
     private func setup() {
         addSubviews()
         setupConstraints()
-        addTapGesture()
+        addGesture()
     }
     
-    private func addTapGesture() {
+    private func addGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(showDatePicker))
         tapGesture.numberOfTapsRequired = 1
         tapGesture.numberOfTouchesRequired = 1
         monthLabel.isUserInteractionEnabled = true
         monthLabel.addGestureRecognizer(tapGesture)
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))
+        slideView.isUserInteractionEnabled = true
+        slideView.addGestureRecognizer(panGesture)
     }
     
     private func addSubviews() {
@@ -75,6 +81,7 @@ final class CalendarMainView : UIView {
         addSubview(searchButton)
         addSubview(collectionView)
         addSubview(weekDaysView)
+        addSubview(slideView)
     }
     
     private func setupConstraints() {
@@ -107,10 +114,16 @@ final class CalendarMainView : UIView {
             weekDaysView.heightAnchor.constraint(equalToConstant: 40),
         ])
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: weekDaysView.bottomAnchor, constant: 2),
+            collectionView.topAnchor.constraint(equalTo: weekDaysView.bottomAnchor),
             collectionView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
             collectionView.heightAnchor.constraint(equalToConstant: 300),
+        ])
+        NSLayoutConstraint.activate([
+            slideView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+            slideView.leftAnchor.constraint(equalTo: leftAnchor),
+            slideView.rightAnchor.constraint(equalTo: rightAnchor),
+            slideView.heightAnchor.constraint(equalTo: heightAnchor, constant: -100),
         ])
     }
     
@@ -167,5 +180,30 @@ final class CalendarMainView : UIView {
     
     func setDatePickerValue(date: Date) {
         datePicker.setDate(date, animated: true)
+    }
+    
+    func registerCellId(viewController: CalendarViewController) {
+        slideView.registerTableViewCellId(viewController: viewController)
+        collectionView.delegate = viewController
+        collectionView.dataSource = viewController
+        collectionView.register(DateCell.self, forCellWithReuseIdentifier: Constants.Id.dateCellId)
+    }
+    
+    func reloadCollectionView() {
+        collectionView.reloadData()
+    }
+    
+    @objc private func handlePanGesture() {
+        if !isShowingFullSchedule {
+            UIView.animate(withDuration: 0.6) {
+                self.slideView.frame.origin.y = 100
+                
+            }
+        } else {
+            UIView.animate(withDuration: 0.6) {
+                self.slideView.frame.origin.y = 475
+            }
+        }
+        isShowingFullSchedule = !isShowingFullSchedule
     }
 }

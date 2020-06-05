@@ -62,9 +62,7 @@ class CalendarViewController : UIViewController {
     }
     
     private func registerCellId() {
-        mainView.collectionView.delegate = self
-        mainView.collectionView.dataSource = self
-        mainView.collectionView.register(DateCell.self, forCellWithReuseIdentifier: Constants.CellId.date)
+        mainView.registerCellId(viewController: self)
     }
     
     private func setSelectors() {
@@ -92,7 +90,7 @@ class CalendarViewController : UIViewController {
         converter.convert(date: selectedDate)
         dateCalculator = DateCalculator(date: selectedDate)
         mainView.nameOfMonth = converter.getMonthName(from: selectedDate)
-        mainView.collectionView.reloadData()
+        mainView.reloadCollectionView()
         mainView.hideDatePicker()
     }
 }
@@ -106,7 +104,7 @@ extension CalendarViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellId.date, for: indexPath) as? DateCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Id.dateCellId, for: indexPath) as? DateCell else { return UICollectionViewCell() }
         let date = dateCalculator.getDayString(at: indexPath.item)
         cell.dayLabel.text = date
         cell.confifureCell()
@@ -149,3 +147,35 @@ extension CalendarViewController : UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: width)
     }
 }
+
+// MARK: - UITableViewDataSource
+extension CalendarViewController : UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //TODO: remove mock data
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Id.scheduleCellId, for: indexPath) as! ScheduleCell
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension CalendarViewController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //TODO: Show details
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+                    Constants.Id.sectionHeader) as! CustomHeaderView
+        return view
+    }
+}
+
+
