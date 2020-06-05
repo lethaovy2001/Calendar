@@ -22,11 +22,23 @@ final class DateCell : UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
-        circleView.isHidden = true
+        confifureCell()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                circleView.isHidden = false
+                dayLabel.textColor = .white
+            } else {
+                circleView.isHidden = true
+                dayLabel.textColor = textColor
+            }
+        }
     }
     
     //MARK: - Setup
@@ -54,13 +66,8 @@ final class DateCell : UICollectionViewCell {
         ])
     }
     
-    func showSelectedCell() {
-        circleView.isHidden = false
-        dayLabel.textColor = .white
-    }
-    
-    func hideSelectedCell() {
+    func confifureCell() {
         circleView.isHidden = true
-        dayLabel.textColor = textColor
+        dayLabel.textColor = AppColor.darkGray
     }
 }

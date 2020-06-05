@@ -109,13 +109,13 @@ extension CalendarViewController : UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellId.date, for: indexPath) as? DateCell else { return UICollectionViewCell() }
         let date = dateCalculator.getDayString(at: indexPath.item)
         cell.dayLabel.text = date
-        cell.textColor = AppColor.darkGray
-        cell.hideSelectedCell()
-        cell.circleView.isHidden = true
+        cell.confifureCell()
+        // calendar show selection on today's date
         if dateCalculator.isSelectedDate(at: indexPath.item) {
-            cell.showSelectedCell()
+            cell.isSelected = true
             selectedTodayIndexPath = indexPath
         }
+        // calendar mark previous and next month with light gray
         if !dateCalculator.isInCurrentMonth(at: indexPath.item) {
             cell.textColor = AppColor.lightGray
         }
@@ -128,19 +128,12 @@ extension CalendarViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let todayIndexPath = selectedTodayIndexPath {
             if let cell = collectionView.cellForItem(at: todayIndexPath) as? DateCell {
-                cell.hideSelectedCell()
+                cell.isSelected = false
             }
         }
         if let cell = collectionView.cellForItem(at: indexPath) as? DateCell {
-            cell.showSelectedCell()
             let newDate = dateCalculator.calculateDate(at: indexPath.item)
             mainView.setDatePickerValue(date: newDate)
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? DateCell {
-            cell.hideSelectedCell()
         }
     }
 }
