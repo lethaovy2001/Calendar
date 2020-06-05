@@ -17,6 +17,7 @@ struct AppColor {
     static let inputColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
     static let timeColor = UIColor(red: 119/255, green: 136/255, blue: 153/255, alpha: 0.75)
     static let dividerColor = UIColor(red: 119/255, green: 136/255, blue: 153/255, alpha: 0.12)
+    static let green = UIColor(red: 21/255, green: 199/255, blue: 87/255, alpha: 1)
     
     // MARK: Event Colors
     static let pastelOrange = UIColor(red: 255/255, green: 235/255, blue: 224/255, alpha: 1)
