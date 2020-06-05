@@ -16,6 +16,12 @@ class CustomContainerView : UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    init(backgroundColor: UIColor) {
+        super.init(frame: .zero)
+        self.backgroundColor = backgroundColor
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     init(backgroundColor: UIColor, cornerRadius: CGFloat) {
         super.init(frame: .zero)
         self.backgroundColor = backgroundColor
@@ -27,4 +33,12 @@ class CustomContainerView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup
+    func setCornerRadius(cornerRadius: CGFloat) {
+        self.layer.cornerRadius = cornerRadius
+    }
+    
+    func setBackgroundColor(_ color: UIColor) {
+        self.backgroundColor = color
+    }
 }

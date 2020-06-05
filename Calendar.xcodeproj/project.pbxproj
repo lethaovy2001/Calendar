@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1872FBCFB4E96DEB9A814099 /* Pods_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B768A1183D97CBE4A0344DF6 /* Pods_Calendar.framework */; };
+		386DCF8C2489F58C009CD3E0 /* DailyTasksModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386DCF8B2489F58C009CD3E0 /* DailyTasksModelController.swift */; };
 		3888D1A2247AF88E009B3966 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A1247AF88E009B3966 /* LoginViewController.swift */; };
 		3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A6247B0F28009B3966 /* LoginView.swift */; };
 		3888D1A9247B1091009B3966 /* AppLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A8247B1091009B3966 /* AppLogoView.swift */; };
@@ -27,6 +28,10 @@
 		3888D1D3247B811A009B3966 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3888D1D2247B811A009B3966 /* GoogleService-Info.plist */; };
 		3888D1D5247B81C9009B3966 /* calendar.json in Resources */ = {isa = PBXBuildFile; fileRef = 3888D1D4247B81C9009B3966 /* calendar.json */; };
 		3888D1D7247B824D009B3966 /* DailyTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1D6247B824D009B3966 /* DailyTaskViewController.swift */; };
+		3888D1DE247C48B7009B3966 /* DailyTasksMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1DD247C48B7009B3966 /* DailyTasksMainView.swift */; };
+		3888D1FA247DE5AD009B3966 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1F9247DE5AD009B3966 /* CustomScrollView.swift */; };
+		3888D1FC247DE679009B3966 /* TimeLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1FB247DE679009B3966 /* TimeLineView.swift */; };
+		3888D1FE247E1E80009B3966 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1FD247E1E80009B3966 /* EventView.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
@@ -48,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		2CE487EBF5E05F4DC4182A7C /* Pods-CalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarTests.debug.xcconfig"; path = "Target Support Files/Pods-CalendarTests/Pods-CalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
+		386DCF8B2489F58C009CD3E0 /* DailyTasksModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksModelController.swift; sourceTree = "<group>"; };
 		3888D1A1247AF88E009B3966 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3888D1A6247B0F28009B3966 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3888D1A8247B1091009B3966 /* AppLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoView.swift; sourceTree = "<group>"; };
@@ -67,6 +73,10 @@
 		3888D1D2247B811A009B3966 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3888D1D4247B81C9009B3966 /* calendar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = calendar.json; sourceTree = "<group>"; };
 		3888D1D6247B824D009B3966 /* DailyTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskViewController.swift; sourceTree = "<group>"; };
+		3888D1DD247C48B7009B3966 /* DailyTasksMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksMainView.swift; sourceTree = "<group>"; };
+		3888D1F9247DE5AD009B3966 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
+		3888D1FB247DE679009B3966 /* TimeLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLineView.swift; sourceTree = "<group>"; };
+		3888D1FD247E1E80009B3966 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				3888D1A1247AF88E009B3966 /* LoginViewController.swift */,
-				3888D1D6247B824D009B3966 /* DailyTaskViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -159,6 +168,7 @@
 				3888D1BB247B460F009B3966 /* RoundedButton.swift */,
 				3888D1BF247B501F009B3966 /* CustomLabel.swift */,
 				3888D1C3247B5685009B3966 /* ErrorLabel.swift */,
+				3888D1F9247DE5AD009B3966 /* CustomScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,6 +188,34 @@
 				3888D1CE247B7DF8009B3966 /* FirebaseService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		3888D1DA247C47BD009B3966 /* DailyTasksScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3888D1DB247C47DE009B3966 /* View */,
+				3888D1DC247C4818009B3966 /* Controller */,
+			);
+			path = DailyTasksScreen;
+			sourceTree = "<group>";
+		};
+		3888D1DB247C47DE009B3966 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3888D1DD247C48B7009B3966 /* DailyTasksMainView.swift */,
+				3888D1FB247DE679009B3966 /* TimeLineView.swift */,
+				3888D1FD247E1E80009B3966 /* EventView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3888D1DC247C4818009B3966 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3888D1D6247B824D009B3966 /* DailyTaskViewController.swift */,
+				386DCF8B2489F58C009CD3E0 /* DailyTasksModelController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		38F90B772478886B005B0BEB = {
@@ -209,6 +247,7 @@
 				3888D1B0247B154B009B3966 /* View */,
 				3888D1A0247AF84B009B3966 /* LoginScreen */,
 				3888D1C8247B7C46009B3966 /* Protocol */,
+				3888D1DA247C47BD009B3966 /* DailyTasksScreen */,
 				3888D1AA247B10F9009B3966 /* Helpers */,
 				38F90BA624789964005B0BEB /* SupportingFiles */,
 				38F90BA5247898D5005B0BEB /* Storyboard */,
@@ -437,20 +476,25 @@
 			files = (
 				3888D1A2247AF88E009B3966 /* LoginViewController.swift in Sources */,
 				3888D1BE247B4D5D009B3966 /* UIView+Extension.swift in Sources */,
+				3888D1FA247DE5AD009B3966 /* CustomScrollView.swift in Sources */,
 				3888D1B8247B29F3009B3966 /* AppColor.swift in Sources */,
 				3888D1C0247B501F009B3966 /* CustomLabel.swift in Sources */,
+				3888D1DE247C48B7009B3966 /* DailyTasksMainView.swift in Sources */,
 				3888D1CF247B7DF8009B3966 /* FirebaseService.swift in Sources */,
 				3888D1D7247B824D009B3966 /* DailyTaskViewController.swift in Sources */,
 				3888D1B2247B155F009B3966 /* CustomContainerView.swift in Sources */,
 				3888D1A9247B1091009B3966 /* AppLogoView.swift in Sources */,
 				38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */,
+				3888D1FC247DE679009B3966 /* TimeLineView.swift in Sources */,
 				3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */,
 				3888D1B4247B181B009B3966 /* InputView.swift in Sources */,
 				3888D1BC247B460F009B3966 /* RoundedButton.swift in Sources */,
 				38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */,
+				386DCF8C2489F58C009CD3E0 /* DailyTasksModelController.swift in Sources */,
 				3888D1BA247B2C5C009B3966 /* IconButton.swift in Sources */,
 				3888D1AC247B110E009B3966 /* Constants.swift in Sources */,
 				3888D1CC247B7C92009B3966 /* Database.swift in Sources */,
+				3888D1FE247E1E80009B3966 /* EventView.swift in Sources */,
 				3888D1C4247B5685009B3966 /* ErrorLabel.swift in Sources */,
 				3888D1B6247B1895009B3966 /* CustomTextField.swift in Sources */,
 				3888D1CA247B7C5C009B3966 /* Authentication.swift in Sources */,
