@@ -54,6 +54,8 @@ class DailyTaskViewController : UIViewController {
         for event in events {
             dailyTaskView.setEvent(event: event)
         }
+    }
+    
     private func setupSelectors() {
         dailyTaskView.setCalendarButtonSelector(selector: #selector(calendarButtonPressed), target: self)
         dailyTaskView.setAddButtonSelector(selector: #selector(addButtonPressed), target: self)
