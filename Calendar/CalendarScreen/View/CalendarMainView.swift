@@ -91,4 +91,17 @@ final class CalendarMainView : UIView {
             collectionView.heightAnchor.constraint(equalToConstant: 300),
         ])
     }
+    
+    // MARK: Selectors
+    func setBackButtonSelector(selector: Selector, target: UIViewController) {
+        backButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
+    func setAddButtonSelector(selector: Selector, target: UIViewController) {
+        addButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
+    func setSearchButtonSelector(selector: Selector, target: UIViewController) {
+        searchButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
 }
