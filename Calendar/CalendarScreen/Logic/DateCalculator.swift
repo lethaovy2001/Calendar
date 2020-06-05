@@ -27,7 +27,7 @@ class DateCalculator {
         checkValidDate()
     }
     
-    func calculateDate(at index: Int) -> Date {
+    func getDate(at index: Int) -> Date {
         if dates.count < index {
             return Date()
         }
@@ -54,11 +54,11 @@ class DateCalculator {
             self.month = month
             self.year = year
         }
-        getMonthlyCalendar()
+        addAllTheDatesInAMonth()
     }
     
-    private func getMonthlyCalendar() {
-        let space = calculateSpaceNeededFromLastMonth()
+    private func addAllTheDatesInAMonth() {
+        let numOfLeftOverDatesFromLastMonth = calculateLeftOverDatesFromLastMonth()
         let numOfdaysOfLastMonth = getNumOfDaysInMonth(month - 1)
         let numOfDaysThisMonth = getNumOfDaysInMonth(month)
         var lastMonth = month - 1
@@ -71,27 +71,24 @@ class DateCalculator {
         }
         
         // last month
-        for index in 1...space {
-            let day = numOfdaysOfLastMonth - (space - index)
+        for index in 1...numOfLeftOverDatesFromLastMonth {
+            let day = numOfdaysOfLastMonth - (numOfLeftOverDatesFromLastMonth - index)
             let date = getDateFrom(day: day, month: lastMonth, year: year)
             dates.append(date)
-            print("\(numOfdaysOfLastMonth - (space - index))")
         }
         // this month
         for day in 1...numOfDaysThisMonth {
             let date = getDateFrom(day: day, month: month, year: year)
             dates.append(date)
-            print("\(day)\t")
         }
         // next month
-        for day in 1...(42 - numOfDaysThisMonth - space) {
+        for day in 1...(42 - numOfDaysThisMonth - numOfLeftOverDatesFromLastMonth) {
             let date = getDateFrom(day: day, month: nextMonth, year: year)
             dates.append(date)
-            print("\(day)\t")
         }
     }
     
-    private func calculateSpaceNeededFromLastMonth() -> Int {
+    private func calculateLeftOverDatesFromLastMonth() -> Int {
         guard let weekday = getWeekdayOfDayOne(month: month) else { return 0 }
         return weekday - 1
     }

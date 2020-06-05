@@ -28,9 +28,9 @@ class DateCalculatorTests: XCTestCase {
         let index2 = 41
         
         // When
-        let result0 = calculator.calculateDate(at: index0)
-        let result1 = calculator.calculateDate(at: index1)
-        let result2 = calculator.calculateDate(at: index2)
+        let result0 = calculator.getDate(at: index0)
+        let result1 = calculator.getDate(at: index1)
+        let result2 = calculator.getDate(at: index2)
         
         // Then
         XCTAssertEqual(result0, date0)
