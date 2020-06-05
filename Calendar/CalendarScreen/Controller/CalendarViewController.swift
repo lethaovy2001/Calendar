@@ -12,10 +12,14 @@ class CalendarViewController : UIViewController {
     // MARK: - Properties
     private let mainView = CalendarMainView()
     private let database: Database
+    private var dateCounter: DateCounter
+    private var selectedTodayIndexPath: IndexPath?
     
     // MARK: - Initializer
     init(database: Database) {
         self.database = database
+        let dateComponents = Calendar.current.dateComponents([.month, .year], from: Date())
+        self.dateCounter = DateCounter(month: dateComponents.month ?? 0, year: dateComponents.year ?? 0)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -26,15 +30,21 @@ class CalendarViewController : UIViewController {
     // MARK: - View Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
-        self.navigationController?.isNavigationBarHidden = true
+        
         setup()
     }
     
     // MARK: - Setup
     private func setup() {
+        setupSelf()
         setupUI()
         registerCellId()
+        setSelectors()
+    }
+    
+    private func setupSelf() {
+        self.view.backgroundColor = .white
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     private func setupUI() {
@@ -52,6 +62,25 @@ class CalendarViewController : UIViewController {
         mainView.collectionView.dataSource = self
         mainView.collectionView.register(DateCell.self, forCellWithReuseIdentifier: Constants.CellId.date)
     }
+    
+    private func setSelectors() {
+        mainView.setAddButtonSelector(selector: #selector(tapAddButton), target: self)
+        mainView.setSearchButtonSelector(selector: #selector(tapSearchButton), target: self)
+        mainView.setBackButtonSelector(selector: #selector(tapBackButton), target: self)
+    }
+    
+    // MARK: Actions
+    @objc private func tapAddButton() {
+        
+    }
+    
+    @objc private func tapSearchButton() {
+        
+    }
+    
+    @objc private func tapBackButton() {
+        
+    }
 }
 
 extension CalendarViewController : UICollectionViewDataSource {
@@ -62,16 +91,38 @@ extension CalendarViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellId.date, for: indexPath) as? DateCell else {
-            return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellId.date, for: indexPath) as? DateCell else { return UICollectionViewCell() }
+        let date = dateCounter.getDayString(at: indexPath.item)
+        cell.dayLabel.text = date
+        if dateCounter.isTodayDate(at: indexPath.item) {
+            cell.isSelected = true
+            selectedTodayIndexPath = indexPath
         }
-        cell.dayLabel.text = "10"
+        if dateCounter.isNotInCurrentMonth(at: indexPath.item) {
+            cell.dayLabel.textColor = AppColor.lightGray
+            cell.textColor = AppColor.lightGray
+        }
         return cell
     }
 }
 
 extension CalendarViewController : UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let todayIndexPath = selectedTodayIndexPath {
+            if let cell = collectionView.cellForItem(at: todayIndexPath) as? DateCell {
+                cell.isSelected = false
+            }
+        }
+        if let cell = collectionView.cellForItem(at: indexPath) as? DateCell {
+            cell.isSelected = true
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? DateCell {
+            cell.isSelected = false
+        }
+    }
 }
 
 extension CalendarViewController : UICollectionViewDelegateFlowLayout {

@@ -27,11 +27,46 @@ class DateCounter {
         checkValidDate()
     }
     
-    func getDate(at index: Int) -> Date {
-        if dates.count < index {
+    func getDate(at calendarDateIndex: Int) -> Date {
+        if dates.count < calendarDateIndex {
             return Date()
         }
-        return dates[index]
+        return dates[calendarDateIndex]
+    }
+    
+    func getDayString(at calendarDateIndex: Int) -> String {
+        if dates.count < calendarDateIndex {
+            return "N/A"
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
+        let day = dateFormatter.string(from: dates[calendarDateIndex])
+        return day
+    }
+    
+    func isNotInCurrentMonth(at index: Int) -> Bool {
+        if dates.count > index {
+            let dateComponents = Calendar.current.dateComponents([.month], from: dates[index])
+            guard let month = dateComponents.month else { return false }
+            if month == self.month {
+                return false
+            }
+        }
+        return true
+    }
+    
+    func isTodayDate(at index: Int) -> Bool {
+        if dates.count < index {
+            return false
+        }
+        let today = Date()
+        let todayComponents = calendar.dateComponents([.day, .month, .year], from: today)
+        let dateComponents = calendar.dateComponents([.day, .month, .year], from: dates[index])
+        if todayComponents == dateComponents {
+            return true
+        } else {
+           return false
+        }
     }
     
     func getDateFrom(day: Int, month: Int, year: Int) -> Date {
