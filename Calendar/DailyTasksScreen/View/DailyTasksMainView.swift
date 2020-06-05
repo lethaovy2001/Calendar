@@ -132,7 +132,7 @@ final class DailyTasksMainView : UIView {
         }
     }
     
-    private func setEvent(event: Event) {
+    func setEvent(event: Event) {
         let height = estimateEventHeight(event: event)
         let offset = estimateTopOffset(of: event.startTime)
         let eventView = EventView(height: height)
