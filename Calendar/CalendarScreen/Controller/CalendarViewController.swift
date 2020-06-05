@@ -12,14 +12,14 @@ class CalendarViewController : UIViewController {
     // MARK: - Properties
     private let mainView = CalendarMainView()
     private let database: Database
-    private var dateCalculator: DateCalculator
+    private var dateCounter: DateCounter
     private var selectedTodayIndexPath: IndexPath?
     
     // MARK: - Initializer
     init(database: Database) {
         self.database = database
         let dateComponents = Calendar.current.dateComponents([.month, .year], from: Date())
-        self.dateCalculator = DateCalculator(month: dateComponents.month ?? 0, year: dateComponents.year ?? 0)
+        self.dateCounter = DateCounter(month: dateComponents.month ?? 0, year: dateComponents.year ?? 0)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -92,13 +92,13 @@ extension CalendarViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellId.date, for: indexPath) as? DateCell else { return UICollectionViewCell() }
-        let date = dateCalculator.getDayString(at: indexPath.item)
+        let date = dateCounter.getDayString(at: indexPath.item)
         cell.dayLabel.text = date
-        if dateCalculator.isTodayDate(at: indexPath.item) {
+        if dateCounter.isTodayDate(at: indexPath.item) {
             cell.isSelected = true
             selectedTodayIndexPath = indexPath
         }
-        if dateCalculator.isNotInCurrentMonth(at: indexPath.item) {
+        if dateCounter.isNotInCurrentMonth(at: indexPath.item) {
             cell.dayLabel.textColor = AppColor.lightGray
             cell.textColor = AppColor.lightGray
         }

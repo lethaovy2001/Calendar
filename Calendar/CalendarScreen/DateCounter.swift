@@ -27,20 +27,20 @@ class DateCounter {
         checkValidDate()
     }
     
-    func getDate(at index: Int) -> Date {
-        if dates.count < index {
+    func getDate(at calendarDateIndex: Int) -> Date {
+        if dates.count < calendarDateIndex {
             return Date()
         }
-        return dates[index]
+        return dates[calendarDateIndex]
     }
     
-    func getDayString(at index: Int) -> String {
-        if dates.count < index {
+    func getDayString(at calendarDateIndex: Int) -> String {
+        if dates.count < calendarDateIndex {
             return "N/A"
         }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d"
-        let day = dateFormatter.string(from: dates[index])
+        let day = dateFormatter.string(from: dates[calendarDateIndex])
         return day
     }
     
