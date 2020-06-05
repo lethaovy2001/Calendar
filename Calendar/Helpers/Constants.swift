@@ -18,6 +18,12 @@ struct Constants {
         static let minutesInAHour: Double = 60
     }
     
+    struct IconNames {
+        static let calendar = "calendar"
+        static let profile = "person"
+        static let add = "plus"
+    }
+    
     static let spaceBetweenTimeDivider: CGFloat = 84
     
 }

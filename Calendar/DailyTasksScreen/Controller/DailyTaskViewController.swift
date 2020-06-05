@@ -36,6 +36,7 @@ class DailyTaskViewController : UIViewController {
     private func setup() {
         setupUI()
         configureEvents()
+        setupSelectors()
     }
     
     private func setupUI() {
@@ -53,5 +54,24 @@ class DailyTaskViewController : UIViewController {
         for event in events {
             dailyTaskView.setEvent(event: event)
         }
+    }
+    
+    private func setupSelectors() {
+        dailyTaskView.setCalendarButtonSelector(selector: #selector(calendarButtonPressed), target: self)
+        dailyTaskView.setAddButtonSelector(selector: #selector(addButtonPressed), target: self)
+        dailyTaskView.setProfileButtonSelector(selector: #selector(profileButtonPressed), target: self)
+    }
+    
+    // MARK: Actions
+    @objc private func calendarButtonPressed() {
+
+    }
+    
+    @objc private func addButtonPressed() {
+        
+    }
+    
+    @objc private func profileButtonPressed() {
+        
     }
 }
