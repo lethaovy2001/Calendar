@@ -11,10 +11,11 @@ import UIKit
 class DailyTaskViewController : UIViewController {
     // MARK: - Properties
     private let dailyTaskView = DailyTasksMainView()
+    private let modelController = DailyTasksModelController()
     private let database: Database
     
     // MARK: - Initializer
-    init(database: Database) {
+    init(database: Database = FirebaseService.shared) {
         self.database = database
         super.init(nibName: nil, bundle: nil)
     }
@@ -34,6 +35,7 @@ class DailyTaskViewController : UIViewController {
     // MARK: - Setup
     private func setup() {
         setupUI()
+        configureEvents()
         setupSelectors()
     }
     
@@ -47,6 +49,11 @@ class DailyTaskViewController : UIViewController {
         ])
     }
     
+    private func configureEvents() {
+        let events = modelController.getEvents()
+        for event in events {
+            dailyTaskView.setEvent(event: event)
+        }
     private func setupSelectors() {
         dailyTaskView.setCalendarButtonSelector(selector: #selector(calendarButtonPressed), target: self)
         dailyTaskView.setAddButtonSelector(selector: #selector(addButtonPressed), target: self)

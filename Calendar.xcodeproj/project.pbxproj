@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1872FBCFB4E96DEB9A814099 /* Pods_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B768A1183D97CBE4A0344DF6 /* Pods_Calendar.framework */; };
+		386DCF8C2489F58C009CD3E0 /* DailyTasksModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386DCF8B2489F58C009CD3E0 /* DailyTasksModelController.swift */; };
 		3888D1A2247AF88E009B3966 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A1247AF88E009B3966 /* LoginViewController.swift */; };
 		3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A6247B0F28009B3966 /* LoginView.swift */; };
 		3888D1A9247B1091009B3966 /* AppLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A8247B1091009B3966 /* AppLogoView.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		2CE487EBF5E05F4DC4182A7C /* Pods-CalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarTests.debug.xcconfig"; path = "Target Support Files/Pods-CalendarTests/Pods-CalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
+		386DCF8B2489F58C009CD3E0 /* DailyTasksModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksModelController.swift; sourceTree = "<group>"; };
 		3888D1A1247AF88E009B3966 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3888D1A6247B0F28009B3966 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3888D1A8247B1091009B3966 /* AppLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoView.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				3888D1D6247B824D009B3966 /* DailyTaskViewController.swift */,
+				386DCF8B2489F58C009CD3E0 /* DailyTasksModelController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				3888D1BC247B460F009B3966 /* RoundedButton.swift in Sources */,
 				38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */,
 				3888D207247F5741009B3966 /* BottomBarView.swift in Sources */,
+				386DCF8C2489F58C009CD3E0 /* DailyTasksModelController.swift in Sources */,
 				3888D1BA247B2C5C009B3966 /* IconButton.swift in Sources */,
 				3888D1AC247B110E009B3966 /* Constants.swift in Sources */,
 				3888D1CC247B7C92009B3966 /* Database.swift in Sources */,
