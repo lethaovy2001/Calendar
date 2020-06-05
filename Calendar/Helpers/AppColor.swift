@@ -11,6 +11,7 @@ import UIKit
 struct AppColor {
     static let primaryColor = UIColor(red: 255/255, green: 115/255, blue: 72/255, alpha: 1)
     static let primaryLight = UIColor(red: 255/255, green: 162/255, blue: 115/255, alpha: 1)
+    static let lightGray = UIColor(red: 192/255, green: 192/255, blue: 192/255, alpha: 1)
     static let gray = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 1)
     static let darkGray = UIColor(red: 90/255, green: 90/255, blue: 90/255, alpha: 1)
     static let inputColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)

@@ -22,8 +22,13 @@ struct Constants {
         static let calendar = "calendar"
         static let profile = "person"
         static let add = "plus"
+        static let back = "arrow.left"
+        static let search = "magnifyingglass"
+    }
+    
+    struct CellId {
+        static let date = "dateCellId"
     }
     
     static let spaceBetweenTimeDivider: CGFloat = 84
-    
 }
