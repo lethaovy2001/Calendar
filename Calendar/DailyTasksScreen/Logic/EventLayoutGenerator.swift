@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EventLayoutGenerator {
+struct EventLayoutGenerator {
     func estimateHeight(event: Event) -> CGFloat {
         let startComponents = Calendar.current.dateComponents([.hour, .minute], from: event.startTime)
         let startHour = CGFloat(startComponents.hour ?? 0)
