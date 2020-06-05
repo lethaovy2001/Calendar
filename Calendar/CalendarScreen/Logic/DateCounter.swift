@@ -1,5 +1,5 @@
 //
-//  DateCalculator.swift
+//  DateCounter.swift
 //  Calendar
 //
 //  Created by Vy Le on 5/28/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DateCalculator {
+class DateCounter {
     private let calendar: Calendar
     private var year: Int
     private var month: Int

@@ -1,5 +1,5 @@
 //
-//  DateCalculatorTests.swift
+//  DateCounterTests.swift
 //  CalendarTests
 //
 //  Created by Vy Le on 5/28/20.
@@ -9,12 +9,12 @@
 import XCTest
 @testable import Calendar
 
-class DateCalculatorTests: XCTestCase {
-    var calculator: DateCalculator!
+class DateCounterTests: XCTestCase {
+    var calculator: DateCounter!
 
     override func setUp() {
         super.setUp()
-        calculator = DateCalculator(month: 5, year: 2020)
+        calculator = DateCounter(month: 5, year: 2020)
     }
     
     func testCalculateDate() {
