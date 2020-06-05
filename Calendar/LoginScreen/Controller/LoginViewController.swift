@@ -15,7 +15,7 @@ final class LoginViewController : UIViewController {
     private let auth: Authentication
     
     // MARK: - Initializer
-    init(authentication: Authentication, database: Database) {
+    init(authentication: Authentication = FirebaseService.shared, database: Database = FirebaseService.shared) {
         self.auth = authentication
         self.database = database
         super.init(nibName: nil, bundle: nil)
@@ -61,7 +61,7 @@ final class LoginViewController : UIViewController {
     
     private func checkIfAlreadyLogin() {
         if auth.getCurrentUserId() != nil {
-            let vc = DailyTaskViewController(database: self.database)
+            let vc = DailyTaskViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -77,7 +77,7 @@ final class LoginViewController : UIViewController {
                 self.loginView.showError(message: error.localizedDescription)
                 return
             }
-            let vc = DailyTaskViewController(database: self.database)
+            let vc = DailyTaskViewController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
