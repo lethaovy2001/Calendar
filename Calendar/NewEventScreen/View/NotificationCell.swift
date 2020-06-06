@@ -10,9 +10,17 @@ import UIKit
 
 final class NotificationCell : UITableViewCell {
     // MARK: - Properties
-    private var selectedRadioButton = IconButton(name: Constants.IconNames.selectedRadio, size: 18, color: AppColor.primaryColor)
-    private var unselectedRadioButton = IconButton(name: Constants.IconNames.unselectedRadio, size: 18, color: AppColor.gray)
-    private let label = CustomLabel(text: "N/A", textColor: AppColor.darkGray, textSize: 18, textWeight: .regular)
+    private var selectedRadioButton = IconButton(
+        name: Constants.IconNames.selectedRadio,
+        size: 18, color: AppColor.primaryColor)
+    private var unselectedRadioButton = IconButton(
+        name: Constants.IconNames.unselectedRadio,
+        size: 18, color: AppColor.gray)
+    private let label = CustomLabel(
+        text: "N/A",
+        textColor: AppColor.darkGray,
+        textSize: 18,
+        textWeight: .regular)
     var options: AlertOptions? {
         didSet {
             switch options {
@@ -48,7 +56,7 @@ final class NotificationCell : UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        if(selected) {
+        if selected {
             selectedRadioButton.isHidden = false
             unselectedRadioButton.isHidden = true
         } else {
@@ -76,19 +84,17 @@ final class NotificationCell : UITableViewCell {
             unselectedRadioButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             unselectedRadioButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
             unselectedRadioButton.heightAnchor.constraint(equalToConstant: 20),
-            unselectedRadioButton.widthAnchor.constraint(equalToConstant: 20),
+            unselectedRadioButton.widthAnchor.constraint(equalToConstant: 20)
         ])
         NSLayoutConstraint.activate([
             selectedRadioButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             selectedRadioButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
             selectedRadioButton.heightAnchor.constraint(equalToConstant: 20),
-            selectedRadioButton.widthAnchor.constraint(equalToConstant: 20),
+            selectedRadioButton.widthAnchor.constraint(equalToConstant: 20)
         ])
         NSLayoutConstraint.activate([
             label.centerYAnchor.constraint(equalTo: centerYAnchor),
-            label.leftAnchor.constraint(equalTo: unselectedRadioButton.rightAnchor, constant: 16),
+            label.leftAnchor.constraint(equalTo: unselectedRadioButton.rightAnchor, constant: 16)
         ])
     }
-    
-    
 }
