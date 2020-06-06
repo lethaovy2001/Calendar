@@ -16,7 +16,7 @@ final class NewEventViewController : UIViewController {
     private var selectedOption: AlertOptions?
     
     // MARK: - Initializer
-    init(database: Database) {
+    init(database: Database = FirebaseService.shared) {
         self.database = database
         super.init(nibName: nil, bundle: nil)
     }
