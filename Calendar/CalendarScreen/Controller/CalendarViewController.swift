@@ -103,10 +103,13 @@ extension CalendarViewController: UICollectionViewDataSource {
         return numOfWeekdays * numOfRows
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Id.dateCellId,
                                                             for: indexPath) as? DateCell
-        else { return UICollectionViewCell() }
+        else {
+            return UICollectionViewCell()
+        }
         let date = dateCounter.getDayString(at: indexPath.item)
         cell.dayLabel.text = date
         cell.configureCell()

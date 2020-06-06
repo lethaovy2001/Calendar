@@ -10,7 +10,10 @@ import UIKit
 
 final class SlideView : CustomContainerView {
     // MARK: - Properties
-    private let topBarView = CustomContainerView(backgroundColor: AppColor.gray.withAlphaComponent(0.5), cornerRadius: 2)
+    private let topBarView = CustomContainerView(
+        backgroundColor: AppColor.gray.withAlphaComponent(0.5),
+        cornerRadius: 2
+    )
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.allowsMultipleSelectionDuringEditing = true

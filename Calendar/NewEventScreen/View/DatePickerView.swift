@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class DatePickerView : UIView {
+final class DatePickerView: UIView {
     // MARK: - Properties
     private let datePicker: UIDatePicker = {
         let datePicker = UIDatePicker(frame: .zero)
@@ -17,8 +17,17 @@ final class DatePickerView : UIView {
         return datePicker
     }()
     private let doneButton = TextButton(title: "DONE", color: AppColor.primaryColor)
-    private let containerView = CustomContainerView(backgroundColor: .white, cornerRadius: 6, hasShadow: true)
-    private let title = CustomLabel(text: "Start", textColor: AppColor.primaryColor, textSize: 30, textWeight: .bold)
+    private let containerView = CustomContainerView(
+        backgroundColor: .white,
+        cornerRadius: 6,
+        hasShadow: true
+    )
+    private let title = CustomLabel(
+        text: "Start",
+        textColor: AppColor.primaryColor,
+        textSize: 30,
+        textWeight: .bold
+    )
     weak var tapDelegate: DatePickerTapGestureDelegate?
     
     // MARK: - Initializer
