@@ -106,13 +106,18 @@ final class NewEventViewController : UIViewController {
     }
 }
 
-extension NewEventViewController : UITableViewDataSource {
+extension NewEventViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Id.notificationCellId, for: indexPath) as! NotificationCell
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: Constants.Id.notificationCellId,
+            for: indexPath) as? NotificationCell
+        else {
+            return UITableViewCell()
+        }
         cell.options = alertOptions[indexPath.row]
         cell.selectionStyle = .none
         return cell
@@ -121,7 +126,6 @@ extension NewEventViewController : UITableViewDataSource {
 
 extension NewEventViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Id.notificationCellId, for: indexPath) as! NotificationCell
         selectedOption = alertOptions[indexPath.row]
     }
 }

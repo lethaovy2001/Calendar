@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CustomNotificationView : UIView {
+final class CustomNotificationView: UIView {
     // MARK: - Properties
     private let doneButton = TextButton(title: "Done", textColor: AppColor.primaryColor, textSize: 18, textWeight: .bold)
     private let containerView = CustomContainerView(backgroundColor: .white, cornerRadius: 6, hasShadow: true)
@@ -60,7 +60,7 @@ final class CustomNotificationView : UIView {
         ])
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 24),
-            title.centerXAnchor.constraint(equalTo: centerXAnchor),
+            title.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         NSLayoutConstraint.activate([
             timeTextField.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 24),
@@ -107,4 +107,3 @@ final class CustomNotificationView : UIView {
         return convertedTime
     }
 }
-
