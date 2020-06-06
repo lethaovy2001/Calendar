@@ -10,6 +10,7 @@ target 'Calendar' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
+  pod 'SwiftLint'
 
   target 'CalendarTests' do
     inherit! :search_paths
