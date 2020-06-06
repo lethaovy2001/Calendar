@@ -10,10 +10,27 @@ import UIKit
 
 final class CustomNotificationView: UIView {
     // MARK: - Properties
-    private let doneButton = TextButton(title: "Done", textColor: AppColor.primaryColor, textSize: 18, textWeight: .bold)
-    private let containerView = CustomContainerView(backgroundColor: .white, cornerRadius: 6, hasShadow: true)
-    private let title = CustomLabel(text: "CUSTOM NOTIFICATION", textColor: AppColor.darkGray, textSize: 16, textWeight: .semibold)
-    private let timeTextField = CustomTextField(placeholder: "Time", keyboardType: .numberPad)
+    private let doneButton = TextButton(
+        title: "Done",
+        textColor: AppColor.primaryColor,
+        textSize: 18,
+        textWeight: .bold
+    )
+    private let containerView = CustomContainerView(
+        backgroundColor: .white,
+        cornerRadius: 6,
+        hasShadow: true
+    )
+    private let title = CustomLabel(
+        text: "CUSTOM NOTIFICATION",
+        textColor: AppColor.darkGray,
+        textSize: 16,
+        textWeight: .semibold
+    )
+    private let timeTextField = CustomTextField(
+        placeholder: "Time",
+        keyboardType: .numberPad
+    )
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.allowsMultipleSelectionDuringEditing = false

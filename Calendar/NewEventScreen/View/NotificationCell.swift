@@ -12,15 +12,18 @@ final class NotificationCell : UITableViewCell {
     // MARK: - Properties
     private var selectedRadioButton = IconButton(
         name: Constants.IconNames.selectedRadio,
-        size: 18, color: AppColor.primaryColor)
+        size: 18, color: AppColor.primaryColor
+    )
     private var unselectedRadioButton = IconButton(
         name: Constants.IconNames.unselectedRadio,
-        size: 18, color: AppColor.gray)
+        size: 18, color: AppColor.gray
+    )
     private let label = CustomLabel(
         text: "N/A",
         textColor: AppColor.darkGray,
         textSize: 18,
-        textWeight: .regular)
+        textWeight: .regular
+    )
     var options: AlertOptions? {
         didSet {
             switch options {

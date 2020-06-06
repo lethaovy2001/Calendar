@@ -124,7 +124,7 @@ extension NewEventViewController: UITableViewDataSource {
     }
 }
 
-extension NewEventViewController : UITableViewDelegate {
+extension NewEventViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedOption = alertOptions[indexPath.row]
     }
