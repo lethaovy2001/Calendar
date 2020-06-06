@@ -1,5 +1,5 @@
 //
-//  DateCalculator.swift
+//  DateCounter.swift
 //  Calendar
 //
 //  Created by Vy Le on 5/28/20.
@@ -8,62 +8,67 @@
 
 import UIKit
 
-final class DateCalculator {
-    private var date: Date
+class DateCounter {
     private let calendar: Calendar
     private var year: Int
     private var month: Int
-    private var dates: [Date]
-    private var converter: DateConverter
-    
-    init(date: Date) {
-        self.date = date
-        self.calendar = Calendar.current
-        self.converter = DateConverter()
-        converter.convert(date: date)
-        self.month = converter.getMonth()
-        self.year = converter.getYear()
-        self.dates = [Date]()
+    private var dates = [Date]()
+
+    init(month: Int, year: Int) {
+        calendar = Calendar.current
+        self.month = month
+        self.year = year
         checkValidDate()
     }
-    
-    func calculateDate(at index: Int) -> Date {
-        if dates.count < index {
+
+    func set(month: Int, year: Int) {
+        self.month = month
+        self.year = year
+        checkValidDate()
+    }
+
+    func getDate(at calendarDateIndex: Int) -> Date {
+        if dates.count < calendarDateIndex {
             return Date()
         }
-        return dates[index]
+        return dates[calendarDateIndex]
     }
-    
-    func getDayString(at index: Int) -> String {
-        if dates.count < index {
+
+    func getDayString(at calendarDateIndex: Int) -> String {
+        if dates.count < calendarDateIndex {
             return "N/A"
         }
-        return converter.getDay(from: dates[index])
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
+        let day = dateFormatter.string(from: dates[calendarDateIndex])
+        return day
     }
-    
-    func isInCurrentMonth(at index: Int) -> Bool {
+
+    func isNotInCurrentMonth(at index: Int) -> Bool {
         if dates.count > index {
-            converter.convert(date: dates[index])
-            if converter.getMonth() == self.month {
-                return true
+            let dateComponents = Calendar.current.dateComponents([.month], from: dates[index])
+            guard let month = dateComponents.month else { return false }
+            if month == self.month {
+                return false
             }
         }
-        return false
+        return true
     }
-    
-    func isSelectedDate(at index: Int) -> Bool {
+
+    func isTodayDate(at index: Int) -> Bool {
         if dates.count < index {
             return false
         }
-        let selectedComponents = calendar.dateComponents([.day, .month, .year], from: date)
+        let today = Date()
+        let todayComponents = calendar.dateComponents([.day, .month, .year], from: today)
         let dateComponents = calendar.dateComponents([.day, .month, .year], from: dates[index])
-        if selectedComponents == dateComponents {
+        if todayComponents == dateComponents {
             return true
         } else {
            return false
         }
     }
-    
+
     func getDateFrom(day: Int, month: Int, year: Int) -> Date {
         let dateComponents = DateComponents(
             year: year,
@@ -72,19 +77,23 @@ final class DateCalculator {
         )
         return Calendar.current.date(from: dateComponents) ?? Date()
     }
-    
+
     private func checkValidDate() {
         if month > Constants.Date.maxMonth && year > Constants.Date.maxYear {
             let date = Date()
-            converter.convert(date: date)
-            self.month = converter.getMonth()
-            self.year = converter.getYear()
+            let components = calendar.dateComponents([.month, .year], from: date)
+            guard
+                let month = components.month,
+                let year = components.year
+            else { return }
+            self.month = month
+            self.year = year
         }
-        getMonthlyCalendar()
+        addAllTheDatesInAMonth()
     }
-    
-    private func getMonthlyCalendar() {
-        let space = calculateSpaceNeededFromLastMonth()
+
+    private func addAllTheDatesInAMonth() {
+        let numOfLeftOverDatesFromLastMonth = calculateLeftOverDatesFromLastMonth()
         let numOfdaysOfLastMonth = getNumOfDaysInMonth(month - 1)
         let numOfDaysThisMonth = getNumOfDaysInMonth(month)
         var lastMonth = month - 1
@@ -95,10 +104,10 @@ final class DateCalculator {
         if month + 1 > Constants.Date.maxYear {
             nextMonth = 1
         }
-        
+
         // last month
-        for index in 1...space {
-            let day = numOfdaysOfLastMonth - (space - index)
+        for index in 1...numOfLeftOverDatesFromLastMonth {
+            let day = numOfdaysOfLastMonth - (numOfLeftOverDatesFromLastMonth - index)
             let date = getDateFrom(day: day, month: lastMonth, year: year)
             dates.append(date)
         }
@@ -108,17 +117,17 @@ final class DateCalculator {
             dates.append(date)
         }
         // next month
-        for day in 1...(42 - numOfDaysThisMonth - space) {
+        for day in 1...(42 - numOfDaysThisMonth - numOfLeftOverDatesFromLastMonth) {
             let date = getDateFrom(day: day, month: nextMonth, year: year)
             dates.append(date)
         }
     }
-    
-    private func calculateSpaceNeededFromLastMonth() -> Int {
+
+    private func calculateLeftOverDatesFromLastMonth() -> Int {
         guard let weekday = getWeekdayOfDayOne(month: month) else { return 0 }
         return weekday - 1
     }
-    
+
     private func getWeekdayOfDayOne(month: Int) -> Int? {
         let dateComponents = DateComponents(
             year: year,
@@ -128,7 +137,7 @@ final class DateCalculator {
         let date = Calendar.current.date(from: dateComponents) ?? Date()
         return calendar.dateComponents([.weekday], from: date).weekday
     }
-    
+
     private func getNumOfDaysInMonth(_ month: Int) -> Int {
         let dateComponents = DateComponents(year: year, month: month)
         guard

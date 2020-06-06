@@ -43,8 +43,8 @@
 		3888D22E2480444A009B3966 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D22D2480444A009B3966 /* TextButton.swift */; };
 		3888D230248060D2009B3966 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D22F248060D2009B3966 /* DateCell.swift */; };
 		3888D23224806D30009B3966 /* WeekDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D23124806D30009B3966 /* WeekDaysView.swift */; };
-		3888D2362480B597009B3966 /* DateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D2352480B597009B3966 /* DateCalculator.swift */; };
-		3888D2382480B5C3009B3966 /* DateCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D2372480B5C2009B3966 /* DateCalculatorTests.swift */; };
+		3888D2362480B597009B3966 /* DateCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D2352480B597009B3966 /* DateCounter.swift */; };
+		3888D2382480B5C3009B3966 /* DateCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D2372480B5C2009B3966 /* DateCounterTests.swift */; };
 		3888D23A24819F54009B3966 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D23924819F53009B3966 /* CircleView.swift */; };
 		3888D24224822466009B3966 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D24124822466009B3966 /* DateConverter.swift */; };
 		3888D24424831B72009B3966 /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D24324831B72009B3966 /* SlideView.swift */; };
@@ -126,8 +126,8 @@
 		3888D22D2480444A009B3966 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		3888D22F248060D2009B3966 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		3888D23124806D30009B3966 /* WeekDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDaysView.swift; sourceTree = "<group>"; };
-		3888D2352480B597009B3966 /* DateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculator.swift; sourceTree = "<group>"; };
-		3888D2372480B5C2009B3966 /* DateCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCalculatorTests.swift; sourceTree = "<group>"; };
+		3888D2352480B597009B3966 /* DateCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounter.swift; sourceTree = "<group>"; };
+		3888D2372480B5C2009B3966 /* DateCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCounterTests.swift; sourceTree = "<group>"; };
 		3888D23924819F53009B3966 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		3888D24124822466009B3966 /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		3888D24324831B72009B3966 /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
@@ -334,7 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				3888D24124822466009B3966 /* DateConverter.swift */,
-				3888D2352480B597009B3966 /* DateCalculator.swift */,
+				3888D2352480B597009B3966 /* DateCounter.swift */,
 				3888D223247F909B009B3966 /* Controller */,
 				3888D222247F9096009B3966 /* View */,
 			);
@@ -445,7 +445,7 @@
 				3888D209247F6C29009B3966 /* DailyTaskTests */,
 				38F90B9A2478886F005B0BEB /* CalendarTests.swift */,
 				38F90B9C2478886F005B0BEB /* Info.plist */,
-				3888D2372480B5C2009B3966 /* DateCalculatorTests.swift */,
+				3888D2372480B5C2009B3966 /* DateCounterTests.swift */,
 			);
 			path = CalendarTests;
 			sourceTree = "<group>";
@@ -740,7 +740,7 @@
 				3888D1C0247B501F009B3966 /* CustomLabel.swift in Sources */,
 				3888D1DE247C48B7009B3966 /* DailyTasksMainView.swift in Sources */,
 				3888D1CF247B7DF8009B3966 /* FirebaseService.swift in Sources */,
-				3888D2362480B597009B3966 /* DateCalculator.swift in Sources */,
+				3888D2362480B597009B3966 /* DateCounter.swift in Sources */,
 				3888D202247F3BED009B3966 /* RunningTimeLineView.swift in Sources */,
 				3888D24224822466009B3966 /* DateConverter.swift in Sources */,
 				3888D246248325E0009B3966 /* ScheduleCell.swift in Sources */,
@@ -779,7 +779,7 @@
 			files = (
 				38F90B9B2478886F005B0BEB /* CalendarTests.swift in Sources */,
 				3888D20B247F6C55009B3966 /* EventLayoutGeneratorTests.swift in Sources */,
-				3888D2382480B5C3009B3966 /* DateCalculatorTests.swift in Sources */,
+				3888D2382480B5C3009B3966 /* DateCounterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

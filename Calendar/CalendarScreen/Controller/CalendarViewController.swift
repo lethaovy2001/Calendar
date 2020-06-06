@@ -12,18 +12,18 @@ class CalendarViewController : UIViewController {
     // MARK: - Properties
     private let mainView = CalendarMainView()
     private let database: Database
-    private var dateCalculator: DateCalculator
+    private var dateCounter: DateCounter
     private var selectedTodayIndexPath: IndexPath?
     private var selectedDate: Date
     private var converter: DateConverter
     
     // MARK: - Initializer
-    init(database: Database) {
+    init(database: Database = FirebaseService.shared) {
         self.database = database
         selectedDate = Date()
         converter = DateConverter()
         converter.convert(date: selectedDate)
-        dateCalculator = DateCalculator(date: selectedDate)
+        dateCounter = DateCounter(month: converter.getMonth(), year: converter.getYear())
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -88,7 +88,7 @@ class CalendarViewController : UIViewController {
     @objc private func tapDoneButton() {
         selectedDate = mainView.getDatePickerValue()
         converter.convert(date: selectedDate)
-        dateCalculator = DateCalculator(date: selectedDate)
+        dateCounter = DateCounter(month: converter.getMonth(), year: converter.getYear())
         mainView.nameOfMonth = converter.getMonthName(from: selectedDate)
         mainView.reloadCollectionView()
         mainView.hideDatePicker()
@@ -105,16 +105,14 @@ extension CalendarViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Id.dateCellId, for: indexPath) as? DateCell else { return UICollectionViewCell() }
-        let date = dateCalculator.getDayString(at: indexPath.item)
+        let date = dateCounter.getDayString(at: indexPath.item)
         cell.dayLabel.text = date
-        cell.textColor = AppColor.darkGray
-        cell.hideSelectedCell()
-        cell.circleView.isHidden = true
-        if dateCalculator.isSelectedDate(at: indexPath.item) {
-            cell.showSelectedCell()
+        cell.configureCell()
+        if dateCounter.isTodayDate(at: indexPath.item) {
+            cell.isSelected = true
             selectedTodayIndexPath = indexPath
         }
-        if !dateCalculator.isInCurrentMonth(at: indexPath.item) {
+        if dateCounter.isNotInCurrentMonth(at: indexPath.item) {
             cell.textColor = AppColor.lightGray
         }
         return cell
@@ -126,20 +124,11 @@ extension CalendarViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let todayIndexPath = selectedTodayIndexPath {
             if let cell = collectionView.cellForItem(at: todayIndexPath) as? DateCell {
-                cell.hideSelectedCell()
+                cell.isSelected = false
             }
         }
-        if let cell = collectionView.cellForItem(at: indexPath) as? DateCell {
-            cell.showSelectedCell()
-            let newDate = dateCalculator.calculateDate(at: indexPath.item)
-            mainView.setDatePickerValue(date: newDate)
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? DateCell {
-            cell.hideSelectedCell()
-        }
+        let newDate = dateCounter.getDate(at: indexPath.item)
+        mainView.setDatePickerValue(date: newDate)
     }
 }
 
