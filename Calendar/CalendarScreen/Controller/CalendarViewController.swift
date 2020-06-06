@@ -96,7 +96,7 @@ class CalendarViewController : UIViewController {
 }
 
 // MARK: - UICollectionViewDataSource
-extension CalendarViewController : UICollectionViewDataSource {
+extension CalendarViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let numOfWeekdays = 7
         let numOfRows = 6
@@ -104,7 +104,9 @@ extension CalendarViewController : UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Id.dateCellId, for: indexPath) as? DateCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Id.dateCellId,
+                                                            for: indexPath) as? DateCell
+        else { return UICollectionViewCell() }
         let date = dateCounter.getDayString(at: indexPath.item)
         cell.dayLabel.text = date
         cell.configureCell()
@@ -120,7 +122,7 @@ extension CalendarViewController : UICollectionViewDataSource {
 }
 
 // MARK: - UICollectionViewDelegate
-extension CalendarViewController : UICollectionViewDelegate {
+extension CalendarViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let todayIndexPath = selectedTodayIndexPath {
             if let cell = collectionView.cellForItem(at: todayIndexPath) as? DateCell {
@@ -133,8 +135,10 @@ extension CalendarViewController : UICollectionViewDelegate {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension CalendarViewController : UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+extension CalendarViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfColumns: CGFloat = 7
         let cellSpacing: CGFloat = 2
         let collectionViewWidth = collectionView.frame.width
@@ -145,20 +149,23 @@ extension CalendarViewController : UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - UITableViewDataSource
-extension CalendarViewController : UITableViewDataSource {
+extension CalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //TODO: remove mock data
         return 30
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Id.scheduleCellId, for: indexPath) as! ScheduleCell
+        guard
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Id.scheduleCellId,
+            for: indexPath) as? ScheduleCell
+        else { return UITableViewCell() }
         return cell
     }
 }
 
 // MARK: - UITableViewDelegate
-extension CalendarViewController : UITableViewDelegate {
+extension CalendarViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
@@ -168,10 +175,9 @@ extension CalendarViewController : UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
-                    Constants.Id.sectionHeader) as! CustomHeaderView
+        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
+            Constants.Id.sectionHeader) as? CustomHeaderView
+        else { return UIView() }
         return view
     }
 }
-
-

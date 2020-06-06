@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol DatePickerTapGestureDelegate {
+protocol DatePickerTapGestureDelegate: class {
     func setDate(_ date: Date)
 }

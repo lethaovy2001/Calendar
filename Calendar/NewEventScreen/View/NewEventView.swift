@@ -8,26 +8,68 @@
 
 import UIKit
 
-final class NewEventView : UIView {
+final class NewEventView: UIView {
     // MARK: - Properties
     private let saveButton = RoundedButton(title: "Save", color: AppColor.green)
-    private let exitButton = IconButton(name: Constants.IconNames.exit, size: 20, color: AppColor.primaryColor)
+    private let exitButton = IconButton(
+        name: Constants.IconNames.exit,
+        size: 20,
+        color: AppColor.primaryColor
+    )
     private let titleTextField = CustomTextField(placeholder: "Add Title")
     private let scrollView = CustomScrollView()
     private let timeSectionLabel = SectionTitleLabel(title: "TIME")
-    private let startTitleLabel = CustomLabel(text: "Start", textColor: AppColor.darkGray, textSize: 18, textWeight: .bold)
-    private let startTime = CustomLabel(text: "date...", textColor: AppColor.gray, textSize: 18, textWeight: .regular)
-    private let endTitleLabel = CustomLabel(text: "End", textColor: AppColor.darkGray, textSize: 18, textWeight: .bold)
-    private let endTime = CustomLabel(text: "date...", textColor: AppColor.gray, textSize: 18, textWeight: .regular)
+    private let startTitleLabel = CustomLabel(
+        text: "Start",
+        textColor: AppColor.darkGray,
+        textSize: 18,
+        textWeight: .bold
+    )
+    private let startTime = CustomLabel(
+        text: "date...",
+        textColor: AppColor.gray,
+        textSize: 18,
+        textWeight: .regular
+    )
+    private let endTitleLabel = CustomLabel(
+        text: "End",
+        textColor: AppColor.darkGray,
+        textSize: 18,
+        textWeight: .bold
+    )
+    private let endTime = CustomLabel(
+        text: "date...",
+        textColor: AppColor.gray,
+        textSize: 18,
+        textWeight: .regular
+    )
     private let locationSectionLabel = SectionTitleLabel(title: "LOCATION")
     private let locationTextField = CustomTextField(placeholder: "Add Location")
     private let noteSectionLabel = SectionTitleLabel(title: "NOTES")
     private let noteTextView = CustomTextView(text: "Notes...")
     private let settingsSectionLabel = SectionTitleLabel(title: "SETTINGS")
-    private let alarmButton = IconButton(name: Constants.IconNames.alarm, size: 24, color: AppColor.gray)
-    private let repeatButton = IconButton(name: Constants.IconNames.repeatName, size: 24, color: AppColor.gray)
-    private let addAlertButton = TextButton(title: "Add alert", textColor: AppColor.gray, textSize: 18, textWeight: .regular)
-    private let donotRepeatButton = TextButton(title: "Don't repeat", textColor: AppColor.gray, textSize: 18, textWeight: .regular)
+    private let alarmButton = IconButton(
+        name: Constants.IconNames.alarm,
+        size: 24,
+        color: AppColor.gray
+    )
+    private let repeatButton = IconButton(
+        name: Constants.IconNames.repeatName,
+        size: 24,
+        color: AppColor.gray
+    )
+    private let addAlertButton = TextButton(
+        title: "Add alert",
+        textColor: AppColor.gray,
+        textSize: 18,
+        textWeight: .regular
+    )
+    private let donotRepeatButton = TextButton(
+        title: "Don't repeat",
+        textColor: AppColor.gray,
+        textSize: 18,
+        textWeight: .regular
+    )
     private let datePickerView = DatePickerView()
     private let notificationView = CustomNotificationView()
     private let dateConverter = DateConverter()
@@ -99,6 +141,11 @@ final class NewEventView : UIView {
     }
     
     private func setupConstraints() {
+        constraintHeader()
+        constraintEventInput()
+    }
+    
+    private func constraintHeader() {
         NSLayoutConstraint.activate([
             saveButton.topAnchor.constraint(equalTo: topAnchor, constant: 60),
             saveButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
@@ -106,82 +153,29 @@ final class NewEventView : UIView {
         ])
         NSLayoutConstraint.activate([
             exitButton.centerYAnchor.constraint(equalTo: saveButton.centerYAnchor),
-            exitButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            exitButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 24)
         ])
         NSLayoutConstraint.activate([
             titleTextField.topAnchor.constraint(equalTo: saveButton.bottomAnchor, constant: 24),
             titleTextField.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
-            titleTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
+            titleTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: -24)
+        ])
+    }
+    
+    private func constraintEventInput() {
+        NSLayoutConstraint.activate([
+            saveButton.topAnchor.constraint(equalTo: topAnchor, constant: 60),
+            saveButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
+            saveButton.widthAnchor.constraint(equalToConstant: 80)
         ])
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: self.topAnchor, constant: 160),
-            scrollView.leftAnchor.constraint(equalTo: leftAnchor),
-            scrollView.rightAnchor.constraint(equalTo: rightAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            exitButton.centerYAnchor.constraint(equalTo: saveButton.centerYAnchor),
+            exitButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 24)
         ])
         NSLayoutConstraint.activate([
-            timeSectionLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 24),
-            timeSectionLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24),
-        ])
-        NSLayoutConstraint.activate([
-            startTitleLabel.topAnchor.constraint(equalTo: timeSectionLabel.bottomAnchor, constant: 12),
-            startTitleLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24),
-            startTitleLabel.widthAnchor.constraint(equalToConstant: 60),
-        ])
-        NSLayoutConstraint.activate([
-            endTitleLabel.topAnchor.constraint(equalTo: startTitleLabel.bottomAnchor, constant: 12),
-            endTitleLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24),
-            endTitleLabel.widthAnchor.constraint(equalToConstant: 60),
-        ])
-        NSLayoutConstraint.activate([
-            startTime.centerYAnchor.constraint(equalTo: startTitleLabel.centerYAnchor),
-            startTime.leftAnchor.constraint(equalTo: startTitleLabel.rightAnchor, constant: 12),
-        ])
-        NSLayoutConstraint.activate([
-            endTime.centerYAnchor.constraint(equalTo: endTitleLabel.centerYAnchor),
-            endTime.leftAnchor.constraint(equalTo: endTitleLabel.rightAnchor, constant: 12),
-        ])
-        NSLayoutConstraint.activate([
-            locationSectionLabel.topAnchor.constraint(equalTo: endTime.bottomAnchor, constant: 24),
-            locationSectionLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24),
-        ])
-        NSLayoutConstraint.activate([
-            locationTextField.topAnchor.constraint(equalTo: locationSectionLabel.bottomAnchor, constant: 12),
-            locationTextField.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
-            locationTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
-        ])
-        NSLayoutConstraint.activate([
-            noteSectionLabel.topAnchor.constraint(equalTo: locationTextField.bottomAnchor, constant: 24),
-            noteSectionLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24),
-        ])
-        NSLayoutConstraint.activate([
-            noteTextView.topAnchor.constraint(equalTo: noteSectionLabel.bottomAnchor, constant: 12),
-            noteTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
-            noteTextView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
-        ])
-        NSLayoutConstraint.activate([
-            settingsSectionLabel.topAnchor.constraint(equalTo: noteTextView.bottomAnchor, constant: 24),
-            settingsSectionLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24),
-        ])
-        NSLayoutConstraint.activate([
-            alarmButton.topAnchor.constraint(equalTo: settingsSectionLabel.bottomAnchor, constant: 12),
-            alarmButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
-            alarmButton.widthAnchor.constraint(equalToConstant: 40),
-        ])
-        NSLayoutConstraint.activate([
-            addAlertButton.centerYAnchor.constraint(equalTo: alarmButton.centerYAnchor),
-            addAlertButton.leftAnchor.constraint(equalTo: alarmButton.rightAnchor, constant: 12),
-        ])
-        NSLayoutConstraint.activate([
-            repeatButton.topAnchor.constraint(equalTo: alarmButton.bottomAnchor, constant: 12),
-            repeatButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
-            repeatButton.widthAnchor.constraint(equalToConstant: 40),
-        ])
-        NSLayoutConstraint.activate([
-            donotRepeatButton.centerYAnchor.constraint(equalTo: repeatButton.centerYAnchor),
-            donotRepeatButton.leftAnchor.constraint(equalTo: repeatButton.rightAnchor, constant: 12),
-            donotRepeatButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -24),
-            donotRepeatButton.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 12),
+            titleTextField.topAnchor.constraint(equalTo: saveButton.bottomAnchor, constant: 24),
+            titleTextField.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            titleTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: -24)
         ])
     }
     
@@ -200,7 +194,7 @@ final class NewEventView : UIView {
             datePickerView.topAnchor.constraint(equalTo: topAnchor),
             datePickerView.leftAnchor.constraint(equalTo: leftAnchor),
             datePickerView.rightAnchor.constraint(equalTo: rightAnchor),
-            datePickerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            datePickerView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         selectedTimeLabel = sender.view as? CustomLabel
     }
@@ -212,7 +206,7 @@ final class NewEventView : UIView {
             notificationView.topAnchor.constraint(equalTo: topAnchor),
             notificationView.leftAnchor.constraint(equalTo: leftAnchor),
             notificationView.rightAnchor.constraint(equalTo: rightAnchor),
-            notificationView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            notificationView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
@@ -237,7 +231,13 @@ final class NewEventView : UIView {
             let startTime = dateConverter.convertToDate(from: startTimeText),
             let endTime = dateConverter.convertToDate(from: endTimeText)
         else { return nil }
-        let event = Event(name: name, startTime: startTime, endTime: endTime, location: locationTextField.text, notes: noteTextView.text)
+        let event = Event(
+            name: name,
+            startTime: startTime,
+            endTime: endTime,
+            location: locationTextField.text,
+            notes: noteTextView.text
+        )
         return event
     }
     
@@ -247,7 +247,7 @@ final class NewEventView : UIView {
 }
 
 // MARK: DatePickerTapGestureDelegate
-extension NewEventView : DatePickerTapGestureDelegate {
+extension NewEventView: DatePickerTapGestureDelegate {
     func setDate(_ date: Date) {
         let dateString = dateConverter.getDateString(from: date)
         selectedTimeLabel?.setText(text: dateString)

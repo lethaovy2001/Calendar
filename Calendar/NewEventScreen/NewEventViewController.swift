@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class NewEventViewController : UIViewController {
+final class NewEventViewController: UIViewController {
     // MARK: - Properties
     private var database: Database
     private let mainView = NewEventView()

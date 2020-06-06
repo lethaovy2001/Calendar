@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class NotificationCell : UITableViewCell {
+final class NotificationCell: UITableViewCell {
     // MARK: - Properties
     private var selectedRadioButton = IconButton(
         name: Constants.IconNames.selectedRadio,

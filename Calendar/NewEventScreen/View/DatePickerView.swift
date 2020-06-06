@@ -19,7 +19,7 @@ final class DatePickerView : UIView {
     private let doneButton = TextButton(title: "DONE", color: AppColor.primaryColor)
     private let containerView = CustomContainerView(backgroundColor: .white, cornerRadius: 6, hasShadow: true)
     private let title = CustomLabel(text: "Start", textColor: AppColor.primaryColor, textSize: 30, textWeight: .bold)
-    var tapDelegate: DatePickerTapGestureDelegate?
+    weak var tapDelegate: DatePickerTapGestureDelegate?
     
     // MARK: - Initializer
     init() {
@@ -56,11 +56,11 @@ final class DatePickerView : UIView {
         ])
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 24),
-            title.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 36),
+            title.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 36)
         ])
         NSLayoutConstraint.activate([
             datePicker.topAnchor.constraint(equalTo: title.bottomAnchor),
-            datePicker.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            datePicker.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
         ])
         NSLayoutConstraint.activate([
             doneButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 16),
@@ -86,7 +86,4 @@ final class DatePickerView : UIView {
     func getDatePickerDate() -> Date {
         return datePicker.date
     }
-    
 }
-
-
