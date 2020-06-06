@@ -32,48 +32,7 @@ final class DailyTasksMainView : UIView {
         addSubviews()
         setupConstraints()
         addTimeLine()
-        getMockEvents()
         setupTimeLineConstraints()
-    }
-    
-    // TODO: Remove this function
-    private func getMockEvents() {
-        var components = DateComponents()
-        components.hour = 4
-        components.minute = 30
-        var start = Calendar.current.date(from: components) ?? Date()
-        components.hour = 6
-        components.minute = 0
-        var end = Calendar.current.date(from: components) ?? Date()
-        var event = Event(name: "Morning Exercise", startTime: start, endTime: end, location: "Social Science")
-        setEvent(event: event)
-        
-        components.hour = 2
-        components.minute = 30
-        start = Calendar.current.date(from: components) ?? Date()
-        components.hour = 3
-        components.minute = 0
-        end = Calendar.current.date(from: components) ?? Date()
-        event = Event(name: "Yoga Class", startTime: start, endTime: end, location: "Gym")
-        setEvent(event: event)
-        
-        components.hour = 7
-        components.minute = 45
-        start = Calendar.current.date(from: components) ?? Date()
-        components.hour = 8
-        components.minute = 30
-        end = Calendar.current.date(from: components) ?? Date()
-        event = Event(name: "Study Group", startTime: start, endTime: end, location: "Library")
-        setEvent(event: event)
-        
-        components.hour = 10
-        components.minute = 15
-        start = Calendar.current.date(from: components) ?? Date()
-        components.hour = 10
-        components.minute = 30
-        end = Calendar.current.date(from: components) ?? Date()
-        event = Event(name: "Meditate", startTime: start, endTime: end, location: "Home")
-        setEvent(event: event)
     }
     
     private func setupSelf() {
@@ -141,7 +100,7 @@ final class DailyTasksMainView : UIView {
         }
     }
     
-    private func setEvent(event: Event) {
+    func setEvent(event: Event) {
         let height = eventLayoutGenerator.estimateHeight(event: event)
         let offset = eventLayoutGenerator.estimateTopOffset(of: event.startTime)
         let eventView = EventView(height: height)
