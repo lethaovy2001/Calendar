@@ -140,9 +140,11 @@ final class NewEventView: UIView {
         bringSubviewToFront(titleTextField)
     }
     
+    // MARK: Constraints
     private func setupConstraints() {
         constraintHeader()
         constraintEventInput()
+        constraintSettings()
     }
     
     private func constraintHeader() {
@@ -164,18 +166,77 @@ final class NewEventView: UIView {
     
     private func constraintEventInput() {
         NSLayoutConstraint.activate([
-            saveButton.topAnchor.constraint(equalTo: topAnchor, constant: 60),
-            saveButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
-            saveButton.widthAnchor.constraint(equalToConstant: 80)
+            scrollView.topAnchor.constraint(equalTo: self.topAnchor, constant: 160),
+            scrollView.leftAnchor.constraint(equalTo: leftAnchor),
+            scrollView.rightAnchor.constraint(equalTo: rightAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         NSLayoutConstraint.activate([
-            exitButton.centerYAnchor.constraint(equalTo: saveButton.centerYAnchor),
-            exitButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 24)
+            timeSectionLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 24),
+            timeSectionLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24)
         ])
         NSLayoutConstraint.activate([
-            titleTextField.topAnchor.constraint(equalTo: saveButton.bottomAnchor, constant: 24),
-            titleTextField.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
-            titleTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: -24)
+            startTitleLabel.topAnchor.constraint(equalTo: timeSectionLabel.bottomAnchor, constant: 12),
+            startTitleLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24),
+            startTitleLabel.widthAnchor.constraint(equalToConstant: 60)
+        ])
+        NSLayoutConstraint.activate([
+            endTitleLabel.topAnchor.constraint(equalTo: startTitleLabel.bottomAnchor, constant: 12),
+            endTitleLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24),
+            endTitleLabel.widthAnchor.constraint(equalToConstant: 60)
+        ])
+        NSLayoutConstraint.activate([
+            startTime.centerYAnchor.constraint(equalTo: startTitleLabel.centerYAnchor),
+            startTime.leftAnchor.constraint(equalTo: startTitleLabel.rightAnchor, constant: 12)
+        ])
+        NSLayoutConstraint.activate([
+            endTime.centerYAnchor.constraint(equalTo: endTitleLabel.centerYAnchor),
+            endTime.leftAnchor.constraint(equalTo: endTitleLabel.rightAnchor, constant: 12)
+        ])
+        NSLayoutConstraint.activate([
+            locationSectionLabel.topAnchor.constraint(equalTo: endTime.bottomAnchor, constant: 24),
+            locationSectionLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24)
+        ])
+        NSLayoutConstraint.activate([
+            locationTextField.topAnchor.constraint(equalTo: locationSectionLabel.bottomAnchor, constant: 12),
+            locationTextField.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            locationTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: -24)
+        ])
+        NSLayoutConstraint.activate([
+            noteSectionLabel.topAnchor.constraint(equalTo: locationTextField.bottomAnchor, constant: 24),
+            noteSectionLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24)
+        ])
+        NSLayoutConstraint.activate([
+            noteTextView.topAnchor.constraint(equalTo: noteSectionLabel.bottomAnchor, constant: 12),
+            noteTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            noteTextView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24)
+        ])
+    }
+    
+    private func constraintSettings() {
+        NSLayoutConstraint.activate([
+            settingsSectionLabel.topAnchor.constraint(equalTo: noteTextView.bottomAnchor, constant: 24),
+            settingsSectionLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24)
+        ])
+        NSLayoutConstraint.activate([
+            alarmButton.topAnchor.constraint(equalTo: settingsSectionLabel.bottomAnchor, constant: 12),
+            alarmButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            alarmButton.widthAnchor.constraint(equalToConstant: 40)
+        ])
+        NSLayoutConstraint.activate([
+            addAlertButton.centerYAnchor.constraint(equalTo: alarmButton.centerYAnchor),
+            addAlertButton.leftAnchor.constraint(equalTo: alarmButton.rightAnchor, constant: 12)
+        ])
+        NSLayoutConstraint.activate([
+            repeatButton.topAnchor.constraint(equalTo: alarmButton.bottomAnchor, constant: 12),
+            repeatButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            repeatButton.widthAnchor.constraint(equalToConstant: 40)
+        ])
+        NSLayoutConstraint.activate([
+            donotRepeatButton.centerYAnchor.constraint(equalTo: repeatButton.centerYAnchor),
+            donotRepeatButton.leftAnchor.constraint(equalTo: repeatButton.rightAnchor, constant: 12),
+            donotRepeatButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -24),
+            donotRepeatButton.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 12)
         ])
     }
     
@@ -209,7 +270,10 @@ final class NewEventView: UIView {
             notificationView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
-    
+}
+
+// MARK: - Public Methods
+extension NewEventView {
     // MARK: Selectors
     func setExitButtonSelector(target: UIViewController, selector: Selector) {
         exitButton.addTarget(target, action: selector, for: .touchUpInside)
@@ -223,6 +287,7 @@ final class NewEventView: UIView {
         notificationView.registerCellId(viewController: viewController)
     }
     
+    // MARK: Getters
     func getSavedEvent() -> Event? {
         guard
             let name = titleTextField.text,

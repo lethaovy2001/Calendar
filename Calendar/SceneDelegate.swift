@@ -22,7 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // (see `application:configurationForConnectingSceneSession` instead).
         //guard let _ = (scene as? UIWindowScene) else { return }
         
-        window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
+        let rootViewController = NewEventViewController()
+        window?.rootViewController = UINavigationController(rootViewController: rootViewController)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
