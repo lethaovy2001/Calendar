@@ -8,10 +8,15 @@
 
 import UIKit
 
-final class DailyTasksMainView : UIView {
+final class DailyTasksMainView: UIView {
     // MARK: - Properties
     private let scrollView = CustomScrollView()
-    private let headerLabel = CustomLabel(text: "Daily Tasks", textColor: AppColor.darkGray, textSize: 36, textWeight: .heavy)
+    private let headerLabel = CustomLabel(
+        text: "Daily Tasks",
+        textColor: AppColor.darkGray,
+        textSize: 36,
+        textWeight: .heavy
+    )
     private let timeLine = RunningTimeLineView()
     private let bottomBar = BottomBarView()
     private let eventLayoutGenerator = EventLayoutGenerator()
@@ -51,13 +56,13 @@ final class DailyTasksMainView : UIView {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 80),
-            headerLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 36),
+            headerLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 36)
         ])
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: self.topAnchor, constant: 160),
             scrollView.leftAnchor.constraint(equalTo: self.leftAnchor),
             scrollView.rightAnchor.constraint(equalTo: self.rightAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
         NSLayoutConstraint.activate([
             bottomBar.heightAnchor.constraint(equalToConstant: 90),
@@ -78,7 +83,11 @@ final class DailyTasksMainView : UIView {
         ])
         self.layoutIfNeeded()
         self.scrollView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
-        Timer.scheduledTimer(timeInterval: Constants.Time.minutesInAHour, target: self, selector: #selector(animateTimeLineRunning), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: Constants.Time.minutesInAHour,
+                             target: self,
+                             selector: #selector(animateTimeLineRunning),
+                             userInfo: nil,
+                             repeats: true)
     }
     
     private func addTimeLine() {
@@ -109,7 +118,7 @@ final class DailyTasksMainView : UIView {
             eventView.heightAnchor.constraint(equalToConstant: height),
             eventView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: offset),
             eventView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
-            eventView.leftAnchor.constraint(equalTo: leftAnchor, constant: 106),
+            eventView.leftAnchor.constraint(equalTo: leftAnchor, constant: 106)
         ])
     }
     
@@ -133,4 +142,3 @@ final class DailyTasksMainView : UIView {
         }, completion: nil)
     }
 }
-

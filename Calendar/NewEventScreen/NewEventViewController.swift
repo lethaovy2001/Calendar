@@ -113,7 +113,7 @@ extension NewEventViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: Constants.Id.notificationCellId,
+            withIdentifier: Constants.CellId.notificationCellId,
             for: indexPath) as? NotificationCell
         else {
             return UITableViewCell()

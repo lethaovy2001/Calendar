@@ -113,7 +113,7 @@ final class CustomNotificationView: UIView {
     func registerCellId(viewController: NewEventViewController) {
         tableView.dataSource = viewController
         tableView.delegate = viewController
-        tableView.register(NotificationCell.self, forCellReuseIdentifier: Constants.Id.notificationCellId)
+        tableView.register(NotificationCell.self, forCellReuseIdentifier: Constants.CellId.notificationCellId)
     }
     
     func getTimeTextField() -> Int? {

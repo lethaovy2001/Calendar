@@ -8,9 +8,13 @@
 
 import UIKit
 
-final class CustomHeaderView : UITableViewHeaderFooterView {
+final class CustomHeaderView: UITableViewHeaderFooterView {
     // MARK: - Properties
-    private let title = CustomLabel(text: "TITLE", textColor: AppColor.darkGray.withAlphaComponent(0.7), textSize: 14, textWeight: .bold)
+    private let title = CustomLabel(
+        text: "TITLE",
+        textColor: AppColor.darkGray.withAlphaComponent(0.7),
+        textSize: 14,
+        textWeight: .bold)
     private let dividerLine = CustomContainerView(backgroundColor: AppColor.dividerColor)
     
     // MARK: - Initializer
@@ -39,13 +43,13 @@ final class CustomHeaderView : UITableViewHeaderFooterView {
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: contentView.topAnchor),
             title.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-            title.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            title.rightAnchor.constraint(equalTo: contentView.rightAnchor)
         ])
         NSLayoutConstraint.activate([
             dividerLine.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 6),
             dividerLine.heightAnchor.constraint(equalToConstant: 2),
             dividerLine.leftAnchor.constraint(equalTo: title.leftAnchor),
-            dividerLine.rightAnchor.constraint(equalTo: title.rightAnchor),
+            dividerLine.rightAnchor.constraint(equalTo: title.rightAnchor)
         ])
     }
     

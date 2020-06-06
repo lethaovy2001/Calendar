@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarViewController : UIViewController {
+class CalendarViewController: UIViewController {
     // MARK: - Properties
     private let mainView = CalendarMainView()
     private let database: Database
@@ -105,7 +105,7 @@ extension CalendarViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Id.dateCellId,
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.CellId.dateCellId,
                                                             for: indexPath) as? DateCell
         else {
             return UICollectionViewCell()
@@ -160,7 +160,7 @@ extension CalendarViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Id.scheduleCellId,
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellId.scheduleCellId,
             for: indexPath) as? ScheduleCell
         else { return UITableViewCell() }
         return cell
@@ -179,7 +179,7 @@ extension CalendarViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
-            Constants.Id.sectionHeader) as? CustomHeaderView
+            Constants.CellId.sectionHeader) as? CustomHeaderView
         else { return UIView() }
         return view
     }

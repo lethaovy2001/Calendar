@@ -8,10 +8,13 @@
 
 import UIKit
 
-final class RunningTimeLineView : UIView {
+final class RunningTimeLineView: UIView {
     // MARK: - Properties
     private let lineView = CustomContainerView(backgroundColor: AppColor.primaryColor)
-    private let circleView = CustomContainerView(backgroundColor: AppColor.primaryColor, cornerRadius: 4)
+    private let circleView = CustomContainerView(
+        backgroundColor: AppColor.primaryColor,
+        cornerRadius: 4
+    )
     
     // MARK: - Initializer
     init() {
@@ -50,5 +53,3 @@ final class RunningTimeLineView : UIView {
         ])
     }
 }
-
-

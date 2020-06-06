@@ -27,4 +27,3 @@ struct EventLayoutGenerator {
         return (hour + minute) * Constants.spaceBetweenTimeDivider + 10
     }
 }
-

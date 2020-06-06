@@ -8,14 +8,41 @@
 
 import UIKit
 
-final class ScheduleCell : UITableViewCell {
+final class ScheduleCell: UITableViewCell {
     // MARK: - Properties
-    private let verticalBar = CustomContainerView(backgroundColor: AppColor.pastelPurple, cornerRadius: 2)
-    private let startTime = CustomLabel(text: "Start", textColor: AppColor.darkGray, textSize: 16, textWeight: .bold)
-    private let endTime = CustomLabel(text: "End", textColor: AppColor.gray, textSize: 16, textWeight: .bold)
-    private let titleLabel = CustomLabel(text: "Title", textColor: AppColor.darkGray, textSize: 18, textWeight: .bold)
-    private var iconButton = IconButton(name: "mappin", size: 18, color: AppColor.gray)
-    private var locationLabel = CustomLabel(text: "Location", textColor: AppColor.gray, textSize: 16, textWeight: .semibold)
+    private let verticalBar = CustomContainerView(
+        backgroundColor: AppColor.pastelPurple,
+        cornerRadius: 2
+    )
+    private let startTime = CustomLabel(
+        text: "Start",
+        textColor: AppColor.darkGray,
+        textSize: 16,
+        textWeight: .bold
+    )
+    private let endTime = CustomLabel(
+        text: "End",
+        textColor: AppColor.gray,
+        textSize: 16,
+        textWeight: .bold
+    )
+    private let titleLabel = CustomLabel(
+        text: "Title",
+        textColor: AppColor.darkGray,
+        textSize: 18,
+        textWeight: .bold
+    )
+    private var iconButton = IconButton(
+        name: "mappin",
+        size: 18,
+        color: AppColor.gray
+    )
+    private var locationLabel = CustomLabel(
+        text: "Location",
+        textColor: AppColor.gray,
+        textSize: 16,
+        textWeight: .semibold
+    )
     private let eventColors = AppColor.eventColors
     
     // MARK: - Initializer
@@ -54,7 +81,7 @@ final class ScheduleCell : UITableViewCell {
             verticalBar.topAnchor.constraint(equalTo: topAnchor, constant: 6),
             verticalBar.leftAnchor.constraint(equalTo: leftAnchor),
             verticalBar.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6),
-            verticalBar.widthAnchor.constraint(equalToConstant: 4),
+            verticalBar.widthAnchor.constraint(equalToConstant: 4)
         ])
         NSLayoutConstraint.activate([
             startTime.topAnchor.constraint(equalTo: verticalBar.topAnchor),
@@ -68,18 +95,18 @@ final class ScheduleCell : UITableViewCell {
         ])
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: verticalBar.topAnchor),
-            titleLabel.leftAnchor.constraint(equalTo: startTime.rightAnchor, constant: 24),
+            titleLabel.leftAnchor.constraint(equalTo: startTime.rightAnchor, constant: 24)
         ])
         NSLayoutConstraint.activate([
             iconButton.heightAnchor.constraint(equalToConstant: 20),
             iconButton.widthAnchor.constraint(equalToConstant: 20),
             iconButton.leftAnchor.constraint(equalTo: startTime.rightAnchor, constant: 24),
-            iconButton.bottomAnchor.constraint(equalTo: endTime.bottomAnchor),
+            iconButton.bottomAnchor.constraint(equalTo: endTime.bottomAnchor)
         ])
         NSLayoutConstraint.activate([
             locationLabel.leftAnchor.constraint(equalTo: iconButton.rightAnchor, constant: 4),
             locationLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
-            locationLabel.centerYAnchor.constraint(equalTo: iconButton.centerYAnchor),
+            locationLabel.centerYAnchor.constraint(equalTo: iconButton.centerYAnchor)
         ])
     }
     

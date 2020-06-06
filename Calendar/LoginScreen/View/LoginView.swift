@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class LoginView : UIView {
+final class LoginView: UIView {
     // MARK: - Properties
     private let appLogo = AppLogoView()
     private let emailInputView = InputView(type: .email)

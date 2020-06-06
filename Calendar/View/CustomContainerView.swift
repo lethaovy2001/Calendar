@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomContainerView : UIView {
+class CustomContainerView: UIView {
     // MARK: - Initializer
     init() {
         super.init(frame: .zero)

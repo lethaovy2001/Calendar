@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class InputView : CustomContainerView {
+final class InputView: CustomContainerView {
     // MARK: - Properties
     private var iconButton: IconButton!
     private var textField: CustomTextField!
@@ -54,13 +54,13 @@ final class InputView : CustomContainerView {
             iconButton.heightAnchor.constraint(equalToConstant: 30),
             iconButton.widthAnchor.constraint(equalToConstant: 30),
             iconButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
-            iconButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            iconButton.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
         NSLayoutConstraint.activate([
             textField.leftAnchor.constraint(equalTo: iconButton.rightAnchor),
             textField.topAnchor.constraint(equalTo: topAnchor),
             textField.rightAnchor.constraint(equalTo: rightAnchor),
-            textField.bottomAnchor.constraint(equalTo: bottomAnchor),
+            textField.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     

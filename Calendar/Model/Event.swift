@@ -16,7 +16,12 @@ struct Event {
     let notes: String?
     var alertTime: Date?
     
-    init(name: String, startTime: Date, endTime: Date, location: String? = nil, notes: String? = nil, alertTime: Date? = nil) {
+    init(name: String,
+         startTime: Date,
+         endTime: Date,
+         location: String? = nil,
+         notes: String? = nil,
+         alertTime: Date? = nil) {
         self.name = name
         self.startTime = startTime
         self.endTime = endTime
@@ -26,7 +31,7 @@ struct Event {
     }
     
     func getEventDictionary() -> [String: Any] {
-        var dictionary: [String : Any] = [
+        var dictionary: [String: Any] = [
             "name": name,
             "startTime": startTime,
             "endTime": endTime

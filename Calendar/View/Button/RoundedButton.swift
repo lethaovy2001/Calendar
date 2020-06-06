@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RoundedButton : UIButton {
+class RoundedButton: UIButton {
     // MARK: - Initializer
     init(title: String, color: UIColor) {
         super.init(frame: .zero)

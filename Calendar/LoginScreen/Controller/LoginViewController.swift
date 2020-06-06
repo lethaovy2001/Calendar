@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class LoginViewController : UIViewController {
+final class LoginViewController: UIViewController {
     // MARK: - Properties
     private let loginView = LoginView()
     private let database: Database
@@ -61,8 +61,8 @@ final class LoginViewController : UIViewController {
     
     private func checkIfAlreadyLogin() {
         if auth.getCurrentUserId() != nil {
-            let vc = DailyTaskViewController(database: self.database)
-            self.navigationController?.pushViewController(vc, animated: true)
+            let viewController = DailyTaskViewController(database: self.database)
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     
@@ -77,8 +77,8 @@ final class LoginViewController : UIViewController {
                 self.loginView.showError(message: error.localizedDescription)
                 return
             }
-            let vc = DailyTaskViewController(database: self.database)
-            self.navigationController?.pushViewController(vc, animated: true)
+            let viewController = DailyTaskViewController(database: self.database)
+            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     

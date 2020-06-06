@@ -8,10 +8,18 @@
 
 import UIKit
 
-final class TimeDividerView : UIView {
+final class TimeDividerView: UIView {
     // MARK: - Properties
-    private let timeLabel = CustomLabel(text: "N/A", textColor: AppColor.timeColor, textSize: 16, textWeight: .bold)
-    private let dividerLine = CustomContainerView(backgroundColor: AppColor.dividerColor, cornerRadius: 0)
+    private let timeLabel = CustomLabel(
+        text: "N/A",
+        textColor: AppColor.timeColor,
+        textSize: 16,
+        textWeight: .bold
+    )
+    private let dividerLine = CustomContainerView(
+        backgroundColor: AppColor.dividerColor,
+        cornerRadius: 0
+    )
     
     // MARK: - Initializer
     // TODO: write unit test
@@ -45,7 +53,7 @@ final class TimeDividerView : UIView {
         NSLayoutConstraint.activate([
             timeLabel.topAnchor.constraint(equalTo: topAnchor),
             timeLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            timeLabel.leftAnchor.constraint(equalTo: leftAnchor),
+            timeLabel.leftAnchor.constraint(equalTo: leftAnchor)
         ])
         NSLayoutConstraint.activate([
             dividerLine.centerYAnchor.constraint(equalTo: timeLabel.centerYAnchor),

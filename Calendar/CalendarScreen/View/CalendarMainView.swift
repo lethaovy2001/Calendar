@@ -8,12 +8,25 @@
 
 import UIKit
 
-final class CalendarMainView : UIView {
+final class CalendarMainView: UIView {
     // MARK: - Properties
     private let backButton = BackButton()
-    private let addButton = IconButton(name: Constants.IconNames.add, size: 24, color: AppColor.primaryColor)
-    private let searchButton = IconButton(name: Constants.IconNames.search, size: 24, color: AppColor.primaryColor)
-    private let monthLabel = CustomLabel(text: "Month", textColor: AppColor.darkGray, textSize: 30, textWeight: .bold)
+    private let addButton = IconButton(
+        name: Constants.IconNames.add,
+        size: 24,
+        color: AppColor.primaryColor
+    )
+    private let searchButton = IconButton(
+        name: Constants.IconNames.search,
+        size: 24,
+        color: AppColor.primaryColor
+    )
+    private let monthLabel = CustomLabel(
+        text: "Month",
+        textColor: AppColor.darkGray,
+        textSize: 30,
+        textWeight: .bold
+    )
     private let weekDaysView = WeekDaysView()
     private let doneButton = TextButton(title: "DONE", color: AppColor.primaryColor)
     private let datePicker: UIDatePicker = {
@@ -22,19 +35,23 @@ final class CalendarMainView : UIView {
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         return datePicker
     }()
-    private let containerView = CustomContainerView(backgroundColor: .white, cornerRadius: 10, hasShadow: true)
+    private let containerView = CustomContainerView(
+        backgroundColor: .white,
+        cornerRadius: 10,
+        hasShadow: true
+    )
     private var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        cv.alwaysBounceVertical = true
-        cv.isScrollEnabled = true
-        cv.allowsSelection = true
-        cv.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-        cv.keyboardDismissMode = .onDrag
-        cv.backgroundColor = .white
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        return cv
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.alwaysBounceVertical = true
+        collectionView.isScrollEnabled = true
+        collectionView.allowsSelection = true
+        collectionView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        collectionView.keyboardDismissMode = .onDrag
+        collectionView.backgroundColor = .white
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
     }()
     var nameOfMonth: String? {
         didSet {
@@ -93,13 +110,13 @@ final class CalendarMainView : UIView {
         ])
         NSLayoutConstraint.activate([
             monthLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
-            monthLabel.leftAnchor.constraint(equalTo: backButton.rightAnchor, constant: 24),
+            monthLabel.leftAnchor.constraint(equalTo: backButton.rightAnchor, constant: 24)
         ])
         NSLayoutConstraint.activate([
             addButton.centerYAnchor.constraint(equalTo: backButton.centerYAnchor, constant: -2),
             addButton.widthAnchor.constraint(equalToConstant: 30),
             addButton.heightAnchor.constraint(equalToConstant: 30),
-            addButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -36),
+            addButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -36)
         ])
         NSLayoutConstraint.activate([
             searchButton.rightAnchor.constraint(equalTo: addButton.leftAnchor, constant: -24),
@@ -111,19 +128,19 @@ final class CalendarMainView : UIView {
             weekDaysView.topAnchor.constraint(equalTo: monthLabel.bottomAnchor, constant: 12),
             weekDaysView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
             weekDaysView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
-            weekDaysView.heightAnchor.constraint(equalToConstant: 40),
+            weekDaysView.heightAnchor.constraint(equalToConstant: 40)
         ])
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: weekDaysView.bottomAnchor),
             collectionView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
             collectionView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
-            collectionView.heightAnchor.constraint(equalToConstant: 300),
+            collectionView.heightAnchor.constraint(equalToConstant: 300)
         ])
         NSLayoutConstraint.activate([
             slideView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
             slideView.leftAnchor.constraint(equalTo: leftAnchor),
             slideView.rightAnchor.constraint(equalTo: rightAnchor),
-            slideView.heightAnchor.constraint(equalTo: heightAnchor, constant: -100),
+            slideView.heightAnchor.constraint(equalTo: heightAnchor, constant: -100)
         ])
     }
     
@@ -157,7 +174,7 @@ final class CalendarMainView : UIView {
         ])
         NSLayoutConstraint.activate([
             datePicker.topAnchor.constraint(equalTo: containerView.topAnchor),
-            datePicker.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            datePicker.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
         ])
         NSLayoutConstraint.activate([
             doneButton.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: -12),
@@ -186,7 +203,7 @@ final class CalendarMainView : UIView {
         slideView.registerTableViewCellId(viewController: viewController)
         collectionView.delegate = viewController
         collectionView.dataSource = viewController
-        collectionView.register(DateCell.self, forCellWithReuseIdentifier: Constants.Id.dateCellId)
+        collectionView.register(DateCell.self, forCellWithReuseIdentifier: Constants.CellId.dateCellId)
     }
     
     func reloadCollectionView() {

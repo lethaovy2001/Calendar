@@ -23,13 +23,13 @@ class FirebaseService {
 }
 
 // MARK: - Authentication
-extension FirebaseService : Authentication {
+extension FirebaseService: Authentication {
     func getCurrentUserId() -> String? {
         return auth.currentUser?.uid
     }
     
-    func createUser(email: String, password: String, completion: @escaping (Error?) -> ()) {
-        auth.createUser(withEmail: email, password: password) { authResult, error in
+    func createUser(email: String, password: String, completion: @escaping (Error?) -> Void) {
+        auth.createUser(withEmail: email, password: password) { _, error in
             if error != nil {
                 completion(error)
                 return
@@ -44,8 +44,8 @@ extension FirebaseService : Authentication {
         }
     }
     
-    func logUserIn(withEmail email: String, password: String, completion: @escaping (Error?) -> ()) {
-        auth.signIn(withEmail: email, password: password) { (authResult, error) in
+    func logUserIn(withEmail email: String, password: String, completion: @escaping (Error?) -> Void) {
+        auth.signIn(withEmail: email, password: password) { (_, error) in
             if error != nil {
                 completion(error)
                 return
@@ -65,7 +65,7 @@ extension FirebaseService : Authentication {
 }
 
 // MARK: - Database
-extension FirebaseService : Database {
+extension FirebaseService: Database {
     func save(event: Event) {
         guard let uid = getCurrentUserId() else { return }
         let eventDictionary = event.getEventDictionary()

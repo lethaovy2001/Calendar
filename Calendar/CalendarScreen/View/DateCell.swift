@@ -8,9 +8,14 @@
 
 import UIKit
 
-final class DateCell : UICollectionViewCell {
+final class DateCell: UICollectionViewCell {
     // MARK: - Properties
-    let dayLabel = CustomLabel(text: "N/A", textColor: AppColor.darkGray, textSize: 22, textWeight: .bold)
+    let dayLabel = CustomLabel(
+        text: "N/A",
+        textColor: AppColor.darkGray,
+        textSize: 22,
+        textWeight: .bold
+    )
     let circleView = CircleView()
     var textColor: UIColor? {
         didSet {
@@ -41,7 +46,7 @@ final class DateCell : UICollectionViewCell {
         }
     }
     
-    //MARK: - Setup
+    // MARK: - Setup
     private func setup() {
         addSubviews()
         setupConstraints()
@@ -56,13 +61,13 @@ final class DateCell : UICollectionViewCell {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             dayLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            dayLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            dayLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
         NSLayoutConstraint.activate([
             circleView.topAnchor.constraint(equalTo: topAnchor),
             circleView.leftAnchor.constraint(equalTo: leftAnchor),
             circleView.rightAnchor.constraint(equalTo: rightAnchor),
-            circleView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            circleView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     

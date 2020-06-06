@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SlideView : CustomContainerView {
+final class SlideView: CustomContainerView {
     // MARK: - Properties
     private let topBarView = CustomContainerView(
         backgroundColor: AppColor.gray.withAlphaComponent(0.5),
@@ -59,9 +59,9 @@ final class SlideView : CustomContainerView {
     }
     
     func registerTableViewCellId(viewController: CalendarViewController) {
-        tableView.register(ScheduleCell.self, forCellReuseIdentifier: Constants.Id.scheduleCellId)
+        tableView.register(ScheduleCell.self, forCellReuseIdentifier: Constants.CellId.scheduleCellId)
         tableView.delegate = viewController
         tableView.dataSource = viewController
-        tableView.register(CustomHeaderView.self, forHeaderFooterViewReuseIdentifier: Constants.Id.sectionHeader)
+        tableView.register(CustomHeaderView.self, forHeaderFooterViewReuseIdentifier: Constants.CellId.sectionHeader)
     }
 }

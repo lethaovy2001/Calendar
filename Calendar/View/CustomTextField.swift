@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomTextField : UITextField {
+class CustomTextField: UITextField {
     // MARK: - Properties
     private let padding = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
     

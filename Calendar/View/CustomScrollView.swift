@@ -19,4 +19,3 @@ final class CustomScrollView: UIScrollView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

@@ -37,7 +37,7 @@ struct Constants {
         static let unselectedRadio = "circle"
     }
     
-    struct Id {
+    struct CellId {
         static let dateCellId = "dateCellId"
         static let scheduleCellId = "scheduleCellId"
         static let notificationCellId = "notificationCellId"

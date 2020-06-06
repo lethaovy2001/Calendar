@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DailyTaskViewController : UIViewController {
+class DailyTaskViewController: UIViewController {
     // MARK: - Properties
     private let dailyTaskView = DailyTasksMainView()
     private let modelController = DailyTasksModelController()

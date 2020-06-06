@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CircleView : CustomContainerView {
+final class CircleView: CustomContainerView {
     override init() {
         super.init(backgroundColor: AppColor.primaryColor)
         self.addShadow()

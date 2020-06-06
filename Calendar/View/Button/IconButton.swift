@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IconButton : UIButton {
+class IconButton: UIButton {
     // MARK: - Initializer
     init(name: String, size: CGFloat, color: UIColor) {
         super.init(frame: .zero)

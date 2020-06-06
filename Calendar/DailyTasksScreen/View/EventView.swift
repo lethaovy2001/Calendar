@@ -8,11 +8,25 @@
 
 import UIKit
 
-final class EventView : CustomContainerView {
+final class EventView: CustomContainerView {
     // MARK: - Properties
-    private let titleLabel = CustomLabel(text: "Title", textColor: AppColor.darkGray, textSize: 18, textWeight: .bold)
-    private var iconButton = IconButton(name: "mappin", size: 18, color: AppColor.gray)
-    private var locationLabel = CustomLabel(text: "Location", textColor: AppColor.gray, textSize: 16, textWeight: .semibold)
+    private let titleLabel = CustomLabel(
+        text: "Title",
+        textColor: AppColor.darkGray,
+        textSize: 18,
+        textWeight: .bold
+    )
+    private var iconButton = IconButton(
+        name: "mappin",
+        size: 18,
+        color: AppColor.gray
+    )
+    private var locationLabel = CustomLabel(
+        text: "Location",
+        textColor: AppColor.gray,
+        textSize: 16,
+        textWeight: .semibold
+    )
     private var eventColors = AppColor.eventColors
     private var height: CGFloat
     
@@ -67,7 +81,7 @@ final class EventView : CustomContainerView {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
-            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
+            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -24)
         ])
         setupLocationConstraint()
     }
@@ -76,7 +90,7 @@ final class EventView : CustomContainerView {
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
-            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
+            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -24)
         ])
         iconButton.removeFromSuperview()
         locationLabel.removeFromSuperview()
@@ -86,7 +100,7 @@ final class EventView : CustomContainerView {
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -12),
             titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
-            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
+            titleLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -24)
         ])
         setupLocationConstraint()
     }
@@ -96,12 +110,12 @@ final class EventView : CustomContainerView {
             iconButton.heightAnchor.constraint(equalToConstant: 20),
             iconButton.widthAnchor.constraint(equalToConstant: 20),
             iconButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
-            iconButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
+            iconButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4)
         ])
         NSLayoutConstraint.activate([
             locationLabel.leftAnchor.constraint(equalTo: iconButton.rightAnchor, constant: 4),
             locationLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
-            locationLabel.centerYAnchor.constraint(equalTo: iconButton.centerYAnchor),
+            locationLabel.centerYAnchor.constraint(equalTo: iconButton.centerYAnchor)
         ])
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class WeekDaysView : UIStackView {
+final class WeekDaysView: UIStackView {
     // MARK: - Properties
     private let weekdays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
     
@@ -28,7 +28,12 @@ final class WeekDaysView : UIStackView {
     // MARK: - Setup
     private func setupSubviews() {
         for day in weekdays {
-            let label = CustomLabel(text: day, textColor: AppColor.darkGray.withAlphaComponent(0.6), textSize: 16, textWeight: .bold)
+            let label = CustomLabel(
+                text: day,
+                textColor: AppColor.darkGray.withAlphaComponent(0.6),
+                textSize: 16,
+                textWeight: .bold
+            )
             label.textAlignment = .center
             self.addArrangedSubview(label)
         }

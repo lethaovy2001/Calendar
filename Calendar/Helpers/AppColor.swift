@@ -40,5 +40,3 @@ struct AppColor {
         pastelYellow
     ]
 }
-
-

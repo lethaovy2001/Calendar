@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class BackButton : IconButton {
+final class BackButton: IconButton {
     // MARK: - Initializer
     init() {
         super.init(name: Constants.IconNames.back, size: 24, color: AppColor.primaryColor)

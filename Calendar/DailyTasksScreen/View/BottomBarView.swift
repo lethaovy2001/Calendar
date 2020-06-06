@@ -8,11 +8,23 @@
 
 import UIKit
 
-final class BottomBarView : CustomContainerView {
+final class BottomBarView: CustomContainerView {
     // MARK: - Properties
-    private let calendarButton = IconButton(name: Constants.IconNames.calendar, size: 24, color: AppColor.gray)
-    private let profileButton = IconButton(name: Constants.IconNames.profile, size: 24, color: AppColor.gray)
-    private let addButton = IconButton(name: Constants.IconNames.add, size: 24, color: AppColor.primaryColor)
+    private let calendarButton = IconButton(
+        name: Constants.IconNames.calendar,
+        size: 24,
+        color: AppColor.gray
+    )
+    private let profileButton = IconButton(
+        name: Constants.IconNames.profile,
+        size: 24,
+        color: AppColor.gray
+    )
+    private let addButton = IconButton(
+        name: Constants.IconNames.add,
+        size: 24,
+        color: AppColor.primaryColor
+    )
     
     // MARK: - Initializer
     override init() {

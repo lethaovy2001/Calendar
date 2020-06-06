@@ -9,7 +9,7 @@
 import UIKit
 import Lottie
 
-final class AppLogoView : UIView {
+final class AppLogoView: UIView {
     // MARK: - Properties
     private var appLogo: AnimationView = {
         let animationView = AnimationView(name: Constants.AnimationNames.app)
@@ -52,7 +52,7 @@ final class AppLogoView : UIView {
             appLogo.leftAnchor.constraint(equalTo: leftAnchor),
             appLogo.rightAnchor.constraint(equalTo: rightAnchor),
             appLogo.topAnchor.constraint(equalTo: topAnchor),
-            appLogo.bottomAnchor.constraint(equalTo: bottomAnchor),
+            appLogo.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

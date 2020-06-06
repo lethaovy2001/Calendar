@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class TextButton : UIButton {
+final class TextButton: UIButton {
     // MARK: - Initializer
     init(title: String) {
         super.init(frame: .zero)

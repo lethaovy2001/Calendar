@@ -38,5 +38,3 @@ class DateCalculatorTests: XCTestCase {
         XCTAssertEqual(result2, date2)
     }
 }
-
-
