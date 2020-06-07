@@ -25,7 +25,7 @@ final class NewEventView: UIView {
         textSize: 18,
         textWeight: .bold
     )
-    private let startTime = CustomLabel(
+    private let startTimeLabel = CustomLabel(
         text: "date...",
         textColor: AppColor.gray,
         textSize: 18,
@@ -37,7 +37,7 @@ final class NewEventView: UIView {
         textSize: 18,
         textWeight: .bold
     )
-    private let endTime = CustomLabel(
+    private let endTimeLabel = CustomLabel(
         text: "date...",
         textColor: AppColor.gray,
         textSize: 18,
@@ -103,14 +103,14 @@ final class NewEventView: UIView {
         let startTimeTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         startTimeTapGesture.numberOfTapsRequired = 1
         startTimeTapGesture.numberOfTouchesRequired = 1
-        startTime.isUserInteractionEnabled = true
-        startTime.addGestureRecognizer(startTimeTapGesture)
+        startTimeLabel.isUserInteractionEnabled = true
+        startTimeLabel.addGestureRecognizer(startTimeTapGesture)
         
         let endTimeTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         endTimeTapGesture.numberOfTapsRequired = 1
         endTimeTapGesture.numberOfTouchesRequired = 1
-        endTime.isUserInteractionEnabled = true
-        endTime.addGestureRecognizer(endTimeTapGesture)
+        endTimeLabel.isUserInteractionEnabled = true
+        endTimeLabel.addGestureRecognizer(endTimeTapGesture)
         
         let addAlertTapGesture = UITapGestureRecognizer(target: self, action: #selector(showNotificationView))
         addAlertTapGesture.numberOfTapsRequired = 1
@@ -126,8 +126,8 @@ final class NewEventView: UIView {
         scrollView.addSubview(timeSectionLabel)
         scrollView.addSubview(startTitleLabel)
         scrollView.addSubview(endTitleLabel)
-        scrollView.addSubview(startTime)
-        scrollView.addSubview(endTime)
+        scrollView.addSubview(startTimeLabel)
+        scrollView.addSubview(endTimeLabel)
         scrollView.addSubview(locationSectionLabel)
         scrollView.addSubview(locationTextField)
         scrollView.addSubview(noteSectionLabel)
@@ -186,15 +186,15 @@ final class NewEventView: UIView {
             endTitleLabel.widthAnchor.constraint(equalToConstant: 60)
         ])
         NSLayoutConstraint.activate([
-            startTime.centerYAnchor.constraint(equalTo: startTitleLabel.centerYAnchor),
-            startTime.leftAnchor.constraint(equalTo: startTitleLabel.rightAnchor, constant: 12)
+            startTimeLabel.centerYAnchor.constraint(equalTo: startTitleLabel.centerYAnchor),
+            startTimeLabel.leftAnchor.constraint(equalTo: startTitleLabel.rightAnchor, constant: 12)
         ])
         NSLayoutConstraint.activate([
-            endTime.centerYAnchor.constraint(equalTo: endTitleLabel.centerYAnchor),
-            endTime.leftAnchor.constraint(equalTo: endTitleLabel.rightAnchor, constant: 12)
+            endTimeLabel.centerYAnchor.constraint(equalTo: endTitleLabel.centerYAnchor),
+            endTimeLabel.leftAnchor.constraint(equalTo: endTitleLabel.rightAnchor, constant: 12)
         ])
         NSLayoutConstraint.activate([
-            locationSectionLabel.topAnchor.constraint(equalTo: endTime.bottomAnchor, constant: 24),
+            locationSectionLabel.topAnchor.constraint(equalTo: endTimeLabel.bottomAnchor, constant: 24),
             locationSectionLabel.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 24)
         ])
         NSLayoutConstraint.activate([
@@ -243,8 +243,8 @@ final class NewEventView: UIView {
     private func setupStartAndEndTime() {
         let date = datePickerView.getDatePickerDate()
         let dateString = dateConverter.getDateString(from: date)
-        startTime.setText(text: dateString)
-        endTime.setText(text: dateString)
+        startTimeLabel.setText(text: dateString)
+        endTimeLabel.setText(text: dateString)
     }
     
     // MARK: Actions
@@ -291,8 +291,8 @@ extension NewEventView {
     func getSavedEvent() -> Event? {
         guard
             let name = titleTextField.text,
-            let startTimeText = startTime.text,
-            let endTimeText = endTime.text,
+            let startTimeText = startTimeLabel.text,
+            let endTimeText = endTimeLabel.text,
             let startTime = dateConverter.convertToDate(from: startTimeText),
             let endTime = dateConverter.convertToDate(from: endTimeText)
         else { return nil }
