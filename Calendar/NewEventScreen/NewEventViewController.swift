@@ -113,5 +113,6 @@ extension NewEventViewController: UITableViewDelegate {
         case .month:
             selectedComponent = .month
         }
+        mainView.updateAlert(option: alertOptions[indexPath.row])
     }
 }

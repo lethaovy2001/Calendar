@@ -274,6 +274,29 @@ final class NewEventView: UIView {
 
 // MARK: - Public Methods
 extension NewEventView {
+    func updateAlert(option: AlertOptions) {
+        let optionString: String?
+        switch option {
+        case .minute:
+            optionString = "Minute"
+        case .hour:
+            optionString = "Hour"
+        case .day:
+            optionString = "Day"
+        case .month:
+            optionString = "Month"
+        }
+        guard
+            let component = optionString,
+            let time = notificationView.getTimeTextField()
+        else { return }
+        if time > 1 {
+            addAlertButton.setTitle("\(time) \(component)s before", for: .normal)
+        } else {
+            addAlertButton.setTitle("\(time) \(component) before", for: .normal)
+        }
+    }
+    
     // MARK: Selectors
     func setExitButtonSelector(target: UIViewController, selector: Selector) {
         exitButton.addTarget(target, action: selector, for: .touchUpInside)
