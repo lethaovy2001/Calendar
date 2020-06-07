@@ -297,8 +297,8 @@ extension NewEventView {
             let name = titleTextField.text,
             let startTimeText = startTime.text,
             let endTimeText = endTime.text,
-            let startTimeDate = dateConverter.convertToDate(from: startTimeText),
-            let endTimeDate = dateConverter.convertToDate(from: endTimeText)
+            let startTime = dateConverter.convertToDate(from: startTimeText),
+            let endTime = dateConverter.convertToDate(from: endTimeText)
         else {
             return nil
         }
@@ -308,8 +308,8 @@ extension NewEventView {
         }
         let event = Event(
             name: name,
-            startTime: startTimeDate,
-            endTime: endTimeDate,
+            startTime: startTime,
+            endTime: endTime,
             location: locationTextField.text,
             notes: noteTextView.text
         )
