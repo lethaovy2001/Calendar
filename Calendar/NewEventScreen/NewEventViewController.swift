@@ -14,6 +14,7 @@ final class NewEventViewController: UIViewController {
     private let mainView = NewEventView()
     private var alertOptions = Constants.setAlertOptions
     private var selectedComponent: Calendar.Component?
+    weak var textViewEditingDelegate: TextViewEditingDelegate?
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -113,5 +114,20 @@ extension NewEventViewController: UITableViewDelegate {
         case .month:
             selectedComponent = .month
         }
+    }
+}
+
+// MARK: - UITextViewDelegate
+extension NewEventViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        textViewEditingDelegate?.didChange()
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textViewEditingDelegate?.beginEditing()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textViewEditingDelegate?.endEditing()
     }
 }
