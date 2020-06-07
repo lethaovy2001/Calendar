@@ -48,4 +48,4 @@ class CustomTextField: UITextField {
     }
 }
 
-extension CustomTextField: Shaking {}
+extension CustomTextField: Shaking, Borderable {}

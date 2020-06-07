@@ -29,3 +29,5 @@ class CustomLabel: UILabel {
         self.text = text
     }
 }
+
+extension CustomLabel: Shaking {}

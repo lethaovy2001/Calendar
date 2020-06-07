@@ -302,8 +302,14 @@ extension NewEventView {
         else { return nil }
         if name == "" {
             titleTextField.shake()
+            titleTextField.showWarningBorder()
+            return nil
+        } else if startTime > endTime {
+            startTimeLabel.textColor = UIColor.red
+            startTimeLabel.shake()
             return nil
         }
+        
         let event = Event(
             name: name,
             startTime: startTime,
