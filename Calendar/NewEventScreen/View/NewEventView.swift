@@ -278,6 +278,8 @@ extension NewEventView {
     func addDelegate(viewController: NewEventViewController) {
         datePickerView.tapDelegate = self
         viewController.keyboardDelegate = self
+        viewController.textViewEditingDelegate = self
+        noteTextView.delegate = viewController
     }
     
     func addTapGesture(target: UIViewController, selector: Selector) {
@@ -344,5 +346,20 @@ extension NewEventView: KeyboardDelegate {
     
     func hideKeyboard() {
         doNotRepeatButtonBottomAnchor?.constant = 0
+    }
+}
+
+// MARK: - TextViewEditingDelegate
+extension NewEventView: TextViewEditingDelegate {
+    func didChange() {
+        noteTextView.calculateBestHeight()
+    }
+    
+    func beginEditing() {
+        noteTextView.beginEditing()
+    }
+    
+    func endEditing() {
+        noteTextView.endEditing()
     }
 }
