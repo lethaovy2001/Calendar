@@ -30,12 +30,14 @@ final class DateConverter {
     }
     
     func convertToDate(from text: String) -> Date? {
-        dateFormatter.dateFormat = "HH:mm a MMM dd, yyyy"
+        dateFormatter.dateFormat = "h:mm a MMM dd, yyyy"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         return dateFormatter.date(from: text)
     }
     
     func getDateString(from date: Date) -> String {
-        dateFormatter.dateFormat = "HH:mm a MMM dd, yyyy"
+        dateFormatter.dateFormat = "h:mm a MMM dd, yyyy"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         return dateFormatter.string(from: date)
     }
     
