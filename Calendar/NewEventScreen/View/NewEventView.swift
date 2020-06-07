@@ -307,7 +307,7 @@ extension NewEventView {
             let endTimeText = endTimeLabel.text,
             let startTime = dateConverter.convertToDate(from: startTimeText),
             let endTime = dateConverter.convertToDate(from: endTimeText)
-            else { return nil }
+        else { return nil }
         let event = Event(
             name: name,
             startTime: startTime,
