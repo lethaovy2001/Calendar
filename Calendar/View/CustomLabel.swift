@@ -30,4 +30,9 @@ class CustomLabel: UILabel {
     }
 }
 
-extension CustomLabel: Shaking {}
+extension CustomLabel: Shaking {
+    func showWarningAnimation() {
+        self.shake()
+        self.textColor = UIColor.red
+    }
+}

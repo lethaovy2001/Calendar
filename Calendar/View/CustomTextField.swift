@@ -48,4 +48,9 @@ class CustomTextField: UITextField {
     }
 }
 
-extension CustomTextField: Shaking, Borderable {}
+extension CustomTextField: Shaking, Borderable {
+    func showWarningAnimation() {
+        shake()
+        addBorder(with: UIColor.red)
+    }
+}

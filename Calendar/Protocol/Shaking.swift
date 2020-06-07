@@ -25,12 +25,12 @@ extension Shaking where Self: UIView {
 }
 
 protocol Borderable {
-    func showWarningBorder()
+    func addBorder(with color: UIColor)
 }
 
 extension Borderable where Self: UIView {
-    func showWarningBorder() {
-        self.layer.borderColor = UIColor.red.cgColor
+    func addBorder(with color: UIColor) {
+        self.layer.borderColor = color.cgColor
         self.layer.borderWidth = 1
     }
 }
