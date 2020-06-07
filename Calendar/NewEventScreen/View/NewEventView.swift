@@ -274,10 +274,6 @@ final class NewEventView: UIView {
 
 // MARK: - Public Methods
 extension NewEventView {
-    func showShakeAnimation() {
-        titleTextField.shake()
-    }
-    
     // MARK: Selectors
     func setExitButtonSelector(target: UIViewController, selector: Selector) {
         exitButton.addTarget(target, action: selector, for: .touchUpInside)
