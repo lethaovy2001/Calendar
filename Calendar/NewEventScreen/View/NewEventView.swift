@@ -339,10 +339,16 @@ extension NewEventView: DatePickerTapGestureDelegate {
 // MARK: - KeyboardDelegate
 extension NewEventView: KeyboardDelegate {
     func showKeyboard() {
-        doNotRepeatButtonBottomAnchor?.constant = -self.keyboardFrame.height + 20
+        UIView.animate(withDuration: 0.6) {
+            self.doNotRepeatButtonBottomAnchor?.constant = -self.keyboardFrame.height + 20
+            self.layoutIfNeeded()
+        }
     }
     
     func hideKeyboard() {
-        doNotRepeatButtonBottomAnchor?.constant = 0
+        UIView.animate(withDuration: 0.6) {
+            self.doNotRepeatButtonBottomAnchor?.constant = 0
+            self.layoutIfNeeded()
+        }
     }
 }
