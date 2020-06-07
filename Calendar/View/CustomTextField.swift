@@ -47,3 +47,5 @@ class CustomTextField: UITextField {
       return bounds.inset(by: padding)
     }
 }
+
+extension CustomTextField: Shaking {}

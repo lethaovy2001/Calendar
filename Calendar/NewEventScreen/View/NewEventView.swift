@@ -274,6 +274,10 @@ final class NewEventView: UIView {
 
 // MARK: - Public Methods
 extension NewEventView {
+    func showShakeAnimation() {
+        titleTextField.shake()
+    }
+    
     // MARK: Selectors
     func setExitButtonSelector(target: UIViewController, selector: Selector) {
         exitButton.addTarget(target, action: selector, for: .touchUpInside)
@@ -293,13 +297,19 @@ extension NewEventView {
             let name = titleTextField.text,
             let startTimeText = startTime.text,
             let endTimeText = endTime.text,
-            let startTime = dateConverter.convertToDate(from: startTimeText),
-            let endTime = dateConverter.convertToDate(from: endTimeText)
-        else { return nil }
+            let startTimeDate = dateConverter.convertToDate(from: startTimeText),
+            let endTimeDate = dateConverter.convertToDate(from: endTimeText)
+        else {
+            return nil
+        }
+        if name == "" {
+            titleTextField.shake()
+            return nil
+        }
         let event = Event(
             name: name,
-            startTime: startTime,
-            endTime: endTime,
+            startTime: startTimeDate,
+            endTime: endTimeDate,
             location: locationTextField.text,
             notes: noteTextView.text
         )
