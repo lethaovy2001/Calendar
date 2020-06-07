@@ -59,6 +59,7 @@
 		38CE8622248842D90006D609 /* CustomNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8621248842D90006D609 /* CustomNotificationView.swift */; };
 		38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8623248845BB0006D609 /* NotificationCell.swift */; };
 		38EAF127248C202300A2FE8C /* DailyTasksModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */; };
+		38EAF12E248CCB0C00A2FE8C /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
@@ -142,6 +143,7 @@
 		38CE8621248842D90006D609 /* CustomNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotificationView.swift; sourceTree = "<group>"; };
 		38CE8623248845BB0006D609 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksModelController.swift; sourceTree = "<group>"; };
+		38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				3888D1C9247B7C5C009B3966 /* Authentication.swift */,
 				3888D1CB247B7C92009B3966 /* Database.swift */,
 				38CE861D248579780006D609 /* DatePickerTapGestureDelegate.swift */,
+				38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 				3888D1CC247B7C92009B3966 /* Database.swift in Sources */,
 				38CE8618248443BB0006D609 /* DatePickerView.swift in Sources */,
 				3888D2512483EE7B009B3966 /* NewEventView.swift in Sources */,
+				38EAF12E248CCB0C00A2FE8C /* KeyboardDelegate.swift in Sources */,
 				3888D1FE247E1E80009B3966 /* EventView.swift in Sources */,
 				38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */,
 				3888D225247F90B0009B3966 /* CalendarViewController.swift in Sources */,
