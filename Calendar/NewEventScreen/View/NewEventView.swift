@@ -283,7 +283,8 @@ extension NewEventView {
     func addTapGesture(target: UIViewController, selector: Selector) {
         let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: target, action: selector)
         self.addGestureRecognizer(tapRecognizer)
-        self.isUserInteractionEnabled = true
+        scrollView.isUserInteractionEnabled = true
+        tapRecognizer.cancelsTouchesInView = false
     }
     
     // MARK: Selectors
