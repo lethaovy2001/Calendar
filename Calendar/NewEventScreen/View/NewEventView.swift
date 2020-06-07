@@ -287,6 +287,10 @@ extension NewEventView {
         notificationView.registerCellId(viewController: viewController)
     }
     
+    func saveButtonTappedAnimation() {
+        saveButton.pulsate()
+    }
+    
     // MARK: Getters
     func getSavedEvent() -> Event? {
         guard
