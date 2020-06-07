@@ -13,7 +13,7 @@ final class NewEventViewController: UIViewController {
     private var database: Database
     private let mainView = NewEventView()
     private var alertOptions = Constants.setAlertOptions
-    private var selectedOption: AlertOptions?
+    private var selectedComponent: Calendar.Component?
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -64,45 +64,22 @@ final class NewEventViewController: UIViewController {
     
     // MARK: Actions
     @objc private func pressedSaveButton() {
-        guard let savedEvent = mainView.getSavedEvent() else {
+        guard let event = mainView.getSavedEvent() else {
             return
         }
-        guard let time = mainView.getTimeSetForAlert() else {
-            database.save(event: savedEvent)
+        guard
+            let time = mainView.getTimeSetForAlert(),
+            let component = selectedComponent,
+            let alertDate = Calendar.current.date(byAdding: component,
+                                                  value: -time,
+                                                  to: event.startTime)
+        else {
+            database.save(event: event)
             return
         }
-        let startDate = savedEvent.startTime
-        let alertDate: Date?
-        var event = savedEvent
-        switch selectedOption {
-        case .minute:
-            alertDate = Calendar.current.date(
-                byAdding: .minute,
-                value: -time,
-                to: startDate)
-            event.alertTime = alertDate
-        case .hour:
-            alertDate = Calendar.current.date(
-                byAdding: .hour,
-                value: -time,
-                to: startDate)
-            event.alertTime = alertDate
-        case .day:
-            alertDate = Calendar.current.date(
-                byAdding: .day,
-                value: time,
-                to: startDate)
-            event.alertTime = alertDate
-        case .month:
-            alertDate = Calendar.current.date(
-                byAdding: .weekOfYear,
-                value: time,
-                to: startDate)
-            event.alertTime = alertDate
-        case .none:
-            break
-        }
-        database.save(event: event)
+        var updateEvent = event
+        updateEvent.alertTime = alertDate
+        database.save(event: updateEvent)
     }
 }
 
@@ -126,6 +103,15 @@ extension NewEventViewController: UITableViewDataSource {
 
 extension NewEventViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedOption = alertOptions[indexPath.row]
+        switch alertOptions[indexPath.row] {
+        case .minute:
+            selectedComponent = .minute
+        case .hour:
+            selectedComponent = .hour
+        case .day:
+            selectedComponent = .day
+        case .month:
+            selectedComponent = .month
+        }
     }
 }
