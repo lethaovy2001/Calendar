@@ -299,9 +299,7 @@ extension NewEventView {
             let endTimeText = endTime.text,
             let startTime = dateConverter.convertToDate(from: startTimeText),
             let endTime = dateConverter.convertToDate(from: endTimeText)
-        else {
-            return nil
-        }
+        else { return nil }
         if name == "" {
             titleTextField.shake()
             return nil
