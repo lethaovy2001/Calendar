@@ -46,7 +46,6 @@ final class TimeContainerView: UIView {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = .yellow
-        
         setup()
     }
     
