@@ -16,6 +16,30 @@ final class TimeContainerView: UIView {
         cornerRadius: 20,
         hasShadow: true
     )
+    private let startTitleLabel = CustomLabel(
+        text: "Start",
+        textColor: AppColor.darkGray,
+        textSize: 18,
+        textWeight: .bold
+    )
+    private let startTimeLabel = CustomLabel(
+        text: "date...",
+        textColor: AppColor.gray,
+        textSize: 18,
+        textWeight: .regular
+    )
+    private let endTitleLabel = CustomLabel(
+        text: "End",
+        textColor: AppColor.darkGray,
+        textSize: 18,
+        textWeight: .bold
+    )
+    private let endTimeLabel = CustomLabel(
+        text: "date...",
+        textColor: AppColor.gray,
+        textSize: 18,
+        textWeight: .regular
+    )
     
     // MARK: - Initializer
     init() {
@@ -40,6 +64,10 @@ final class TimeContainerView: UIView {
         addSubview(containerView)
         addSubview(bookRing)
         bringSubviewToFront(bookRing)
+        containerView.addSubview(startTitleLabel)
+        containerView.addSubview(endTitleLabel)
+        containerView.addSubview(startTimeLabel)
+        containerView.addSubview(endTimeLabel)
     }
     
     private func setupConstraints() {
@@ -53,7 +81,25 @@ final class TimeContainerView: UIView {
             containerView.topAnchor.constraint(equalTo: bookRing.bottomAnchor, constant: -12),
             containerView.leftAnchor.constraint(equalTo: leftAnchor),
             containerView.rightAnchor.constraint(equalTo: rightAnchor),
-            containerView.heightAnchor.constraint(equalToConstant: 100)
+            containerView.bottomAnchor.constraint(equalTo: endTimeLabel.bottomAnchor, constant: 24)
+        ])
+        NSLayoutConstraint.activate([
+            startTitleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 36),
+            startTitleLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 24),
+            startTitleLabel.widthAnchor.constraint(equalToConstant: 60)
+        ])
+        NSLayoutConstraint.activate([
+            endTitleLabel.topAnchor.constraint(equalTo: startTitleLabel.bottomAnchor, constant: 12),
+            endTitleLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 24),
+            endTitleLabel.widthAnchor.constraint(equalToConstant: 60)
+        ])
+        NSLayoutConstraint.activate([
+            startTimeLabel.centerYAnchor.constraint(equalTo: startTitleLabel.centerYAnchor),
+            startTimeLabel.leftAnchor.constraint(equalTo: startTitleLabel.rightAnchor, constant: 12)
+        ])
+        NSLayoutConstraint.activate([
+            endTimeLabel.centerYAnchor.constraint(equalTo: endTitleLabel.centerYAnchor),
+            endTimeLabel.leftAnchor.constraint(equalTo: endTitleLabel.rightAnchor, constant: 12)
         ])
     }
 }
