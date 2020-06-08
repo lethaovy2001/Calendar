@@ -278,13 +278,13 @@ extension NewEventView {
         let optionString: String?
         switch option {
         case .minute:
-            optionString = "Minute"
+            optionString = "minute"
         case .hour:
-            optionString = "Hour"
+            optionString = "hour"
         case .day:
-            optionString = "Day"
+            optionString = "day"
         case .month:
-            optionString = "Month"
+            optionString = "week"
         }
         guard
             let component = optionString,
