@@ -16,9 +16,9 @@ final class SettingsContainerView: UIView {
         cornerRadius: 20,
         hasShadow: true
     )
-    private let notificationIcon: IconButton
-    private let notificationLabel = CustomLabel(
-        text: "Repeat weekly on Mon, Tue, Wed, Thu",
+    private let iconButton: IconButton
+    private let label = CustomLabel(
+        text: "N/A",
         textColor: AppColor.gray,
         textSize: 18,
         textWeight: .regular
@@ -26,11 +26,12 @@ final class SettingsContainerView: UIView {
     
     // MARK: - Initializer
     init(iconName: String) {
-        notificationIcon = IconButton(
+        iconButton = IconButton(
             name: iconName,
             size: 18,
             color: AppColor.darkGray
         )
+        label.numberOfLines = 2
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         setup()
@@ -44,39 +45,37 @@ final class SettingsContainerView: UIView {
     private func setup() {
         addSubviews()
         setupConstraints()
-        notificationLabel.numberOfLines = 2
     }
     
     private func addSubviews() {
         addSubview(containerView)
         addSubview(bookRing)
         bringSubviewToFront(bookRing)
-        containerView.addSubview(notificationIcon)
-        containerView.addSubview(notificationLabel)
+        containerView.addSubview(iconButton)
+        containerView.addSubview(label)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             bookRing.topAnchor.constraint(equalTo: topAnchor),
             bookRing.rightAnchor.constraint(equalTo: rightAnchor),
-            bookRing.leftAnchor.constraint(equalTo: leftAnchor),
-            bookRing.heightAnchor.constraint(equalToConstant: 40)
+            bookRing.leftAnchor.constraint(equalTo: leftAnchor)
         ])
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: bookRing.bottomAnchor, constant: -12),
+            containerView.topAnchor.constraint(equalTo: bookRing.bottomAnchor, constant: -30),
             containerView.leftAnchor.constraint(equalTo: leftAnchor),
             containerView.rightAnchor.constraint(equalTo: rightAnchor),
-            containerView.bottomAnchor.constraint(equalTo: notificationLabel.bottomAnchor, constant: 24)
+            containerView.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: 24)
         ])
         NSLayoutConstraint.activate([
-            notificationIcon.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 36),
-            notificationIcon.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 36),
-            notificationIcon.widthAnchor.constraint(equalToConstant: 36)
+            iconButton.topAnchor.constraint(equalTo: bookRing.bottomAnchor, constant: 12),
+            iconButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 36),
+            iconButton.widthAnchor.constraint(equalToConstant: 36)
         ])
         NSLayoutConstraint.activate([
-            notificationLabel.centerYAnchor.constraint(equalTo: notificationIcon.centerYAnchor),
-            notificationLabel.leftAnchor.constraint(equalTo: notificationIcon.rightAnchor, constant: 24),
-            notificationLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -24)
+            label.centerYAnchor.constraint(equalTo: iconButton.centerYAnchor),
+            label.leftAnchor.constraint(equalTo: iconButton.rightAnchor, constant: 24),
+            label.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -24)
         ])
         NSLayoutConstraint.activate([
             self.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
