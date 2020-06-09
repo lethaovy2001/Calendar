@@ -1,5 +1,5 @@
 //
-//  NotificationContainerView.swift
+//  SettingsContainerView.swift
 //  Calendar
 //
 //  Created by Vy Le on 6/8/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class NotificationContainerView: UIView {
+final class SettingsContainerView: UIView {
     // MARK: - Properties
     private let bookRing = BookRingView()
     private let containerView = CustomContainerView(
@@ -16,20 +16,21 @@ final class NotificationContainerView: UIView {
         cornerRadius: 20,
         hasShadow: true
     )
-    private let notificationIcon = IconButton(
-        name: Constants.IconNames.alarm,
-        size: 20,
-        color: AppColor.darkGray
-    )
+    private let notificationIcon: IconButton
     private let notificationLabel = CustomLabel(
-        text: "N/A",
+        text: "Repeat weekly on Mon, Tue, Wed, Thu",
         textColor: AppColor.gray,
         textSize: 18,
         textWeight: .regular
     )
     
     // MARK: - Initializer
-    init() {
+    init(iconName: String) {
+        notificationIcon = IconButton(
+            name: iconName,
+            size: 18,
+            color: AppColor.darkGray
+        )
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         setup()
@@ -43,6 +44,7 @@ final class NotificationContainerView: UIView {
     private func setup() {
         addSubviews()
         setupConstraints()
+        notificationLabel.numberOfLines = 2
     }
     
     private func addSubviews() {
@@ -75,6 +77,9 @@ final class NotificationContainerView: UIView {
             notificationLabel.centerYAnchor.constraint(equalTo: notificationIcon.centerYAnchor),
             notificationLabel.leftAnchor.constraint(equalTo: notificationIcon.rightAnchor, constant: 24),
             notificationLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -24)
+        ])
+        NSLayoutConstraint.activate([
+            self.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
     }
 }
