@@ -72,17 +72,16 @@ final class TimeContainerView: UIView {
         NSLayoutConstraint.activate([
             bookRing.topAnchor.constraint(equalTo: topAnchor),
             bookRing.rightAnchor.constraint(equalTo: rightAnchor),
-            bookRing.leftAnchor.constraint(equalTo: leftAnchor),
-            bookRing.heightAnchor.constraint(equalToConstant: 40)
+            bookRing.leftAnchor.constraint(equalTo: leftAnchor)
         ])
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: bookRing.bottomAnchor, constant: -12),
+            containerView.topAnchor.constraint(equalTo: bookRing.bottomAnchor, constant: -30),
             containerView.leftAnchor.constraint(equalTo: leftAnchor),
             containerView.rightAnchor.constraint(equalTo: rightAnchor),
             containerView.bottomAnchor.constraint(equalTo: endTimeLabel.bottomAnchor, constant: 24)
         ])
         NSLayoutConstraint.activate([
-            startTitleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 36),
+            startTitleLabel.topAnchor.constraint(equalTo: bookRing.bottomAnchor, constant: 12),
             startTitleLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 24),
             startTitleLabel.widthAnchor.constraint(equalToConstant: 60)
         ])
