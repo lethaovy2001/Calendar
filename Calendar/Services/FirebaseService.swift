@@ -76,7 +76,7 @@ extension FirebaseService: Database {
         database.collection("users").document(uid).collection("events").addDocument(data: eventDictionary)
     }
     
-    func loadEventsForToday(completion: @escaping ([Event]) -> Void) {
+    func loadTodayEvents(completion: @escaping ([Event]) -> Void) {
         guard
             let uid = getCurrentUserId(),
             let start = calendar.date(from: components),

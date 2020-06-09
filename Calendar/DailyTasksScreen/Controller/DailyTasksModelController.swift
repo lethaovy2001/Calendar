@@ -20,7 +20,7 @@ final class DailyTasksModelController {
     }
 
     func loadEvents(completion: @escaping () -> Void) {
-        database.loadEventsForToday { events in
+        database.loadTodayEvents { events in
             self.events = events
             completion()
         }

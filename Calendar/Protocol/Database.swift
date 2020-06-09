@@ -8,5 +8,5 @@
 
 protocol Database {
     func save(event: Event)
-    func loadEventsForToday(completion: @escaping ([Event]) -> Void)
+    func loadTodayEvents(completion: @escaping ([Event]) -> Void)
 }
