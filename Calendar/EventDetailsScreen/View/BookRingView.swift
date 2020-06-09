@@ -86,5 +86,9 @@ final class BookRingView: UIView {
             rightCircleView.widthAnchor.constraint(equalToConstant: 24),
             rightCircleView.heightAnchor.constraint(equalToConstant: 24)
         ])
+        NSLayoutConstraint.activate([
+            self.bottomAnchor.constraint(equalTo: leftCircleView.bottomAnchor),
+            self.topAnchor.constraint(equalTo: leftVerticalBar.topAnchor)
+        ])
     }
 }
