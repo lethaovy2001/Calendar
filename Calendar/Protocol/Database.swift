@@ -8,4 +8,5 @@
 
 protocol Database {
     func save(event: Event)
+    func loadEventsForToday(completion: @escaping ([Event]) -> Void)
 }

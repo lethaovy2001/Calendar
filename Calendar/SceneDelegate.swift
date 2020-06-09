@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // (see `application:configurationForConnectingSceneSession` instead).
         //guard let _ = (scene as? UIWindowScene) else { return }
         
-        let rootViewController = NewEventViewController()
+        let rootViewController = DailyTaskViewController()
         window?.rootViewController = UINavigationController(rootViewController: rootViewController)
     }
 
