@@ -76,8 +76,5 @@ final class NotificationContainerView: UIView {
             notificationLabel.leftAnchor.constraint(equalTo: notificationIcon.rightAnchor, constant: 24),
             notificationLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -24)
         ])
-        NSLayoutConstraint.activate([
-            self.bottomAnchor.constraint(equalTo: notificationLabel.bottomAnchor, constant: 24)
-        ])
     }
 }
