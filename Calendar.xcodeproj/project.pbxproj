@@ -13,6 +13,7 @@
 		38285B1C248E078E00AAEE03 /* TitleContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B1B248E078E00AAEE03 /* TitleContainerView.swift */; };
 		38285B1E248E194900AAEE03 /* TimeContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B1D248E194900AAEE03 /* TimeContainerView.swift */; };
 		38285B22248EDDE000AAEE03 /* BookRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B21248EDDE000AAEE03 /* BookRingView.swift */; };
+		38285B24248F09EE00AAEE03 /* NotificationContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B23248F09EE00AAEE03 /* NotificationContainerView.swift */; };
 		3888D1A2247AF88E009B3966 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A1247AF88E009B3966 /* LoginViewController.swift */; };
 		3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A6247B0F28009B3966 /* LoginView.swift */; };
 		3888D1A9247B1091009B3966 /* AppLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A8247B1091009B3966 /* AppLogoView.swift */; };
@@ -99,6 +100,7 @@
 		38285B1B248E078E00AAEE03 /* TitleContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleContainerView.swift; sourceTree = "<group>"; };
 		38285B1D248E194900AAEE03 /* TimeContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeContainerView.swift; sourceTree = "<group>"; };
 		38285B21248EDDE000AAEE03 /* BookRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRingView.swift; sourceTree = "<group>"; };
+		38285B23248F09EE00AAEE03 /* NotificationContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationContainerView.swift; sourceTree = "<group>"; };
 		3888D1A1247AF88E009B3966 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3888D1A6247B0F28009B3966 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3888D1A8247B1091009B3966 /* AppLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoView.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				38285B1B248E078E00AAEE03 /* TitleContainerView.swift */,
 				38285B1D248E194900AAEE03 /* TimeContainerView.swift */,
 				38285B21248EDDE000AAEE03 /* BookRingView.swift */,
+				38285B23248F09EE00AAEE03 /* NotificationContainerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -799,6 +802,7 @@
 				3888D23224806D30009B3966 /* WeekDaysView.swift in Sources */,
 				3888D1C0247B501F009B3966 /* CustomLabel.swift in Sources */,
 				3888D1DE247C48B7009B3966 /* DailyTasksMainView.swift in Sources */,
+				38285B24248F09EE00AAEE03 /* NotificationContainerView.swift in Sources */,
 				3888D1CF247B7DF8009B3966 /* FirebaseService.swift in Sources */,
 				3888D2362480B597009B3966 /* DateCounter.swift in Sources */,
 				38285B22248EDDE000AAEE03 /* BookRingView.swift in Sources */,
