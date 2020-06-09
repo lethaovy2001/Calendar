@@ -37,6 +37,7 @@ struct Constants {
         static let unselectedRadio = "circle"
         static let edit = "pencil"
         static let more = "ellipsis"
+        static let notes = "doc.plaintext"
     }
     
     struct CellId {
