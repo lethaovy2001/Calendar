@@ -23,7 +23,7 @@ final class TimeContainerView: UIView {
         textWeight: .bold
     )
     private let startTimeLabel = CustomLabel(
-        text: "date...",
+        text: "N/A",
         textColor: AppColor.gray,
         textSize: 18,
         textWeight: .regular
@@ -35,7 +35,7 @@ final class TimeContainerView: UIView {
         textWeight: .bold
     )
     private let endTimeLabel = CustomLabel(
-        text: "date...",
+        text: "N/A",
         textColor: AppColor.gray,
         textSize: 18,
         textWeight: .regular
@@ -45,7 +45,6 @@ final class TimeContainerView: UIView {
     init() {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = .yellow
         setup()
     }
     
