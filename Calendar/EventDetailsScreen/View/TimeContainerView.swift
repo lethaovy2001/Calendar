@@ -98,5 +98,8 @@ final class TimeContainerView: UIView {
             endTimeLabel.centerYAnchor.constraint(equalTo: endTitleLabel.centerYAnchor),
             endTimeLabel.leftAnchor.constraint(equalTo: endTitleLabel.rightAnchor, constant: 12)
         ])
+        NSLayoutConstraint.activate([
+            self.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        ])
     }
 }
