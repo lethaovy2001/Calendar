@@ -72,6 +72,7 @@ final class NewEventViewController: UIViewController {
     
     // MARK: Actions
     @objc private func pressedSaveButton() {
+        mainView.saveButtonTappedAnimation()
         guard let event = mainView.getSavedEvent() else {
             return
         }
