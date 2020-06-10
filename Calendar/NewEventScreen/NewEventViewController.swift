@@ -72,6 +72,7 @@ final class NewEventViewController: UIViewController {
     
     // MARK: Actions
     @objc private func pressedSaveButton() {
+        mainView.saveButtonTappedAnimation()
         guard let event = mainView.getSavedEvent() else {
             return
         }
@@ -149,5 +150,20 @@ extension NewEventViewController {
         let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
         mainView.keyboardFrame = keyboardFrame ?? frame
         keyboardDelegate?.showKeyboard()
+    }
+}
+
+// MARK: - UITextViewDelegate
+extension NewEventViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        mainView.didChange()
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        mainView.beginEditing()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        mainView.endEditing()
     }
 }
