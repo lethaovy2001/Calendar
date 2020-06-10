@@ -44,7 +44,9 @@ extension EventViewModel {
     
     var alertTime: String? {
         guard let alertTime = model.alertTime else { return nil }
-        let difference = Calendar.current.dateComponents([.minute, .hour, .day, .weekOfYear], from: alertTime, to: model.startTime)
+        let difference = Calendar.current.dateComponents([.minute, .hour, .day, .weekOfYear],
+                                                         from: alertTime,
+                                                         to: model.startTime)
         guard
             let minute = difference.minute,
             let hour = difference.hour,
