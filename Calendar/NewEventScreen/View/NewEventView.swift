@@ -74,7 +74,7 @@ final class NewEventView: UIView {
     private let notificationView = CustomNotificationView()
     private let dateConverter = DateConverter()
     private var selectedTimeLabel: CustomLabel?
-    private var keyboardFrame = CGRect()
+    var keyboardFrame = CGRect()
     private var doNotRepeatButtonBottomAnchor: NSLayoutConstraint?
     
     // MARK: - Initializer
@@ -321,10 +321,6 @@ extension NewEventView {
     
     func getTimeSetForAlert() -> Int? {
         return notificationView.getTimeTextField()
-    }
-    
-    func getKeyboard(frame: CGRect) {
-        self.keyboardFrame = frame
     }
 }
 

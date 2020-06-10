@@ -147,7 +147,7 @@ extension NewEventViewController {
     @objc private func handleKeyboardWillShow(notification: NSNotification) {
         let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
         let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-        mainView.getKeyboard(frame: keyboardFrame ?? frame)
+        mainView.keyboardFrame = keyboardFrame ?? frame
         keyboardDelegate?.showKeyboard()
     }
 }
