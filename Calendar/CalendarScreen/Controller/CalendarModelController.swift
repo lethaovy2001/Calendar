@@ -42,5 +42,4 @@ final class CalendarModelController {
     func getSections() -> [EventSection] {
         return sections
     }
-    
 }

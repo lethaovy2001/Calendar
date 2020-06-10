@@ -146,6 +146,9 @@ extension FirebaseService: Database {
                                                      from: sectionDate ?? Date(),
                                                      to: event.startTime)
                 if let day = self.components.day {
+                    // if the sectionDate is different than the startDate of the event
+                    //      then append section and reset values
+                    // else append events into the current section
                     if day > 0 {
                         appendSection(event: event)
                     } else {
