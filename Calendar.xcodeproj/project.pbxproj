@@ -68,6 +68,7 @@
 		38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8623248845BB0006D609 /* NotificationCell.swift */; };
 		38E51E2F249107D800EBBF5B /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */; };
 		38E51E312491144900EBBF5B /* CalendarModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E302491144900EBBF5B /* CalendarModelController.swift */; };
+		38E51E342491282100EBBF5B /* EventSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E332491282100EBBF5B /* EventSection.swift */; };
 		38EAF127248C202300A2FE8C /* DailyTasksModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */; };
 		38EAF12A248C62A900A2FE8C /* Shaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF129248C62A900A2FE8C /* Shaking.swift */; };
 		38EAF12E248CCB0C00A2FE8C /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */; };
@@ -164,6 +165,7 @@
 		38CE8623248845BB0006D609 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		38E51E302491144900EBBF5B /* CalendarModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModelController.swift; sourceTree = "<group>"; };
+		38E51E332491282100EBBF5B /* EventSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSection.swift; sourceTree = "<group>"; };
 		38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksModelController.swift; sourceTree = "<group>"; };
 		38EAF129248C62A900A2FE8C /* Shaking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shaking.swift; sourceTree = "<group>"; };
 		38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 			children = (
 				3888D24124822466009B3966 /* DateConverter.swift */,
 				3888D2352480B597009B3966 /* DateCounter.swift */,
+				38E51E32249127BA00EBBF5B /* Model */,
 				3888D223247F909B009B3966 /* Controller */,
 				3888D222247F9096009B3966 /* View */,
 			);
@@ -470,6 +473,14 @@
 				38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */,
 			);
 			path = UserSettingsScreen;
+			sourceTree = "<group>";
+		};
+		38E51E32249127BA00EBBF5B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				38E51E332491282100EBBF5B /* EventSection.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		38F90B772478886B005B0BEB = {
@@ -864,6 +875,7 @@
 				3888D1BA247B2C5C009B3966 /* IconButton.swift in Sources */,
 				38285B26248F78B800AAEE03 /* NotesContainerView.swift in Sources */,
 				3888D1AC247B110E009B3966 /* Constants.swift in Sources */,
+				38E51E342491282100EBBF5B /* EventSection.swift in Sources */,
 				3888D227247F910E009B3966 /* CalendarMainView.swift in Sources */,
 				3888D1CC247B7C92009B3966 /* Database.swift in Sources */,
 				38CE8618248443BB0006D609 /* DatePickerView.swift in Sources */,

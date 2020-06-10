@@ -25,20 +25,25 @@ class FirebaseService {
         components = calendar.dateComponents([.day, .month, .year], from: Date())
     }
     
+    private func convertTimestampToDate(document: QueryDocumentSnapshot) -> Event {
+        var data = document.data()
+        if let startTime = data["startTime"] as? Timestamp {
+            data.updateValue(startTime.dateValue(), forKey: "startTime")
+        }
+        if let endTime = data["endTime"] as? Timestamp {
+            data.updateValue(endTime.dateValue(), forKey: "endTime")
+        }
+        if let alertTime = data["alertTime"] as? Timestamp {
+            data.updateValue(alertTime.dateValue(), forKey: "alertTime")
+        }
+        let event = Event(data: data)
+        return event
+    }
+    
     private func getAllEvents(documents: [QueryDocumentSnapshot]) -> [Event] {
         var events: [Event] = []
         for document in documents {
-            var data = document.data()
-            if let startTime = data["startTime"] as? Timestamp {
-                data.updateValue(startTime.dateValue(), forKey: "startTime")
-            }
-            if let endTime = data["endTime"] as? Timestamp {
-                data.updateValue(endTime.dateValue(), forKey: "endTime")
-            }
-            if let alertTime = data["alertTime"] as? Timestamp {
-                data.updateValue(alertTime.dateValue(), forKey: "alertTime")
-            }
-            let event = Event(data: data)
+            let event = self.convertTimestampToDate(document: document)
             events.append(event)
         }
         return events
@@ -117,8 +122,11 @@ extension FirebaseService: Database {
         }
     }
     
-    func loadEvents(from date: Date, completion: @escaping ([Event]) -> Void) {
+    func loadEvents(from date: Date, completion: @escaping ([EventSection]) -> Void) {
         guard let uid = getCurrentUserId() else { return }
+        var eventsInSection: [Event] = []
+        var sections: [EventSection] = []
+        var sectionDate: Date?
         let eventsRef = database.collection("users")
             .document(uid)
             .collection("events")
@@ -129,8 +137,37 @@ extension FirebaseService: Database {
                 completion([])
                 return
             }
-            let events = self.getAllEvents(documents: documents)
-            completion(events)
+            for (index, document) in documents.enumerated() {
+                let event = self.convertTimestampToDate(document: document)
+                if sectionDate == nil {
+                    sectionDate = event.startTime
+                }
+                self.components = self.calendar.dateComponents([.day],
+                                                     from: sectionDate ?? Date(),
+                                                     to: event.startTime)
+                if let day = self.components.day {
+                    // if the sectionDate is different than the startDate of the event
+                    //      then append section and reset values
+                    // else append events into the current section
+                    if day > 0 {
+                        appendSection(event: event)
+                    } else {
+                        eventsInSection.append(event)
+                    }
+                }
+                if index == documents.count - 1 {
+                    appendSection(event: event)
+                }
+            }
+            completion(sections)
+        }
+        
+        func appendSection(event: Event) {
+            sectionDate = event.startTime
+            let eventSection = EventSection(events: eventsInSection)
+            sections.append(eventSection)
+            eventsInSection = []
+            eventsInSection.append(event)
         }
     }
 }

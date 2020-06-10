@@ -11,5 +11,5 @@ import UIKit
 protocol Database {
     func save(event: Event)
     func loadTodayEvents(completion: @escaping ([Event]) -> Void)
-    func loadEvents(from date: Date, completion: @escaping ([Event]) -> Void)
+    func loadEvents(from date: Date, completion: @escaping ([EventSection]) -> Void)
 }
