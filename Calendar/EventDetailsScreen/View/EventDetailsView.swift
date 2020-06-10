@@ -27,6 +27,7 @@ final class EventDetailsView: UIView {
         size: 20,
         color: AppColor.darkGray
     )
+    private let timeContainerView = TimeContainerView()
     
     // MARK: - Initializer
     init() {
@@ -56,6 +57,7 @@ final class EventDetailsView: UIView {
         scrollView.addSubview(moreButton)
         scrollView.addSubview(editButton)
         scrollView.addSubview(titleContainer)
+        scrollView.addSubview(timeContainerView)
     }
     
     private func setupConstraints() {
@@ -82,6 +84,11 @@ final class EventDetailsView: UIView {
             titleContainer.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: 36),
             titleContainer.rightAnchor.constraint(equalTo: rightAnchor, constant: -36),
             titleContainer.heightAnchor.constraint(equalToConstant: 80)
+        ])
+        NSLayoutConstraint.activate([
+            timeContainerView.topAnchor.constraint(equalTo: titleContainer.bottomAnchor, constant: -8),
+            timeContainerView.leftAnchor.constraint(equalTo: leftAnchor, constant: 36),
+            timeContainerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -36)
         ])
     }
 }
