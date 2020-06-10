@@ -288,6 +288,29 @@ extension NewEventView {
         tapRecognizer.cancelsTouchesInView = false
     }
     
+    func updateAlert(option: AlertOptions) {
+        let optionString: String?
+        switch option {
+        case .minute:
+            optionString = "minute"
+        case .hour:
+            optionString = "hour"
+        case .day:
+            optionString = "day"
+        case .month:
+            optionString = "week"
+        }
+        guard
+            let component = optionString,
+            let time = notificationView.getTimeTextField()
+        else { return }
+        if time > 1 {
+            addAlertButton.setTitle("\(time) \(component)s before", for: .normal)
+        } else {
+            addAlertButton.setTitle("\(time) \(component) before", for: .normal)
+        }
+    }
+    
     // MARK: Selectors
     func setExitButtonSelector(target: UIViewController, selector: Selector) {
         exitButton.addTarget(target, action: selector, for: .touchUpInside)
