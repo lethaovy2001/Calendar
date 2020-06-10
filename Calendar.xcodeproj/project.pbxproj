@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		1872FBCFB4E96DEB9A814099 /* Pods_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B768A1183D97CBE4A0344DF6 /* Pods_Calendar.framework */; };
+		38285B18248DFF7B00AAEE03 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B17248DFF7B00AAEE03 /* EventDetailsViewController.swift */; };
+		38285B1A248E01BD00AAEE03 /* EventDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B19248E01BD00AAEE03 /* EventDetailsView.swift */; };
+		38285B1C248E078E00AAEE03 /* TitleContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B1B248E078E00AAEE03 /* TitleContainerView.swift */; };
+		38285B1E248E194900AAEE03 /* TimeContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B1D248E194900AAEE03 /* TimeContainerView.swift */; };
+		38285B22248EDDE000AAEE03 /* BookRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B21248EDDE000AAEE03 /* BookRingView.swift */; };
+		38285B24248F09EE00AAEE03 /* SettingsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B23248F09EE00AAEE03 /* SettingsContainerView.swift */; };
+		38285B26248F78B800AAEE03 /* NotesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B25248F78B800AAEE03 /* NotesContainerView.swift */; };
 		3888D1A2247AF88E009B3966 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A1247AF88E009B3966 /* LoginViewController.swift */; };
 		3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A6247B0F28009B3966 /* LoginView.swift */; };
 		3888D1A9247B1091009B3966 /* AppLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A8247B1091009B3966 /* AppLogoView.swift */; };
@@ -59,6 +66,9 @@
 		38CE8622248842D90006D609 /* CustomNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8621248842D90006D609 /* CustomNotificationView.swift */; };
 		38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8623248845BB0006D609 /* NotificationCell.swift */; };
 		38EAF127248C202300A2FE8C /* DailyTasksModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */; };
+		38EAF12E248CCB0C00A2FE8C /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */; };
+		38EAF12A248C62A900A2FE8C /* Shaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF129248C62A900A2FE8C /* Shaking.swift */; };
+		38EAF130248D78FF00A2FE8C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF12F248D78FF00A2FE8C /* UIButton+Extension.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
@@ -89,6 +99,13 @@
 /* Begin PBXFileReference section */
 		263537AFCBCAA24A0085A100 /* Pods-CalendarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarUITests.debug.xcconfig"; path = "Target Support Files/Pods-CalendarUITests/Pods-CalendarUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2CE487EBF5E05F4DC4182A7C /* Pods-CalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarTests.debug.xcconfig"; path = "Target Support Files/Pods-CalendarTests/Pods-CalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
+		38285B17248DFF7B00AAEE03 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		38285B19248E01BD00AAEE03 /* EventDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsView.swift; sourceTree = "<group>"; };
+		38285B1B248E078E00AAEE03 /* TitleContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleContainerView.swift; sourceTree = "<group>"; };
+		38285B1D248E194900AAEE03 /* TimeContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeContainerView.swift; sourceTree = "<group>"; };
+		38285B21248EDDE000AAEE03 /* BookRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRingView.swift; sourceTree = "<group>"; };
+		38285B23248F09EE00AAEE03 /* SettingsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerView.swift; sourceTree = "<group>"; };
+		38285B25248F78B800AAEE03 /* NotesContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesContainerView.swift; sourceTree = "<group>"; };
 		3888D1A1247AF88E009B3966 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3888D1A6247B0F28009B3966 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3888D1A8247B1091009B3966 /* AppLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoView.swift; sourceTree = "<group>"; };
@@ -142,6 +159,9 @@
 		38CE8621248842D90006D609 /* CustomNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotificationView.swift; sourceTree = "<group>"; };
 		38CE8623248845BB0006D609 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksModelController.swift; sourceTree = "<group>"; };
+		38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
+		38EAF129248C62A900A2FE8C /* Shaking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shaking.swift; sourceTree = "<group>"; };
+		38EAF12F248D78FF00A2FE8C /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +209,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38285B14248DFE6C00AAEE03 /* EventDetailsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				38285B16248DFF4500AAEE03 /* Controller */,
+				38285B15248DFF3C00AAEE03 /* View */,
+			);
+			path = EventDetailsScreen;
+			sourceTree = "<group>";
+		};
+		38285B15248DFF3C00AAEE03 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				38285B19248E01BD00AAEE03 /* EventDetailsView.swift */,
+				38285B1B248E078E00AAEE03 /* TitleContainerView.swift */,
+				38285B1D248E194900AAEE03 /* TimeContainerView.swift */,
+				38285B21248EDDE000AAEE03 /* BookRingView.swift */,
+				38285B23248F09EE00AAEE03 /* SettingsContainerView.swift */,
+				38285B25248F78B800AAEE03 /* NotesContainerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		38285B16248DFF4500AAEE03 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38285B17248DFF7B00AAEE03 /* EventDetailsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		3888D1A0247AF84B009B3966 /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +272,7 @@
 				3888D1AB247B110E009B3966 /* Constants.swift */,
 				3888D1B7247B29F3009B3966 /* AppColor.swift */,
 				3888D1BD247B4D5D009B3966 /* UIView+Extension.swift */,
+				38EAF12F248D78FF00A2FE8C /* UIButton+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -254,6 +305,8 @@
 				3888D1C9247B7C5C009B3966 /* Authentication.swift */,
 				3888D1CB247B7C92009B3966 /* Database.swift */,
 				38CE861D248579780006D609 /* DatePickerTapGestureDelegate.swift */,
+				38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */,
+				38EAF129248C62A900A2FE8C /* Shaking.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -428,6 +481,7 @@
 				3888D1A0247AF84B009B3966 /* LoginScreen */,
 				3888D1DA247C47BD009B3966 /* DailyTasksScreen */,
 				3888D221247F9078009B3966 /* CalendarScreen */,
+				38285B14248DFE6C00AAEE03 /* EventDetailsScreen */,
 				3888D24D2483EC23009B3966 /* NewEventScreen */,
 				3888D1C8247B7C46009B3966 /* Protocol */,
 				3888D1AA247B10F9009B3966 /* Helpers */,
@@ -744,21 +798,26 @@
 				38EAF127248C202300A2FE8C /* DailyTasksModelController.swift in Sources */,
 				3888D23A24819F54009B3966 /* CircleView.swift in Sources */,
 				3888D22A248028F9009B3966 /* BackButton.swift in Sources */,
+				38285B1C248E078E00AAEE03 /* TitleContainerView.swift in Sources */,
 				3888D230248060D2009B3966 /* DateCell.swift in Sources */,
 				38CE861E248579780006D609 /* DatePickerTapGestureDelegate.swift in Sources */,
 				3888D1A2247AF88E009B3966 /* LoginViewController.swift in Sources */,
 				3888D24424831B72009B3966 /* SlideView.swift in Sources */,
+				38285B1A248E01BD00AAEE03 /* EventDetailsView.swift in Sources */,
 				3888D1BE247B4D5D009B3966 /* UIView+Extension.swift in Sources */,
 				3888D1FA247DE5AD009B3966 /* CustomScrollView.swift in Sources */,
 				38CE8622248842D90006D609 /* CustomNotificationView.swift in Sources */,
 				3888D22E2480444A009B3966 /* TextButton.swift in Sources */,
 				3888D24F2483EC40009B3966 /* NewEventViewController.swift in Sources */,
+				38285B1E248E194900AAEE03 /* TimeContainerView.swift in Sources */,
 				3888D1B8247B29F3009B3966 /* AppColor.swift in Sources */,
 				3888D23224806D30009B3966 /* WeekDaysView.swift in Sources */,
 				3888D1C0247B501F009B3966 /* CustomLabel.swift in Sources */,
 				3888D1DE247C48B7009B3966 /* DailyTasksMainView.swift in Sources */,
+				38285B24248F09EE00AAEE03 /* SettingsContainerView.swift in Sources */,
 				3888D1CF247B7DF8009B3966 /* FirebaseService.swift in Sources */,
 				3888D2362480B597009B3966 /* DateCounter.swift in Sources */,
+				38285B22248EDDE000AAEE03 /* BookRingView.swift in Sources */,
 				3888D202247F3BED009B3966 /* RunningTimeLineView.swift in Sources */,
 				3888D24224822466009B3966 /* DateConverter.swift in Sources */,
 				3888D246248325E0009B3966 /* ScheduleCell.swift in Sources */,
@@ -775,17 +834,22 @@
 				3888D2542484154C009B3966 /* SectionTitleLabel.swift in Sources */,
 				3888D207247F5741009B3966 /* BottomBarView.swift in Sources */,
 				3888D1BA247B2C5C009B3966 /* IconButton.swift in Sources */,
+				38285B26248F78B800AAEE03 /* NotesContainerView.swift in Sources */,
 				3888D1AC247B110E009B3966 /* Constants.swift in Sources */,
 				3888D227247F910E009B3966 /* CalendarMainView.swift in Sources */,
 				3888D1CC247B7C92009B3966 /* Database.swift in Sources */,
 				38CE8618248443BB0006D609 /* DatePickerView.swift in Sources */,
 				3888D2512483EE7B009B3966 /* NewEventView.swift in Sources */,
+				38EAF12E248CCB0C00A2FE8C /* KeyboardDelegate.swift in Sources */,
 				3888D1FE247E1E80009B3966 /* EventView.swift in Sources */,
+				38EAF130248D78FF00A2FE8C /* UIButton+Extension.swift in Sources */,
 				38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */,
 				3888D225247F90B0009B3966 /* CalendarViewController.swift in Sources */,
+				38285B18248DFF7B00AAEE03 /* EventDetailsViewController.swift in Sources */,
 				38CE861624842A000006D609 /* CustomTextView.swift in Sources */,
 				3888D1C4247B5685009B3966 /* ErrorLabel.swift in Sources */,
 				3888D1B6247B1895009B3966 /* CustomTextField.swift in Sources */,
+				38EAF12A248C62A900A2FE8C /* Shaking.swift in Sources */,
 				3888D1CA247B7C5C009B3966 /* Authentication.swift in Sources */,
 				3888D205247F46EC009B3966 /* Event.swift in Sources */,
 			);

@@ -13,6 +13,7 @@ final class NewEventViewController: UIViewController {
     private var database: Database
     private let mainView = NewEventView()
     private var alertOptions = Constants.setAlertOptions
+    weak var keyboardDelegate: KeyboardDelegate?
     private var selectedComponent: Calendar.Component?
     
     // MARK: - Initializer
@@ -37,6 +38,8 @@ final class NewEventViewController: UIViewController {
         setupUI()
         registerCellId()
         setSelections()
+        setupKeyboardObservers()
+        addGestureAndDelegate()
     }
     
     private func setupSelf() {
@@ -62,8 +65,14 @@ final class NewEventViewController: UIViewController {
         mainView.setSaveButtonSelector(target: self, selector: #selector(pressedSaveButton))
     }
     
+    private func addGestureAndDelegate() {
+        mainView.addTapGesture(target: self, selector: #selector(dismissKeyboard))
+        mainView.addDelegate(viewController: self)
+    }
+    
     // MARK: Actions
     @objc private func pressedSaveButton() {
+        mainView.saveButtonTappedAnimation()
         guard let event = mainView.getSavedEvent() else {
             return
         }
@@ -92,9 +101,7 @@ extension NewEventViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: Constants.CellId.notificationCellId,
             for: indexPath) as? NotificationCell
-        else {
-            return UITableViewCell()
-        }
+        else { return UITableViewCell() }
         cell.options = alertOptions[indexPath.row]
         cell.selectionStyle = .none
         return cell
@@ -113,5 +120,51 @@ extension NewEventViewController: UITableViewDelegate {
         case .month:
             selectedComponent = .month
         }
+        mainView.updateAlert(option: alertOptions[indexPath.row])
+    }
+}
+
+// MARK: - Keyboards
+extension NewEventViewController {
+    private func setupKeyboardObservers() {
+        let notification = NotificationCenter.default
+        notification.addObserver(self,
+                                 selector: #selector(handleKeyboardWillShow),
+                                 name: UIResponder.keyboardWillShowNotification,
+                                 object: nil)
+        notification.addObserver(self,
+                                 selector: #selector(handleKeyboardWillHide),
+                                 name: UIResponder.keyboardWillHideNotification,
+                                 object: nil)
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc private func handleKeyboardWillHide(notification: NSNotification) {
+        keyboardDelegate?.hideKeyboard()
+    }
+    
+    @objc private func handleKeyboardWillShow(notification: NSNotification) {
+        let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+        let frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        mainView.keyboardFrame = keyboardFrame ?? frame
+        keyboardDelegate?.showKeyboard()
+    }
+}
+
+// MARK: - UITextViewDelegate
+extension NewEventViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        mainView.didChange()
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        mainView.beginEditing()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        mainView.endEditing()
     }
 }

@@ -35,6 +35,9 @@ struct Constants {
         static let repeatName = "repeat"
         static let selectedRadio = "largecircle.fill.circle"
         static let unselectedRadio = "circle"
+        static let edit = "pencil"
+        static let more = "ellipsis"
+        static let notes = "doc.plaintext"
     }
     
     struct CellId {

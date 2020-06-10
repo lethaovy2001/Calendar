@@ -14,6 +14,10 @@ final class CircleView: CustomContainerView {
         self.addShadow()
     }
     
+    override init(backgroundColor: UIColor) {
+        super.init(backgroundColor: backgroundColor)
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

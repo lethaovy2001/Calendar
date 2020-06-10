@@ -74,6 +74,8 @@ final class NewEventView: UIView {
     private let notificationView = CustomNotificationView()
     private let dateConverter = DateConverter()
     private var selectedTimeLabel: CustomLabel?
+    var keyboardFrame = CGRect()
+    private var doNotRepeatButtonBottomAnchor: NSLayoutConstraint?
     
     // MARK: - Initializer
     init() {
@@ -91,14 +93,9 @@ final class NewEventView: UIView {
         addSubviews()
         setupConstraints()
         addGesture()
-        addDelegate()
         setupStartAndEndTime()
     }
-    
-    private func addDelegate() {
-        datePickerView.tapDelegate = self
-    }
-    
+
     private func addGesture() {
         let startTimeTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         startTimeTapGesture.numberOfTapsRequired = 1
@@ -232,11 +229,15 @@ final class NewEventView: UIView {
             repeatButton.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
             repeatButton.widthAnchor.constraint(equalToConstant: 40)
         ])
+        doNotRepeatButtonBottomAnchor = donotRepeatButton.bottomAnchor.constraint(
+            equalTo: scrollView.bottomAnchor,
+            constant: -24
+        )
         NSLayoutConstraint.activate([
             donotRepeatButton.centerYAnchor.constraint(equalTo: repeatButton.centerYAnchor),
             donotRepeatButton.leftAnchor.constraint(equalTo: repeatButton.rightAnchor, constant: 12),
-            donotRepeatButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -24),
-            donotRepeatButton.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 12)
+            donotRepeatButton.rightAnchor.constraint(equalTo: scrollView.rightAnchor, constant: 12),
+            doNotRepeatButtonBottomAnchor!
         ])
     }
     
@@ -274,6 +275,42 @@ final class NewEventView: UIView {
 
 // MARK: - Public Methods
 extension NewEventView {
+    func addDelegate(viewController: NewEventViewController) {
+        datePickerView.tapDelegate = self
+        viewController.keyboardDelegate = self
+        noteTextView.delegate = viewController
+    }
+    
+    func addTapGesture(target: UIViewController, selector: Selector) {
+        let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: target, action: selector)
+        self.addGestureRecognizer(tapRecognizer)
+        scrollView.isUserInteractionEnabled = true
+        tapRecognizer.cancelsTouchesInView = false
+    }
+    
+    func updateAlert(option: AlertOptions) {
+        let optionString: String?
+        switch option {
+        case .minute:
+            optionString = "minute"
+        case .hour:
+            optionString = "hour"
+        case .day:
+            optionString = "day"
+        case .month:
+            optionString = "week"
+        }
+        guard
+            let component = optionString,
+            let time = notificationView.getTimeTextField()
+        else { return }
+        if time > 1 {
+            addAlertButton.setTitle("\(time) \(component)s before", for: .normal)
+        } else {
+            addAlertButton.setTitle("\(time) \(component) before", for: .normal)
+        }
+    }
+    
     // MARK: Selectors
     func setExitButtonSelector(target: UIViewController, selector: Selector) {
         exitButton.addTarget(target, action: selector, for: .touchUpInside)
@@ -287,6 +324,10 @@ extension NewEventView {
         notificationView.registerCellId(viewController: viewController)
     }
     
+    func saveButtonTappedAnimation() {
+        saveButton.pulsate()
+    }
+    
     // MARK: Getters
     func getSavedEvent() -> Event? {
         guard
@@ -296,6 +337,14 @@ extension NewEventView {
             let startTime = dateConverter.convertToDate(from: startTimeText),
             let endTime = dateConverter.convertToDate(from: endTimeText)
         else { return nil }
+        guard name != "" else {
+            titleTextField.showWarningAnimation()
+            return nil
+        }
+        guard startTime < endTime else {
+            startTimeLabel.showWarningAnimation()
+            return nil
+        }
         let event = Event(
             name: name,
             startTime: startTime,
@@ -311,10 +360,42 @@ extension NewEventView {
     }
 }
 
-// MARK: DatePickerTapGestureDelegate
+// MARK: - DatePickerTapGestureDelegate
 extension NewEventView: DatePickerTapGestureDelegate {
     func setDate(_ date: Date) {
         let dateString = dateConverter.getDateString(from: date)
         selectedTimeLabel?.setText(text: dateString)
+    }
+}
+
+// MARK: - KeyboardDelegate
+extension NewEventView: KeyboardDelegate {
+    func showKeyboard() {
+        UIView.animate(withDuration: 0.6) {
+            self.doNotRepeatButtonBottomAnchor?.constant = -self.keyboardFrame.height + 20
+            self.layoutIfNeeded()
+        }
+    }
+    
+    func hideKeyboard() {
+        UIView.animate(withDuration: 0.6) {
+            self.doNotRepeatButtonBottomAnchor?.constant = 0
+            self.layoutIfNeeded()
+        }
+    }
+}
+
+// MARK: - UITextViewDelegate
+extension NewEventView {
+    func didChange() {
+        noteTextView.calculateBestHeight()
+    }
+    
+    func beginEditing() {
+        noteTextView.beginEditing()
+    }
+    
+    func endEditing() {
+        noteTextView.endEditing()
     }
 }
