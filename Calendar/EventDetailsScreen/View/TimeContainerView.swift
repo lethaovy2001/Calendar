@@ -42,8 +42,8 @@ final class TimeContainerView: UIView {
     )
     var viewModel: EventViewModel? {
         didSet {
-            startTimeLabel.text = viewModel?.startTime
-            endTimeLabel.text = viewModel?.endTime
+            startTimeLabel.text = viewModel?.startTimeDate
+            endTimeLabel.text = viewModel?.endTimeDate
         }
     }
     
