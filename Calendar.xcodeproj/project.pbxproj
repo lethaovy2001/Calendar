@@ -15,6 +15,7 @@
 		38285B22248EDDE000AAEE03 /* BookRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B21248EDDE000AAEE03 /* BookRingView.swift */; };
 		38285B24248F09EE00AAEE03 /* SettingsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B23248F09EE00AAEE03 /* SettingsContainerView.swift */; };
 		38285B26248F78B800AAEE03 /* NotesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B25248F78B800AAEE03 /* NotesContainerView.swift */; };
+		38285B292490BCC400AAEE03 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B282490BCC400AAEE03 /* EventViewModel.swift */; };
 		3888D1A2247AF88E009B3966 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A1247AF88E009B3966 /* LoginViewController.swift */; };
 		3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A6247B0F28009B3966 /* LoginView.swift */; };
 		3888D1A9247B1091009B3966 /* AppLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A8247B1091009B3966 /* AppLogoView.swift */; };
@@ -108,6 +109,7 @@
 		38285B21248EDDE000AAEE03 /* BookRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRingView.swift; sourceTree = "<group>"; };
 		38285B23248F09EE00AAEE03 /* SettingsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerView.swift; sourceTree = "<group>"; };
 		38285B25248F78B800AAEE03 /* NotesContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesContainerView.swift; sourceTree = "<group>"; };
+		38285B282490BCC400AAEE03 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		3888D1A1247AF88E009B3966 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3888D1A6247B0F28009B3966 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3888D1A8247B1091009B3966 /* AppLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoView.swift; sourceTree = "<group>"; };
@@ -243,6 +245,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		38285B272490BCA100AAEE03 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				38285B282490BCC400AAEE03 /* EventViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		3888D1A0247AF84B009B3966 /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +338,7 @@
 			children = (
 				3888D20E247F7982009B3966 /* Logic */,
 				3888D1DB247C47DE009B3966 /* View */,
+				38285B272490BCA100AAEE03 /* ViewModel */,
 				3888D1DC247C4818009B3966 /* Controller */,
 			);
 			path = DailyTasksScreen;
@@ -849,6 +860,7 @@
 				38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */,
 				3888D2542484154C009B3966 /* SectionTitleLabel.swift in Sources */,
 				3888D207247F5741009B3966 /* BottomBarView.swift in Sources */,
+				38285B292490BCC400AAEE03 /* EventViewModel.swift in Sources */,
 				3888D1BA247B2C5C009B3966 /* IconButton.swift in Sources */,
 				38285B26248F78B800AAEE03 /* NotesContainerView.swift in Sources */,
 				3888D1AC247B110E009B3966 /* Constants.swift in Sources */,
