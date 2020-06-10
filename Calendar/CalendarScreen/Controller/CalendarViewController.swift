@@ -16,6 +16,7 @@ class CalendarViewController: UIViewController {
     private var selectedTodayIndexPath: IndexPath?
     private var selectedDate: Date
     private var converter: DateConverter
+    private var modelController = CalendarModelController()
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -43,6 +44,7 @@ class CalendarViewController: UIViewController {
         setupUI()
         registerCellId()
         setSelectors()
+        loadEvents()
     }
     
     private func setupSelf() {
@@ -70,6 +72,12 @@ class CalendarViewController: UIViewController {
         mainView.setSearchButtonSelector(selector: #selector(tapSearchButton), target: self)
         mainView.setBackButtonSelector(selector: #selector(tapBackButton), target: self)
         mainView.setDoneButtonSelector(selector: #selector(tapDoneButton), target: self)
+    }
+    
+    private func loadEvents() {
+        modelController.loadEvents {
+            self.mainView.reloadTableView()
+        }
     }
     
     // MARK: Actions
@@ -154,8 +162,7 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UITableViewDataSource
 extension CalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //TODO: remove mock data
-        return 30
+        return modelController.getEvents().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

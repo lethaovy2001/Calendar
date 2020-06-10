@@ -64,4 +64,8 @@ final class SlideView: CustomContainerView {
         tableView.dataSource = viewController
         tableView.register(CustomHeaderView.self, forHeaderFooterViewReuseIdentifier: Constants.CellId.sectionHeader)
     }
+    
+    func reloadTableView() {
+        tableView.reloadData()
+    }
 }

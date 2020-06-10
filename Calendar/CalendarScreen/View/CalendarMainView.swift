@@ -210,6 +210,10 @@ final class CalendarMainView: UIView {
         collectionView.reloadData()
     }
     
+    func reloadTableView() {
+        slideView.reloadTableView()
+    }
+    
     @objc private func handlePanGesture() {
         if !isShowingFullSchedule {
             UIView.animate(withDuration: 0.6) {
