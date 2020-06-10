@@ -113,6 +113,8 @@ final class DailyTasksMainView: UIView {
         let height = eventLayoutGenerator.estimateHeight(event: event)
         let offset = eventLayoutGenerator.estimateTopOffset(of: event.startTime)
         let eventView = EventView(height: height)
+        let eventViewModel = EventViewModel(model: event)
+        eventView.viewModel = eventViewModel
         scrollView.addSubview(eventView)
         NSLayoutConstraint.activate([
             eventView.heightAnchor.constraint(equalToConstant: height),

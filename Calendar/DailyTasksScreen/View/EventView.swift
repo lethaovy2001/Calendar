@@ -29,6 +29,17 @@ final class EventView: CustomContainerView {
     )
     private var eventColors = AppColor.eventColors
     private var height: CGFloat
+    var viewModel: EventViewModel? {
+        didSet {
+            titleLabel.text = viewModel?.name
+            if let location = viewModel?.location {
+                locationLabel.text = location
+            } else {
+                iconButton.isHidden = true
+                locationLabel.isHidden = true
+            }
+        }
+    }
     
     // MARK: - Initializer
     init(height: CGFloat) {
