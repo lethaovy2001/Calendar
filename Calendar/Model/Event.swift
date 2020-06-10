@@ -30,6 +30,21 @@ struct Event {
         self.alertTime = alertTime
     }
     
+    init(data: [String: Any]) {
+        self.name = data["name"] as? String ?? "Event"
+        self.alertTime = data["alertTime"] as? Date
+        self.location = data["location"] as? String
+        self.notes = data["notes"] as? String
+        if let startTime = data["startTime"] as? Date,
+            let endTime = data["endTime"] as? Date {
+            self.startTime = startTime
+            self.endTime = endTime
+        } else {
+            self.startTime = Date()
+            self.endTime = Date(timeInterval: 3600, since: startTime)
+        }
+    }
+    
     func getEventDictionary() -> [String: Any] {
         var dictionary: [String: Any] = [
             "name": name,

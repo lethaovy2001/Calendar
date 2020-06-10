@@ -30,6 +30,7 @@ class DailyTaskViewController: UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
         setup()
+        loadEvents()
     }
     
     // MARK: - Setup
@@ -47,6 +48,12 @@ class DailyTaskViewController: UIViewController {
             dailyTaskView.rightAnchor.constraint(equalTo: view.rightAnchor),
             dailyTaskView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func loadEvents() {
+        modelController.loadEvents {
+            self.configureEvents()
+        }
     }
     
     private func configureEvents() {
