@@ -101,6 +101,9 @@ extension FirebaseService: Database {
                     data.updateValue(startTime.dateValue(), forKey: "startTime")
                     data.updateValue(endTime.dateValue(), forKey: "endTime")
                 }
+                if let alertTime = data["alertTime"] as? Timestamp {
+                    data.updateValue(alertTime.dateValue(), forKey: "alertTime")
+                }
                 let event = Event(data: data)
                 events.append(event)
             }
