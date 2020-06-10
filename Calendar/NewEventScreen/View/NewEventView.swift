@@ -278,7 +278,6 @@ extension NewEventView {
     func addDelegate(viewController: NewEventViewController) {
         datePickerView.tapDelegate = self
         viewController.keyboardDelegate = self
-        viewController.textViewEditingDelegate = self
         noteTextView.delegate = viewController
     }
     
@@ -355,8 +354,8 @@ extension NewEventView: KeyboardDelegate {
     }
 }
 
-// MARK: - TextViewEditingDelegate
-extension NewEventView: TextViewEditingDelegate {
+// MARK: - UITextViewDelegate
+extension NewEventView {
     func didChange() {
         noteTextView.calculateBestHeight()
     }

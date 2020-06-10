@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1872FBCFB4E96DEB9A814099 /* Pods_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B768A1183D97CBE4A0344DF6 /* Pods_Calendar.framework */; };
-		38285B11248D8D3C00AAEE03 /* TextViewEditingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B10248D8D3C00AAEE03 /* TextViewEditingDelegate.swift */; };
 		3888D1A2247AF88E009B3966 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A1247AF88E009B3966 /* LoginViewController.swift */; };
 		3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A6247B0F28009B3966 /* LoginView.swift */; };
 		3888D1A9247B1091009B3966 /* AppLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A8247B1091009B3966 /* AppLogoView.swift */; };
@@ -91,7 +90,6 @@
 /* Begin PBXFileReference section */
 		263537AFCBCAA24A0085A100 /* Pods-CalendarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarUITests.debug.xcconfig"; path = "Target Support Files/Pods-CalendarUITests/Pods-CalendarUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2CE487EBF5E05F4DC4182A7C /* Pods-CalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalendarTests.debug.xcconfig"; path = "Target Support Files/Pods-CalendarTests/Pods-CalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
-		38285B10248D8D3C00AAEE03 /* TextViewEditingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewEditingDelegate.swift; sourceTree = "<group>"; };
 		3888D1A1247AF88E009B3966 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3888D1A6247B0F28009B3966 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3888D1A8247B1091009B3966 /* AppLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoView.swift; sourceTree = "<group>"; };
@@ -258,7 +256,6 @@
 				3888D1C9247B7C5C009B3966 /* Authentication.swift */,
 				3888D1CB247B7C92009B3966 /* Database.swift */,
 				38CE861D248579780006D609 /* DatePickerTapGestureDelegate.swift */,
-				38285B10248D8D3C00AAEE03 /* TextViewEditingDelegate.swift */,
 				38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */,
 			);
 			path = Protocol;
@@ -791,7 +788,6 @@
 				38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */,
 				3888D225247F90B0009B3966 /* CalendarViewController.swift in Sources */,
 				38CE861624842A000006D609 /* CustomTextView.swift in Sources */,
-				38285B11248D8D3C00AAEE03 /* TextViewEditingDelegate.swift in Sources */,
 				3888D1C4247B5685009B3966 /* ErrorLabel.swift in Sources */,
 				3888D1B6247B1895009B3966 /* CustomTextField.swift in Sources */,
 				3888D1CA247B7C5C009B3966 /* Authentication.swift in Sources */,
