@@ -12,11 +12,13 @@ final class CalendarModelController {
     // MARK: - Properties
     private let database: Database
     private var events: [Event]
+    private var sections: [EventSection]
 
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
         self.database = database
         self.events = [Event]()
+        self.sections = [EventSection]()
     }
 
     func loadEvents(completion: @escaping () -> Void) {
@@ -26,15 +28,19 @@ final class CalendarModelController {
             completion()
             return
         }
-        database.loadEvents(from: date) { events in
-            self.events = events
+        database.loadEvents(from: date) { sections in
+            self.sections = sections
             completion()
         }
     }
 
     // MARK: - Getters
-    func getEvents() -> [Event] {
-        return events
+    func getEvents(at sectionIndex: Int) -> [Event] {
+        return sections[sectionIndex].events
+    }
+    
+    func getSections() -> [EventSection] {
+        return sections
     }
     
 }

@@ -162,7 +162,7 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UITableViewDataSource
 extension CalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return modelController.getEvents().count
+        return modelController.getEvents(at: section).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -171,6 +171,10 @@ extension CalendarViewController: UITableViewDataSource {
             for: indexPath) as? ScheduleCell
         else { return UITableViewCell() }
         return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return modelController.getSections().count
     }
 }
 
