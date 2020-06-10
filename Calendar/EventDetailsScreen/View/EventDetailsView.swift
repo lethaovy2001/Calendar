@@ -30,6 +30,7 @@ final class EventDetailsView: UIView {
     private let timeContainerView = TimeContainerView()
     private let alarmSettingsView = SettingsContainerView(iconName: Constants.IconNames.alarm)
     private let repeatSettingsView = SettingsContainerView(iconName: Constants.IconNames.repeatName)
+    private let notesContainerView = NotesContainerView()
     
     // MARK: - Initializer
     init() {
@@ -62,6 +63,7 @@ final class EventDetailsView: UIView {
         scrollView.addSubview(timeContainerView)
         scrollView.addSubview(alarmSettingsView)
         scrollView.addSubview(repeatSettingsView)
+        scrollView.addSubview(notesContainerView)
     }
     
     private func setupConstraints() {
@@ -103,6 +105,11 @@ final class EventDetailsView: UIView {
             repeatSettingsView.topAnchor.constraint(equalTo: alarmSettingsView.bottomAnchor, constant: -8),
             repeatSettingsView.leftAnchor.constraint(equalTo: leftAnchor, constant: 36),
             repeatSettingsView.rightAnchor.constraint(equalTo: rightAnchor, constant: -36)
+        ])
+        NSLayoutConstraint.activate([
+            notesContainerView.topAnchor.constraint(equalTo: repeatSettingsView.bottomAnchor, constant: -8),
+            notesContainerView.leftAnchor.constraint(equalTo: leftAnchor, constant: 36),
+            notesContainerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -36)
         ])
     }
 }
