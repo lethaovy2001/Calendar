@@ -20,6 +20,7 @@ final class DailyTasksMainView: UIView {
     private let timeLine = RunningTimeLineView()
     private let bottomBar = BottomBarView()
     private let eventLayoutGenerator = EventLayoutGenerator()
+    weak var eventTapGesture: EventTapGestureDelegate?
     
     // MARK: - Initializer
     init() {
@@ -109,10 +110,21 @@ final class DailyTasksMainView: UIView {
         }
     }
     
+    private func addTapGetsure(eventView: EventView) {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedOnEvent))
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.numberOfTouchesRequired = 1
+        eventView.isUserInteractionEnabled = true
+        eventView.addGestureRecognizer(tapRecognizer)
+    }
+    
     func setEvent(event: Event) {
         let height = eventLayoutGenerator.estimateHeight(event: event)
         let offset = eventLayoutGenerator.estimateTopOffset(of: event.startTime)
         let eventView = EventView(height: height)
+        let eventViewModel = EventViewModel(model: event)
+        eventView.viewModel = eventViewModel
+        addTapGetsure(eventView: eventView)
         scrollView.addSubview(eventView)
         NSLayoutConstraint.activate([
             eventView.heightAnchor.constraint(equalToConstant: height),
@@ -140,5 +152,10 @@ final class DailyTasksMainView: UIView {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
             self.timeLine.frame.origin.y += 1.4
         }, completion: nil)
+    }
+    
+    @objc private func tappedOnEvent(_ sender: UITapGestureRecognizer) {
+        guard let eventView = sender.view as? EventView else { return }
+        eventTapGesture?.didTap(on: eventView)
     }
 }

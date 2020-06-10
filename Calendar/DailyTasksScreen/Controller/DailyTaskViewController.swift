@@ -30,6 +30,7 @@ class DailyTaskViewController: UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
         setup()
+        loadEvents()
     }
     
     // MARK: - Setup
@@ -37,6 +38,7 @@ class DailyTaskViewController: UIViewController {
         setupUI()
         configureEvents()
         setupSelectors()
+        addDelegate()
     }
     
     private func setupUI() {
@@ -47,6 +49,12 @@ class DailyTaskViewController: UIViewController {
             dailyTaskView.rightAnchor.constraint(equalTo: view.rightAnchor),
             dailyTaskView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func loadEvents() {
+        modelController.loadEvents {
+            self.configureEvents()
+        }
     }
     
     private func configureEvents() {
@@ -62,6 +70,10 @@ class DailyTaskViewController: UIViewController {
         dailyTaskView.setProfileButtonSelector(selector: #selector(profileButtonPressed), target: self)
     }
     
+    private func addDelegate() {
+        dailyTaskView.eventTapGesture = self
+    }
+    
     // MARK: Actions
     @objc private func calendarButtonPressed() {
 
@@ -73,5 +85,14 @@ class DailyTaskViewController: UIViewController {
     
     @objc private func profileButtonPressed() {
         
+    }
+}
+
+// MARK: - EventTapGestureDelegate
+extension DailyTaskViewController: EventTapGestureDelegate {
+    func didTap(on eventView: EventView) {
+        let viewController = EventDetailsViewController()
+        viewController.viewModel = eventView.viewModel
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
