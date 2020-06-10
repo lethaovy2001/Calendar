@@ -42,6 +42,9 @@ final class EventDetailsView: UIView {
             if let notes = viewModel?.notes {
                 notesContainerView.notes = notes
             }
+            if let location = viewModel?.location {
+                locationSettingsView.labelText = location
+            }
         }
     }
     
