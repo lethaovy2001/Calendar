@@ -39,6 +39,11 @@ extension EventViewModel {
         return dateFormatter.string(from: model.startTime)
     }
     
+    var endTime: String {
+        self.dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: model.endTime)
+    }
+    
     var startDate: String {
         self.dateFormatter.dateFormat = "EEEE, MMM, dd, yyyy"
         return dateFormatter.string(from: model.startTime)
