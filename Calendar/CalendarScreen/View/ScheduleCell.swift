@@ -44,6 +44,19 @@ final class ScheduleCell: UITableViewCell {
         textWeight: .semibold
     )
     private let eventColors = AppColor.eventColors
+    var viewModel: EventViewModel? {
+        didSet {
+            titleLabel.text = viewModel?.name
+            startTime.text = viewModel?.startTime
+            endTime.text = viewModel?.endTime
+            if let location = viewModel?.location {
+                locationLabel.text = location
+            } else {
+                locationLabel.isHidden = true
+                iconButton.isHidden = true
+            }
+        }
+    }
     
     // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
