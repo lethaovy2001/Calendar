@@ -15,7 +15,6 @@ final class EventViewModel {
     init(model: Event) {
         self.model = model
         self.dateFormatter = DateFormatter()
-        self.dateFormatter.dateFormat = "h:mm a MMM dd, yyyy"
         self.dateFormatter.locale = Locale(identifier: "en_US_POSIX")
     }
 }
@@ -25,12 +24,29 @@ extension EventViewModel {
         return model.name
     }
     
+    var startTimeDate: String {
+        self.dateFormatter.dateFormat = "h:mm a MMM dd, yyyy"
+        return dateFormatter.string(from: model.startTime)
+    }
+    
+    var endTimeDate: String {
+        self.dateFormatter.dateFormat = "h:mm a MMM dd, yyyy"
+        return dateFormatter.string(from: model.endTime)
+    }
+    
     var startTime: String {
+        self.dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: model.startTime)
     }
     
     var endTime: String {
+        self.dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: model.endTime)
+    }
+    
+    var startDate: String {
+        self.dateFormatter.dateFormat = "EEEE, MMM, dd, yyyy"
+        return dateFormatter.string(from: model.startTime)
     }
     
     var location: String? {
@@ -44,7 +60,9 @@ extension EventViewModel {
     
     var alertTime: String? {
         guard let alertTime = model.alertTime else { return nil }
-        let difference = Calendar.current.dateComponents([.minute, .hour, .day, .weekOfYear], from: alertTime, to: model.startTime)
+        let difference = Calendar.current.dateComponents([.minute, .hour, .day, .weekOfYear],
+                                                         from: alertTime,
+                                                         to: model.startTime)
         guard
             let minute = difference.minute,
             let hour = difference.hour,
