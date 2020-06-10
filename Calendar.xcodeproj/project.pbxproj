@@ -60,6 +60,8 @@
 		38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8623248845BB0006D609 /* NotificationCell.swift */; };
 		38EAF127248C202300A2FE8C /* DailyTasksModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */; };
 		38EAF12E248CCB0C00A2FE8C /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */; };
+		38EAF12A248C62A900A2FE8C /* Shaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF129248C62A900A2FE8C /* Shaking.swift */; };
+		38EAF130248D78FF00A2FE8C /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF12F248D78FF00A2FE8C /* UIButton+Extension.swift */; };
 		38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B832478886B005B0BEB /* AppDelegate.swift */; };
 		38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F90B852478886B005B0BEB /* SceneDelegate.swift */; };
 		38F90B8B2478886B005B0BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F90B892478886B005B0BEB /* Main.storyboard */; };
@@ -144,6 +146,8 @@
 		38CE8623248845BB0006D609 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksModelController.swift; sourceTree = "<group>"; };
 		38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
+		38EAF129248C62A900A2FE8C /* Shaking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shaking.swift; sourceTree = "<group>"; };
+		38EAF12F248D78FF00A2FE8C /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		38F90B802478886B005B0BEB /* Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F90B832478886B005B0BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38F90B852478886B005B0BEB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 				3888D1AB247B110E009B3966 /* Constants.swift */,
 				3888D1B7247B29F3009B3966 /* AppColor.swift */,
 				3888D1BD247B4D5D009B3966 /* UIView+Extension.swift */,
+				38EAF12F248D78FF00A2FE8C /* UIButton+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 				3888D1CB247B7C92009B3966 /* Database.swift */,
 				38CE861D248579780006D609 /* DatePickerTapGestureDelegate.swift */,
 				38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */,
+				38EAF129248C62A900A2FE8C /* Shaking.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -785,11 +791,13 @@
 				3888D2512483EE7B009B3966 /* NewEventView.swift in Sources */,
 				38EAF12E248CCB0C00A2FE8C /* KeyboardDelegate.swift in Sources */,
 				3888D1FE247E1E80009B3966 /* EventView.swift in Sources */,
+				38EAF130248D78FF00A2FE8C /* UIButton+Extension.swift in Sources */,
 				38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */,
 				3888D225247F90B0009B3966 /* CalendarViewController.swift in Sources */,
 				38CE861624842A000006D609 /* CustomTextView.swift in Sources */,
 				3888D1C4247B5685009B3966 /* ErrorLabel.swift in Sources */,
 				3888D1B6247B1895009B3966 /* CustomTextField.swift in Sources */,
+				38EAF12A248C62A900A2FE8C /* Shaking.swift in Sources */,
 				3888D1CA247B7C5C009B3966 /* Authentication.swift in Sources */,
 				3888D205247F46EC009B3966 /* Event.swift in Sources */,
 			);

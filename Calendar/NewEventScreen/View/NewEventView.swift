@@ -74,7 +74,7 @@ final class NewEventView: UIView {
     private let notificationView = CustomNotificationView()
     private let dateConverter = DateConverter()
     private var selectedTimeLabel: CustomLabel?
-    private var keyboardFrame = CGRect()
+    var keyboardFrame = CGRect()
     private var doNotRepeatButtonBottomAnchor: NSLayoutConstraint?
     
     // MARK: - Initializer
@@ -301,6 +301,10 @@ extension NewEventView {
         notificationView.registerCellId(viewController: viewController)
     }
     
+    func saveButtonTappedAnimation() {
+        saveButton.pulsate()
+    }
+    
     // MARK: Getters
     func getSavedEvent() -> Event? {
         guard
@@ -310,6 +314,14 @@ extension NewEventView {
             let startTime = dateConverter.convertToDate(from: startTimeText),
             let endTime = dateConverter.convertToDate(from: endTimeText)
         else { return nil }
+        guard name != "" else {
+            titleTextField.showWarningAnimation()
+            return nil
+        }
+        guard startTime < endTime else {
+            startTimeLabel.showWarningAnimation()
+            return nil
+        }
         let event = Event(
             name: name,
             startTime: startTime,
@@ -322,10 +334,6 @@ extension NewEventView {
     
     func getTimeSetForAlert() -> Int? {
         return notificationView.getTimeTextField()
-    }
-    
-    func getKeyboard(frame: CGRect) {
-        self.keyboardFrame = frame
     }
 }
 
