@@ -304,7 +304,7 @@ extension NewEventView {
             titleTextField.showWarningAnimation()
             return nil
         }
-        guard startTime > endTime else {
+        guard startTime < endTime else {
             startTimeLabel.showWarningAnimation()
             return nil
         }
