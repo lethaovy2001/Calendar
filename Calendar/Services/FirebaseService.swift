@@ -96,10 +96,14 @@ extension FirebaseService: Database {
             }
             for document in documents {
                 var data = document.data()
-                if let startTime = data["startTime"] as? Timestamp,
-                    let endTime = data["endTime"] as? Timestamp {
+                if let startTime = data["startTime"] as? Timestamp {
                     data.updateValue(startTime.dateValue(), forKey: "startTime")
+                }
+                if let endTime = data["endTime"] as? Timestamp {
                     data.updateValue(endTime.dateValue(), forKey: "endTime")
+                }
+                if let alertTime = data["alertTime"] as? Timestamp {
+                    data.updateValue(alertTime.dateValue(), forKey: "alertTime")
                 }
                 let event = Event(data: data)
                 events.append(event)
