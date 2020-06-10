@@ -31,6 +31,18 @@ final class EventDetailsView: UIView {
     private let alarmSettingsView = SettingsContainerView(iconName: Constants.IconNames.alarm)
     private let repeatSettingsView = SettingsContainerView(iconName: Constants.IconNames.repeatName)
     private let notesContainerView = NotesContainerView()
+    var viewModel: EventViewModel? {
+        didSet {
+            titleContainer.title = viewModel?.name
+            timeContainerView.viewModel = viewModel
+            if let alertTime = viewModel?.alertTime {
+                alarmSettingsView.labelText = alertTime
+            }
+            if let notes = viewModel?.notes {
+                notesContainerView.notes = notes
+            }
+        }
+    }
     
     // MARK: - Initializer
     init() {

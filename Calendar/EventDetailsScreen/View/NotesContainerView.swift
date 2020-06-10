@@ -32,6 +32,11 @@ final class NotesContainerView: UIView {
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
+    var notes: String? {
+        didSet {
+            textView.text = notes
+        }
+    }
     
     // MARK: - Initializer
     init() {

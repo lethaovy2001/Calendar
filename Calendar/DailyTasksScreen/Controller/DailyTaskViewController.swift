@@ -92,6 +92,7 @@ class DailyTaskViewController: UIViewController {
 extension DailyTaskViewController: EventTapGestureDelegate {
     func didTap(on eventView: EventView) {
         let viewController = EventDetailsViewController()
+        viewController.viewModel = eventView.viewModel
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
