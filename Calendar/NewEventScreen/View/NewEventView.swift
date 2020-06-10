@@ -309,6 +309,14 @@ extension NewEventView {
             let startTime = dateConverter.convertToDate(from: startTimeText),
             let endTime = dateConverter.convertToDate(from: endTimeText)
         else { return nil }
+        guard name != "" else {
+            titleTextField.showWarningAnimation()
+            return nil
+        }
+        guard startTime > endTime else {
+            startTimeLabel.showWarningAnimation()
+            return nil
+        }
         let event = Event(
             name: name,
             startTime: startTime,
