@@ -194,9 +194,8 @@ extension CalendarViewController: UITableViewDelegate {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
             Constants.CellId.sectionHeader) as? CustomHeaderView
         else { return UIView() }
-        let event = modelController.getEvents(at: section)[0]
-        let viewModel = EventViewModel(model: event)
-        view.dateString = viewModel.startDate.uppercased()
+        let eventSection = modelController.getSections()[section]
+        view.date = eventSection.date
         return view
     }
 }

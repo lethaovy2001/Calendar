@@ -13,12 +13,16 @@ final class CustomHeaderView: UITableViewHeaderFooterView {
     private let title = CustomLabel(
         text: "TITLE",
         textColor: AppColor.darkGray.withAlphaComponent(0.7),
-        textSize: 14,
+        textSize: 16,
         textWeight: .bold)
     private let dividerLine = CustomContainerView(backgroundColor: AppColor.dividerColor)
-    var dateString: String? {
+    var date: Date? {
         didSet {
-            title.text = dateString
+            guard let date = date else { return }
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "EEEE, MMM, dd, yyyy"
+            title.text = dateFormatter.string(from: date).uppercased()
         }
     }
     
@@ -42,7 +46,6 @@ final class CustomHeaderView: UITableViewHeaderFooterView {
     private func addSubviews() {
         contentView.addSubview(title)
         contentView.addSubview(dividerLine)
-        //contentView.backgroundColor = .yellow
     }
     
     private func setupConstraints() {
@@ -59,5 +62,4 @@ final class CustomHeaderView: UITableViewHeaderFooterView {
             dividerLine.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6)
         ])
     }
-    
 }
