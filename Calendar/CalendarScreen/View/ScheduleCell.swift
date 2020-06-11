@@ -92,7 +92,7 @@ final class ScheduleCell: UITableViewCell {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             verticalBar.topAnchor.constraint(equalTo: topAnchor, constant: 6),
-            verticalBar.leftAnchor.constraint(equalTo: leftAnchor),
+            verticalBar.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
             verticalBar.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6),
             verticalBar.widthAnchor.constraint(equalToConstant: 4)
         ])

@@ -16,6 +16,11 @@ final class CustomHeaderView: UITableViewHeaderFooterView {
         textSize: 14,
         textWeight: .bold)
     private let dividerLine = CustomContainerView(backgroundColor: AppColor.dividerColor)
+    var dateString: String? {
+        didSet {
+            title.text = dateString
+        }
+    }
     
     // MARK: - Initializer
     override init(reuseIdentifier: String?) {
@@ -37,11 +42,12 @@ final class CustomHeaderView: UITableViewHeaderFooterView {
     private func addSubviews() {
         contentView.addSubview(title)
         contentView.addSubview(dividerLine)
+        //contentView.backgroundColor = .yellow
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: contentView.topAnchor),
+            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             title.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             title.rightAnchor.constraint(equalTo: contentView.rightAnchor)
         ])
@@ -49,7 +55,8 @@ final class CustomHeaderView: UITableViewHeaderFooterView {
             dividerLine.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 6),
             dividerLine.heightAnchor.constraint(equalToConstant: 2),
             dividerLine.leftAnchor.constraint(equalTo: title.leftAnchor),
-            dividerLine.rightAnchor.constraint(equalTo: title.rightAnchor)
+            dividerLine.rightAnchor.constraint(equalTo: title.rightAnchor),
+            dividerLine.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6)
         ])
     }
     

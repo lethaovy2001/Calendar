@@ -170,7 +170,7 @@ extension CalendarViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellId.scheduleCellId,
             for: indexPath) as? ScheduleCell
         else { return UITableViewCell() }
-        let event = modelController.getEvents()[indexPath.row]
+        let event = modelController.getEvents(at: indexPath.section)[indexPath.row]
         cell.viewModel = EventViewModel(model: event)
         return cell
     }
@@ -194,6 +194,9 @@ extension CalendarViewController: UITableViewDelegate {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
             Constants.CellId.sectionHeader) as? CustomHeaderView
         else { return UIView() }
+        let event = modelController.getEvents(at: section)[0]
+        let viewModel = EventViewModel(model: event)
+        view.dateString = viewModel.startDate.uppercased()
         return view
     }
 }
