@@ -48,4 +48,12 @@ final class UserSettingsView: UIView {
             logoutButton.heightAnchor.constraint(equalToConstant: 48)
         ])
     }
+    
+    func setLogoutSelector(target: UIViewController, selector: Selector) {
+        logoutButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
+    func pressedLogoutButton() {
+        logoutButton.pulsate()
+    }
 }
