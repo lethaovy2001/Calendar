@@ -64,14 +64,17 @@ class DailyTaskViewController: UIViewController {
     
     // MARK: Actions
     @objc private func calendarButtonPressed() {
-
+        let viewController = CalendarViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc private func addButtonPressed() {
-        
+        let viewController = NewEventViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc private func profileButtonPressed() {
-        
+        let viewController = UserSettingsViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
