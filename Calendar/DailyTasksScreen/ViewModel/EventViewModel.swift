@@ -50,8 +50,10 @@ extension EventViewModel {
     }
     
     var location: String? {
-        guard model.location != "" else { return nil }
-        return model.location
+        guard let location = model.location,
+            !location.isEmpty
+            else { return nil }
+        return location
     }
     
     var notes: String? {
@@ -63,25 +65,35 @@ extension EventViewModel {
         let difference = Calendar.current.dateComponents([.minute, .hour, .day, .weekOfYear],
                                                          from: alertTime,
                                                          to: model.startTime)
+        var timeString: String
+        var isPlural: Bool
         guard
             let minute = difference.minute,
             let hour = difference.hour,
             let day = difference.day,
             let week = difference.weekOfYear
         else { return nil }
+        
         if week != 0 {
-            guard week > 1 else { return "\(week) weeks before" }
-            return "\(week) week before"
+            timeString = "\(week) week"
+            isPlural = week > 1
         } else if day != 0 {
-            guard day > 1 else { return "\(day) days before" }
-            return "\(day) day before"
+            timeString = "\(day) day"
+            isPlural = day > 1
         } else if hour != 0 {
-            guard hour > 1 else { return "\(hour) hours before" }
-            return "\(hour) hour before"
+            timeString = "\(hour) hour"
+            isPlural = hour > 1
         } else if minute != 0 {
-            guard minute > 1 else { return "\(minute) minutes before" }
-            return "\(minute) minute before"
+            timeString = "\(minute) minute"
+            isPlural = minute > 1
+        } else {
+            return nil
         }
-        return nil
+        
+        if isPlural {
+            return "\(timeString)s before"
+        } else {
+            return "\(timeString) before"
+        }
     }
 }
