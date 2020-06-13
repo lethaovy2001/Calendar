@@ -11,6 +11,11 @@ import UIKit
 final class TitleContainerView: CustomContainerView {
     // MARK: - Properties
     private let titleLabel = CustomLabel(text: "Title", textColor: AppColor.darkGray, textSize: 24, textWeight: .bold)
+    var title: String? {
+        didSet {
+            titleLabel.text = title
+        }
+    }
     
     // MARK: - Initializer
     override init() {

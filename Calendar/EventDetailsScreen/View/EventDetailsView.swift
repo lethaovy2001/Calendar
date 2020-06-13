@@ -30,7 +30,23 @@ final class EventDetailsView: UIView {
     private let timeContainerView = TimeContainerView()
     private let alarmSettingsView = SettingsContainerView(iconName: Constants.IconNames.alarm)
     private let repeatSettingsView = SettingsContainerView(iconName: Constants.IconNames.repeatName)
+    private let locationSettingsView = SettingsContainerView(iconName: Constants.IconNames.mappin)
     private let notesContainerView = NotesContainerView()
+    var viewModel: EventViewModel? {
+        didSet {
+            titleContainer.title = viewModel?.name
+            timeContainerView.viewModel = viewModel
+            if let alertTime = viewModel?.alertTime {
+                alarmSettingsView.labelText = alertTime
+            }
+            if let notes = viewModel?.notes {
+                notesContainerView.notes = notes
+            }
+            if let location = viewModel?.location {
+                locationSettingsView.labelText = location
+            }
+        }
+    }
     
     // MARK: - Initializer
     init() {
@@ -61,6 +77,7 @@ final class EventDetailsView: UIView {
         scrollView.addSubview(editButton)
         scrollView.addSubview(titleContainer)
         scrollView.addSubview(timeContainerView)
+        scrollView.addSubview(locationSettingsView)
         scrollView.addSubview(alarmSettingsView)
         scrollView.addSubview(repeatSettingsView)
         scrollView.addSubview(notesContainerView)
@@ -97,7 +114,12 @@ final class EventDetailsView: UIView {
             timeContainerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -36)
         ])
         NSLayoutConstraint.activate([
-            alarmSettingsView.topAnchor.constraint(equalTo: timeContainerView.bottomAnchor, constant: -8),
+            locationSettingsView.topAnchor.constraint(equalTo: timeContainerView.bottomAnchor, constant: -8),
+            locationSettingsView.leftAnchor.constraint(equalTo: leftAnchor, constant: 36),
+            locationSettingsView.rightAnchor.constraint(equalTo: rightAnchor, constant: -36)
+        ])
+        NSLayoutConstraint.activate([
+            alarmSettingsView.topAnchor.constraint(equalTo: locationSettingsView.bottomAnchor, constant: -8),
             alarmSettingsView.leftAnchor.constraint(equalTo: leftAnchor, constant: 36),
             alarmSettingsView.rightAnchor.constraint(equalTo: rightAnchor, constant: -36)
         ])

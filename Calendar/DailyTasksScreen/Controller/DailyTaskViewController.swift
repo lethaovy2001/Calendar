@@ -38,6 +38,7 @@ class DailyTaskViewController: UIViewController {
         setupUI()
         configureEvents()
         setupSelectors()
+        addDelegate()
     }
     
     private func setupUI() {
@@ -69,6 +70,10 @@ class DailyTaskViewController: UIViewController {
         dailyTaskView.setProfileButtonSelector(selector: #selector(profileButtonPressed), target: self)
     }
     
+    private func addDelegate() {
+        dailyTaskView.eventTapGesture = self
+    }
+    
     // MARK: Actions
     @objc private func calendarButtonPressed() {
 
@@ -80,5 +85,14 @@ class DailyTaskViewController: UIViewController {
     
     @objc private func profileButtonPressed() {
         
+    }
+}
+
+// MARK: - EventTapGestureDelegate
+extension DailyTaskViewController: EventTapGestureDelegate {
+    func didTap(on eventView: EventView) {
+        let viewController = EventDetailsViewController()
+        viewController.viewModel = eventView.viewModel
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
