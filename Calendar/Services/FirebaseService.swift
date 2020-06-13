@@ -34,12 +34,19 @@ extension FirebaseService: Authentication {
     
     func createUser(email: String, password: String, completion: @escaping (Error?) -> Void) {
         auth.createUser(withEmail: email, password: password) { _, error in
-            if error != nil {
-                completion(error)
-                return
+            if error != nil,
+                let errCode = AuthErrorCode(rawValue: error!._code) {
+                switch errCode {
+                // if email is already used, then log user in
+                case .emailAlreadyInUse:
+                    break
+                default:
+                    completion(error)
+                    return
+                }
             }
             self.logUserIn(withEmail: email, password: password) { loginError in
-                if let loginError = loginError {
+                if loginError != nil {
                     completion(loginError)
                     return
                 }

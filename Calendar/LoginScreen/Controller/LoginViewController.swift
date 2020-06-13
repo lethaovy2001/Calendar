@@ -70,7 +70,7 @@ final class LoginViewController: UIViewController {
     @objc private func login() {
         guard
             let email = loginView.getEmailAddress(),
-            let password = loginView.getEmailAddress()
+            let password = loginView.getPassword()
         else { return }
         auth.createUser(email: email, password: password) { signInError in
             if let error = signInError {
