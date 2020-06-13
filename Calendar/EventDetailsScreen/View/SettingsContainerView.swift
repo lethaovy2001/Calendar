@@ -23,6 +23,11 @@ final class SettingsContainerView: UIView {
         textSize: 18,
         textWeight: .regular
     )
+    var labelText: String? {
+        didSet {
+            label.text = labelText
+        }
+    }
     
     // MARK: - Initializer
     init(iconName: String) {
