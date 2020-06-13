@@ -38,6 +38,7 @@ struct Constants {
         static let edit = "pencil"
         static let more = "ellipsis"
         static let notes = "doc.plaintext"
+        static let mappin = "mappin"
     }
     
     struct CellId {
