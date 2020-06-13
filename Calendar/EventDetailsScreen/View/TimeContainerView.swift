@@ -40,6 +40,12 @@ final class TimeContainerView: UIView {
         textSize: 18,
         textWeight: .regular
     )
+    var viewModel: EventViewModel? {
+        didSet {
+            startTimeLabel.text = viewModel?.startTimeDate
+            endTimeLabel.text = viewModel?.endTimeDate
+        }
+    }
     
     // MARK: - Initializer
     init() {

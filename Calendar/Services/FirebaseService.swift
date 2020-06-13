@@ -14,11 +14,15 @@ class FirebaseService {
     private var database: Firestore!
     private var auth: Auth!
     static let shared = FirebaseService()
+    private var calendar: Calendar
+    private var components: DateComponents    
     
     // MARK: - Initializer
     init() {
         database = Firestore.firestore()
         auth = Auth.auth()
+        calendar = Calendar.current
+        components = calendar.dateComponents([.day, .month, .year], from: Date())
     }
 }
 
@@ -77,5 +81,41 @@ extension FirebaseService: Database {
         guard let uid = getCurrentUserId() else { return }
         let eventDictionary = event.getEventDictionary()
         database.collection("users").document(uid).collection("events").addDocument(data: eventDictionary)
+    }
+    
+    func loadTodayEvents(completion: @escaping ([Event]) -> Void) {
+        guard
+            let uid = getCurrentUserId(),
+            let start = calendar.date(from: components),
+            let end = calendar.date(byAdding: .day, value: 1, to: start)
+            else { return }
+        var events: [Event] = []
+        let eventsRef = database.collection("users")
+            .document(uid)
+            .collection("events")
+            .whereField("startTime", isGreaterThan: start)
+            .whereField("startTime", isLessThan: end)
+        eventsRef.addSnapshotListener { querySnapshot, error in
+            guard let documents = querySnapshot?.documents else {
+                print("Error fetching documents: \(error!)")
+                completion(events)
+                return
+            }
+            for document in documents {
+                var data = document.data()
+                if let startTime = data["startTime"] as? Timestamp {
+                    data.updateValue(startTime.dateValue(), forKey: "startTime")
+                }
+                if let endTime = data["endTime"] as? Timestamp {
+                    data.updateValue(endTime.dateValue(), forKey: "endTime")
+                }
+                if let alertTime = data["alertTime"] as? Timestamp {
+                    data.updateValue(alertTime.dateValue(), forKey: "alertTime")
+                }
+                let event = Event(data: data)
+                events.append(event)
+            }
+            completion(events)
+        }
     }
 }
