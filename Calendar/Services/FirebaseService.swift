@@ -134,7 +134,7 @@ extension FirebaseService: Database {
     func loadEvents(from date: Date, completion: @escaping ([EventSection]) -> Void) {
         guard let uid = getCurrentUserId() else { return }
         var eventsInSection: [Event] = []
-        var eventSections: [EventSection] = []
+        var sections: [EventSection] = []
         var sectionDate: Date?
         let eventsRef = database.collection("users")
             .document(uid)
@@ -164,17 +164,17 @@ extension FirebaseService: Database {
                     }
                 }
                 // append the last eventSection
-                if index == events.count - 1 {
+                if index == documents.count - 1 {
                     appendSectionAndEvent(event)
                 }
             }
-            completion(eventSections)
+            completion(sections)
         }
         
         func appendSectionAndEvent(_ event: Event) {
             sectionDate = event.startTime
             let eventSection = EventSection(events: eventsInSection)
-            eventSections.append(eventSection)
+            sections.append(eventSection)
             eventsInSection = []
             eventsInSection.append(event)
         }
