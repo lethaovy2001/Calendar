@@ -187,7 +187,10 @@ extension CalendarViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO: Show details
+        let viewController = EventDetailsViewController()
+        let event = modelController.getEvents(at: indexPath.section)[indexPath.row]
+        viewController.viewModel = EventViewModel(model: event)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
