@@ -170,6 +170,7 @@ extension CalendarViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellId.scheduleCellId,
             for: indexPath) as? ScheduleCell
         else { return UITableViewCell() }
+        cell.selectionStyle = .none
         let event = modelController.getEvents(at: indexPath.section)[indexPath.row]
         cell.viewModel = EventViewModel(model: event)
         return cell
