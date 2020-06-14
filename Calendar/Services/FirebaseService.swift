@@ -24,30 +24,6 @@ class FirebaseService {
         calendar = Calendar.current
         components = calendar.dateComponents([.day, .month, .year], from: Date())
     }
-    
-    private func convertTimestampToDate(document: QueryDocumentSnapshot) -> Event {
-        var data = document.data()
-        if let startTime = data["startTime"] as? Timestamp {
-            data.updateValue(startTime.dateValue(), forKey: "startTime")
-        }
-        if let endTime = data["endTime"] as? Timestamp {
-            data.updateValue(endTime.dateValue(), forKey: "endTime")
-        }
-        if let alertTime = data["alertTime"] as? Timestamp {
-            data.updateValue(alertTime.dateValue(), forKey: "alertTime")
-        }
-        let event = Event(data: data)
-        return event
-    }
-    
-    private func getAllEvents(documents: [QueryDocumentSnapshot]) -> [Event] {
-        var events: [Event] = []
-        for document in documents {
-            let event = self.convertTimestampToDate(document: document)
-            events.append(event)
-        }
-        return events
-    }
 }
 
 // MARK: - Authentication
