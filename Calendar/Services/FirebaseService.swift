@@ -96,7 +96,6 @@ extension FirebaseService: Database {
             .whereField("startTime", isLessThan: end)
         eventsRef.addSnapshotListener { querySnapshot, error in
             guard let documents = querySnapshot?.documents else {
-                print("Error fetching documents: \(error!)")
                 completion([])
                 return
             }
@@ -116,9 +115,8 @@ extension FirebaseService: Database {
             .document(uid)
             .collection("events")
             .whereField("startTime", isGreaterThan: date)
-        eventsRef.addSnapshotListener { querySnapshot, error in
+        eventsRef.addSnapshotListener { querySnapshot, _ in
             guard let documents = querySnapshot?.documents else {
-                print("Error fetching documents: \(error!)")
                 completion([])
                 return
             }
@@ -126,24 +124,7 @@ extension FirebaseService: Database {
                 return try? queryDocumentSnapshot.data(as: Event.self)
             }
             sectionDate = events.first?.startTime
-            
-            // Filter events that has the same startDate into an eventSection
-            for (index, event) in events.enumerated() {
-                self.components = self.calendar.dateComponents([.day],
-                                                               from: sectionDate ?? Date(),
-                                                               to: event.startTime)
-                if let dayDifference = self.components.day {
-                    if dayDifference > 0 {
-                        appendSectionAndEvent(event)
-                    } else {
-                        eventsInSection.append(event)
-                    }
-                }
-                // append the last eventSection
-                if index == documents.count - 1 {
-                    appendSectionAndEvent(event)
-                }
-            }
+            filterEventsBasedOnStartDate(events: events)
             completion(sections)
         }
         
@@ -153,6 +134,26 @@ extension FirebaseService: Database {
             sections.append(eventSection)
             eventsInSection = []
             eventsInSection.append(event)
+        }
+        
+        // Filter events that has the same startDate into an eventSection
+        func filterEventsBasedOnStartDate(events: [Event]) {
+            for (index, event) in events.enumerated() {
+                self.components = self.calendar.dateComponents([.day],
+                                                               from: sectionDate ?? Date(),
+                                                               to: event.startTime)
+                guard let dayDifference = self.components.day else { return }
+                if dayDifference > 0 {
+                    appendSectionAndEvent(event)
+                } else {
+                    eventsInSection.append(event)
+                }
+                
+                // append the last eventSection
+                if index == events.count - 1 {
+                    appendSectionAndEvent(event)
+                }
+            }
         }
     }
 }
