@@ -89,7 +89,6 @@ extension FirebaseService: Database {
             let start = calendar.date(from: components),
             let end = calendar.date(byAdding: .day, value: 1, to: start)
             else { return }
-        var events: [Event] = []
         let eventsRef = database.collection("users")
             .document(uid)
             .collection("events")
@@ -97,23 +96,11 @@ extension FirebaseService: Database {
             .whereField("startTime", isLessThan: end)
         eventsRef.addSnapshotListener { querySnapshot, error in
             guard let documents = querySnapshot?.documents else {
-                print("Error fetching documents: \(error!)")
-                completion(events)
+                completion([])
                 return
             }
-            for document in documents {
-                var data = document.data()
-                if let startTime = data["startTime"] as? Timestamp {
-                    data.updateValue(startTime.dateValue(), forKey: "startTime")
-                }
-                if let endTime = data["endTime"] as? Timestamp {
-                    data.updateValue(endTime.dateValue(), forKey: "endTime")
-                }
-                if let alertTime = data["alertTime"] as? Timestamp {
-                    data.updateValue(alertTime.dateValue(), forKey: "alertTime")
-                }
-                let event = Event(data: data)
-                events.append(event)
+            let events = documents.compactMap { (queryDocumentSnapshot) -> Event? in
+                return try? queryDocumentSnapshot.data(as: Event.self)
             }
             completion(events)
         }

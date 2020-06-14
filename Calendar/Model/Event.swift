@@ -8,13 +8,22 @@
 
 import UIKit
 
-struct Event {
+struct Event: Codable {
     let name: String
     let startTime: Date
     let endTime: Date
     let location: String?
     let notes: String?
     var alertTime: Date?
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case startTime
+        case endTime
+        case location
+        case notes
+        case alertTime
+    }
     
     init(name: String,
          startTime: Date,
