@@ -16,6 +16,7 @@
 		38285B24248F09EE00AAEE03 /* SettingsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B23248F09EE00AAEE03 /* SettingsContainerView.swift */; };
 		38285B26248F78B800AAEE03 /* NotesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B25248F78B800AAEE03 /* NotesContainerView.swift */; };
 		38285B292490BCC400AAEE03 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B282490BCC400AAEE03 /* EventViewModel.swift */; };
+		38285B2B2490C42E00AAEE03 /* EventTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B2A2490C42E00AAEE03 /* EventTapGestureDelegate.swift */; };
 		3888D1A2247AF88E009B3966 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A1247AF88E009B3966 /* LoginViewController.swift */; };
 		3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A6247B0F28009B3966 /* LoginView.swift */; };
 		3888D1A9247B1091009B3966 /* AppLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A8247B1091009B3966 /* AppLogoView.swift */; };
@@ -69,6 +70,7 @@
 		38E51E2F249107D800EBBF5B /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */; };
 		38E51E312491144900EBBF5B /* CalendarModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E302491144900EBBF5B /* CalendarModelController.swift */; };
 		38E51E342491282100EBBF5B /* EventSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E332491282100EBBF5B /* EventSection.swift */; };
+		38E51E372494295100EBBF5B /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E362494295100EBBF5B /* UserSettingsView.swift */; };
 		38EAF127248C202300A2FE8C /* DailyTasksModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */; };
 		38EAF12A248C62A900A2FE8C /* Shaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF129248C62A900A2FE8C /* Shaking.swift */; };
 		38EAF12E248CCB0C00A2FE8C /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */; };
@@ -111,6 +113,7 @@
 		38285B23248F09EE00AAEE03 /* SettingsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerView.swift; sourceTree = "<group>"; };
 		38285B25248F78B800AAEE03 /* NotesContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesContainerView.swift; sourceTree = "<group>"; };
 		38285B282490BCC400AAEE03 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		38285B2A2490C42E00AAEE03 /* EventTapGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTapGestureDelegate.swift; sourceTree = "<group>"; };
 		3888D1A1247AF88E009B3966 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3888D1A6247B0F28009B3966 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3888D1A8247B1091009B3966 /* AppLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoView.swift; sourceTree = "<group>"; };
@@ -166,6 +169,7 @@
 		38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		38E51E302491144900EBBF5B /* CalendarModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModelController.swift; sourceTree = "<group>"; };
 		38E51E332491282100EBBF5B /* EventSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSection.swift; sourceTree = "<group>"; };
+		38E51E362494295100EBBF5B /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksModelController.swift; sourceTree = "<group>"; };
 		38EAF129248C62A900A2FE8C /* Shaking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shaking.swift; sourceTree = "<group>"; };
 		38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
@@ -323,6 +327,7 @@
 				38CE861D248579780006D609 /* DatePickerTapGestureDelegate.swift */,
 				38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */,
 				38EAF129248C62A900A2FE8C /* Shaking.swift */,
+				38285B2A2490C42E00AAEE03 /* EventTapGestureDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */,
+				38E51E362494295100EBBF5B /* UserSettingsView.swift */,
 			);
 			path = UserSettingsScreen;
 			sourceTree = "<group>";
@@ -853,6 +859,7 @@
 				3888D1C0247B501F009B3966 /* CustomLabel.swift in Sources */,
 				3888D1DE247C48B7009B3966 /* DailyTasksMainView.swift in Sources */,
 				38285B24248F09EE00AAEE03 /* SettingsContainerView.swift in Sources */,
+				38285B2B2490C42E00AAEE03 /* EventTapGestureDelegate.swift in Sources */,
 				3888D1CF247B7DF8009B3966 /* FirebaseService.swift in Sources */,
 				3888D2362480B597009B3966 /* DateCounter.swift in Sources */,
 				38285B22248EDDE000AAEE03 /* BookRingView.swift in Sources */,
@@ -872,6 +879,7 @@
 				3888D2542484154C009B3966 /* SectionTitleLabel.swift in Sources */,
 				3888D207247F5741009B3966 /* BottomBarView.swift in Sources */,
 				38285B292490BCC400AAEE03 /* EventViewModel.swift in Sources */,
+				38E51E372494295100EBBF5B /* UserSettingsView.swift in Sources */,
 				3888D1BA247B2C5C009B3966 /* IconButton.swift in Sources */,
 				38285B26248F78B800AAEE03 /* NotesContainerView.swift in Sources */,
 				3888D1AC247B110E009B3966 /* Constants.swift in Sources */,

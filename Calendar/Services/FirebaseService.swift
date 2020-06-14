@@ -15,7 +15,7 @@ class FirebaseService {
     private var auth: Auth!
     static let shared = FirebaseService()
     private var calendar: Calendar
-    private var components: DateComponents    
+    private var components: DateComponents
     
     // MARK: - Initializer
     init() {
@@ -23,30 +23,6 @@ class FirebaseService {
         auth = Auth.auth()
         calendar = Calendar.current
         components = calendar.dateComponents([.day, .month, .year], from: Date())
-    }
-    
-    private func convertTimestampToDate(document: QueryDocumentSnapshot) -> Event {
-        var data = document.data()
-        if let startTime = data["startTime"] as? Timestamp {
-            data.updateValue(startTime.dateValue(), forKey: "startTime")
-        }
-        if let endTime = data["endTime"] as? Timestamp {
-            data.updateValue(endTime.dateValue(), forKey: "endTime")
-        }
-        if let alertTime = data["alertTime"] as? Timestamp {
-            data.updateValue(alertTime.dateValue(), forKey: "alertTime")
-        }
-        let event = Event(data: data)
-        return event
-    }
-    
-    private func getAllEvents(documents: [QueryDocumentSnapshot]) -> [Event] {
-        var events: [Event] = []
-        for document in documents {
-            let event = self.convertTimestampToDate(document: document)
-            events.append(event)
-        }
-        return events
     }
 }
 
@@ -58,12 +34,19 @@ extension FirebaseService: Authentication {
     
     func createUser(email: String, password: String, completion: @escaping (Error?) -> Void) {
         auth.createUser(withEmail: email, password: password) { _, error in
-            if error != nil {
-                completion(error)
-                return
+            if error != nil,
+                let errCode = AuthErrorCode(rawValue: error!._code) {
+                switch errCode {
+                // if email is already used, then log user in
+                case .emailAlreadyInUse:
+                    break
+                default:
+                    completion(error)
+                    return
+                }
             }
             self.logUserIn(withEmail: email, password: password) { loginError in
-                if let loginError = loginError {
+                if loginError != nil {
                     completion(loginError)
                     return
                 }
@@ -117,7 +100,9 @@ extension FirebaseService: Database {
                 completion([])
                 return
             }
-            let events = self.getAllEvents(documents: documents)
+            let events = documents.compactMap { (queryDocumentSnapshot) -> Event? in
+                return try? queryDocumentSnapshot.data(as: Event.self)
+            }
             completion(events)
         }
     }
@@ -137,32 +122,32 @@ extension FirebaseService: Database {
                 completion([])
                 return
             }
-            for (index, document) in documents.enumerated() {
-                let event = self.convertTimestampToDate(document: document)
-                if sectionDate == nil {
-                    sectionDate = event.startTime
-                }
+            let events = documents.compactMap { (queryDocumentSnapshot) -> Event? in
+                return try? queryDocumentSnapshot.data(as: Event.self)
+            }
+            sectionDate = events.first?.startTime
+            
+            // Filter events that has the same startDate into an eventSection
+            for (index, event) in events.enumerated() {
                 self.components = self.calendar.dateComponents([.day],
-                                                     from: sectionDate ?? Date(),
-                                                     to: event.startTime)
-                if let day = self.components.day {
-                    // if the sectionDate is different than the startDate of the event
-                    //      then append section and reset values
-                    // else append events into the current section
-                    if day > 0 {
-                        appendSection(event: event)
+                                                               from: sectionDate ?? Date(),
+                                                               to: event.startTime)
+                if let dayDifference = self.components.day {
+                    if dayDifference > 0 {
+                        appendSectionAndEvent(event)
                     } else {
                         eventsInSection.append(event)
                     }
                 }
+                // append the last eventSection
                 if index == documents.count - 1 {
-                    appendSection(event: event)
+                    appendSectionAndEvent(event)
                 }
             }
             completion(sections)
         }
         
-        func appendSection(event: Event) {
+        func appendSectionAndEvent(_ event: Event) {
             sectionDate = event.startTime
             let eventSection = EventSection(events: eventsInSection)
             sections.append(eventSection)

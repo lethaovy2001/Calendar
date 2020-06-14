@@ -11,6 +11,11 @@ import UIKit
 class EventDetailsViewController: UIViewController {
     // MARK: - Properties
     private let mainView = EventDetailsView()
+    var viewModel: EventViewModel? {
+        didSet {
+            mainView.viewModel = viewModel
+        }
+    }
     
     // MARK: - View Lifecycles
     override func viewDidLoad() {
