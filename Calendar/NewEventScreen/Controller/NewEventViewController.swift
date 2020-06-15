@@ -99,13 +99,15 @@ final class NewEventViewController: UIViewController {
         guard let alertTime = event.alertTime else { return }
         let notificationContent = UNMutableNotificationContent()
         notificationContent.title = event.name
+        notificationContent.categoryIdentifier = "alarm"
+        notificationContent.sound = .default
         if let notes = event.notes {
             notificationContent.body = notes
         }
-        notificationContent.categoryIdentifier = "alarm"
-        notificationContent.sound = .default
-        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute],
-                                                             from: alertTime)
+        let dateComponents = Calendar.current.dateComponents(
+            [.year, .month, .day, .hour, .minute],
+            from: alertTime
+        )
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         let uuidString = UUID().uuidString
         let request = UNNotificationRequest(identifier: uuidString,
