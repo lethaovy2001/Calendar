@@ -20,7 +20,7 @@ struct AppColor {
     static let green = UIColor(red: 21/255, green: 199/255, blue: 87/255, alpha: 1)
     static let paleViolet = UIColor(red: 209/255, green: 163/255, blue: 255/255, alpha: 1)
     
-    // MARK: Event Colors
+    // MARK: Pastel Event Colors
     static let pastelOrange = UIColor(red: 255/255, green: 235/255, blue: 224/255, alpha: 1)
     static let pastelGreen = UIColor(red: 240/255, green: 255/255, blue: 224/255, alpha: 1)
     static let pastelLimeGreen = UIColor(red: 224/255, green: 255/255, blue: 234/255, alpha: 1)
@@ -30,14 +30,18 @@ struct AppColor {
     static let pastelYellow = UIColor(red: 252/255, green: 255/255, blue: 224/255, alpha: 1)
     static let pastelRed = UIColor(red: 255/255, green: 224/255, blue: 224/255, alpha: 1)
     
+    // MARK: Event Colors
+    static let purpleBlue = UIColor(red: 114/255, green: 114/255, blue: 255/255, alpha: 1)
+    static let vividBlue = UIColor(red: 48/255, green: 133/255, blue: 255/255, alpha: 1)
+    static let vividOrange = UIColor(red: 255/255, green: 121/255, blue: 46/255, alpha: 1)
+    static let softRed = UIColor(red: 239/255, green: 99/255, blue: 81/255, alpha: 1)
+    static let darkLimeGreen = UIColor(red: 0/255, green: 171/255, blue: 0/255, alpha: 1)
+    
     static let eventColors = [
-        pastelRed,
-        pastelGreen,
-        pastelOrange,
-        pastelPurple,
-        pastelLimeGreen,
-        pastelBlue,
-        pastelPink,
-        pastelYellow
+        purpleBlue,
+        vividBlue,
+        vividOrange,
+        softRed,
+        darkLimeGreen
     ]
 }

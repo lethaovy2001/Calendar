@@ -69,6 +69,9 @@
 		38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8623248845BB0006D609 /* NotificationCell.swift */; };
 		38E51E2F249107D800EBBF5B /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */; };
 		38E51E372494295100EBBF5B /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E362494295100EBBF5B /* UserSettingsView.swift */; };
+		38E51E3C2496BC9500EBBF5B /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E3B2496BC9500EBBF5B /* SearchEventViewController.swift */; };
+		38E51E3E2496BCA900EBBF5B /* SearchEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E3D2496BCA900EBBF5B /* SearchEventView.swift */; };
+		38E51E40249705FD00EBBF5B /* SearchedEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E3F249705FD00EBBF5B /* SearchedEventCell.swift */; };
 		38EAF127248C202300A2FE8C /* DailyTasksModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */; };
 		38EAF12A248C62A900A2FE8C /* Shaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF129248C62A900A2FE8C /* Shaking.swift */; };
 		38EAF12E248CCB0C00A2FE8C /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */; };
@@ -166,6 +169,9 @@
 		38CE8623248845BB0006D609 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		38E51E362494295100EBBF5B /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
+		38E51E3B2496BC9500EBBF5B /* SearchEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
+		38E51E3D2496BCA900EBBF5B /* SearchEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventView.swift; sourceTree = "<group>"; };
+		38E51E3F249705FD00EBBF5B /* SearchedEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedEventCell.swift; sourceTree = "<group>"; };
 		38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksModelController.swift; sourceTree = "<group>"; };
 		38EAF129248C62A900A2FE8C /* Shaking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shaking.swift; sourceTree = "<group>"; };
 		38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
@@ -475,6 +481,32 @@
 			path = UserSettingsScreen;
 			sourceTree = "<group>";
 		};
+		38E51E382496BB9B00EBBF5B /* SearchEventScreen */ = {
+			isa = PBXGroup;
+			children = (
+				38E51E392496BC7700EBBF5B /* View */,
+				38E51E3A2496BC7F00EBBF5B /* Controller */,
+			);
+			path = SearchEventScreen;
+			sourceTree = "<group>";
+		};
+		38E51E392496BC7700EBBF5B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				38E51E3D2496BCA900EBBF5B /* SearchEventView.swift */,
+				38E51E3F249705FD00EBBF5B /* SearchedEventCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		38E51E3A2496BC7F00EBBF5B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38E51E3B2496BC9500EBBF5B /* SearchEventViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		38F90B772478886B005B0BEB = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +540,7 @@
 				3888D1A0247AF84B009B3966 /* LoginScreen */,
 				3888D1DA247C47BD009B3966 /* DailyTasksScreen */,
 				3888D221247F9078009B3966 /* CalendarScreen */,
+				38E51E382496BB9B00EBBF5B /* SearchEventScreen */,
 				38285B14248DFE6C00AAEE03 /* EventDetailsScreen */,
 				3888D24D2483EC23009B3966 /* NewEventScreen */,
 				38E51E2D249107A100EBBF5B /* UserSettingsScreen */,
@@ -836,9 +869,11 @@
 				3888D1FA247DE5AD009B3966 /* CustomScrollView.swift in Sources */,
 				38CE8622248842D90006D609 /* CustomNotificationView.swift in Sources */,
 				3888D22E2480444A009B3966 /* TextButton.swift in Sources */,
+				38E51E40249705FD00EBBF5B /* SearchedEventCell.swift in Sources */,
 				3888D24F2483EC40009B3966 /* NewEventViewController.swift in Sources */,
 				38285B1E248E194900AAEE03 /* TimeContainerView.swift in Sources */,
 				3888D1B8247B29F3009B3966 /* AppColor.swift in Sources */,
+				38E51E3E2496BCA900EBBF5B /* SearchEventView.swift in Sources */,
 				3888D23224806D30009B3966 /* WeekDaysView.swift in Sources */,
 				38E51E2F249107D800EBBF5B /* UserSettingsViewController.swift in Sources */,
 				3888D1C0247B501F009B3966 /* CustomLabel.swift in Sources */,
@@ -847,6 +882,7 @@
 				38285B2B2490C42E00AAEE03 /* EventTapGestureDelegate.swift in Sources */,
 				3888D1CF247B7DF8009B3966 /* FirebaseService.swift in Sources */,
 				3888D2362480B597009B3966 /* DateCounter.swift in Sources */,
+				38E51E3C2496BC9500EBBF5B /* SearchEventViewController.swift in Sources */,
 				38285B22248EDDE000AAEE03 /* BookRingView.swift in Sources */,
 				3888D202247F3BED009B3966 /* RunningTimeLineView.swift in Sources */,
 				3888D24224822466009B3966 /* DateConverter.swift in Sources */,

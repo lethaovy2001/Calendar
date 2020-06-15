@@ -10,7 +10,7 @@ import UIKit
 
 final class SearchEventView: UIView {
     // MARK: - Properties
-    private let backButton = IconButton(name: Constants.IconNames.back, size: 24, color: AppColor.paleViolet)
+    private let backButton = IconButton(name: Constants.IconNames.back, size: 18, color: AppColor.darkGray)
     private let searchTextField = CustomTextField(
         placeholder: "Search",
         backgroundColor: AppColor.pastelPurple.withAlphaComponent(0.3)
@@ -75,5 +75,15 @@ final class SearchEventView: UIView {
             tableView.rightAnchor.constraint(equalTo: rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+    }
+    
+    func registerCellId(viewController: SearchEventViewController) {
+        tableView.delegate = viewController
+        tableView.dataSource = viewController
+        tableView.register(SearchedEventCell.self, forCellReuseIdentifier: Constants.CellId.searchedEvent)
+    }
+    
+    func setBackButtonSelector(target: UIViewController, selector: Selector) {
+        backButton.addTarget(target, action: selector, for: .touchUpInside)
     }
 }
