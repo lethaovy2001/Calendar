@@ -123,18 +123,16 @@ final class NewEventViewController: UIViewController {
     // MARK: Actions
     @objc private func pressedSaveButton() {
         mainView.saveButtonTappedAnimation()
-        guard let event = mainView.getSavedEvent() else {
-            return
-        }
+        guard let event = mainView.getSavedEvent() else { return }
         guard
             let time = mainView.getTimeSetForAlert(),
             let component = selectedComponent,
             let alertDate = Calendar.current.date(byAdding: component,
                                                   value: -time,
                                                   to: event.startTime)
-            else {
-                database.save(event: event)
-                return
+        else {
+            database.save(event: event)
+            return
         }
         var updateEvent = event
         updateEvent.alertTime = alertDate
@@ -152,7 +150,7 @@ extension NewEventViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: Constants.CellId.notificationCellId,
             for: indexPath) as? NotificationCell
-            else { return UITableViewCell() }
+        else { return UITableViewCell() }
         cell.options = alertOptions[indexPath.row]
         cell.selectionStyle = .none
         return cell
