@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 final class NewEventViewController: UIViewController {
     // MARK: - Properties
@@ -15,6 +16,7 @@ final class NewEventViewController: UIViewController {
     private var alertOptions = Constants.setAlertOptions
     weak var keyboardDelegate: KeyboardDelegate?
     private var selectedComponent: Calendar.Component?
+    private let userNotificationCenter = UNUserNotificationCenter.current()
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -30,6 +32,7 @@ final class NewEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        checkAuthorizationStatus()
     }
     
     // MARK: - Setup
@@ -70,6 +73,51 @@ final class NewEventViewController: UIViewController {
         mainView.addDelegate(viewController: self)
     }
     
+    private func checkAuthorizationStatus() {
+        userNotificationCenter.getNotificationSettings { settings in
+            switch settings.authorizationStatus {
+            case .notDetermined:
+                self.requestNotificationAuthorization()
+            default:
+                break
+            }
+        }
+    }
+    
+    private func requestNotificationAuthorization() {
+        let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
+        self.userNotificationCenter.requestAuthorization(options: authOptions) { success, error in
+            if success {
+                print("All set!")
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func scheduleNotification(for event: Event) {
+        guard let alertTime = event.alertTime else { return }
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = event.name
+        if let notes = event.notes {
+            notificationContent.body = notes
+        }
+        notificationContent.categoryIdentifier = "alarm"
+        notificationContent.sound = .default
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute],
+                                                             from: alertTime)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString,
+                                            content: notificationContent,
+                                            trigger: trigger)
+        userNotificationCenter.add(request) { (error) in
+            if let error = error {
+                print("Notification Error: ", error)
+            }
+        }
+    }
+    
     // MARK: Actions
     @objc private func pressedSaveButton() {
         mainView.saveButtonTappedAnimation()
@@ -82,12 +130,13 @@ final class NewEventViewController: UIViewController {
             let alertDate = Calendar.current.date(byAdding: component,
                                                   value: -time,
                                                   to: event.startTime)
-        else {
-            database.save(event: event)
-            return
+            else {
+                database.save(event: event)
+                return
         }
         var updateEvent = event
         updateEvent.alertTime = alertDate
+        scheduleNotification(for: updateEvent)
         database.save(event: updateEvent)
     }
 }
@@ -101,7 +150,7 @@ extension NewEventViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: Constants.CellId.notificationCellId,
             for: indexPath) as? NotificationCell
-        else { return UITableViewCell() }
+            else { return UITableViewCell() }
         cell.options = alertOptions[indexPath.row]
         cell.selectionStyle = .none
         return cell
