@@ -76,6 +76,23 @@ final class NewEventView: UIView {
     private var selectedTimeLabel: CustomLabel?
     var keyboardFrame = CGRect()
     private var doNotRepeatButtonBottomAnchor: NSLayoutConstraint?
+    private var selectedComponent: Calendar.Component?
+    var alertOption: AlertOptions? {
+        didSet {
+            switch alertOption {
+            case .minute:
+                selectedComponent = .minute
+            case .hour:
+                selectedComponent = .hour
+            case .day:
+                selectedComponent = .day
+            case .month:
+                selectedComponent = .month
+            case .none:
+                break
+            }
+        }
+    }
     
     // MARK: - Initializer
     init() {
@@ -248,6 +265,31 @@ final class NewEventView: UIView {
         endTimeLabel.setText(text: dateString)
     }
     
+    private func updateAlert() {
+        let optionString: String?
+        switch alertOption {
+        case .minute:
+            optionString = "minute"
+        case .hour:
+            optionString = "hour"
+        case .day:
+            optionString = "day"
+        case .month:
+            optionString = "week"
+        case .none:
+            optionString = ""
+        }
+        guard
+            let component = optionString,
+            let time = notificationView.getTimeTextField()
+        else { return }
+        if time > 1 {
+            addAlertButton.setTitle("\(time) \(component)s before", for: .normal)
+        } else {
+            addAlertButton.setTitle("\(time) \(component) before", for: .normal)
+        }
+    }
+    
     // MARK: Actions
     @objc private func handleTapGesture(sender: UITapGestureRecognizer) {
         addSubview(datePickerView)
@@ -279,6 +321,7 @@ extension NewEventView {
         datePickerView.tapDelegate = self
         viewController.keyboardDelegate = self
         noteTextView.delegate = viewController
+        notificationView.doneTapGestureDelegate = self
     }
     
     func addTapGesture(target: UIViewController, selector: Selector) {
@@ -286,29 +329,6 @@ extension NewEventView {
         self.addGestureRecognizer(tapRecognizer)
         scrollView.isUserInteractionEnabled = true
         tapRecognizer.cancelsTouchesInView = false
-    }
-    
-    func updateAlert(option: AlertOptions) {
-        let optionString: String?
-        switch option {
-        case .minute:
-            optionString = "minute"
-        case .hour:
-            optionString = "hour"
-        case .day:
-            optionString = "day"
-        case .month:
-            optionString = "week"
-        }
-        guard
-            let component = optionString,
-            let time = notificationView.getTimeTextField()
-        else { return }
-        if time > 1 {
-            addAlertButton.setTitle("\(time) \(component)s before", for: .normal)
-        } else {
-            addAlertButton.setTitle("\(time) \(component) before", for: .normal)
-        }
     }
     
     // MARK: Selectors
@@ -345,18 +365,22 @@ extension NewEventView {
             startTimeLabel.showWarningAnimation()
             return nil
         }
-        let event = Event(
+        var event = Event(
             name: name,
             startTime: startTime,
             endTime: endTime,
             location: locationTextField.text,
             notes: noteTextView.text
         )
+        guard
+            let time = notificationView.getTimeTextField(),
+            let component = selectedComponent,
+            let alertDate = Calendar.current.date(byAdding: component,
+                                              value: -time,
+                                              to: startTime)
+        else { return event }
+        event.alertTime = alertDate
         return event
-    }
-    
-    func getTimeSetForAlert() -> Int? {
-        return notificationView.getTimeTextField()
     }
 }
 
@@ -397,5 +421,12 @@ extension NewEventView {
     
     func endEditing() {
         noteTextView.endEditing()
+    }
+}
+
+// MARK: - DoneTapGestureDelegate
+extension NewEventView: DoneTapGestureDelegate {
+    func didTap() {
+        updateAlert()
     }
 }

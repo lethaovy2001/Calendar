@@ -69,6 +69,8 @@
 		38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8623248845BB0006D609 /* NotificationCell.swift */; };
 		38E51E2F249107D800EBBF5B /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */; };
 		38E51E372494295100EBBF5B /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E362494295100EBBF5B /* UserSettingsView.swift */; };
+		38E51E432498AEC700EBBF5B /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E422498AEC700EBBF5B /* Scheduler.swift */; };
+		38E51E452498BE1700EBBF5B /* DoneTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E442498BE1700EBBF5B /* DoneTapGestureDelegate.swift */; };
 		38E51E3C2496BC9500EBBF5B /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E3B2496BC9500EBBF5B /* SearchEventViewController.swift */; };
 		38E51E3E2496BCA900EBBF5B /* SearchEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E3D2496BCA900EBBF5B /* SearchEventView.swift */; };
 		38E51E40249705FD00EBBF5B /* SearchedEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E3F249705FD00EBBF5B /* SearchedEventCell.swift */; };
@@ -170,6 +172,8 @@
 		38CE8623248845BB0006D609 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		38E51E362494295100EBBF5B /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
+		38E51E422498AEC700EBBF5B /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
+		38E51E442498BE1700EBBF5B /* DoneTapGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTapGestureDelegate.swift; sourceTree = "<group>"; };
 		38E51E3B2496BC9500EBBF5B /* SearchEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
 		38E51E3D2496BCA900EBBF5B /* SearchEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventView.swift; sourceTree = "<group>"; };
 		38E51E3F249705FD00EBBF5B /* SearchedEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedEventCell.swift; sourceTree = "<group>"; };
@@ -332,6 +336,7 @@
 				38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */,
 				38EAF129248C62A900A2FE8C /* Shaking.swift */,
 				38285B2A2490C42E00AAEE03 /* EventTapGestureDelegate.swift */,
+				38E51E442498BE1700EBBF5B /* DoneTapGestureDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -456,8 +461,9 @@
 		3888D24D2483EC23009B3966 /* NewEventScreen */ = {
 			isa = PBXGroup;
 			children = (
+				38E51E422498AEC700EBBF5B /* Scheduler.swift */,
 				3888D2522484152D009B3966 /* View */,
-				3888D24E2483EC40009B3966 /* NewEventViewController.swift */,
+				38E51E412497FD3700EBBF5B /* Controller */,
 			);
 			path = NewEventScreen;
 			sourceTree = "<group>";
@@ -483,33 +489,41 @@
 			path = UserSettingsScreen;
 			sourceTree = "<group>";
 		};
-		38E51E382496BB9B00EBBF5B /* SearchEventScreen */ = {
+		38E51E412497FD3700EBBF5B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				38E51E392496BC7700EBBF5B /* View */,
-				38E51E3A2496BC7F00EBBF5B /* Controller */,
-			);
-			path = SearchEventScreen;
-			sourceTree = "<group>";
-		};
-		38E51E392496BC7700EBBF5B /* View */ = {
-			isa = PBXGroup;
-			children = (
-				38E51E3D2496BCA900EBBF5B /* SearchEventView.swift */,
-				38E51E3F249705FD00EBBF5B /* SearchedEventCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		38E51E3A2496BC7F00EBBF5B /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				38E51E3B2496BC9500EBBF5B /* SearchEventViewController.swift */,
-				38E51E4924993EAC00EBBF5B /* SearchEventModelController.swift */,
+				3888D24E2483EC40009B3966 /* NewEventViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
+        38E51E382496BB9B00EBBF5B /* SearchEventScreen */ = {
+            isa = PBXGroup;
+            children = (
+                38E51E392496BC7700EBBF5B /* View */,
+                38E51E3A2496BC7F00EBBF5B /* Controller */,
+            );
+            path = SearchEventScreen;
+            sourceTree = "<group>";
+        };
+        38E51E392496BC7700EBBF5B /* View */ = {
+            isa = PBXGroup;
+            children = (
+                38E51E3D2496BCA900EBBF5B /* SearchEventView.swift */,
+                38E51E3F249705FD00EBBF5B /* SearchedEventCell.swift */,
+            );
+            path = View;
+            sourceTree = "<group>";
+        };
+        38E51E3A2496BC7F00EBBF5B /* Controller */ = {
+            isa = PBXGroup;
+            children = (
+                38E51E3B2496BC9500EBBF5B /* SearchEventViewController.swift */,
+                38E51E4924993EAC00EBBF5B /* SearchEventModelController.swift */,
+            );
+            path = Controller;
+            sourceTree = "<group>";
+        };
 		38F90B772478886B005B0BEB = {
 			isa = PBXGroup;
 			children = (
@@ -888,6 +902,7 @@
 				38E51E3C2496BC9500EBBF5B /* SearchEventViewController.swift in Sources */,
 				38285B22248EDDE000AAEE03 /* BookRingView.swift in Sources */,
 				3888D202247F3BED009B3966 /* RunningTimeLineView.swift in Sources */,
+				38E51E452498BE1700EBBF5B /* DoneTapGestureDelegate.swift in Sources */,
 				3888D24224822466009B3966 /* DateConverter.swift in Sources */,
 				3888D246248325E0009B3966 /* ScheduleCell.swift in Sources */,
 				3888D1D7247B824D009B3966 /* DailyTaskViewController.swift in Sources */,
@@ -897,6 +912,7 @@
 				3888D1FC247DE679009B3966 /* TimeDividerView.swift in Sources */,
 				3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */,
 				3888D20D247F722F009B3966 /* EventLayoutGenerator.swift in Sources */,
+				38E51E432498AEC700EBBF5B /* Scheduler.swift in Sources */,
 				3888D1B4247B181B009B3966 /* InputView.swift in Sources */,
 				3888D1BC247B460F009B3966 /* RoundedButton.swift in Sources */,
 				38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */,
