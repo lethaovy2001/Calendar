@@ -33,13 +33,13 @@ final class Scheduler {
     func scheduleNotification(for event: Event) {
         // set notification for happening event
         notificationContent.title = event.name
+        if let notes = event.notes {
+            notificationContent.body = notes
+        }
         if let location = event.location {
             notificationContent.subtitle = "Now at \(location)"
         } else {
             notificationContent.subtitle = "Now"
-        }
-        if let notes = event.notes {
-            notificationContent.body = notes
         }
         addNotification(for: event.startTime)
         
