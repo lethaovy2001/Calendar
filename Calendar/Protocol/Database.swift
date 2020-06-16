@@ -6,8 +6,11 @@
 //  Copyright © 2020 Vy Le. All rights reserved.
 //
 
+import UIKit
+
 protocol Database {
     func save(event: Event)
     func loadTodayEvents(completion: @escaping ([Event]) -> Void)
+    func loadEvents(from date: Date, completion: @escaping ([EventSection]) -> Void)
     func loadAllEvents(completion: @escaping ([Event]) -> Void)
 }

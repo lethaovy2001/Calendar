@@ -15,7 +15,7 @@ class FirebaseService {
     private var auth: Auth!
     static let shared = FirebaseService()
     private var calendar: Calendar
-    private var components: DateComponents    
+    private var components: DateComponents
     
     // MARK: - Initializer
     init() {
@@ -103,6 +103,57 @@ extension FirebaseService: Database {
                 return try? queryDocumentSnapshot.data(as: Event.self)
             }
             completion(events)
+        }
+    }
+    
+    func loadEvents(from date: Date, completion: @escaping ([EventSection]) -> Void) {
+        guard let uid = getCurrentUserId() else { return }
+        var eventsInSection: [Event] = []
+        var sections: [EventSection] = []
+        var sectionDate: Date?
+        let eventsRef = database.collection("users")
+            .document(uid)
+            .collection("events")
+            .whereField("startTime", isGreaterThan: date)
+        eventsRef.addSnapshotListener { querySnapshot, _ in
+            guard let documents = querySnapshot?.documents else {
+                completion([])
+                return
+            }
+            let events = documents.compactMap { (queryDocumentSnapshot) -> Event? in
+                return try? queryDocumentSnapshot.data(as: Event.self)
+            }
+            sectionDate = events.first?.startTime
+            filterEventsBasedOnStartDate(events: events)
+            completion(sections)
+        }
+        
+        func appendSectionAndEvent(_ event: Event) {
+            sectionDate = event.startTime
+            let eventSection = EventSection(events: eventsInSection)
+            sections.append(eventSection)
+            eventsInSection = []
+            eventsInSection.append(event)
+        }
+        
+        // Filter events that has the same startDate into an eventSection
+        func filterEventsBasedOnStartDate(events: [Event]) {
+            for (index, event) in events.enumerated() {
+                self.components = self.calendar.dateComponents([.day],
+                                                               from: sectionDate ?? Date(),
+                                                               to: event.startTime)
+                guard let dayDifference = self.components.day else { return }
+                if dayDifference > 0 {
+                    appendSectionAndEvent(event)
+                } else {
+                    eventsInSection.append(event)
+                }
+                
+                // append the last eventSection
+                if index == events.count - 1 {
+                    appendSectionAndEvent(event)
+                }
+            }
         }
     }
     

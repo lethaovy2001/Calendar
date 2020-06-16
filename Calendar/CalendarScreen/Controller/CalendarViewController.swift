@@ -16,6 +16,7 @@ class CalendarViewController: UIViewController {
     private var selectedTodayIndexPath: IndexPath?
     private var selectedDate: Date
     private var converter: DateConverter
+    private var modelController = CalendarModelController()
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -43,6 +44,7 @@ class CalendarViewController: UIViewController {
         setupUI()
         registerCellId()
         setSelectors()
+        loadEvents()
     }
     
     private func setupSelf() {
@@ -70,6 +72,18 @@ class CalendarViewController: UIViewController {
         mainView.setSearchButtonSelector(selector: #selector(tapSearchButton), target: self)
         mainView.setBackButtonSelector(selector: #selector(tapBackButton), target: self)
         mainView.setDoneButtonSelector(selector: #selector(tapDoneButton), target: self)
+    }
+    
+    private func loadEvents() {
+        modelController.loadEvents { state in
+            switch state {
+            case .failed:
+                break
+                // TODO: show failure animation
+            case .success:
+                self.mainView.reloadTableView()
+            }
+        }
     }
     
     // MARK: Actions
@@ -154,8 +168,7 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UITableViewDataSource
 extension CalendarViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //TODO: remove mock data
-        return 30
+        return modelController.getEvents(at: section).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -163,7 +176,14 @@ extension CalendarViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellId.scheduleCellId,
             for: indexPath) as? ScheduleCell
         else { return UITableViewCell() }
+        cell.selectionStyle = .none
+        let event = modelController.getEvents(at: indexPath.section)[indexPath.row]
+        cell.viewModel = EventViewModel(model: event)
         return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return modelController.getSections().count
     }
 }
 
@@ -174,13 +194,18 @@ extension CalendarViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO: Show details
+        let viewController = EventDetailsViewController()
+        let event = modelController.getEvents(at: indexPath.section)[indexPath.row]
+        viewController.viewModel = EventViewModel(model: event)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier:
             Constants.CellId.sectionHeader) as? CustomHeaderView
         else { return UIView() }
+        let eventSection = modelController.getSections()[section]
+        view.date = eventSection.date
         return view
     }
 }
