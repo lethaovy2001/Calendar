@@ -48,6 +48,7 @@ class UserSettingsViewController: UIViewController {
     // MARK: Selectors
     private func setSelectors() {
         mainView.setLogoutSelector(target: self, selector: #selector(logout))
+        mainView.setBackButtonSelector(target: self, selector: #selector(backButtonPressed))
     }
     
     // MARK: Actions
@@ -56,5 +57,9 @@ class UserSettingsViewController: UIViewController {
         auth.logout()
         let viewController = LoginViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc private func backButtonPressed() {
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }

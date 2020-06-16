@@ -449,7 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				3888D2522484152D009B3966 /* View */,
-				3888D24E2483EC40009B3966 /* NewEventViewController.swift */,
+				38E51E482499347400EBBF5B /* Controller */,
 			);
 			path = NewEventScreen;
 			sourceTree = "<group>";
@@ -469,10 +469,34 @@
 		38E51E2D249107A100EBBF5B /* UserSettingsScreen */ = {
 			isa = PBXGroup;
 			children = (
-				38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */,
-				38E51E362494295100EBBF5B /* UserSettingsView.swift */,
+				38E51E462499344900EBBF5B /* Controller */,
+				38E51E472499345700EBBF5B /* View */,
 			);
 			path = UserSettingsScreen;
+			sourceTree = "<group>";
+		};
+		38E51E462499344900EBBF5B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		38E51E472499345700EBBF5B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				38E51E362494295100EBBF5B /* UserSettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		38E51E482499347400EBBF5B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3888D24E2483EC40009B3966 /* NewEventViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		38F90B772478886B005B0BEB = {

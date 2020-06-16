@@ -63,6 +63,7 @@ final class NewEventViewController: UIViewController {
     
     private func setSelections() {
         mainView.setSaveButtonSelector(target: self, selector: #selector(pressedSaveButton))
+        mainView.setExitButtonSelector(target: self, selector: #selector(pressedExitButton))
     }
     
     private func addGestureAndDelegate() {
@@ -89,6 +90,10 @@ final class NewEventViewController: UIViewController {
         var updateEvent = event
         updateEvent.alertTime = alertDate
         database.save(event: updateEvent)
+    }
+    
+    @objc private func pressedExitButton() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

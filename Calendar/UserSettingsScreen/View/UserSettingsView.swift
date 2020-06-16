@@ -53,6 +53,10 @@ final class UserSettingsView: UIView {
         logoutButton.addTarget(target, action: selector, for: .touchUpInside)
     }
     
+    func setBackButtonSelector(target: UIViewController, selector: Selector) {
+        backButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
     func pressedLogoutButton() {
         logoutButton.pulsate()
     }
