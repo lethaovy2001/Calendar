@@ -14,11 +14,13 @@ final class Scheduler {
     private let userNotificationCenter = UNUserNotificationCenter.current()
     private let notificationContent = UNMutableNotificationContent()
     
+    // MARK: - Initializer
     init() {
         notificationContent.categoryIdentifier = "alarm"
         notificationContent.sound = .default
     }
     
+    // MARK: - Public Methods
     func checkAuthorizationStatus() {
         userNotificationCenter.getNotificationSettings { settings in
             switch settings.authorizationStatus {
@@ -54,6 +56,7 @@ final class Scheduler {
         addNotification(for: alertTime)
     }
     
+    // MARK: - Private Methods
     private func requestNotificationAuthorization() {
         let authOptions = UNAuthorizationOptions.init(arrayLiteral: .alert, .badge, .sound)
         self.userNotificationCenter.requestAuthorization(options: authOptions) { success, error in
@@ -63,13 +66,6 @@ final class Scheduler {
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    private func getRelativeDateTime(for expectedDate: Date, relativeTo currentDate: Date) -> String {
-        let formatter = RelativeDateTimeFormatter()
-        formatter.dateTimeStyle = .numeric
-        formatter.unitsStyle = .full
-        return formatter.localizedString(for: expectedDate, relativeTo: currentDate)
     }
     
     private func addNotification(for date: Date) {
@@ -87,5 +83,12 @@ final class Scheduler {
                 print("Notification Error: ", error)
             }
         }
+    }
+    
+    private func getRelativeDateTime(for expectedDate: Date, relativeTo currentDate: Date) -> String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.dateTimeStyle = .numeric
+        formatter.unitsStyle = .full
+        return formatter.localizedString(for: expectedDate, relativeTo: currentDate)
     }
 }
