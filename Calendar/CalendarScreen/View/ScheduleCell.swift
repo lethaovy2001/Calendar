@@ -44,6 +44,20 @@ final class ScheduleCell: UITableViewCell {
         textWeight: .semibold
     )
     private let eventColors = AppColor.eventColors
+    var viewModel: EventViewModel? {
+        didSet {
+            guard let viewModel = viewModel else { return }
+            titleLabel.text = viewModel.name
+            startTime.text = viewModel.startTime
+            endTime.text = viewModel.endTime
+            if let location = viewModel.location {
+                locationLabel.text = location
+            } else {
+                locationLabel.isHidden = true
+                iconButton.isHidden = true
+            }
+        }
+    }
     
     // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -79,7 +93,7 @@ final class ScheduleCell: UITableViewCell {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             verticalBar.topAnchor.constraint(equalTo: topAnchor, constant: 6),
-            verticalBar.leftAnchor.constraint(equalTo: leftAnchor),
+            verticalBar.leftAnchor.constraint(equalTo: leftAnchor, constant: 12),
             verticalBar.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6),
             verticalBar.widthAnchor.constraint(equalToConstant: 4)
         ])
