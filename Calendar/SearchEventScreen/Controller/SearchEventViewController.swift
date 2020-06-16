@@ -11,6 +11,7 @@ import UIKit
 final class SearchEventViewController: UIViewController {
     // MARK: - Properties
     private let mainView = SearchEventView()
+    private let modelController = SearchEventModelController()
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -24,6 +25,7 @@ final class SearchEventViewController: UIViewController {
         setupUI()
         mainView.registerCellId(viewController: self)
         mainView.setBackButtonSelector(target: self, selector: #selector(pressedBackButton))
+        mainView.setSearchButtonSelector(target: self, selector: #selector(pressedSearchButton))
     }
     
     private func setupUI() {
@@ -40,13 +42,17 @@ final class SearchEventViewController: UIViewController {
     @objc private func pressedBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @objc private func pressedSearchButton() {
+        modelController.filterEvents(contains: mainView.getSearchText())
+        mainView.reloadTableView()
+    }
 }
 
 // MARK: - UITableViewDataSource
 extension SearchEventViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //TODO: remove mock data
-        return 10
+        return modelController.getEvents().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,6 +60,9 @@ extension SearchEventViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellId.searchedEvent,
             for: indexPath) as? SearchedEventCell
         else { return UITableViewCell() }
+        let event = modelController.getEvents()[indexPath.row]
+        cell.viewModel = EventViewModel(model: event)
+        cell.selectionStyle = .none
         return cell
     }
 }
@@ -65,6 +74,9 @@ extension SearchEventViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let viewController = EventDetailsViewController()
+        let event = modelController.getEvents()[indexPath.row]
+        viewController.viewModel = EventViewModel(model: event)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

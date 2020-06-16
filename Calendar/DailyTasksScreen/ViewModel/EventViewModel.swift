@@ -96,4 +96,21 @@ extension EventViewModel {
             return "\(timeString) before"
         }
     }
+    
+    var shortDescription: String {
+        guard let location = location else {
+            return "\(startTime) - \(endTime)"
+        }
+        return "\(startTime) - \(endTime) at \(location)"
+    }
+    
+    var month: String {
+        self.dateFormatter.dateFormat = "LLLL"
+        return dateFormatter.string(from: model.startTime).uppercased()
+    }
+    
+    var day: String {
+        self.dateFormatter.dateFormat = "dd"
+        return dateFormatter.string(from: model.startTime)
+    }
 }
