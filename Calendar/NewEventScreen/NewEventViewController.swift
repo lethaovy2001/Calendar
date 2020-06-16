@@ -14,7 +14,6 @@ final class NewEventViewController: UIViewController {
     private let mainView = NewEventView()
     private var alertOptions = Constants.setAlertOptions
     weak var keyboardDelegate: KeyboardDelegate?
-    private var selectedComponent: Calendar.Component?
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -76,19 +75,7 @@ final class NewEventViewController: UIViewController {
         guard let event = mainView.getSavedEvent() else {
             return
         }
-        guard
-            let time = mainView.getTimeSetForAlert(),
-            let component = selectedComponent,
-            let alertDate = Calendar.current.date(byAdding: component,
-                                                  value: -time,
-                                                  to: event.startTime)
-        else {
-            database.save(event: event)
-            return
-        }
-        var updateEvent = event
-        updateEvent.alertTime = alertDate
-        database.save(event: updateEvent)
+        database.save(event: event)
     }
 }
 
@@ -110,17 +97,7 @@ extension NewEventViewController: UITableViewDataSource {
 
 extension NewEventViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch alertOptions[indexPath.row] {
-        case .minute:
-            selectedComponent = .minute
-        case .hour:
-            selectedComponent = .hour
-        case .day:
-            selectedComponent = .day
-        case .month:
-            selectedComponent = .month
-        }
-        mainView.updateAlert(option: alertOptions[indexPath.row])
+        mainView.alertOption = alertOptions[indexPath.row]
     }
 }
 
