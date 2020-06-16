@@ -40,6 +40,7 @@ final class CustomNotificationView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+    weak var doneTapGestureDelegate: DoneTapGestureDelegate?
     
     // MARK: - Initializer
     init() {
@@ -108,6 +109,7 @@ final class CustomNotificationView: UIView {
     // MARK: Actions
     @objc private func handleTapGesture() {
         self.removeFromSuperview()
+        doneTapGestureDelegate?.didTap()
     }
     
     func registerCellId(viewController: NewEventViewController) {

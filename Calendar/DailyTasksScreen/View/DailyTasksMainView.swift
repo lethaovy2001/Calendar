@@ -83,7 +83,7 @@ final class DailyTasksMainView: UIView {
             timeLine.leftAnchor.constraint(equalTo: leftAnchor, constant: Constants.spaceBetweenTimeDivider)
         ])
         self.layoutIfNeeded()
-        self.scrollView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: offset - self.frame.height), animated: false)
         Timer.scheduledTimer(timeInterval: Constants.Time.minutesInAHour,
                              target: self,
                              selector: #selector(animateTimeLineRunning),
@@ -96,6 +96,7 @@ final class DailyTasksMainView: UIView {
             let divider = TimeDividerView(time: hour)
             let topOffset = Constants.spaceBetweenTimeDivider * CGFloat(hour)
             scrollView.addSubview(divider)
+            scrollView.sendSubviewToBack(divider)
             NSLayoutConstraint.activate([
                 divider.heightAnchor.constraint(equalToConstant: 20),
                 divider.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: topOffset),
@@ -125,7 +126,7 @@ final class DailyTasksMainView: UIView {
         let eventViewModel = EventViewModel(model: event)
         eventView.viewModel = eventViewModel
         addTapGetsure(eventView: eventView)
-        scrollView.addSubview(eventView)
+        scrollView.insertSubview(eventView, belowSubview: timeLine)
         NSLayoutConstraint.activate([
             eventView.heightAnchor.constraint(equalToConstant: height),
             eventView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: offset),
