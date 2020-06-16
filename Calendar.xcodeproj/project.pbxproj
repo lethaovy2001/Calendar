@@ -69,6 +69,7 @@
 		38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8623248845BB0006D609 /* NotificationCell.swift */; };
 		38E51E2F249107D800EBBF5B /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */; };
 		38E51E372494295100EBBF5B /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E362494295100EBBF5B /* UserSettingsView.swift */; };
+		38E51E432498AEC700EBBF5B /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E422498AEC700EBBF5B /* Scheduler.swift */; };
 		38E51E452498BE1700EBBF5B /* DoneTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E442498BE1700EBBF5B /* DoneTapGestureDelegate.swift */; };
 		38EAF127248C202300A2FE8C /* DailyTasksModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */; };
 		38EAF12A248C62A900A2FE8C /* Shaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF129248C62A900A2FE8C /* Shaking.swift */; };
@@ -167,6 +168,7 @@
 		38CE8623248845BB0006D609 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		38E51E362494295100EBBF5B /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
+		38E51E422498AEC700EBBF5B /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		38E51E442498BE1700EBBF5B /* DoneTapGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTapGestureDelegate.swift; sourceTree = "<group>"; };
 		38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksModelController.swift; sourceTree = "<group>"; };
 		38EAF129248C62A900A2FE8C /* Shaking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shaking.swift; sourceTree = "<group>"; };
@@ -451,8 +453,9 @@
 		3888D24D2483EC23009B3966 /* NewEventScreen */ = {
 			isa = PBXGroup;
 			children = (
+				38E51E422498AEC700EBBF5B /* Scheduler.swift */,
 				3888D2522484152D009B3966 /* View */,
-				3888D24E2483EC40009B3966 /* NewEventViewController.swift */,
+				38E51E412497FD3700EBBF5B /* Controller */,
 			);
 			path = NewEventScreen;
 			sourceTree = "<group>";
@@ -476,6 +479,14 @@
 				38E51E362494295100EBBF5B /* UserSettingsView.swift */,
 			);
 			path = UserSettingsScreen;
+			sourceTree = "<group>";
+		};
+		38E51E412497FD3700EBBF5B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3888D24E2483EC40009B3966 /* NewEventViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		38F90B772478886B005B0BEB = {
@@ -862,6 +873,7 @@
 				3888D1FC247DE679009B3966 /* TimeDividerView.swift in Sources */,
 				3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */,
 				3888D20D247F722F009B3966 /* EventLayoutGenerator.swift in Sources */,
+				38E51E432498AEC700EBBF5B /* Scheduler.swift in Sources */,
 				3888D1B4247B181B009B3966 /* InputView.swift in Sources */,
 				3888D1BC247B460F009B3966 /* RoundedButton.swift in Sources */,
 				38F90B862478886B005B0BEB /* SceneDelegate.swift in Sources */,

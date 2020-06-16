@@ -14,6 +14,7 @@ final class NewEventViewController: UIViewController {
     private let mainView = NewEventView()
     private var alertOptions = Constants.setAlertOptions
     weak var keyboardDelegate: KeyboardDelegate?
+    private let scheduler = Scheduler()
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -29,6 +30,7 @@ final class NewEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        scheduler.checkAuthorizationStatus()
     }
     
     // MARK: - Setup
@@ -72,9 +74,8 @@ final class NewEventViewController: UIViewController {
     // MARK: Actions
     @objc private func pressedSaveButton() {
         mainView.saveButtonTappedAnimation()
-        guard let event = mainView.getSavedEvent() else {
-            return
-        }
+        guard let event = mainView.getSavedEvent() else { return }
+        scheduler.scheduleNotification(for: event)
         database.save(event: event)
     }
 }
