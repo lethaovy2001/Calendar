@@ -18,10 +18,11 @@ final class SearchedEventCell: UITableViewCell {
     private let descriptionLabel = CustomLabel(text: "N/A", textColor: .white, textSize: 16, textWeight: .bold)
     var viewModel: EventViewModel? {
         didSet {
-            titleLabel.text = viewModel?.name
-            descriptionLabel.text = viewModel?.shortDescription
-            monthLabel.text = viewModel?.month
-            dayLabel.text = viewModel?.day
+            guard let viewModel = viewModel else { return }
+            titleLabel.text = viewModel.name
+            descriptionLabel.text = viewModel.shortDescription
+            monthLabel.text = viewModel.month
+            dayLabel.text = viewModel.day
         }
     }
     
