@@ -16,6 +16,15 @@ final class SearchedEventCell: UITableViewCell {
     private let container = CustomContainerView(backgroundColor: AppColor.paleViolet, cornerRadius: 6)
     private let titleLabel = CustomLabel(text: "Title", textColor: .white, textSize: 16, textWeight: .heavy)
     private let descriptionLabel = CustomLabel(text: "N/A", textColor: .white, textSize: 16, textWeight: .bold)
+    var viewModel: EventViewModel? {
+        didSet {
+            guard let viewModel = viewModel else { return }
+            titleLabel.text = viewModel.name
+            descriptionLabel.text = viewModel.shortDescription
+            monthLabel.text = viewModel.month
+            dayLabel.text = viewModel.day
+        }
+    }
     
     // MARK: - Initializer
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

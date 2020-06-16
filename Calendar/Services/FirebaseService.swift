@@ -105,4 +105,21 @@ extension FirebaseService: Database {
             completion(events)
         }
     }
+    
+    func loadAllEvents(completion: @escaping ([Event]) -> Void) {
+        guard let uid = getCurrentUserId() else { return }
+        let eventsRef = database.collection("users")
+            .document(uid)
+            .collection("events")
+        eventsRef.addSnapshotListener { querySnapshot, _ in
+            guard let documents = querySnapshot?.documents else {
+                completion([])
+                return
+            }
+            let events = documents.compactMap { (queryDocumentSnapshot) -> Event? in
+                return try? queryDocumentSnapshot.data(as: Event.self)
+            }
+            completion(events)
+        }
+    }
 }

@@ -86,4 +86,16 @@ final class SearchEventView: UIView {
     func setBackButtonSelector(target: UIViewController, selector: Selector) {
         backButton.addTarget(target, action: selector, for: .touchUpInside)
     }
+    
+    func setSearchButtonSelector(target: UIViewController, selector: Selector) {
+        searchIcon.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
+    func getSearchText() -> String {
+        return searchTextField.text ?? ""
+    }
+    
+    func reloadTableView() {
+        tableView.reloadData()
+    }
 }
