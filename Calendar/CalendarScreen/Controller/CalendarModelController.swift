@@ -21,16 +21,15 @@ final class CalendarModelController {
         self.sections = [EventSection]()
     }
 
-    func loadEvents(completion: @escaping () -> Void) {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day, .month, .year], from: Date())
-        guard let date = calendar.date(from: components) else {
-            completion()
+    func loadEvents(completion: @escaping(LoadingDataState) -> Void) {
+        let today = Date()
+        guard let date = today.getDateWithoutTime() else {
+            completion(.failed)
             return
         }
         database.loadEvents(from: date) { sections in
             self.sections = sections
-            completion()
+            completion(.success)
         }
     }
 
@@ -41,5 +40,19 @@ final class CalendarModelController {
     
     func getSections() -> [EventSection] {
         return sections
+    }
+}
+
+enum LoadingDataState {
+    case failed
+    case success
+}
+
+extension Date {
+    func getDateWithoutTime() -> Date? {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day, .month, .year], from: self)
+        guard let date = calendar.date(from: components) else { return nil }
+        return date
     }
 }

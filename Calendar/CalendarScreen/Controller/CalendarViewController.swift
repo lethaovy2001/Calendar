@@ -75,8 +75,14 @@ class CalendarViewController: UIViewController {
     }
     
     private func loadEvents() {
-        modelController.loadEvents {
-            self.mainView.reloadTableView()
+        modelController.loadEvents { state in
+            switch state {
+            case .failed:
+                break
+                // TODO: show failure animation
+            case .success:
+                self.mainView.reloadTableView()
+            }
         }
     }
     
