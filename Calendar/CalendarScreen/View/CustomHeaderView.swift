@@ -13,9 +13,18 @@ final class CustomHeaderView: UITableViewHeaderFooterView {
     private let title = CustomLabel(
         text: "TITLE",
         textColor: AppColor.darkGray.withAlphaComponent(0.7),
-        textSize: 14,
+        textSize: 16,
         textWeight: .bold)
     private let dividerLine = CustomContainerView(backgroundColor: AppColor.dividerColor)
+    var date: Date? {
+        didSet {
+            guard let date = date else { return }
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.dateFormat = "EEEE, MMM, dd, yyyy"
+            title.text = dateFormatter.string(from: date).uppercased()
+        }
+    }
     
     // MARK: - Initializer
     override init(reuseIdentifier: String?) {
@@ -41,7 +50,7 @@ final class CustomHeaderView: UITableViewHeaderFooterView {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: contentView.topAnchor),
+            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             title.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             title.rightAnchor.constraint(equalTo: contentView.rightAnchor)
         ])
@@ -49,8 +58,8 @@ final class CustomHeaderView: UITableViewHeaderFooterView {
             dividerLine.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 6),
             dividerLine.heightAnchor.constraint(equalToConstant: 2),
             dividerLine.leftAnchor.constraint(equalTo: title.leftAnchor),
-            dividerLine.rightAnchor.constraint(equalTo: title.rightAnchor)
+            dividerLine.rightAnchor.constraint(equalTo: title.rightAnchor),
+            dividerLine.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6)
         ])
     }
-    
 }
