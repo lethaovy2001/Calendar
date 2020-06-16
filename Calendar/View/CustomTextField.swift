@@ -31,6 +31,15 @@ class CustomTextField: UITextField {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    init(placeholder: String, backgroundColor: UIColor) {
+        super.init(frame: .zero)
+        self.backgroundColor = backgroundColor
+        self.placeholder = placeholder
+        self.layer.cornerRadius = 10
+        self.keyboardType = keyboardType
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
