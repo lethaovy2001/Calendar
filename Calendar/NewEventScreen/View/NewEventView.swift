@@ -265,6 +265,31 @@ final class NewEventView: UIView {
         endTimeLabel.setText(text: dateString)
     }
     
+    private func updateAlert() {
+        let optionString: String?
+        switch alertOption {
+        case .minute:
+            optionString = "minute"
+        case .hour:
+            optionString = "hour"
+        case .day:
+            optionString = "day"
+        case .month:
+            optionString = "week"
+        case .none:
+            optionString = ""
+        }
+        guard
+            let component = optionString,
+            let time = notificationView.getTimeTextField()
+        else { return }
+        if time > 1 {
+            addAlertButton.setTitle("\(time) \(component)s before", for: .normal)
+        } else {
+            addAlertButton.setTitle("\(time) \(component) before", for: .normal)
+        }
+    }
+    
     // MARK: Actions
     @objc private func handleTapGesture(sender: UITapGestureRecognizer) {
         addSubview(datePickerView)
@@ -304,31 +329,6 @@ extension NewEventView {
         self.addGestureRecognizer(tapRecognizer)
         scrollView.isUserInteractionEnabled = true
         tapRecognizer.cancelsTouchesInView = false
-    }
-    
-    func updateAlert() {
-        let optionString: String?
-        switch alertOption {
-        case .minute:
-            optionString = "minute"
-        case .hour:
-            optionString = "hour"
-        case .day:
-            optionString = "day"
-        case .month:
-            optionString = "week"
-        case .none:
-            optionString = ""
-        }
-        guard
-            let component = optionString,
-            let time = notificationView.getTimeTextField()
-        else { return }
-        if time > 1 {
-            addAlertButton.setTitle("\(time) \(component)s before", for: .normal)
-        } else {
-            addAlertButton.setTitle("\(time) \(component) before", for: .normal)
-        }
     }
     
     // MARK: Selectors
