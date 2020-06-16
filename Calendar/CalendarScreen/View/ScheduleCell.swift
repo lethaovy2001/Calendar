@@ -46,10 +46,11 @@ final class ScheduleCell: UITableViewCell {
     private let eventColors = AppColor.eventColors
     var viewModel: EventViewModel? {
         didSet {
-            titleLabel.text = viewModel?.name
-            startTime.text = viewModel?.startTime
-            endTime.text = viewModel?.endTime
-            if let location = viewModel?.location {
+            guard let viewModel = viewModel else { return }
+            titleLabel.text = viewModel.name
+            startTime.text = viewModel.startTime
+            endTime.text = viewModel.endTime
+            if let location = viewModel.location {
                 locationLabel.text = location
             } else {
                 locationLabel.isHidden = true
