@@ -27,7 +27,7 @@ final class EventView: CustomContainerView {
         textSize: 16,
         textWeight: .semibold
     )
-    private var eventColors = AppColor.eventColors
+    private var eventColors = AppColor.pastelEventColors
     private var height: CGFloat
     var viewModel: EventViewModel? {
         didSet {

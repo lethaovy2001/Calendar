@@ -27,6 +27,7 @@ class EventDetailsViewController: UIViewController {
     // MARK: - Setup
     private func setup() {
         setupUI()
+        setupSelectors()
     }
     
     private func setupUI() {
@@ -37,5 +38,24 @@ class EventDetailsViewController: UIViewController {
             mainView.rightAnchor.constraint(equalTo: view.rightAnchor),
             mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    
+    private func setupSelectors() {
+        mainView.setEditButtonSelector(selector: #selector(pressedEditButton), target: self)
+        mainView.setExitButtonSelector(selector: #selector(pressedBackButton), target: self)
+        mainView.setMoreButtonSelector(selector: #selector(pressedMoreButton), target: self)
+    }
+    
+    // MARK: Actions
+    @objc private func pressedBackButton() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func pressedEditButton() {
+        
+    }
+    
+    @objc private func pressedMoreButton() {
+        
     }
 }

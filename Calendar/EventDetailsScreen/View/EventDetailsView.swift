@@ -134,4 +134,17 @@ final class EventDetailsView: UIView {
             notesContainerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -36)
         ])
     }
+    
+    // MARK: Selectors
+    func setExitButtonSelector(selector: Selector, target: UIViewController) {
+        exitButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
+    func setEditButtonSelector(selector: Selector, target: UIViewController) {
+        editButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
+    func setMoreButtonSelector(selector: Selector, target: UIViewController) {
+        moreButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
 }

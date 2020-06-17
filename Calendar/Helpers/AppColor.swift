@@ -44,4 +44,15 @@ struct AppColor {
         softRed,
         darkLimeGreen
     ]
+    
+    static let pastelEventColors = [
+        pastelOrange,
+        pastelGreen,
+        pastelLimeGreen,
+        pastelPurple,
+        pastelBlue,
+        pastelPink,
+        pastelYellow,
+        pastelRed
+    ]
 }
