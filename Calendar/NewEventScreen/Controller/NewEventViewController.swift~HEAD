@@ -64,7 +64,6 @@ final class NewEventViewController: UIViewController {
     
     private func setSelections() {
         mainView.setSaveButtonSelector(target: self, selector: #selector(pressedSaveButton))
-        mainView.setExitButtonSelector(target: self, selector: #selector(pressedBackButton))
     }
     
     private func addGestureAndDelegate() {
@@ -78,10 +77,6 @@ final class NewEventViewController: UIViewController {
         guard let event = mainView.getSavedEvent() else { return }
         scheduler.scheduleNotification(for: event)
         database.save(event: event)
-    }
-    
-    @objc private func pressedBackButton() {
-        self.navigationController?.popViewController(animated: true)
     }
 }
 

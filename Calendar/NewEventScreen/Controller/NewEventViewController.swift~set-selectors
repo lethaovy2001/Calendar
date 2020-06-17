@@ -14,7 +14,7 @@ final class NewEventViewController: UIViewController {
     private let mainView = NewEventView()
     private var alertOptions = Constants.setAlertOptions
     weak var keyboardDelegate: KeyboardDelegate?
-    private let scheduler = Scheduler()
+    private var selectedComponent: Calendar.Component?
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -30,7 +30,6 @@ final class NewEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        scheduler.checkAuthorizationStatus()
     }
     
     // MARK: - Setup
@@ -64,7 +63,7 @@ final class NewEventViewController: UIViewController {
     
     private func setSelections() {
         mainView.setSaveButtonSelector(target: self, selector: #selector(pressedSaveButton))
-        mainView.setExitButtonSelector(target: self, selector: #selector(pressedBackButton))
+        mainView.setExitButtonSelector(target: self, selector: #selector(pressedExitButton))
     }
     
     private func addGestureAndDelegate() {
@@ -75,12 +74,25 @@ final class NewEventViewController: UIViewController {
     // MARK: Actions
     @objc private func pressedSaveButton() {
         mainView.saveButtonTappedAnimation()
-        guard let event = mainView.getSavedEvent() else { return }
-        scheduler.scheduleNotification(for: event)
-        database.save(event: event)
+        guard let event = mainView.getSavedEvent() else {
+            return
+        }
+        guard
+            let time = mainView.getTimeSetForAlert(),
+            let component = selectedComponent,
+            let alertDate = Calendar.current.date(byAdding: component,
+                                                  value: -time,
+                                                  to: event.startTime)
+        else {
+            database.save(event: event)
+            return
+        }
+        var updateEvent = event
+        updateEvent.alertTime = alertDate
+        database.save(event: updateEvent)
     }
     
-    @objc private func pressedBackButton() {
+    @objc private func pressedExitButton() {
         self.navigationController?.popViewController(animated: true)
     }
 }
@@ -103,7 +115,17 @@ extension NewEventViewController: UITableViewDataSource {
 
 extension NewEventViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        mainView.alertOption = alertOptions[indexPath.row]
+        switch alertOptions[indexPath.row] {
+        case .minute:
+            selectedComponent = .minute
+        case .hour:
+            selectedComponent = .hour
+        case .day:
+            selectedComponent = .day
+        case .month:
+            selectedComponent = .month
+        }
+        mainView.updateAlert(option: alertOptions[indexPath.row])
     }
 }
 

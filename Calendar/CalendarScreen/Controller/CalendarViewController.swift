@@ -88,15 +88,17 @@ class CalendarViewController: UIViewController {
     
     // MARK: Actions
     @objc private func tapAddButton() {
-        
+        let viewController = NewEventViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc private func tapSearchButton() {
-        
+        let viewController = SearchEventViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc private func tapBackButton() {
-        
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @objc private func tapDoneButton() {
