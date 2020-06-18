@@ -10,10 +10,12 @@ import UIKit
 
 final class EventViewModel {
     private var model: Event
+    private let database: Database
     private var dateFormatter: DateFormatter
     
-    init(model: Event) {
+    init(model: Event, database: Database = FirebaseService.shared) {
         self.model = model
+        self.database = database
         self.dateFormatter = DateFormatter()
         self.dateFormatter.locale = Locale(identifier: "en_US_POSIX")
     }
@@ -112,5 +114,11 @@ extension EventViewModel {
     var day: String {
         self.dateFormatter.dateFormat = "dd"
         return dateFormatter.string(from: model.startTime)
+    }
+}
+
+extension EventViewModel {
+    func removeEvent() {
+        database.deleteEvent(model)
     }
 }

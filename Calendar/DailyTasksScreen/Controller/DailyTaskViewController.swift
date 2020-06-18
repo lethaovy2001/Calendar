@@ -13,6 +13,7 @@ class DailyTaskViewController: UIViewController {
     private let dailyTaskView = DailyTasksMainView()
     private let modelController = DailyTasksModelController()
     private let database: Database
+    private var selectedEventView: EventView?
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -31,6 +32,11 @@ class DailyTaskViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         setup()
         loadEvents()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        selectedEventView?.removeFromSuperview()
     }
     
     // MARK: - Setup
@@ -94,6 +100,7 @@ class DailyTaskViewController: UIViewController {
 // MARK: - EventTapGestureDelegate
 extension DailyTaskViewController: EventTapGestureDelegate {
     func didTap(on eventView: EventView) {
+        selectedEventView = eventView
         let viewController = EventDetailsViewController()
         viewController.viewModel = eventView.viewModel
         self.navigationController?.pushViewController(viewController, animated: true)

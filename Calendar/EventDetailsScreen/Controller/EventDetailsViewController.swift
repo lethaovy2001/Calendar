@@ -76,7 +76,9 @@ extension EventDetailsViewController: DropDownProtocol {
     func dropDownPressed(on option: EventDetailsDropDownOptions) {
         switch option {
         case .delete:
+            viewModel?.removeEvent()
             mainView.dismissDropDownMenu()
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }
