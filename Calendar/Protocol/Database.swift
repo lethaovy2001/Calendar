@@ -13,4 +13,5 @@ protocol Database {
     func loadTodayEvents(completion: @escaping ([Event]) -> Void)
     func loadEvents(from date: Date, completion: @escaping ([EventSection]) -> Void)
     func loadAllEvents(completion: @escaping ([Event]) -> Void)
+    func deleteEvent(_ event: Event)
 }

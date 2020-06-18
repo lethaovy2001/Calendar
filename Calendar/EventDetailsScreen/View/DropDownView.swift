@@ -10,7 +10,7 @@ import UIKit
 
 final class DropDownView: CustomContainerView {
     // MARK: - Properties
-    private var dropDownOptions: [EventDetailsDropDownOptions] = [.delete]
+    private var dropDownOptions: [EventDetailsDropDownOptions] = [.delete(event: Event())]
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.layer.masksToBounds = true
@@ -68,7 +68,7 @@ extension DropDownView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         switch dropDownOptions[indexPath.row] {
-        case .delete:
+        case .delete(_):
             cell.textLabel?.text = "Delete"
         }
         return cell

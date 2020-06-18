@@ -366,6 +366,7 @@ extension NewEventView {
             return nil
         }
         var event = Event(
+            id: uid
             name: name,
             startTime: startTime,
             endTime: endTime,

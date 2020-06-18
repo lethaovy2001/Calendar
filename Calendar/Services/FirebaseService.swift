@@ -173,4 +173,19 @@ extension FirebaseService: Database {
             completion(events)
         }
     }
+    
+    func deleteEvent(_ event: Event) {
+        guard let uid = getCurrentUserId() else { return }
+        database.collection("users")
+        .document(uid)
+        .collection("events")
+        .document(event.id)
+        .delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
+    }
 }

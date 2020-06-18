@@ -9,6 +9,7 @@
 import UIKit
 
 struct Event: Codable {
+    let id: String
     let name: String
     let startTime: Date
     let endTime: Date
@@ -17,6 +18,7 @@ struct Event: Codable {
     var alertTime: Date?
     
     enum CodingKeys: String, CodingKey {
+        case id
         case name
         case startTime
         case endTime
@@ -25,12 +27,14 @@ struct Event: Codable {
         case alertTime
     }
     
-    init(name: String,
+    init(id: String,
+         name: String,
          startTime: Date,
          endTime: Date,
          location: String? = nil,
          notes: String? = nil,
          alertTime: Date? = nil) {
+        self.id = id
         self.name = name
         self.startTime = startTime
         self.endTime = endTime
