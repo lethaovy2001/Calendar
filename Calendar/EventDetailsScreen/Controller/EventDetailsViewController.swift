@@ -28,6 +28,7 @@ class EventDetailsViewController: UIViewController {
     private func setup() {
         setupUI()
         setupSelectors()
+        mainView.addDelegate(viewController: self)
     }
     
     private func setupUI() {
@@ -56,6 +57,15 @@ class EventDetailsViewController: UIViewController {
     }
     
     @objc private func pressedMoreButton() {
-        
+        mainView.showOrHideDropDownMenu()
+    }
+}
+
+extension EventDetailsViewController: DropDownProtocol {
+    func dropDownPressed(on option: EventDetailsDropDownOptions) {
+        switch option {
+        case .delete:
+            break
+        }
     }
 }

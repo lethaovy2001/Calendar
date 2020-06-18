@@ -71,12 +71,13 @@
 		38E51E312491144900EBBF5B /* CalendarModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E302491144900EBBF5B /* CalendarModelController.swift */; };
 		38E51E342491282100EBBF5B /* EventSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E332491282100EBBF5B /* EventSection.swift */; };
 		38E51E372494295100EBBF5B /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E362494295100EBBF5B /* UserSettingsView.swift */; };
-		38E51E432498AEC700EBBF5B /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E422498AEC700EBBF5B /* Scheduler.swift */; };
-		38E51E452498BE1700EBBF5B /* DoneTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E442498BE1700EBBF5B /* DoneTapGestureDelegate.swift */; };
 		38E51E3C2496BC9500EBBF5B /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E3B2496BC9500EBBF5B /* SearchEventViewController.swift */; };
 		38E51E3E2496BCA900EBBF5B /* SearchEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E3D2496BCA900EBBF5B /* SearchEventView.swift */; };
 		38E51E40249705FD00EBBF5B /* SearchedEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E3F249705FD00EBBF5B /* SearchedEventCell.swift */; };
+		38E51E432498AEC700EBBF5B /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E422498AEC700EBBF5B /* Scheduler.swift */; };
+		38E51E452498BE1700EBBF5B /* DoneTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E442498BE1700EBBF5B /* DoneTapGestureDelegate.swift */; };
 		38E51E4A24993EAC00EBBF5B /* SearchEventModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E4924993EAC00EBBF5B /* SearchEventModelController.swift */; };
+		38E51E4E249ADE4400EBBF5B /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E4D249ADE4400EBBF5B /* DropDownView.swift */; };
 		38EAF127248C202300A2FE8C /* DailyTasksModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */; };
 		38EAF12A248C62A900A2FE8C /* Shaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF129248C62A900A2FE8C /* Shaking.swift */; };
 		38EAF12E248CCB0C00A2FE8C /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */; };
@@ -176,12 +177,13 @@
 		38E51E302491144900EBBF5B /* CalendarModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModelController.swift; sourceTree = "<group>"; };
 		38E51E332491282100EBBF5B /* EventSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSection.swift; sourceTree = "<group>"; };
 		38E51E362494295100EBBF5B /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
-		38E51E422498AEC700EBBF5B /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
-		38E51E442498BE1700EBBF5B /* DoneTapGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTapGestureDelegate.swift; sourceTree = "<group>"; };
 		38E51E3B2496BC9500EBBF5B /* SearchEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
 		38E51E3D2496BCA900EBBF5B /* SearchEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventView.swift; sourceTree = "<group>"; };
 		38E51E3F249705FD00EBBF5B /* SearchedEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedEventCell.swift; sourceTree = "<group>"; };
+		38E51E422498AEC700EBBF5B /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
+		38E51E442498BE1700EBBF5B /* DoneTapGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTapGestureDelegate.swift; sourceTree = "<group>"; };
 		38E51E4924993EAC00EBBF5B /* SearchEventModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventModelController.swift; sourceTree = "<group>"; };
+		38E51E4D249ADE4400EBBF5B /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksModelController.swift; sourceTree = "<group>"; };
 		38EAF129248C62A900A2FE8C /* Shaking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shaking.swift; sourceTree = "<group>"; };
 		38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				38285B21248EDDE000AAEE03 /* BookRingView.swift */,
 				38285B23248F09EE00AAEE03 /* SettingsContainerView.swift */,
 				38285B25248F78B800AAEE03 /* NotesContainerView.swift */,
+				38E51E4D249ADE4400EBBF5B /* DropDownView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -495,6 +498,41 @@
 			path = UserSettingsScreen;
 			sourceTree = "<group>";
 		};
+		38E51E32249127BA00EBBF5B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				38E51E332491282100EBBF5B /* EventSection.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		38E51E382496BB9B00EBBF5B /* SearchEventScreen */ = {
+			isa = PBXGroup;
+			children = (
+				38E51E392496BC7700EBBF5B /* View */,
+				38E51E3A2496BC7F00EBBF5B /* Controller */,
+			);
+			path = SearchEventScreen;
+			sourceTree = "<group>";
+		};
+		38E51E392496BC7700EBBF5B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				38E51E3D2496BCA900EBBF5B /* SearchEventView.swift */,
+				38E51E3F249705FD00EBBF5B /* SearchedEventCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		38E51E3A2496BC7F00EBBF5B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				38E51E3B2496BC9500EBBF5B /* SearchEventViewController.swift */,
+				38E51E4924993EAC00EBBF5B /* SearchEventModelController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		38E51E412497FD3700EBBF5B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,41 +541,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-        38E51E32249127BA00EBBF5B /* Model */ = {
-            isa = PBXGroup;
-            children = (
-                38E51E332491282100EBBF5B /* EventSection.swift */,
-            );
-            path = Model;
-            sourceTree = "<group>";
-        };
-        38E51E382496BB9B00EBBF5B /* SearchEventScreen */ = {
-            isa = PBXGroup;
-            children = (
-                38E51E392496BC7700EBBF5B /* View */,
-                38E51E3A2496BC7F00EBBF5B /* Controller */,
-            );
-            path = SearchEventScreen;
-            sourceTree = "<group>";
-        };
-        38E51E392496BC7700EBBF5B /* View */ = {
-            isa = PBXGroup;
-            children = (
-                38E51E3D2496BCA900EBBF5B /* SearchEventView.swift */,
-                38E51E3F249705FD00EBBF5B /* SearchedEventCell.swift */,
-            );
-            path = View;
-            sourceTree = "<group>";
-        };
-        38E51E3A2496BC7F00EBBF5B /* Controller */ = {
-            isa = PBXGroup;
-            children = (
-                38E51E3B2496BC9500EBBF5B /* SearchEventViewController.swift */,
-                38E51E4924993EAC00EBBF5B /* SearchEventModelController.swift */,
-            );
-            path = Controller;
-            sourceTree = "<group>";
-        };
 		38F90B772478886B005B0BEB = {
 			isa = PBXGroup;
 			children = (
@@ -919,6 +922,7 @@
 				3888D202247F3BED009B3966 /* RunningTimeLineView.swift in Sources */,
 				38E51E452498BE1700EBBF5B /* DoneTapGestureDelegate.swift in Sources */,
 				3888D24224822466009B3966 /* DateConverter.swift in Sources */,
+				38E51E4E249ADE4400EBBF5B /* DropDownView.swift in Sources */,
 				3888D246248325E0009B3966 /* ScheduleCell.swift in Sources */,
 				3888D1D7247B824D009B3966 /* DailyTaskViewController.swift in Sources */,
 				3888D1B2247B155F009B3966 /* CustomContainerView.swift in Sources */,
