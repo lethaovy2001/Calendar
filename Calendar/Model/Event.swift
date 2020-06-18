@@ -9,6 +9,7 @@
 import UIKit
 
 struct Event: Codable {
+    let eventId: String
     let name: String
     let startTime: Date
     let endTime: Date
@@ -17,6 +18,7 @@ struct Event: Codable {
     var alertTime: Date?
     
     enum CodingKeys: String, CodingKey {
+        case eventId = "id"
         case name
         case startTime
         case endTime
@@ -28,9 +30,11 @@ struct Event: Codable {
     init(name: String,
          startTime: Date,
          endTime: Date,
+         eventId: String? = nil,
          location: String? = nil,
          notes: String? = nil,
          alertTime: Date? = nil) {
+        self.eventId = UUID().uuidString
         self.name = name
         self.startTime = startTime
         self.endTime = endTime
@@ -40,6 +44,7 @@ struct Event: Codable {
     }
     
     init(data: [String: Any]) {
+        self.eventId = data["id"] as? String ?? UUID().uuidString
         self.name = data["name"] as? String ?? "Event"
         self.alertTime = data["alertTime"] as? Date
         self.location = data["location"] as? String
@@ -56,6 +61,7 @@ struct Event: Codable {
     
     func getEventDictionary() -> [String: Any] {
         var dictionary: [String: Any] = [
+            "id": eventId,
             "name": name,
             "startTime": startTime,
             "endTime": endTime

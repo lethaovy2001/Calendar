@@ -78,6 +78,7 @@ final class NewEventViewController: UIViewController {
         guard let event = mainView.getSavedEvent() else { return }
         scheduler.scheduleNotification(for: event)
         database.save(event: event)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc private func pressedBackButton() {
