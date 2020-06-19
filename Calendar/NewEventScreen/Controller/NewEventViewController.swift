@@ -15,6 +15,11 @@ final class NewEventViewController: UIViewController {
     private var alertOptions = Constants.setAlertOptions
     weak var keyboardDelegate: KeyboardDelegate?
     private let scheduler = Scheduler()
+    var viewModel: EventViewModel? {
+        didSet {
+            mainView.viewModel = viewModel
+        }
+    }
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -78,7 +83,7 @@ final class NewEventViewController: UIViewController {
         guard let event = mainView.getSavedEvent() else { return }
         scheduler.scheduleNotification(for: event)
         database.save(event: event)
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @objc private func pressedBackButton() {
