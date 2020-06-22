@@ -39,13 +39,4 @@ final class SearchLocationViewController: UIViewController {
     private func setupSelectors() {
         
     }
-    
-    // MARK: Actions
-    @objc private func searchButtonPressed() {
-        let searchRequest = MKLocalSearch.Request()
-        //        searchRequest.naturalLanguageQuery = m.text
-        
-        //let activeSearch = MKLocalSearch(request: searchRequest)
-    }
 }
-
