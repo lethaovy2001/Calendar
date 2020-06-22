@@ -14,6 +14,7 @@ class LocationService {
     var locationManager: CLLocationManager
     var mapView: MKMapView?
     static let shared = LocationService()
+    private var currentUserLocation: CLLocation?
     
     init() {
         locationManager = CLLocationManager()
@@ -26,12 +27,14 @@ class LocationService {
     
     func didUpdateLocations(_ locations: [CLLocation]) {
         if let location = locations.last {
-            centerMapOnLocation(location: location)
+            currentUserLocation = location
+            centerUserLocation()
             locationManager.stopUpdatingLocation()
         }
     }
     
-    func centerMapOnLocation(location: CLLocation) {
+    func centerUserLocation() {
+        guard let location = currentUserLocation else { return }
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         self.mapView?.setRegion(region, animated: true)

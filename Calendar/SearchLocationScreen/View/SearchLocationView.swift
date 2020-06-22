@@ -33,7 +33,18 @@ final class SearchLocationView: UIView {
         return tableView
     }()
     private let locationService = LocationService.shared
-    
+    private let centerButton: TextButton = {
+        let button = TextButton(
+            title: "RE-CENTER",
+            textColor: .systemBlue,
+            textSize: 16,
+            textWeight: .semibold
+        )
+        button.addShadow()
+        button.backgroundColor = .white
+        return button
+    }()
+       
     // MARK: - Initializer
     init(window: UIWindow) {
         super.init(frame: .zero)
@@ -51,6 +62,7 @@ final class SearchLocationView: UIView {
         configureSelf()
         addSubviews()
         setupConstraints()
+        addGesture()
         tableView.delegate = self
         tableView.dataSource = self
         searchTextField.delegate = self
@@ -66,6 +78,7 @@ final class SearchLocationView: UIView {
         addSubview(mapView)
         addSubview(tableView)
         addSubview(containerView)
+        addSubview(centerButton)
         containerView.addSubview(backButton)
         containerView.addSubview(searchTextField)
         containerView.addSubview(searchIcon)
@@ -109,6 +122,24 @@ final class SearchLocationView: UIView {
             tableView.rightAnchor.constraint(equalTo: containerView.rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
+        NSLayoutConstraint.activate([
+            centerButton.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -90),
+            centerButton.safeAreaLayoutGuide.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            centerButton.widthAnchor.constraint(equalToConstant: 120),
+            centerButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
+    func addGesture() {
+        let centerButtonGesture = UITapGestureRecognizer(target: self, action: #selector(centerUserLocation))
+        centerButtonGesture.numberOfTapsRequired = 1
+        centerButtonGesture.numberOfTouchesRequired = 1
+        centerButton.addGestureRecognizer(centerButtonGesture)
+    }
+    
+    // MARK: Actions
+    @objc private func centerUserLocation() {
+        locationService.centerUserLocation()
     }
 }
 
