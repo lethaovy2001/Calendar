@@ -47,4 +47,8 @@ class LocationService {
             break
         }
     }
+    
+    func addDelegate(view: SearchLocationView) {
+        locationManager.delegate = view
+    }
 }

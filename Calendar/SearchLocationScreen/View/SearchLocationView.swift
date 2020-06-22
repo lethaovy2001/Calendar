@@ -54,6 +54,7 @@ final class SearchLocationView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         searchTextField.delegate = self
+        locationService.addDelegate(view: self)
     }
     
     private func configureSelf() {
@@ -145,7 +146,6 @@ extension SearchLocationView: UITableViewDataSource {
 extension SearchLocationView: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         locationService.didUpdateLocations(locations)
-
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
