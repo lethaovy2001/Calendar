@@ -35,9 +35,11 @@ final class SearchLocationView: UIView {
     private let locationService = LocationService.shared
     
     // MARK: - Initializer
-    init() {
+    init(window: UIWindow) {
         super.init(frame: .zero)
         setup()
+        mapView.frame = window.frame
+        locationService.mapView = mapView
     }
     
     required init?(coder: NSCoder) {
@@ -52,7 +54,6 @@ final class SearchLocationView: UIView {
         tableView.delegate = self
         tableView.dataSource = self
         searchTextField.delegate = self
-        locationService.locationManager?.delegate = self
     }
     
     private func configureSelf() {
@@ -143,14 +144,14 @@ extension SearchLocationView: UITableViewDataSource {
 // MARK: - CLLocationManagerDelegate
 extension SearchLocationView: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-            let region = MKCoordinateRegion(center: location.coordinate, span: span)
-            self.mapView.setRegion(region, animated: true)
-        }
+        locationService.didUpdateLocations(locations)
+
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         locationService.didChangeAuthorization(status: status)
+        if status == .authorizedWhenInUse || status == .authorizedWhenInUse {
+            locationService.locationManager.startUpdatingLocation()
+        }
     }
 }

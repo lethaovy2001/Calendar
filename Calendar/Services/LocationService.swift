@@ -8,31 +8,41 @@
 
 import CoreLocation
 import UIKit
+import MapKit
 
 class LocationService {
-    var locationManager: CLLocationManager?
+    var locationManager: CLLocationManager
+    var mapView: MKMapView?
     static let shared = LocationService()
     
     init() {
         locationManager = CLLocationManager()
-        locationManager?.requestAlwaysAuthorization()
-        locationManager?.requestWhenInUseAuthorization()
-        locationManager?.startUpdatingLocation()
-        locationManager?.allowsBackgroundLocationUpdates = false
-        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.allowsBackgroundLocationUpdates = false
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    func didUpdateLocation(_ location: CLLocation) {
-            print(location.coordinate.latitude)
-            print(location.coordinate.longitude)
+    func didUpdateLocations(_ locations: [CLLocation]) {
+        if let location = locations.last {
+            centerMapOnLocation(location: location)
+            locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    func centerMapOnLocation(location: CLLocation) {
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+        self.mapView?.setRegion(region, animated: true)
     }
     
     func didChangeAuthorization(status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
-           break
+            break
         case .denied, .restricted, .notDetermined:
-           break
+            break
         default:
             break
         }
