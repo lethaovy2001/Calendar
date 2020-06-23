@@ -20,6 +20,7 @@
 		38865C71249C73BC00FDFC0D /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C70249C73BC00FDFC0D /* SearchLocationViewController.swift */; };
 		38865C73249C741D00FDFC0D /* SearchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C72249C741D00FDFC0D /* SearchLocationView.swift */; };
 		38865C75249D378000FDFC0D /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C74249D378000FDFC0D /* LocationService.swift */; };
+		38865C7724A1697E00FDFC0D /* SearchedLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C7624A1697E00FDFC0D /* SearchedLocationCell.swift */; };
 		3888D1A2247AF88E009B3966 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A1247AF88E009B3966 /* LoginViewController.swift */; };
 		3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A6247B0F28009B3966 /* LoginView.swift */; };
 		3888D1A9247B1091009B3966 /* AppLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A8247B1091009B3966 /* AppLogoView.swift */; };
@@ -126,6 +127,7 @@
 		38865C70249C73BC00FDFC0D /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		38865C72249C741D00FDFC0D /* SearchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationView.swift; sourceTree = "<group>"; };
 		38865C74249D378000FDFC0D /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		38865C7624A1697E00FDFC0D /* SearchedLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedLocationCell.swift; sourceTree = "<group>"; };
 		3888D1A1247AF88E009B3966 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3888D1A6247B0F28009B3966 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3888D1A8247B1091009B3966 /* AppLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoView.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				38865C72249C741D00FDFC0D /* SearchLocationView.swift */,
+				38865C7624A1697E00FDFC0D /* SearchedLocationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -950,6 +953,7 @@
 				3888D2362480B597009B3966 /* DateCounter.swift in Sources */,
 				38E51E3C2496BC9500EBBF5B /* SearchEventViewController.swift in Sources */,
 				38285B22248EDDE000AAEE03 /* BookRingView.swift in Sources */,
+				38865C7724A1697E00FDFC0D /* SearchedLocationCell.swift in Sources */,
 				3888D202247F3BED009B3966 /* RunningTimeLineView.swift in Sources */,
 				38E51E452498BE1700EBBF5B /* DoneTapGestureDelegate.swift in Sources */,
 				38865C71249C73BC00FDFC0D /* SearchLocationViewController.swift in Sources */,
