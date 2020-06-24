@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 final class SearchLocationViewController: UIViewController {
     // MARK: - Properties
@@ -42,22 +43,6 @@ final class SearchLocationViewController: UIViewController {
         mainView.setBackButtonSelector(target: self, selector: #selector(backButtonPressed))
     }
     
-    // MARK: Actions
-    @objc private func searchButtonPressed() {
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = mainView.getSearchText()
-        request.region = mainView.mapView.region
-        let search = MKLocalSearch(request: request)
-        search.start { response, _ in
-            guard let response = response else {
-                return
-            }
-            self.matchingItems = response.mapItems
-            self.mainView.tableView.isHidden = false
-            self.mainView.tableView.reloadData()
-        }
-    }
-    
     private func getAddress(from placemark: MKPlacemark) -> String {
         var addressString = ""
         if placemark.subThoroughfare != nil {
@@ -79,6 +64,26 @@ final class SearchLocationViewController: UIViewController {
             addressString += "\(placemark.postalCode!)"
         }
         return addressString
+    }
+    
+    // MARK: Actions
+    @objc private func searchButtonPressed() {
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = mainView.getSearchText()
+        request.region = mainView.mapView.region
+        let search = MKLocalSearch(request: request)
+        search.start { response, _ in
+            guard let response = response else {
+                return
+            }
+            self.matchingItems = response.mapItems
+            self.mainView.tableView.isHidden = false
+            self.mainView.tableView.reloadData()
+        }
+    }
+    
+    @objc private func backButtonPressed() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

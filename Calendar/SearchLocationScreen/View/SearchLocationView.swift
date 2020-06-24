@@ -14,7 +14,7 @@ final class SearchLocationView: UIView {
     private let backButton = IconButton(name: Constants.IconNames.back, size: 16, color: AppColor.darkGray)
     private let searchTextField = CustomTextField(placeholder: "Search", backgroundColor: .white)
     private let searchIcon = IconButton(name: Constants.IconNames.search, size: 16, color: AppColor.paleViolet)
-    private let mapView: MKMapView = {
+    let mapView: MKMapView = {
         let mapView = MKMapView(frame: .zero)
         mapView.mapType = MKMapType.standard
         mapView.isZoomEnabled = true
@@ -77,7 +77,6 @@ final class SearchLocationView: UIView {
         addSubview(centerButton)
         addSubview(tableView)
         addSubview(containerView)
-        addSubview(centerButton)
         containerView.addSubview(backButton)
         containerView.addSubview(searchTextField)
         containerView.addSubview(searchIcon)
@@ -133,15 +132,24 @@ final class SearchLocationView: UIView {
         tableView.register(SearchedLocationCell.self, forCellReuseIdentifier: Constants.CellId.searchedLocation)
     }
     
-    func setSearchButtonSelector(target: UIViewController, selector: Selector) {
-        searchIcon.addTarget(target, action: selector, for: .touchUpInside)
-    }
-    
-    func addGesture() {
     private func addGesture() {
+        let centerButtonGesture = UITapGestureRecognizer(target: self, action: #selector(centerUserLocation))
         centerButtonGesture.numberOfTapsRequired = 1
         centerButtonGesture.numberOfTouchesRequired = 1
         centerButton.addGestureRecognizer(centerButtonGesture)
+    }
+    
+    @objc private func centerUserLocation() {
+        locationService.centerUserLocation()
+    }
+    
+    // MARK: - Public Methods
+    func setBackButtonSelector(target: UIViewController, selector: Selector) {
+        backButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
+    func setSearchButtonSelector(target: UIViewController, selector: Selector) {
+        searchIcon.addTarget(target, action: selector, for: .touchUpInside)
     }
     
     func getSearchText() -> String {
@@ -152,12 +160,6 @@ final class SearchLocationView: UIView {
         tableView.delegate = viewController
         tableView.dataSource = viewController
     }
-    
-    // MARK: Actions
-    @objc private func centerUserLocation() {
-        locationService.centerUserLocation()
-    }
-}
 }
 
 // MARK: - UITextFieldDelegate
@@ -166,15 +168,8 @@ extension SearchLocationView: UITextFieldDelegate {
         
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-    
+        
     }
-    // MARK: - Public Methods
-    func setBackButtonSelector(target: UIViewController, selector: Selector) {
-        backButton.addTarget(target, action: selector, for: .touchUpInside)
-    }
-
-    func setSearchButtonSelector(target: UIViewController, selector: Selector) {
-        searchIcon.addTarget(target, action: selector, for: .touchUpInside)
 }
 
 // MARK: - CLLocationManagerDelegate
