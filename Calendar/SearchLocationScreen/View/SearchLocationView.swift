@@ -63,8 +63,6 @@ final class SearchLocationView: UIView {
         setupConstraints()
         addGesture()
         registerCellId()
-        searchTextField.delegate = self
-        locationService.addDelegate(view: self)
     }
     
     private func configureSelf() {
@@ -148,8 +146,8 @@ final class SearchLocationView: UIView {
         backButton.addTarget(target, action: selector, for: .touchUpInside)
     }
     
-    func setSearchButtonSelector(target: UIViewController, selector: Selector) {
-        searchIcon.addTarget(target, action: selector, for: .touchUpInside)
+    func setSearchTextFieldSelector(target: UIViewController, selector: Selector) {
+        searchTextField.addTarget(target, action: selector, for: .editingChanged)
     }
     
     func getSearchText() -> String {
@@ -159,16 +157,7 @@ final class SearchLocationView: UIView {
     func addDelegateAndDataSource(viewController: SearchLocationViewController) {
         tableView.delegate = viewController
         tableView.dataSource = viewController
-    }
-}
-
-// MARK: - UITextFieldDelegate
-extension SearchLocationView: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        locationService.addDelegate(view: self)
     }
 }
 

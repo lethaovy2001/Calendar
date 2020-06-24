@@ -39,8 +39,8 @@ final class SearchLocationViewController: UIViewController {
     }
     
     private func setupSelectors() {
-        mainView.setSearchButtonSelector(target: self, selector: #selector(searchButtonPressed))
         mainView.setBackButtonSelector(target: self, selector: #selector(backButtonPressed))
+        mainView.setSearchTextFieldSelector(target: self, selector: #selector(textFieldEditingChanged))
     }
     
     private func getAddress(from placemark: MKPlacemark) -> String {
@@ -66,8 +66,12 @@ final class SearchLocationViewController: UIViewController {
         return addressString
     }
     
-    // MARK: Actions
-    @objc private func searchButtonPressed() {
+    @objc private func backButtonPressed() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func textFieldEditingChanged() {
+        print(mainView.getSearchText())
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = mainView.getSearchText()
         request.region = mainView.mapView.region
@@ -80,10 +84,6 @@ final class SearchLocationViewController: UIViewController {
             self.mainView.tableView.isHidden = false
             self.mainView.tableView.reloadData()
         }
-    }
-    
-    @objc private func backButtonPressed() {
-        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -105,7 +105,7 @@ extension SearchLocationViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 60
     }
 }
 
@@ -113,5 +113,6 @@ extension SearchLocationViewController: UITableViewDataSource {
 extension SearchLocationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         mainView.tableView.isHidden = true
+        self.view.endEditing(true)
     }
 }
