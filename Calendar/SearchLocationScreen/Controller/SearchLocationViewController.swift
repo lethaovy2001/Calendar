@@ -10,7 +10,7 @@ import UIKit
 
 final class SearchLocationViewController: UIViewController {
     // MARK: - Properties
-    private let mainView = SearchLocationView()
+    private let mainView = SearchLocationView(window: UIWindow(frame: UIScreen.main.bounds))
     
     // MARK: - View Lifecycles
     override func viewDidLoad() {
@@ -19,7 +19,7 @@ final class SearchLocationViewController: UIViewController {
         setup()
     }
     
-    // MARK: - Setup
+    // MARK: - Functions
     private func setup() {
         setupUI()
         setupSelectors()
@@ -36,8 +36,15 @@ final class SearchLocationViewController: UIViewController {
     }
     
     private func setupSelectors() {
-       
+        mainView.setSearchButtonSelector(target: self, selector: #selector(searchButtonPressed))
+        mainView.setBackButtonSelector(target: self, selector: #selector(backButtonPressed))
     }
     
-    // MARK: Actions
+    @objc private func searchButtonPressed() {
+        
+    }
+    
+    @objc private func backButtonPressed() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }

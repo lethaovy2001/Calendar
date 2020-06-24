@@ -19,6 +19,7 @@ final class SearchLocationView: UIView {
         mapView.mapType = MKMapType.standard
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
+        mapView.showsUserLocation = true
         return mapView
     }()
     private let tableView: UITableView = {
@@ -28,25 +29,38 @@ final class SearchLocationView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.layer.cornerRadius = 6
         tableView.addShadow()
+        tableView.isHidden = true
         return tableView
+    }()
+    private let centerButton: TextButton = {
+        let button = TextButton(
+            title: "RE-CENTER",
+            textColor: .systemBlue,
+            textSize: 16,
+            textWeight: .semibold
+        )
+        button.addShadow()
+        button.backgroundColor = .white
+        return button
     }()
     
     // MARK: - Initializer
-    init() {
+    init(window: UIWindow) {
         super.init(frame: .zero)
         setup()
-        mapView.frame = CGRect(x: 0, y: 0, width: 450, height: 1000)
+        mapView.frame = window.frame
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Setup
+    // MARK: - Functions
     private func setup() {
         configureSelf()
         addSubviews()
         setupConstraints()
+        addGesture()
     }
     
     private func configureSelf() {
@@ -56,6 +70,7 @@ final class SearchLocationView: UIView {
     
     private func addSubviews() {
         addSubview(mapView)
+        addSubview(centerButton)
         addSubview(tableView)
         addSubview(containerView)
         containerView.addSubview(backButton)
@@ -101,5 +116,31 @@ final class SearchLocationView: UIView {
             tableView.rightAnchor.constraint(equalTo: containerView.rightAnchor),
             tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)
         ])
+        NSLayoutConstraint.activate([
+            centerButton.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -90),
+            centerButton.safeAreaLayoutGuide.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            centerButton.widthAnchor.constraint(equalToConstant: 120),
+            centerButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+    
+    private func addGesture() {
+        let centerButtonGesture = UITapGestureRecognizer(target: self, action: #selector(centerUserLocation))
+        centerButtonGesture.numberOfTapsRequired = 1
+        centerButtonGesture.numberOfTouchesRequired = 1
+        centerButton.addGestureRecognizer(centerButtonGesture)
+    }
+    
+    @objc private func centerUserLocation() {
+       // TODO: centerUserLocation
+    }
+    
+    // MARK: - Public Methods
+    func setBackButtonSelector(target: UIViewController, selector: Selector) {
+        backButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
+    func setSearchButtonSelector(target: UIViewController, selector: Selector) {
+        searchIcon.addTarget(target, action: selector, for: .touchUpInside)
     }
 }
