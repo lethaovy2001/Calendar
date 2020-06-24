@@ -19,7 +19,7 @@ final class SearchLocationViewController: UIViewController {
         setup()
     }
     
-    // MARK: - Functions
+    // MARK: - Private Functions
     private func setup() {
         setupUI()
         setupSelectors()
