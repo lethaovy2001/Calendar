@@ -15,7 +15,7 @@ final class SearchLocationView: UIView {
     private let searchTextField = CustomTextField(placeholder: "Search", backgroundColor: .white)
     private let searchIcon = IconButton(name: Constants.IconNames.search, size: 16, color: AppColor.paleViolet)
     private let mapView: MKMapView = {
-        let mapView = MKMapView(frame: CGRect(x: 0, y: 0, width: 450, height: 1000))
+        let mapView = MKMapView(frame: .zero)
         mapView.mapType = MKMapType.standard
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
@@ -63,9 +63,6 @@ final class SearchLocationView: UIView {
         addSubviews()
         setupConstraints()
         addGesture()
-        tableView.delegate = self
-        tableView.dataSource = self
-        searchTextField.delegate = self
         locationService.addDelegate(view: self)
     }
     
@@ -142,35 +139,14 @@ final class SearchLocationView: UIView {
     @objc private func centerUserLocation() {
         locationService.centerUserLocation()
     }
-}
-
-// MARK: - UITextFieldDelegate
-extension SearchLocationView: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        tableView.isHidden = false
-    }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        tableView.isHidden = true
-    }
-}
-
-// MARK: - UITableViewDelegate
-extension SearchLocationView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.isHidden = true
-    }
-}
-
-// MARK: - UITableViewDataSource
-extension SearchLocationView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+    // MARK: - Public Methods
+    func setBackButtonSelector(target: UIViewController, selector: Selector) {
+        backButton.addTarget(target, action: selector, for: .touchUpInside)
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        return cell
+    func setSearchButtonSelector(target: UIViewController, selector: Selector) {
+        searchIcon.addTarget(target, action: selector, for: .touchUpInside)
     }
 }
 
