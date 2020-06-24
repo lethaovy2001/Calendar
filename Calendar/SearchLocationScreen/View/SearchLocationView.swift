@@ -14,8 +14,8 @@ final class SearchLocationView: UIView {
     private let backButton = IconButton(name: Constants.IconNames.back, size: 16, color: AppColor.darkGray)
     private let searchTextField = CustomTextField(placeholder: "Search", backgroundColor: .white)
     private let searchIcon = IconButton(name: Constants.IconNames.search, size: 16, color: AppColor.paleViolet)
-    let mapView: MKMapView = {
-        let mapView = MKMapView(frame: CGRect(x: 0, y: 0, width: 450, height: 1000))
+    private let mapView: MKMapView = {
+        let mapView = MKMapView(frame: .zero)
         mapView.mapType = MKMapType.standard
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
@@ -56,7 +56,7 @@ final class SearchLocationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Setup
+    // MARK: - Private Functions
     private func setup() {
         configureSelf()
         addSubviews()
@@ -74,6 +74,7 @@ final class SearchLocationView: UIView {
     
     private func addSubviews() {
         addSubview(mapView)
+        addSubview(centerButton)
         addSubview(tableView)
         addSubview(containerView)
         addSubview(centerButton)
@@ -137,7 +138,7 @@ final class SearchLocationView: UIView {
     }
     
     func addGesture() {
-        let centerButtonGesture = UITapGestureRecognizer(target: self, action: #selector(centerUserLocation))
+    private func addGesture() {
         centerButtonGesture.numberOfTapsRequired = 1
         centerButtonGesture.numberOfTouchesRequired = 1
         centerButton.addGestureRecognizer(centerButtonGesture)
@@ -157,15 +158,23 @@ final class SearchLocationView: UIView {
         locationService.centerUserLocation()
     }
 }
+}
 
 // MARK: - UITextFieldDelegate
 extension SearchLocationView: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
     }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
+    
     }
+    // MARK: - Public Methods
+    func setBackButtonSelector(target: UIViewController, selector: Selector) {
+        backButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+
+    func setSearchButtonSelector(target: UIViewController, selector: Selector) {
+        searchIcon.addTarget(target, action: selector, for: .touchUpInside)
 }
 
 // MARK: - CLLocationManagerDelegate
