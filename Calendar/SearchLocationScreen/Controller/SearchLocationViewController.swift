@@ -20,7 +20,7 @@ final class SearchLocationViewController: UIViewController {
         setup()
     }
     
-    // MARK: - Setup
+    // MARK: - Private Functions
     private func setup() {
         setupUI()
         setupSelectors()
@@ -37,6 +37,15 @@ final class SearchLocationViewController: UIViewController {
     }
     
     private func setupSelectors() {
+        mainView.setSearchButtonSelector(target: self, selector: #selector(searchButtonPressed))
+        mainView.setBackButtonSelector(target: self, selector: #selector(backButtonPressed))
+    }
+    
+    @objc private func searchButtonPressed() {
         
+    }
+    
+    @objc private func backButtonPressed() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

@@ -57,7 +57,7 @@ final class SearchLocationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Setup
+    // MARK: - Private Functions
     private func setup() {
         configureSelf()
         addSubviews()
@@ -76,6 +76,7 @@ final class SearchLocationView: UIView {
     
     private func addSubviews() {
         addSubview(mapView)
+        addSubview(centerButton)
         addSubview(tableView)
         addSubview(containerView)
         addSubview(centerButton)
@@ -130,7 +131,7 @@ final class SearchLocationView: UIView {
         ])
     }
     
-    func addGesture() {
+    private func addGesture() {
         let centerButtonGesture = UITapGestureRecognizer(target: self, action: #selector(centerUserLocation))
         centerButtonGesture.numberOfTapsRequired = 1
         centerButtonGesture.numberOfTouchesRequired = 1
