@@ -75,6 +75,7 @@ final class NewEventViewController: UIViewController {
     private func addGestureAndDelegate() {
         mainView.addTapGesture(target: self, selector: #selector(dismissKeyboard))
         mainView.addDelegate(viewController: self)
+        mainView.navigator = self
     }
     
     // MARK: Actions
@@ -155,5 +156,19 @@ extension NewEventViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         mainView.endEditing()
+    }
+}
+
+// MARK: - UITextViewDelegate
+extension NewEventViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        mainView.textFieldBeginEditing(textField: textField)
+    }
+}
+
+// MARK: - Navigator
+extension NewEventViewController: Navigator {
+    func navigateTo(viewController: UIViewController) {
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -13,6 +13,7 @@ final class SearchLocationViewController: UIViewController {
     // MARK: - Properties
     private let mainView = SearchLocationView(window: UIWindow(frame: UIScreen.main.bounds))
     private var matchingItems: [MKMapItem] = []
+    weak var updatableDelegate: Updatable?
     
     // MARK: - View Lifecycles
     override func viewDidLoad() {
@@ -112,7 +113,10 @@ extension SearchLocationViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension SearchLocationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedItem = matchingItems[indexPath.row]
+        updatableDelegate?.update(value: getAddress(from: selectedItem.placemark))
         mainView.tableView.isHidden = true
         self.view.endEditing(true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
