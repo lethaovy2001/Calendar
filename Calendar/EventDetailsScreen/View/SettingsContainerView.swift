@@ -40,6 +40,10 @@ final class SettingsContainerView: UIView {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         setup()
+        if iconName == Constants.IconNames.mappin {
+            label.textColor = .systemBlue
+            addGesture()
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -85,5 +89,17 @@ final class SettingsContainerView: UIView {
         NSLayoutConstraint.activate([
             self.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
+    }
+    
+    private func addGesture() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedOnLocation))
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.numberOfTouchesRequired = 1
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc private func tappedOnLocation() {
+        
     }
 }
