@@ -16,7 +16,7 @@ final class NewEventView: UIView {
         size: 20,
         color: AppColor.primaryColor
     )
-    private let titleTextField = CustomTextField(placeholder: "Add Title")
+    let titleTextField = CustomTextField(placeholder: "Add Title")
     private let scrollView = CustomScrollView()
     private let timeSectionLabel = SectionTitleLabel(title: "TIME")
     private let startTitleLabel = CustomLabel(
@@ -25,7 +25,7 @@ final class NewEventView: UIView {
         textSize: 18,
         textWeight: .bold
     )
-    private let startTimeLabel = CustomLabel(
+    let startTimeLabel = CustomLabel(
         text: "date...",
         textColor: AppColor.gray,
         textSize: 18,
@@ -37,16 +37,16 @@ final class NewEventView: UIView {
         textSize: 18,
         textWeight: .bold
     )
-    private let endTimeLabel = CustomLabel(
+    let endTimeLabel = CustomLabel(
         text: "date...",
         textColor: AppColor.gray,
         textSize: 18,
         textWeight: .regular
     )
     private let locationSectionLabel = SectionTitleLabel(title: "LOCATION")
-    private let locationTextField = CustomTextField(placeholder: "Add Location")
+    let locationTextField = CustomTextField(placeholder: "Add Location")
     private let noteSectionLabel = SectionTitleLabel(title: "NOTES")
-    private let noteTextView = CustomTextView(text: "Notes...")
+    let noteTextView = CustomTextView(text: "Notes...")
     private let settingsSectionLabel = SectionTitleLabel(title: "SETTINGS")
     private let alarmButton = IconButton(
         name: Constants.IconNames.alarm,
@@ -58,7 +58,7 @@ final class NewEventView: UIView {
         size: 24,
         color: AppColor.gray
     )
-    private let addAlertButton = TextButton(
+    let addAlertButton = TextButton(
         title: "Add alert",
         textColor: AppColor.gray,
         textSize: 18,
@@ -90,20 +90,6 @@ final class NewEventView: UIView {
                 selectedComponent = .month
             case .none:
                 break
-            }
-        }
-    }
-    var viewModel: EventViewModel? {
-        didSet {
-            guard let viewModel = self.viewModel else { return }
-            titleTextField.text = viewModel.name
-            startTimeLabel.text = viewModel.startTimeDate
-            endTimeLabel.text = viewModel.endTimeDate
-            noteTextView.text = viewModel.notes
-            noteTextView.endEditing()
-            locationTextField.text = viewModel.location
-            if let alertTime = viewModel.alertTime {
-                addAlertButton.setTitle(alertTime, for: .normal)
             }
         }
     }
