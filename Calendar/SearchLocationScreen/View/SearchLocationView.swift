@@ -14,7 +14,7 @@ final class SearchLocationView: UIView {
     private let backButton = IconButton(name: Constants.IconNames.back, size: 16, color: AppColor.darkGray)
     private let searchTextField = CustomTextField(placeholder: "Search", backgroundColor: .white)
     private let searchIcon = IconButton(name: Constants.IconNames.search, size: 16, color: AppColor.paleViolet)
-    private let mapView: MKMapView = {
+    let mapView: MKMapView = {
         let mapView = MKMapView(frame: .zero)
         mapView.mapType = MKMapType.standard
         mapView.isZoomEnabled = true
@@ -32,7 +32,6 @@ final class SearchLocationView: UIView {
         tableView.isHidden = true
         return tableView
     }()
-    private let locationService = LocationService.shared
     private let centerButton: TextButton = {
         let button = TextButton(
             title: "RE-CENTER",
@@ -50,7 +49,6 @@ final class SearchLocationView: UIView {
         super.init(frame: .zero)
         setup()
         mapView.frame = window.frame
-        locationService.mapView = mapView
     }
     
     required init?(coder: NSCoder) {
@@ -62,8 +60,6 @@ final class SearchLocationView: UIView {
         configureSelf()
         addSubviews()
         setupConstraints()
-        addGesture()
-        locationService.addDelegate(view: self)
     }
     
     private func configureSelf() {
@@ -128,18 +124,6 @@ final class SearchLocationView: UIView {
         ])
     }
     
-    private func addGesture() {
-        let centerButtonGesture = UITapGestureRecognizer(target: self, action: #selector(centerUserLocation))
-        centerButtonGesture.numberOfTapsRequired = 1
-        centerButtonGesture.numberOfTouchesRequired = 1
-        centerButton.addGestureRecognizer(centerButtonGesture)
-    }
-    
-    // MARK: Actions
-    @objc private func centerUserLocation() {
-        locationService.centerUserLocation()
-    }
-    
     // MARK: - Public Methods
     func setBackButtonSelector(target: UIViewController, selector: Selector) {
         backButton.addTarget(target, action: selector, for: .touchUpInside)
@@ -148,18 +132,8 @@ final class SearchLocationView: UIView {
     func setSearchButtonSelector(target: UIViewController, selector: Selector) {
         searchIcon.addTarget(target, action: selector, for: .touchUpInside)
     }
-}
-
-// MARK: - CLLocationManagerDelegate
-extension SearchLocationView: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationService.didUpdateLocations(locations)
-    }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        locationService.didChangeAuthorization(status: status)
-        if status == .authorizedWhenInUse || status == .authorizedWhenInUse {
-            locationService.locationManager.startUpdatingLocation()
-        }
+    func setCenterButtonSelector(target: UIViewController, selector: Selector) {
+        centerButton.addTarget(target, action: selector, for: .touchUpInside)
     }
 }
