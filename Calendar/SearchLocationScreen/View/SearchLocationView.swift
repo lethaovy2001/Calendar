@@ -31,7 +31,6 @@ final class SearchLocationView: UIView {
         tableView.isHidden = true
         return tableView
     }()
-    private let locationService = LocationService.shared
     private let centerButton: TextButton = {
         let button = TextButton(
             title: "RE-CENTER",
@@ -49,7 +48,6 @@ final class SearchLocationView: UIView {
         super.init(frame: .zero)
         setup()
         mapView.frame = window.frame
-        locationService.mapView = mapView
     }
     
     required init?(coder: NSCoder) {
@@ -159,18 +157,8 @@ final class SearchLocationView: UIView {
         tableView.dataSource = viewController
         locationService.addDelegate(view: self)
     }
-}
-
-// MARK: - CLLocationManagerDelegate
-extension SearchLocationView: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationService.didUpdateLocations(locations)
-    }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        locationService.didChangeAuthorization(status: status)
-        if status == .authorizedWhenInUse || status == .authorizedWhenInUse {
-            locationService.locationManager.startUpdatingLocation()
-        }
+    func setCenterButtonSelector(target: UIViewController, selector: Selector) {
+        centerButton.addTarget(target, action: selector, for: .touchUpInside)
     }
 }

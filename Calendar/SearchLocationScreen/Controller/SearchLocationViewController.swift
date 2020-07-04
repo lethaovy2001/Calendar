@@ -7,11 +7,22 @@
 //
 
 import UIKit
+import CoreLocation
 import MapKit
 
 final class SearchLocationViewController: UIViewController {
     // MARK: - Properties
     private let mainView = SearchLocationView(window: UIWindow(frame: UIScreen.main.bounds))
+    private let locationManager: CLLocationManager = {
+        let locationManager = CLLocationManager()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.allowsBackgroundLocationUpdates = false
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        return locationManager
+    }()
+    private var currentUserLocation: CLLocation?
     private var matchingItems: [MKMapItem] = []
     
     // MARK: - View Lifecycles
@@ -21,10 +32,11 @@ final class SearchLocationViewController: UIViewController {
         setup()
     }
     
-    // MARK: - Private Functions
+    // MARK: - Private Methods
     private func setup() {
         setupUI()
         setupSelectors()
+        addDelegate()
         mainView.addDelegateAndDataSource(viewController: self)
     }
     
@@ -41,6 +53,11 @@ final class SearchLocationViewController: UIViewController {
     private func setupSelectors() {
         mainView.setBackButtonSelector(target: self, selector: #selector(backButtonPressed))
         mainView.setSearchTextFieldSelector(target: self, selector: #selector(textFieldEditingChanged))
+        mainView.setCenterButtonSelector(target: self, selector: #selector(centerUserLocation))
+    }
+    
+    private func addDelegate() {
+        locationManager.delegate = self
     }
     
     private func getAddress(from placemark: MKPlacemark) -> String {
@@ -114,5 +131,30 @@ extension SearchLocationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         mainView.tableView.isHidden = true
         self.view.endEditing(true)
+    @objc private func centerUserLocation() {
+        guard let location = currentUserLocation else { return }
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+        mainView.mapView.setRegion(region, animated: true)
+        locationManager.stopUpdatingLocation()
+    }
+}
+
+// MARK: - CLLocationManagerDelegate
+extension SearchLocationViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            currentUserLocation = location
+            centerUserLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+        default:
+            break
+        }
     }
 }
