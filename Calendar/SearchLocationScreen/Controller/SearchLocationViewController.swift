@@ -88,7 +88,6 @@ final class SearchLocationViewController: UIViewController {
     }
     
     @objc private func textFieldEditingChanged() {
-        print(mainView.getSearchText())
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = mainView.getSearchText()
         request.region = mainView.mapView.region
@@ -101,6 +100,14 @@ final class SearchLocationViewController: UIViewController {
             self.mainView.tableView.isHidden = false
             self.mainView.tableView.reloadData()
         }
+    }
+    
+    @objc private func centerUserLocation() {
+        guard let location = currentUserLocation else { return }
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+        mainView.mapView.setRegion(region, animated: true)
+        locationManager.stopUpdatingLocation()
     }
 }
 
@@ -131,12 +138,6 @@ extension SearchLocationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         mainView.tableView.isHidden = true
         self.view.endEditing(true)
-    @objc private func centerUserLocation() {
-        guard let location = currentUserLocation else { return }
-        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        let region = MKCoordinateRegion(center: location.coordinate, span: span)
-        mainView.mapView.setRegion(region, animated: true)
-        locationManager.stopUpdatingLocation()
     }
 }
 

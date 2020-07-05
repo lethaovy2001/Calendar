@@ -59,7 +59,6 @@ final class SearchLocationView: UIView {
         configureSelf()
         addSubviews()
         setupConstraints()
-        addGesture()
         registerCellId()
     }
     
@@ -127,18 +126,7 @@ final class SearchLocationView: UIView {
     private func registerCellId() {
         tableView.register(SearchedLocationCell.self, forCellReuseIdentifier: Constants.CellId.searchedLocation)
     }
-    
-    private func addGesture() {
-        let centerButtonGesture = UITapGestureRecognizer(target: self, action: #selector(centerUserLocation))
-        centerButtonGesture.numberOfTapsRequired = 1
-        centerButtonGesture.numberOfTouchesRequired = 1
-        centerButton.addGestureRecognizer(centerButtonGesture)
-    }
-    
-    @objc private func centerUserLocation() {
-        locationService.centerUserLocation()
-    }
-    
+
     // MARK: - Public Methods
     func setBackButtonSelector(target: UIViewController, selector: Selector) {
         backButton.addTarget(target, action: selector, for: .touchUpInside)
@@ -148,14 +136,13 @@ final class SearchLocationView: UIView {
         searchTextField.addTarget(target, action: selector, for: .editingChanged)
     }
     
-    func getSearchText() -> String {
-        return searchTextField.text ?? ""
+    func getSearchText() -> String? {
+        return searchTextField.text
     }
     
     func addDelegateAndDataSource(viewController: SearchLocationViewController) {
         tableView.delegate = viewController
         tableView.dataSource = viewController
-        locationService.addDelegate(view: self)
     }
     
     func setCenterButtonSelector(target: UIViewController, selector: Selector) {
