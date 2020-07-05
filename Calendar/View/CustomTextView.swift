@@ -60,6 +60,9 @@ class CustomTextView: UITextView {
             isDisplayingPlaceholder = true
             self.text = placeholder
             self.textColor = placeholderColor
+        } else {
+            isDisplayingPlaceholder = false
+            self.textColor = .black
         }
     }
 }
