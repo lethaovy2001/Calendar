@@ -14,7 +14,7 @@ final class SearchLocationView: UIView {
     private let backButton = IconButton(name: Constants.IconNames.back, size: 16, color: AppColor.darkGray)
     private let searchTextField = CustomTextField(placeholder: "Search", backgroundColor: .white)
     private let searchIcon = IconButton(name: Constants.IconNames.search, size: 16, color: AppColor.paleViolet)
-    private let mapView: MKMapView = {
+    let mapView: MKMapView = {
         let mapView = MKMapView(frame: .zero)
         mapView.mapType = MKMapType.standard
         mapView.isZoomEnabled = true
@@ -22,10 +22,9 @@ final class SearchLocationView: UIView {
         mapView.showsUserLocation = true
         return mapView
     }()
-    private let tableView: UITableView = {
+    let tableView: UITableView = {
         let tableView = UITableView()
         tableView.allowsMultipleSelectionDuringEditing = true
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.layer.cornerRadius = 6
         tableView.addShadow()
@@ -60,7 +59,7 @@ final class SearchLocationView: UIView {
         configureSelf()
         addSubviews()
         setupConstraints()
-        addGesture()
+        registerCellId()
     }
     
     private func configureSelf() {
@@ -124,23 +123,29 @@ final class SearchLocationView: UIView {
         ])
     }
     
-    private func addGesture() {
-        let centerButtonGesture = UITapGestureRecognizer(target: self, action: #selector(centerUserLocation))
-        centerButtonGesture.numberOfTapsRequired = 1
-        centerButtonGesture.numberOfTouchesRequired = 1
-        centerButton.addGestureRecognizer(centerButtonGesture)
+    private func registerCellId() {
+        tableView.register(SearchedLocationCell.self, forCellReuseIdentifier: Constants.CellId.searchedLocation)
     }
-    
-    @objc private func centerUserLocation() {
-       // TODO: centerUserLocation
-    }
-    
+
     // MARK: - Public Methods
     func setBackButtonSelector(target: UIViewController, selector: Selector) {
         backButton.addTarget(target, action: selector, for: .touchUpInside)
     }
     
-    func setSearchButtonSelector(target: UIViewController, selector: Selector) {
-        searchIcon.addTarget(target, action: selector, for: .touchUpInside)
+    func setSearchTextFieldSelector(target: UIViewController, selector: Selector) {
+        searchTextField.addTarget(target, action: selector, for: .editingChanged)
+    }
+    
+    func getSearchText() -> String? {
+        return searchTextField.text
+    }
+    
+    func addDelegateAndDataSource(viewController: SearchLocationViewController) {
+        tableView.delegate = viewController
+        tableView.dataSource = viewController
+    }
+    
+    func setCenterButtonSelector(target: UIViewController, selector: Selector) {
+        centerButton.addTarget(target, action: selector, for: .touchUpInside)
     }
 }
