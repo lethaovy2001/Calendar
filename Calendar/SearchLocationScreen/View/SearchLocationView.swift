@@ -22,10 +22,9 @@ final class SearchLocationView: UIView {
         mapView.showsUserLocation = true
         return mapView
     }()
-    private let tableView: UITableView = {
+    let tableView: UITableView = {
         let tableView = UITableView()
         tableView.allowsMultipleSelectionDuringEditing = true
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.layer.cornerRadius = 6
         tableView.addShadow()
@@ -43,7 +42,7 @@ final class SearchLocationView: UIView {
         button.backgroundColor = .white
         return button
     }()
-       
+    
     // MARK: - Initializer
     init(window: UIWindow) {
         super.init(frame: .zero)
@@ -60,6 +59,7 @@ final class SearchLocationView: UIView {
         configureSelf()
         addSubviews()
         setupConstraints()
+        registerCellId()
     }
     
     private func configureSelf() {
@@ -72,7 +72,6 @@ final class SearchLocationView: UIView {
         addSubview(centerButton)
         addSubview(tableView)
         addSubview(containerView)
-        addSubview(centerButton)
         containerView.addSubview(backButton)
         containerView.addSubview(searchTextField)
         containerView.addSubview(searchIcon)
@@ -124,13 +123,26 @@ final class SearchLocationView: UIView {
         ])
     }
     
+    private func registerCellId() {
+        tableView.register(SearchedLocationCell.self, forCellReuseIdentifier: Constants.CellId.searchedLocation)
+    }
+
     // MARK: - Public Methods
     func setBackButtonSelector(target: UIViewController, selector: Selector) {
         backButton.addTarget(target, action: selector, for: .touchUpInside)
     }
-
-    func setSearchButtonSelector(target: UIViewController, selector: Selector) {
-        searchIcon.addTarget(target, action: selector, for: .touchUpInside)
+    
+    func setSearchTextFieldSelector(target: UIViewController, selector: Selector) {
+        searchTextField.addTarget(target, action: selector, for: .editingChanged)
+    }
+    
+    func getSearchText() -> String? {
+        return searchTextField.text
+    }
+    
+    func addDelegateAndDataSource(viewController: SearchLocationViewController) {
+        tableView.delegate = viewController
+        tableView.dataSource = viewController
     }
     
     func setCenterButtonSelector(target: UIViewController, selector: Selector) {
