@@ -75,8 +75,6 @@ final class NewEventViewController: UIViewController {
     private func addGestureAndDelegate() {
         mainView.addTapGesture(target: self, selector: #selector(dismissKeyboard))
         mainView.addDelegate(viewController: self)
-//        mainView.navigator = self
-        
     }
     
     // MARK: Actions

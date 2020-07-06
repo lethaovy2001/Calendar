@@ -93,20 +93,6 @@ final class NewEventView: UIView {
             }
         }
     }
-    var viewModel: EventViewModel? {
-        didSet {
-            guard let viewModel = self.viewModel else { return }
-            titleTextField.text = viewModel.name
-            startTimeLabel.text = viewModel.startTimeDate
-            endTimeLabel.text = viewModel.endTimeDate
-            noteTextView.text = viewModel.notes
-            noteTextView.endEditing()
-            locationTextField.text = viewModel.location
-            if let alertTime = viewModel.alertTime {
-                addAlertButton.setTitle(alertTime, for: .normal)
-            }
-        }
-    }
     
     // MARK: - Initializer
     init() {

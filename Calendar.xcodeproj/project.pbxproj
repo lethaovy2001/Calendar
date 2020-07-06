@@ -20,7 +20,6 @@
 		38865C71249C73BC00FDFC0D /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C70249C73BC00FDFC0D /* SearchLocationViewController.swift */; };
 		38865C73249C741D00FDFC0D /* SearchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C72249C741D00FDFC0D /* SearchLocationView.swift */; };
 		38865C7724A1697E00FDFC0D /* SearchedLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C7624A1697E00FDFC0D /* SearchedLocationCell.swift */; };
-		38865C7924A66FFB00FDFC0D /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C7824A66FFB00FDFC0D /* Navigator.swift */; };
 		38865C7B24A6724400FDFC0D /* ChildViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C7A24A6724400FDFC0D /* ChildViewControllerDelegate.swift */; };
 		3888D1A2247AF88E009B3966 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A1247AF88E009B3966 /* LoginViewController.swift */; };
 		3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888D1A6247B0F28009B3966 /* LoginView.swift */; };
@@ -129,7 +128,6 @@
 		38865C70249C73BC00FDFC0D /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		38865C72249C741D00FDFC0D /* SearchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationView.swift; sourceTree = "<group>"; };
 		38865C7624A1697E00FDFC0D /* SearchedLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedLocationCell.swift; sourceTree = "<group>"; };
-		38865C7824A66FFB00FDFC0D /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		38865C7A24A6724400FDFC0D /* ChildViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewControllerDelegate.swift; sourceTree = "<group>"; };
 		3888D1A1247AF88E009B3966 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3888D1A6247B0F28009B3966 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -380,7 +378,6 @@
 				38EAF129248C62A900A2FE8C /* Shaking.swift */,
 				38285B2A2490C42E00AAEE03 /* EventTapGestureDelegate.swift */,
 				38E51E442498BE1700EBBF5B /* DoneTapGestureDelegate.swift */,
-				38865C7824A66FFB00FDFC0D /* Navigator.swift */,
 				38865C7A24A6724400FDFC0D /* ChildViewControllerDelegate.swift */,
 			);
 			path = Protocol;
@@ -985,7 +982,6 @@
 				3888D1BA247B2C5C009B3966 /* IconButton.swift in Sources */,
 				38285B26248F78B800AAEE03 /* NotesContainerView.swift in Sources */,
 				3888D1AC247B110E009B3966 /* Constants.swift in Sources */,
-				38865C7924A66FFB00FDFC0D /* Navigator.swift in Sources */,
 				38E51E342491282100EBBF5B /* EventSection.swift in Sources */,
 				3888D227247F910E009B3966 /* CalendarMainView.swift in Sources */,
 				38E51E4A24993EAC00EBBF5B /* SearchEventModelController.swift in Sources */,
