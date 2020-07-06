@@ -36,14 +36,14 @@ final class SettingsContainerView: UIView {
             size: 18,
             color: AppColor.darkGray
         )
-        label.numberOfLines = 2
         super.init(frame: .zero)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        setup()
         if iconName == Constants.IconNames.mappin {
             label.textColor = .systemBlue
+            label.numberOfLines = 5
             addGesture()
         }
+        self.translatesAutoresizingMaskIntoConstraints = false
+        setup()
     }
     
     required init?(coder: NSCoder) {
@@ -82,7 +82,7 @@ final class SettingsContainerView: UIView {
             iconButton.widthAnchor.constraint(equalToConstant: 36)
         ])
         NSLayoutConstraint.activate([
-            label.centerYAnchor.constraint(equalTo: iconButton.centerYAnchor),
+            label.topAnchor.constraint(equalTo: iconButton.topAnchor),
             label.leftAnchor.constraint(equalTo: iconButton.rightAnchor, constant: 24),
             label.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -24)
         ])
