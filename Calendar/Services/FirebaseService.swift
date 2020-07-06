@@ -80,7 +80,11 @@ extension FirebaseService: Database {
     func save(event: Event) {
         guard let uid = getCurrentUserId() else { return }
         let eventDictionary = event.getEventDictionary()
-        database.collection("users").document(uid).collection("events").addDocument(data: eventDictionary)
+        database.collection("users")
+            .document(uid)
+            .collection("events")
+            .document(event.eventId)
+            .setData(eventDictionary, merge: true)
     }
     
     func loadTodayEvents(completion: @escaping ([Event]) -> Void) {
@@ -171,6 +175,21 @@ extension FirebaseService: Database {
                 return try? queryDocumentSnapshot.data(as: Event.self)
             }
             completion(events)
+        }
+    }
+    
+    func deleteEvent(_ event: Event) {
+        guard let uid = getCurrentUserId() else { return }
+        database.collection("users")
+        .document(uid)
+        .collection("events")
+        .document(event.eventId)
+        .delete { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+            }
         }
     }
 }
