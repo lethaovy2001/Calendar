@@ -64,7 +64,9 @@ class EventDetailsViewController: UIViewController {
     }
     
     @objc private func pressedEditButton() {
-        
+        let viewController = NewEventViewController()
+        viewController.viewModel = self.viewModel
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @objc private func pressedMoreButton() {

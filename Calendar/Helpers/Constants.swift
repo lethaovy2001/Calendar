@@ -47,6 +47,7 @@ struct Constants {
         static let notificationCellId = "notificationCellId"
         static let sectionHeader = "sectionHeader"
         static let searchedEvent = "searchedEventCellId"
+        static let searchedLocation = "searchedLocationCellId"
     }
     
     static let setAlertOptions: [AlertOptions] = [

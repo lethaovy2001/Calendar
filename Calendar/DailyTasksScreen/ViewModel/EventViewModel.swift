@@ -121,4 +121,16 @@ extension EventViewModel {
     func removeEvent() {
         database.deleteEvent(model)
     }
+    
+    func configure(_ view: NewEventView) {
+        view.titleTextField.text = name
+        view.startTimeLabel.text = startTimeDate
+        view.endTimeLabel.text = endTimeDate
+        view.noteTextView.text = notes
+        view.noteTextView.endEditing()
+        view.locationTextField.text = location
+        if let alertTime = alertTime {
+            view.addAlertButton.setTitle(alertTime, for: .normal)
+        }
+    }
 }
