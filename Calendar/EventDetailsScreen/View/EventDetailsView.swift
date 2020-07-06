@@ -32,6 +32,8 @@ final class EventDetailsView: UIView {
     private let repeatSettingsView = SettingsContainerView(iconName: Constants.IconNames.repeatName)
     private let locationSettingsView = SettingsContainerView(iconName: Constants.IconNames.mappin)
     private let notesContainerView = NotesContainerView()
+    private var dropDownView = DropDownView()
+    private var isDisplayDropDownView = false
     var viewModel: EventViewModel? {
         didSet {
             titleContainer.title = viewModel?.name
@@ -146,5 +148,30 @@ final class EventDetailsView: UIView {
     
     func setMoreButtonSelector(selector: Selector, target: UIViewController) {
         moreButton.addTarget(target, action: selector, for: .touchUpInside)
+    }
+    
+    func addDelegate(viewController: EventDetailsViewController) {
+        dropDownView.delegate = viewController
+    }
+    
+    func showOrHideDropDownMenu() {
+        if !isDisplayDropDownView {
+            isDisplayDropDownView = true
+            self.addSubview(dropDownView)
+            self.bringSubviewToFront(dropDownView)
+            NSLayoutConstraint.activate([
+                dropDownView.topAnchor.constraint(equalTo: editButton.bottomAnchor, constant: 6),
+                 dropDownView.rightAnchor.constraint(equalTo: moreButton.rightAnchor),
+                dropDownView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1/3),
+                dropDownView.heightAnchor.constraint(equalToConstant: dropDownView.tableView.contentSize.height + 8)
+            ])
+        } else {
+            dismissDropDownMenu()
+        }
+    }
+    
+    func dismissDropDownMenu() {
+        isDisplayDropDownView = false
+        dropDownView.removeFromSuperview()
     }
 }

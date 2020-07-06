@@ -83,6 +83,7 @@
 		38E51E432498AEC700EBBF5B /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E422498AEC700EBBF5B /* Scheduler.swift */; };
 		38E51E452498BE1700EBBF5B /* DoneTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E442498BE1700EBBF5B /* DoneTapGestureDelegate.swift */; };
 		38E51E4A24993EAC00EBBF5B /* SearchEventModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E4924993EAC00EBBF5B /* SearchEventModelController.swift */; };
+		38E51E4E249ADE4400EBBF5B /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E4D249ADE4400EBBF5B /* DropDownView.swift */; };
 		38EAF127248C202300A2FE8C /* DailyTasksModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */; };
 		38EAF12A248C62A900A2FE8C /* Shaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF129248C62A900A2FE8C /* Shaking.swift */; };
 		38EAF12E248CCB0C00A2FE8C /* KeyboardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */; };
@@ -194,6 +195,7 @@
 		38E51E422498AEC700EBBF5B /* Scheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		38E51E442498BE1700EBBF5B /* DoneTapGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneTapGestureDelegate.swift; sourceTree = "<group>"; };
 		38E51E4924993EAC00EBBF5B /* SearchEventModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventModelController.swift; sourceTree = "<group>"; };
+		38E51E4D249ADE4400EBBF5B /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		38EAF126248C202300A2FE8C /* DailyTasksModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTasksModelController.swift; sourceTree = "<group>"; };
 		38EAF129248C62A900A2FE8C /* Shaking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shaking.swift; sourceTree = "<group>"; };
 		38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDelegate.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				38285B21248EDDE000AAEE03 /* BookRingView.swift */,
 				38285B23248F09EE00AAEE03 /* SettingsContainerView.swift */,
 				38285B25248F78B800AAEE03 /* NotesContainerView.swift */,
+				38E51E4D249ADE4400EBBF5B /* DropDownView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -389,7 +392,6 @@
 			isa = PBXGroup;
 			children = (
 				3888D1CE247B7DF8009B3966 /* FirebaseService.swift */,
-				38865C74249D378000FDFC0D /* LocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -937,7 +939,6 @@
 				38CE861E248579780006D609 /* DatePickerTapGestureDelegate.swift in Sources */,
 				3888D1A2247AF88E009B3966 /* LoginViewController.swift in Sources */,
 				3888D24424831B72009B3966 /* SlideView.swift in Sources */,
-				38865C75249D378000FDFC0D /* LocationService.swift in Sources */,
 				38285B1A248E01BD00AAEE03 /* EventDetailsView.swift in Sources */,
 				3888D1BE247B4D5D009B3966 /* UIView+Extension.swift in Sources */,
 				38865C7B24A6724400FDFC0D /* Updatable.swift in Sources */,
@@ -965,6 +966,7 @@
 				38E51E452498BE1700EBBF5B /* DoneTapGestureDelegate.swift in Sources */,
 				38865C71249C73BC00FDFC0D /* SearchLocationViewController.swift in Sources */,
 				3888D24224822466009B3966 /* DateConverter.swift in Sources */,
+				38E51E4E249ADE4400EBBF5B /* DropDownView.swift in Sources */,
 				3888D246248325E0009B3966 /* ScheduleCell.swift in Sources */,
 				3888D1D7247B824D009B3966 /* DailyTaskViewController.swift in Sources */,
 				3888D1B2247B155F009B3966 /* CustomContainerView.swift in Sources */,

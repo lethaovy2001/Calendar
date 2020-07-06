@@ -17,7 +17,7 @@ final class NewEventViewController: UIViewController {
     private let scheduler = Scheduler()
     var viewModel: EventViewModel? {
         didSet {
-            mainView.viewModel = viewModel
+            viewModel?.configure(mainView)
         }
     }
     
