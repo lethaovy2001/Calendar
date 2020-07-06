@@ -1,5 +1,5 @@
 //
-//  Updatable.swift
+//  ChildViewControllerDelegate.swift
 //  Calendar
 //
 //  Created by Vy Le on 6/26/20.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol Updatable: class {
-    func update<T>(value: T) 
+protocol ChildViewControllerDelegate: class {
+    func update<T>(data: T) 
 }

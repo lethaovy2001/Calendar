@@ -107,7 +107,6 @@ final class NewEventView: UIView {
             }
         }
     }
-    weak var navigator: Navigator?
     
     // MARK: - Initializer
     init() {
@@ -437,25 +436,6 @@ extension NewEventView {
     
     func endEditing() {
         noteTextView.endEditing()
-    }
-}
-
-// MARK: - UITextFieldDelegate
-extension NewEventView {
-    func textFieldBeginEditing(textField: UITextField) {
-        if textField == locationTextField {
-            let viewController = SearchLocationViewController()
-            viewController.updatableDelegate = self
-            navigator?.navigateTo(viewController: viewController)
-            textField.endEditing(true)
-        }
-    }
-}
-
-extension NewEventView: Updatable {
-    func update<T>(value: T) {
-        guard let locationString = value as? String else { return }
-        locationTextField.text = locationString
     }
 }
 

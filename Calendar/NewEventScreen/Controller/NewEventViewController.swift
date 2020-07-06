@@ -75,7 +75,8 @@ final class NewEventViewController: UIViewController {
     private func addGestureAndDelegate() {
         mainView.addTapGesture(target: self, selector: #selector(dismissKeyboard))
         mainView.addDelegate(viewController: self)
-        mainView.navigator = self
+//        mainView.navigator = self
+        
     }
     
     // MARK: Actions
@@ -162,13 +163,19 @@ extension NewEventViewController: UITextViewDelegate {
 // MARK: - UITextViewDelegate
 extension NewEventViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        mainView.textFieldBeginEditing(textField: textField)
+        if textField == mainView.locationTextField {
+            let viewController = SearchLocationViewController()
+            viewController.delegate = self
+            self.navigationController?.pushViewController(viewController, animated: true)
+            textField.endEditing(true)
+        }
     }
 }
 
-// MARK: - Navigator
-extension NewEventViewController: Navigator {
-    func navigateTo(viewController: UIViewController) {
-        self.navigationController?.pushViewController(viewController, animated: true)
+// MARK: - ChildViewControllerDelegate
+extension NewEventViewController: ChildViewControllerDelegate {
+    func update<T>(data: T) {
+        guard let locationString = data as? String else { return }
+        mainView.locationTextField.text = locationString
     }
 }
