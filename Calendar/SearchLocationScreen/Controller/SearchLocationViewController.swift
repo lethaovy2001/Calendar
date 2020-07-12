@@ -61,29 +61,6 @@ final class SearchLocationViewController: UIViewController {
         locationManager.delegate = self
     }
     
-    private func getAddress(from placemark: MKPlacemark) -> String {
-        var addressString = ""
-        if placemark.subThoroughfare != nil {
-            addressString = "\(addressString + placemark.subThoroughfare!) "
-        }
-        if placemark.subLocality != nil {
-            addressString = "\(placemark.subLocality!), "
-        }
-        if placemark.thoroughfare != nil {
-            addressString += "\(placemark.thoroughfare!), "
-        }
-        if placemark.locality != nil {
-            addressString += "\(placemark.locality!), "
-        }
-        if placemark.country != nil {
-            addressString += "\(placemark.country!), "
-        }
-        if placemark.postalCode != nil {
-            addressString += "\(placemark.postalCode!)"
-        }
-        return addressString
-    }
-    
     @objc private func backButtonPressed() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -125,7 +102,7 @@ extension SearchLocationViewController: UITableViewDataSource {
             else { return UITableViewCell() }
         let selectedItem = matchingItems[indexPath.row]
         cell.title.text = selectedItem.name
-        cell.address.text = getAddress(from: selectedItem.placemark)
+        cell.address.text = selectedItem.address
         return cell
     }
     
@@ -138,7 +115,7 @@ extension SearchLocationViewController: UITableViewDataSource {
 extension SearchLocationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedItem = matchingItems[indexPath.row]
-        delegate?.update(data: getAddress(from: selectedItem.placemark))
+        delegate?.update(data: selectedItem)
         mainView.tableView.isHidden = true
         self.view.endEditing(true)
         self.navigationController?.popViewController(animated: true)

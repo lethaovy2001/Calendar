@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 final class NewEventViewController: UIViewController {
     // MARK: - Properties
@@ -18,6 +19,11 @@ final class NewEventViewController: UIViewController {
     var viewModel: EventViewModel? {
         didSet {
             viewModel?.configure(mainView)
+        }
+    }
+    private var eventMapItem: MKMapItem? {
+        didSet {
+            mainView.locationTextField.text = eventMapItem?.address
         }
     }
     
@@ -82,6 +88,7 @@ final class NewEventViewController: UIViewController {
         mainView.saveButtonTappedAnimation()
         guard let event = mainView.getSavedEvent() else { return }
         scheduler.scheduleNotification(for: event)
+        
         database.save(event: event)
         self.navigationController?.popToRootViewController(animated: true)
     }
@@ -173,7 +180,7 @@ extension NewEventViewController: UITextFieldDelegate {
 // MARK: - ChildViewControllerDelegate
 extension NewEventViewController: ChildViewControllerDelegate {
     func update<T>(data: T) {
-        guard let locationString = data as? String else { return }
-        mainView.locationTextField.text = locationString
+        guard let mapItem = data as? MKMapItem else { return }
+        eventMapItem = mapItem
     }
 }
