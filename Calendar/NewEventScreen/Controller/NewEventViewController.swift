@@ -90,7 +90,7 @@ final class NewEventViewController: UIViewController {
         guard var event = mainView.getSavedEvent() else { return }
         if let mapItem = eventMapItem {
             let latitude = mapItem.placemark.coordinate.latitude
-            let longitude = mapItem.placemark.coordinate.latitude
+            let longitude = mapItem.placemark.coordinate.longitude
             event.coordinates = GeoPoint(latitude: latitude, longitude: longitude)
         }
         scheduler.scheduleNotification(for: event)
