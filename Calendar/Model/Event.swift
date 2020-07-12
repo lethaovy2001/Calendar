@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 struct Event: Codable {
     let eventId: String
@@ -16,6 +17,7 @@ struct Event: Codable {
     let location: String?
     let notes: String?
     var alertTime: Date?
+    var coordinates: GeoPoint?
     
     enum CodingKeys: String, CodingKey {
         case eventId = "id"
@@ -25,6 +27,7 @@ struct Event: Codable {
         case location
         case notes
         case alertTime
+        case coordinates
     }
     
     init(name: String,
@@ -33,7 +36,8 @@ struct Event: Codable {
          eventId: String? = nil,
          location: String? = nil,
          notes: String? = nil,
-         alertTime: Date? = nil) {
+         alertTime: Date? = nil,
+         coordinates: GeoPoint? = nil) {
         self.eventId = UUID().uuidString
         self.name = name
         self.startTime = startTime
@@ -41,22 +45,7 @@ struct Event: Codable {
         self.location = location
         self.notes = notes
         self.alertTime = alertTime
-    }
-    
-    init(data: [String: Any]) {
-        self.eventId = data["id"] as? String ?? UUID().uuidString
-        self.name = data["name"] as? String ?? "Event"
-        self.alertTime = data["alertTime"] as? Date
-        self.location = data["location"] as? String
-        self.notes = data["notes"] as? String
-        if let startTime = data["startTime"] as? Date,
-            let endTime = data["endTime"] as? Date {
-            self.startTime = startTime
-            self.endTime = endTime
-        } else {
-            self.startTime = Date()
-            self.endTime = Date(timeInterval: 3600, since: startTime)
-        }
+        self.coordinates = coordinates
     }
     
     func getEventDictionary() -> [String: Any] {
@@ -74,6 +63,9 @@ struct Event: Codable {
         }
         if let alertTime = self.alertTime {
             dictionary.updateValue(alertTime, forKey: "alertTime")
+        }
+        if let coordinates = self.coordinates {
+            dictionary.updateValue(coordinates, forKey: "coordinates")
         }
         return dictionary
     }

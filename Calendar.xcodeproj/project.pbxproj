@@ -17,6 +17,7 @@
 		38285B26248F78B800AAEE03 /* NotesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B25248F78B800AAEE03 /* NotesContainerView.swift */; };
 		38285B292490BCC400AAEE03 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B282490BCC400AAEE03 /* EventViewModel.swift */; };
 		38285B2B2490C42E00AAEE03 /* EventTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B2A2490C42E00AAEE03 /* EventTapGestureDelegate.swift */; };
+		38698FA724BAAB7D00208CF5 /* MKMapItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38698FA624BAAB7D00208CF5 /* MKMapItem+Extension.swift */; };
 		38865C71249C73BC00FDFC0D /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C70249C73BC00FDFC0D /* SearchLocationViewController.swift */; };
 		38865C73249C741D00FDFC0D /* SearchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C72249C741D00FDFC0D /* SearchLocationView.swift */; };
 		38865C7724A1697E00FDFC0D /* SearchedLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C7624A1697E00FDFC0D /* SearchedLocationCell.swift */; };
@@ -125,6 +126,7 @@
 		38285B25248F78B800AAEE03 /* NotesContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesContainerView.swift; sourceTree = "<group>"; };
 		38285B282490BCC400AAEE03 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		38285B2A2490C42E00AAEE03 /* EventTapGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTapGestureDelegate.swift; sourceTree = "<group>"; };
+		38698FA624BAAB7D00208CF5 /* MKMapItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Extension.swift"; sourceTree = "<group>"; };
 		38865C70249C73BC00FDFC0D /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		38865C72249C741D00FDFC0D /* SearchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationView.swift; sourceTree = "<group>"; };
 		38865C7624A1697E00FDFC0D /* SearchedLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedLocationCell.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				3888D1B7247B29F3009B3966 /* AppColor.swift */,
 				3888D1BD247B4D5D009B3966 /* UIView+Extension.swift */,
 				38EAF12F248D78FF00A2FE8C /* UIButton+Extension.swift */,
+				38698FA624BAAB7D00208CF5 /* MKMapItem+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -970,6 +973,7 @@
 				38F90B842478886B005B0BEB /* AppDelegate.swift in Sources */,
 				3888D1FC247DE679009B3966 /* TimeDividerView.swift in Sources */,
 				3888D1A7247B0F28009B3966 /* LoginView.swift in Sources */,
+				38698FA724BAAB7D00208CF5 /* MKMapItem+Extension.swift in Sources */,
 				3888D20D247F722F009B3966 /* EventLayoutGenerator.swift in Sources */,
 				38E51E432498AEC700EBBF5B /* Scheduler.swift in Sources */,
 				3888D1B4247B181B009B3966 /* InputView.swift in Sources */,

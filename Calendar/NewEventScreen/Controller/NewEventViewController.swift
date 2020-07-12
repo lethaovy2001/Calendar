@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MapKit
+import Firebase
 
 final class NewEventViewController: UIViewController {
     // MARK: - Properties
@@ -18,6 +20,11 @@ final class NewEventViewController: UIViewController {
     var viewModel: EventViewModel? {
         didSet {
             viewModel?.configure(mainView)
+        }
+    }
+    private var eventMapItem: MKMapItem? {
+        didSet {
+            mainView.locationTextField.text = eventMapItem?.address
         }
     }
     
@@ -80,7 +87,12 @@ final class NewEventViewController: UIViewController {
     // MARK: Actions
     @objc private func pressedSaveButton() {
         mainView.saveButtonTappedAnimation()
-        guard let event = mainView.getSavedEvent() else { return }
+        guard var event = mainView.getSavedEvent() else { return }
+        if let mapItem = eventMapItem {
+            let latitude = mapItem.placemark.coordinate.latitude
+            let longitude = mapItem.placemark.coordinate.latitude
+            event.coordinates = GeoPoint(latitude: latitude, longitude: longitude)
+        }
         scheduler.scheduleNotification(for: event)
         database.save(event: event)
         self.navigationController?.popToRootViewController(animated: true)
@@ -173,7 +185,7 @@ extension NewEventViewController: UITextFieldDelegate {
 // MARK: - ChildViewControllerDelegate
 extension NewEventViewController: ChildViewControllerDelegate {
     func update<T>(data: T) {
-        guard let locationString = data as? String else { return }
-        mainView.locationTextField.text = locationString
+        guard let mapItem = data as? MKMapItem else { return }
+        eventMapItem = mapItem
     }
 }
