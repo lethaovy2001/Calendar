@@ -28,6 +28,7 @@ final class SettingsContainerView: UIView {
             label.text = labelText
         }
     }
+    weak var delegate: ViewTapGestureDelegate?
     
     // MARK: - Initializer
     init(iconName: String) {
@@ -100,6 +101,6 @@ final class SettingsContainerView: UIView {
     }
     
     @objc private func tappedOnLocation() {
-        
+        delegate?.didTap(on: label)
     }
 }

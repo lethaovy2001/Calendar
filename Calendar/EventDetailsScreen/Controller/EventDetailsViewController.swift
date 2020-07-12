@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class EventDetailsViewController: UIViewController {
     // MARK: - Properties
@@ -82,5 +83,21 @@ extension EventDetailsViewController: DropDownProtocol {
             mainView.dismissDropDownMenu()
             self.navigationController?.popViewController(animated: true)
         }
+    }
+}
+
+extension EventDetailsViewController: ViewTapGestureDelegate {
+    func didTap<T>(on view: T) where T: UIView {
+        guard let coordinates = viewModel?.coordinates else { return }
+        let placemark = MKPlacemark(coordinate: coordinates)
+        let destinationMapItem = MKMapItem(placemark: placemark)
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let regionSpan = MKCoordinateRegion(center: coordinates, span: span)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        destinationMapItem.name = viewModel?.name
+        destinationMapItem.openInMaps(launchOptions: options)
     }
 }
