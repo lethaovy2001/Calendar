@@ -15,6 +15,11 @@ final class NewEventViewController: UIViewController {
     private var alertOptions = Constants.setAlertOptions
     weak var keyboardDelegate: KeyboardDelegate?
     private let scheduler = Scheduler()
+    var viewModel: EventViewModel? {
+        didSet {
+            viewModel?.configure(mainView)
+        }
+    }
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -78,7 +83,7 @@ final class NewEventViewController: UIViewController {
         guard let event = mainView.getSavedEvent() else { return }
         scheduler.scheduleNotification(for: event)
         database.save(event: event)
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @objc private func pressedBackButton() {
@@ -150,5 +155,25 @@ extension NewEventViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         mainView.endEditing()
+    }
+}
+
+// MARK: - UITextViewDelegate
+extension NewEventViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == mainView.locationTextField {
+            let viewController = SearchLocationViewController()
+            viewController.delegate = self
+            self.navigationController?.pushViewController(viewController, animated: true)
+            textField.endEditing(true)
+        }
+    }
+}
+
+// MARK: - ChildViewControllerDelegate
+extension NewEventViewController: ChildViewControllerDelegate {
+    func update<T>(data: T) {
+        guard let locationString = data as? String else { return }
+        mainView.locationTextField.text = locationString
     }
 }
