@@ -59,10 +59,10 @@ class DailyTaskViewController: UIViewController {
     
     private func configureEvents() {
         dailyTaskView.deleteAllEventViews()
-       let events = modelController.getEvents()
-       for event in events {
-           dailyTaskView.setEvent(event: event)
-       }
+        let events = modelController.getEvents()
+        for event in events {
+            dailyTaskView.setEvent(event: event)
+        }
     }
     
     private func setupSelectors() {
@@ -77,9 +77,9 @@ class DailyTaskViewController: UIViewController {
     
     private func addObservers() {
         NotificationCenter.default.addObserver(self,
-            selector: #selector(reloadEvents(notification: )),
-            name: .deleteEvent,
-            object: nil
+                                               selector: #selector(reloadEvents(notification: )),
+                                               name: .deleteEvent,
+                                               object: nil
         )
     }
     

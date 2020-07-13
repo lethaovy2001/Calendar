@@ -13,7 +13,6 @@ class EventDetailsViewController: UIViewController {
     // MARK: - Properties
     private let mainView = EventDetailsView()
     private let database: Database
-    
     var viewModel: EventViewModel? {
         didSet {
             mainView.viewModel = viewModel

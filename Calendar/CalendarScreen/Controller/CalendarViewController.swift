@@ -17,7 +17,6 @@ class CalendarViewController: UIViewController {
     private var selectedDate: Date
     private var converter: DateConverter
     private var modelController = CalendarModelController()
-    NotificationCenter.default
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -53,7 +52,7 @@ class CalendarViewController: UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
     }
-
+    
     private func setupUI() {
         mainView.nameOfMonth = converter.getMonthName(from: selectedDate)
         view.addSubview(mainView)
@@ -90,9 +89,9 @@ class CalendarViewController: UIViewController {
     
     private func addObservers() {
         NotificationCenter.default.addObserver(self,
-            selector: #selector(reloadEvents(notification: )),
-            name: .deleteEvent,
-            object: nil
+                                               selector: #selector(reloadEvents(notification: )),
+                                               name: .deleteEvent,
+                                               object: nil
         )
     }
     
