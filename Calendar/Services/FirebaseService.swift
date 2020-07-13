@@ -101,11 +101,7 @@ extension FirebaseService: Database {
             .collection("events")
             .whereField("startTime", isGreaterThan: start)
             .whereField("startTime", isLessThan: end)
-        eventsRef.addSnapshotListener { querySnapshot, error in
-            if error != nil {
-                completion([])
-                return
-            }
+        eventsRef.addSnapshotListener { querySnapshot, _ in
             guard let documents = querySnapshot?.documents else {
                 completion([])
                 return

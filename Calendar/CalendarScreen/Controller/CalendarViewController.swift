@@ -17,7 +17,7 @@ class CalendarViewController: UIViewController {
     private var selectedDate: Date
     private var converter: DateConverter
     private var modelController = CalendarModelController()
-    private let notificationCenter = NotificationCenter.default
+    NotificationCenter.default
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -89,8 +89,8 @@ class CalendarViewController: UIViewController {
     }
     
     private func addObservers() {
-        notificationCenter.addObserver(self,
-            selector: #selector(reloadUI(notification: )),
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(reloadEvents(notification: )),
             name: .deleteEvent,
             object: nil
         )
@@ -120,7 +120,7 @@ class CalendarViewController: UIViewController {
         mainView.hideDatePicker()
     }
     
-    @objc private func reloadUI(notification: Notification) {
+    @objc private func reloadEvents(notification: Notification) {
         loadEvents()
     }
 }

@@ -13,7 +13,6 @@ class DailyTaskViewController: UIViewController {
     private let dailyTaskView = DailyTasksMainView()
     private let modelController = DailyTasksModelController()
     private let database: Database
-    private let notificationCenter = NotificationCenter.default
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -77,8 +76,8 @@ class DailyTaskViewController: UIViewController {
     }
     
     private func addObservers() {
-        notificationCenter.addObserver(self,
-            selector: #selector(reloadUI(notification: )),
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(reloadEvents(notification: )),
             name: .deleteEvent,
             object: nil
         )
@@ -100,7 +99,7 @@ class DailyTaskViewController: UIViewController {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @objc private func reloadUI(notification: Notification) {
+    @objc private func reloadEvents(notification: Notification) {
         self.loadEvents()
     }
 }

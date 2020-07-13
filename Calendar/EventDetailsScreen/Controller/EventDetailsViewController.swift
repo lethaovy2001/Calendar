@@ -86,8 +86,8 @@ extension EventDetailsViewController: DropDownProtocol {
         switch option {
         case .delete:
             viewModel?.removeEvent()
-            self.mainView.dismissDropDownMenu()
-            self.postNotification()
+            mainView.dismissDropDownMenu()
+            postNotification()
             self.navigationController?.popViewController(animated: true)
         }
     }
