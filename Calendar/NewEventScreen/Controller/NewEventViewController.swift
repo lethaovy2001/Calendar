@@ -85,6 +85,11 @@ final class NewEventViewController: UIViewController {
         mainView.addDelegate(viewController: self)
     }
     
+//    private func postNotification() {
+//        let name = Notification.Name.editEvent
+//        NotificationCenter.default.post(name: name, object: nil)
+//    }
+    
     // MARK: Actions
     @objc private func pressedSaveButton() {
         mainView.saveButtonTappedAnimation()

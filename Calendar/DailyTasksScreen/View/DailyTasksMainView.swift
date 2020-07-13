@@ -21,6 +21,7 @@ final class DailyTasksMainView: UIView {
     private let bottomBar = BottomBarView()
     private let eventLayoutGenerator = EventLayoutGenerator()
     weak var eventTapGesture: EventTapGestureDelegate?
+    private var eventViews: [EventView] = []
     
     // MARK: - Initializer
     init() {
@@ -133,6 +134,11 @@ final class DailyTasksMainView: UIView {
             eventView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
             eventView.leftAnchor.constraint(equalTo: leftAnchor, constant: 106)
         ])
+        eventViews.append(eventView)
+    }
+    
+    func deleteAllEventViews() {
+        eventViews.forEach { $0.removeFromSuperview() }
     }
     
     // MARK: Selectors

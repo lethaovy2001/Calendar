@@ -13,6 +13,7 @@ class DailyTaskViewController: UIViewController {
     private let dailyTaskView = DailyTasksMainView()
     private let modelController = DailyTasksModelController()
     private let database: Database
+    private let notificationCenter = NotificationCenter.default
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -58,6 +59,7 @@ class DailyTaskViewController: UIViewController {
     }
     
     private func configureEvents() {
+        dailyTaskView.deleteAllEventViews()
        let events = modelController.getEvents()
        for event in events {
            dailyTaskView.setEvent(event: event)
@@ -74,6 +76,14 @@ class DailyTaskViewController: UIViewController {
         dailyTaskView.eventTapGesture = self
     }
     
+    private func addObservers() {
+        notificationCenter.addObserver(self,
+            selector: #selector(reloadUI(notification: )),
+            name: .deleteEvent,
+            object: nil
+        )
+    }
+    
     // MARK: Actions
     @objc private func calendarButtonPressed() {
         let viewController = CalendarViewController()
@@ -88,6 +98,10 @@ class DailyTaskViewController: UIViewController {
     @objc private func profileButtonPressed() {
         let viewController = UserSettingsViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    @objc private func reloadUI(notification: Notification) {
+        self.loadEvents()
     }
 }
 

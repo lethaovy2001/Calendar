@@ -19,6 +19,7 @@
 		38285B2B2490C42E00AAEE03 /* EventTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B2A2490C42E00AAEE03 /* EventTapGestureDelegate.swift */; };
 		38698FA724BAAB7D00208CF5 /* MKMapItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38698FA624BAAB7D00208CF5 /* MKMapItem+Extension.swift */; };
 		38698FA924BACC8000208CF5 /* ViewTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38698FA824BACC8000208CF5 /* ViewTapGestureDelegate.swift */; };
+		38698FAD24BCFBAE00208CF5 /* Notifcation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38698FAC24BCFBAD00208CF5 /* Notifcation+Extension.swift */; };
 		38865C71249C73BC00FDFC0D /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C70249C73BC00FDFC0D /* SearchLocationViewController.swift */; };
 		38865C73249C741D00FDFC0D /* SearchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C72249C741D00FDFC0D /* SearchLocationView.swift */; };
 		38865C7724A1697E00FDFC0D /* SearchedLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38865C7624A1697E00FDFC0D /* SearchedLocationCell.swift */; };
@@ -129,6 +130,7 @@
 		38285B2A2490C42E00AAEE03 /* EventTapGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTapGestureDelegate.swift; sourceTree = "<group>"; };
 		38698FA624BAAB7D00208CF5 /* MKMapItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Extension.swift"; sourceTree = "<group>"; };
 		38698FA824BACC8000208CF5 /* ViewTapGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTapGestureDelegate.swift; sourceTree = "<group>"; };
+		38698FAC24BCFBAD00208CF5 /* Notifcation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notifcation+Extension.swift"; sourceTree = "<group>"; };
 		38865C70249C73BC00FDFC0D /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
 		38865C72249C741D00FDFC0D /* SearchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationView.swift; sourceTree = "<group>"; };
 		38865C7624A1697E00FDFC0D /* SearchedLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedLocationCell.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				3888D1BD247B4D5D009B3966 /* UIView+Extension.swift */,
 				38EAF12F248D78FF00A2FE8C /* UIButton+Extension.swift */,
 				38698FA624BAAB7D00208CF5 /* MKMapItem+Extension.swift */,
+				38698FAC24BCFBAD00208CF5 /* Notifcation+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -949,6 +952,7 @@
 				38E51E40249705FD00EBBF5B /* SearchedEventCell.swift in Sources */,
 				3888D24F2483EC40009B3966 /* NewEventViewController.swift in Sources */,
 				38E51E312491144900EBBF5B /* CalendarModelController.swift in Sources */,
+				38698FAD24BCFBAE00208CF5 /* Notifcation+Extension.swift in Sources */,
 				38285B1E248E194900AAEE03 /* TimeContainerView.swift in Sources */,
 				3888D1B8247B29F3009B3966 /* AppColor.swift in Sources */,
 				38E51E3E2496BCA900EBBF5B /* SearchEventView.swift in Sources */,

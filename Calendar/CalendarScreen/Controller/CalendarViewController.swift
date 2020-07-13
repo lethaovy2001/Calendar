@@ -17,6 +17,7 @@ class CalendarViewController: UIViewController {
     private var selectedDate: Date
     private var converter: DateConverter
     private var modelController = CalendarModelController()
+    private let notificationCenter = NotificationCenter.default
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -25,7 +26,7 @@ class CalendarViewController: UIViewController {
         converter = DateConverter()
         converter.convert(date: selectedDate)
         dateCounter = DateCounter(month: converter.getMonth(), year: converter.getYear())
-        super.init(nibName: nil, bundle: nil)
+        super.init(nibName: nil, bundle: nil) 
     }
     
     required init?(coder: NSCoder) {
@@ -45,6 +46,7 @@ class CalendarViewController: UIViewController {
         registerCellId()
         setSelectors()
         loadEvents()
+        addObservers()
     }
     
     private func setupSelf() {
@@ -86,6 +88,14 @@ class CalendarViewController: UIViewController {
         }
     }
     
+    private func addObservers() {
+        notificationCenter.addObserver(self,
+            selector: #selector(reloadUI(notification: )),
+            name: .deleteEvent,
+            object: nil
+        )
+    }
+    
     // MARK: Actions
     @objc private func tapAddButton() {
         let viewController = NewEventViewController()
@@ -108,6 +118,10 @@ class CalendarViewController: UIViewController {
         mainView.nameOfMonth = converter.getMonthName(from: selectedDate)
         mainView.reloadCollectionView()
         mainView.hideDatePicker()
+    }
+    
+    @objc private func reloadUI(notification: Notification) {
+        loadEvents()
     }
 }
 
