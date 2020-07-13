@@ -121,6 +121,10 @@ extension EventViewModel {
         guard let coorinates = model.coordinates else { return nil }
         return CLLocationCoordinate2D(latitude: coorinates.latitude, longitude: coorinates.longitude)
     }
+    
+    var eventId: String {
+        return model.eventId ?? UUID().uuidString
+    }
 }
 
 extension EventViewModel {
