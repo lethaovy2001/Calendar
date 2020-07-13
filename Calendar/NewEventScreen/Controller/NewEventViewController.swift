@@ -26,6 +26,7 @@ final class NewEventViewController: UIViewController {
             mainView.locationTextField.text = eventMapItem?.address
         }
     }
+    private let searchLocationViewController = SearchLocationViewController()
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -169,9 +170,8 @@ extension NewEventViewController: UITextViewDelegate {
 extension NewEventViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == mainView.locationTextField {
-            let viewController = SearchLocationViewController()
-            viewController.delegate = self
-            self.navigationController?.pushViewController(viewController, animated: true)
+            searchLocationViewController.delegate = self
+            self.navigationController?.pushViewController(searchLocationViewController, animated: true)
             textField.endEditing(true)
         }
     }
@@ -179,7 +179,7 @@ extension NewEventViewController: UITextFieldDelegate {
 
 // MARK: - ChildViewControllerDelegate
 extension NewEventViewController: ChildViewControllerDelegate {
-    func update<T>(data: T) {
+    func update(data: Any) {
         guard let mapItem = data as? MKMapItem else { return }
         eventMapItem = mapItem
     }

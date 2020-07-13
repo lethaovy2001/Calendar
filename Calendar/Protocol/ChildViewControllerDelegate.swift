@@ -9,5 +9,5 @@
 import UIKit
 
 protocol ChildViewControllerDelegate: class {
-    func update<T>(data: T) 
+    func update(data: Any)
 }
