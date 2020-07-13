@@ -78,12 +78,15 @@ extension FirebaseService: Authentication {
 // MARK: - Database
 extension FirebaseService: Database {
     func save(event: Event) {
-        guard let uid = getCurrentUserId() else { return }
+        guard
+            let uid = getCurrentUserId(),
+            let eventId = event.eventId
+            else { return }
         let eventDictionary = event.getEventDictionary()
         database.collection("users")
             .document(uid)
             .collection("events")
-            .document(event.eventId)
+            .document(eventId)
             .setData(eventDictionary, merge: true)
     }
     
@@ -179,11 +182,14 @@ extension FirebaseService: Database {
     }
     
     func deleteEvent(_ event: Event) {
-        guard let uid = getCurrentUserId() else { return }
+        guard
+            let uid = getCurrentUserId(),
+            let eventId = event.eventId
+            else { return }
         database.collection("users")
         .document(uid)
         .collection("events")
-        .document(event.eventId)
+        .document(eventId)
         .delete { err in
             if let err = err {
                 print("Error removing document: \(err)")

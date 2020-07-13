@@ -94,6 +94,7 @@ final class NewEventViewController: UIViewController {
             let longitude = mapItem.placemark.coordinate.longitude
             event.coordinates = GeoPoint(latitude: latitude, longitude: longitude)
         }
+        event.eventId = viewModel?.eventId ?? UUID().uuidString
         scheduler.scheduleNotification(for: event)
         database.save(event: event)
         self.navigationController?.popToRootViewController(animated: true)

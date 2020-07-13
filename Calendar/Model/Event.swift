@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 struct Event: Codable {
-    let eventId: String
+    var eventId: String?
     let name: String
     let startTime: Date
     let endTime: Date
@@ -38,7 +38,7 @@ struct Event: Codable {
          notes: String? = nil,
          alertTime: Date? = nil,
          coordinates: GeoPoint? = nil) {
-        self.eventId = UUID().uuidString
+        self.eventId = eventId
         self.name = name
         self.startTime = startTime
         self.endTime = endTime
@@ -50,11 +50,13 @@ struct Event: Codable {
     
     func getEventDictionary() -> [String: Any] {
         var dictionary: [String: Any] = [
-            "id": eventId,
             "name": name,
             "startTime": startTime,
             "endTime": endTime
         ]
+        if let eventId = self.eventId {
+            dictionary.updateValue(eventId, forKey: "id")
+        }
         if let location = self.location {
             dictionary.updateValue(location, forKey: "location")
         }
