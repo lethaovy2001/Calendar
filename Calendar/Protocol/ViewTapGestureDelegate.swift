@@ -9,5 +9,5 @@
 import UIKit
 
 protocol ViewTapGestureDelegate: class {
-    func didTap<T: UIView>(on view: T)
+    func didTap(on view: UIView)
 }

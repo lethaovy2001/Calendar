@@ -87,7 +87,7 @@ extension EventDetailsViewController: DropDownProtocol {
 }
 
 extension EventDetailsViewController: ViewTapGestureDelegate {
-    func didTap<T>(on view: T) where T: UIView {
+    func didTap(on view: UIView) {
         guard let coordinates = viewModel?.coordinates else { return }
         let placemark = MKPlacemark(coordinate: coordinates)
         let destinationMapItem = MKMapItem(placemark: placemark)
