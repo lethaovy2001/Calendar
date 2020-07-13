@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class EventViewModel {
     private var model: Event
@@ -114,6 +115,11 @@ extension EventViewModel {
     var day: String {
         self.dateFormatter.dateFormat = "dd"
         return dateFormatter.string(from: model.startTime)
+    }
+    
+    var coordinates: CLLocationCoordinate2D? {
+        guard let coorinates = model.coordinates else { return nil }
+        return CLLocationCoordinate2D(latitude: coorinates.latitude, longitude: coorinates.longitude)
     }
 }
 

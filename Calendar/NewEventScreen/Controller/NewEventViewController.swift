@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Firebase
 
 final class NewEventViewController: UIViewController {
     // MARK: - Properties
@@ -87,9 +88,13 @@ final class NewEventViewController: UIViewController {
     // MARK: Actions
     @objc private func pressedSaveButton() {
         mainView.saveButtonTappedAnimation()
-        guard let event = mainView.getSavedEvent() else { return }
+        guard var event = mainView.getSavedEvent() else { return }
+        if let mapItem = eventMapItem {
+            let latitude = mapItem.placemark.coordinate.latitude
+            let longitude = mapItem.placemark.coordinate.longitude
+            event.coordinates = GeoPoint(latitude: latitude, longitude: longitude)
+        }
         scheduler.scheduleNotification(for: event)
-        
         database.save(event: event)
         self.navigationController?.popToRootViewController(animated: true)
     }

@@ -152,6 +152,7 @@ final class EventDetailsView: UIView {
     
     func addDelegate(viewController: EventDetailsViewController) {
         dropDownView.delegate = viewController
+        locationSettingsView.delegate = viewController
     }
     
     func showOrHideDropDownMenu() {
