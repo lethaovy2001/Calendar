@@ -28,6 +28,7 @@ final class SettingsContainerView: UIView {
             label.text = labelText
         }
     }
+    weak var delegate: ViewTapGestureDelegate?
     
     // MARK: - Initializer
     init(iconName: String) {
@@ -36,8 +37,12 @@ final class SettingsContainerView: UIView {
             size: 18,
             color: AppColor.darkGray
         )
-        label.numberOfLines = 2
         super.init(frame: .zero)
+        if iconName == Constants.IconNames.mappin {
+            label.textColor = .systemBlue
+            label.numberOfLines = 5
+            addGesture()
+        }
         self.translatesAutoresizingMaskIntoConstraints = false
         setup()
     }
@@ -78,12 +83,24 @@ final class SettingsContainerView: UIView {
             iconButton.widthAnchor.constraint(equalToConstant: 36)
         ])
         NSLayoutConstraint.activate([
-            label.centerYAnchor.constraint(equalTo: iconButton.centerYAnchor),
+            label.topAnchor.constraint(equalTo: iconButton.topAnchor),
             label.leftAnchor.constraint(equalTo: iconButton.rightAnchor, constant: 24),
             label.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -24)
         ])
         NSLayoutConstraint.activate([
             self.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
+    }
+    
+    private func addGesture() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedOnLocation))
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.numberOfTouchesRequired = 1
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc private func tappedOnLocation() {
+        delegate?.didTap(on: label)
     }
 }

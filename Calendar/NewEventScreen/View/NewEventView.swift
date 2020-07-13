@@ -321,6 +321,7 @@ extension NewEventView {
         datePickerView.tapDelegate = self
         viewController.keyboardDelegate = self
         noteTextView.delegate = viewController
+        locationTextField.delegate = viewController
         notificationView.doneTapGestureDelegate = self
     }
     

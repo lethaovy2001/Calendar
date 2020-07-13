@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MapKit
+import Firebase
 
 final class NewEventViewController: UIViewController {
     // MARK: - Properties
@@ -20,6 +22,12 @@ final class NewEventViewController: UIViewController {
             viewModel?.configure(mainView)
         }
     }
+    private var eventMapItem: MKMapItem? {
+        didSet {
+            mainView.locationTextField.text = eventMapItem?.address
+        }
+    }
+    private let searchLocationViewController = SearchLocationViewController()
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -80,7 +88,12 @@ final class NewEventViewController: UIViewController {
     // MARK: Actions
     @objc private func pressedSaveButton() {
         mainView.saveButtonTappedAnimation()
-        guard let event = mainView.getSavedEvent() else { return }
+        guard var event = mainView.getSavedEvent() else { return }
+        if let mapItem = eventMapItem {
+            let latitude = mapItem.placemark.coordinate.latitude
+            let longitude = mapItem.placemark.coordinate.longitude
+            event.coordinates = GeoPoint(latitude: latitude, longitude: longitude)
+        }
         scheduler.scheduleNotification(for: event)
         database.save(event: event)
         self.navigationController?.popToRootViewController(animated: true)
@@ -155,5 +168,24 @@ extension NewEventViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         mainView.endEditing()
+    }
+}
+
+// MARK: - UITextViewDelegate
+extension NewEventViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == mainView.locationTextField {
+            searchLocationViewController.delegate = self
+            self.navigationController?.pushViewController(searchLocationViewController, animated: true)
+            textField.endEditing(true)
+        }
+    }
+}
+
+// MARK: - ChildViewControllerDelegate
+extension NewEventViewController: ChildViewControllerDelegate {
+    func update(data: Any) {
+        guard let mapItem = data as? MKMapItem else { return }
+        eventMapItem = mapItem
     }
 }
