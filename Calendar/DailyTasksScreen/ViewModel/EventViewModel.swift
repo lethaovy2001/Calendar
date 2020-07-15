@@ -143,4 +143,14 @@ extension EventViewModel {
             view.addAlertButton.setTitle(alertTime, for: .normal)
         }
     }
+    
+    func configure(_ view: EventView) {
+        view.titleLabel.text = name
+        if let location = location {
+            view.locationLabel.text = location
+        } else {
+            view.iconButton.isHidden = true
+            view.locationLabel.isHidden = true
+        }
+    }
 }

@@ -22,6 +22,12 @@ final class DailyTasksMainView: UIView {
     private let eventLayoutGenerator = EventLayoutGenerator()
     weak var eventTapGesture: EventTapGestureDelegate?
     private var eventViews: [EventView] = []
+    var dataSource: DailyTaskDataSource? {
+        didSet {
+            reloadEventViews()
+        }
+    }
+    var flowLayout: DailyTaskDelegateFlowLayout?
     
     // MARK: - Initializer
     init() {
@@ -120,6 +126,11 @@ final class DailyTasksMainView: UIView {
         eventView.addGestureRecognizer(tapRecognizer)
     }
     
+    func setDelegateAndDataSource(viewController: DailyTaskViewController) {
+        self.dataSource = viewController
+        self.flowLayout = viewController
+    }
+    
     func setEvent(event: Event) {
         let height = eventLayoutGenerator.estimateHeight(event: event)
         let offset = eventLayoutGenerator.estimateTopOffset(of: event.startTime)
@@ -139,6 +150,7 @@ final class DailyTasksMainView: UIView {
     
     func deleteAllEventViews() {
         eventViews.forEach { $0.removeFromSuperview() }
+        eventViews.removeAll()
     }
     
     // MARK: Selectors
@@ -164,5 +176,34 @@ final class DailyTasksMainView: UIView {
     @objc private func tappedOnEvent(_ sender: UITapGestureRecognizer) {
         guard let eventView = sender.view as? EventView else { return }
         eventTapGesture?.didTap(on: eventView)
+    }
+}
+
+extension DailyTasksMainView {
+    func reloadEventViews() {
+        deleteAllEventViews()
+        guard
+            let dataSource = dataSource,
+            let flowLayout = flowLayout
+            else { return }
+        let numberOfEvents = dataSource.numberOfEvents()
+        for index in 0..<numberOfEvents {
+            let eventView = dataSource.eventView(forItemAt: index)
+            let size = flowLayout.eventView(sizeForEventAt: index)
+            let offset = flowLayout.eventView(topOffsetForEventAt: index)
+            configure(eventView, with: size, offset: offset)
+            eventViews.append(eventView)
+        }
+    }
+    
+    func configure(_ eventView: EventView, with size: CGSize, offset: CGFloat) {
+        addTapGetsure(eventView: eventView)
+        scrollView.insertSubview(eventView, belowSubview: timeLine)
+        NSLayoutConstraint.activate([
+            eventView.heightAnchor.constraint(equalToConstant: size.height),
+            eventView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: offset),
+            eventView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
+            eventView.leftAnchor.constraint(equalTo: leftAnchor, constant: 106)
+        ])
     }
 }

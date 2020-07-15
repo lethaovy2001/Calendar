@@ -10,18 +10,18 @@ import UIKit
 
 final class EventView: CustomContainerView {
     // MARK: - Properties
-    private let titleLabel = CustomLabel(
+    let titleLabel = CustomLabel(
         text: "Title",
         textColor: AppColor.darkGray,
         textSize: 18,
         textWeight: .bold
     )
-    private var iconButton = IconButton(
+    var iconButton = IconButton(
         name: "mappin",
         size: 18,
         color: AppColor.gray
     )
-    private var locationLabel = CustomLabel(
+    var locationLabel = CustomLabel(
         text: "Location",
         textColor: AppColor.gray,
         textSize: 16,

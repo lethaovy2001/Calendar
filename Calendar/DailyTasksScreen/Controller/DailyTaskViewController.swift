@@ -13,6 +13,7 @@ class DailyTaskViewController: UIViewController {
     private let dailyTaskView = DailyTasksMainView()
     private let modelController = DailyTasksModelController()
     private let database: Database
+    private let eventLayoutGenerator = EventLayoutGenerator()
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -53,15 +54,7 @@ class DailyTaskViewController: UIViewController {
     
     private func loadEvents() {
         modelController.loadEvents {
-            self.configureEvents()
-        }
-    }
-    
-    private func configureEvents() {
-        dailyTaskView.deleteAllEventViews()
-        let events = modelController.getEvents()
-        for event in events {
-            dailyTaskView.setEvent(event: event)
+            self.dailyTaskView.reloadEventViews()
         }
     }
     
@@ -73,6 +66,7 @@ class DailyTaskViewController: UIViewController {
     
     private func addDelegate() {
         dailyTaskView.eventTapGesture = self
+        dailyTaskView.setDelegateAndDataSource(viewController: self)
     }
     
     private func addObservers() {
@@ -111,4 +105,51 @@ extension DailyTaskViewController: EventTapGestureDelegate {
         viewController.viewModel = eventView.viewModel
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+}
+
+// MARK: - DailyTaskDataSource
+extension DailyTaskViewController: DailyTaskDataSource {
+    func numberOfEvents() -> Int {
+        return modelController.getEvents().count
+    }
+    
+    func eventView(forItemAt index: Int) -> EventView {
+        let eventLayoutGenerator = EventLayoutGenerator()
+        let event = modelController.getEvents()[index]
+        let height = eventLayoutGenerator.estimateHeight(event: event)
+        let eventView = EventView(height: height)
+        let eventViewModel = EventViewModel(model: event)
+        eventViewModel.configure(eventView)
+        return eventView
+    }
+    
+    func reloadData() {
+        self.loadEvents()
+    }
+}
+
+// MARK: - DailyTaskDelegateFlowLayout
+extension DailyTaskViewController: DailyTaskDelegateFlowLayout {
+    func eventView(sizeForEventAt index: Int) -> CGSize {
+        let event = modelController.getEvents()[index]
+        let height = eventLayoutGenerator.estimateHeight(event: event)
+        let width: CGFloat = 160
+        return CGSize(width: width, height: height)
+    }
+    
+    func eventView(topOffsetForEventAt index: Int) -> CGFloat {
+        let event = modelController.getEvents()[index]
+        return eventLayoutGenerator.estimateTopOffset(of: event.startTime)
+    }
+}
+
+protocol DailyTaskDataSource {
+    func numberOfEvents() -> Int
+    func eventView(forItemAt index: Int) -> EventView
+    func reloadData()
+}
+
+protocol DailyTaskDelegateFlowLayout {
+    func eventView(sizeForEventAt index: Int) -> CGSize
+    func eventView(topOffsetForEventAt index: Int) -> CGFloat
 }
