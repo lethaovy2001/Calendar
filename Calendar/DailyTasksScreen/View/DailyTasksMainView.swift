@@ -19,7 +19,6 @@ final class DailyTasksMainView: UIView {
     )
     private let timeLine = RunningTimeLineView()
     private let bottomBar = BottomBarView()
-    private let eventLayoutGenerator = EventLayoutGenerator()
     private var eventViews: [EventView] = []
     var dataSource: DailyTaskDataSource? {
         didSet {
@@ -81,6 +80,7 @@ final class DailyTasksMainView: UIView {
     
     private func setupTimeLineConstraints() {
         let date = Date()
+        let eventLayoutGenerator = EventLayoutGenerator()
         let offset = eventLayoutGenerator.estimateTopOffset(of: date) - 4
         NSLayoutConstraint.activate([
             timeLine.heightAnchor.constraint(equalToConstant: 8),

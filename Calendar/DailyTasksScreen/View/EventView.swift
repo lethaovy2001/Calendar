@@ -110,6 +110,7 @@ final class EventView: CustomContainerView {
         ])
     }
     
+    // MARK: - Public Methods
     func configureTitle(with height: CGFloat) {
         self.height = height
         setup()
