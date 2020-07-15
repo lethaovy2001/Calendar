@@ -16,7 +16,6 @@
 		38285B24248F09EE00AAEE03 /* SettingsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B23248F09EE00AAEE03 /* SettingsContainerView.swift */; };
 		38285B26248F78B800AAEE03 /* NotesContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B25248F78B800AAEE03 /* NotesContainerView.swift */; };
 		38285B292490BCC400AAEE03 /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B282490BCC400AAEE03 /* EventViewModel.swift */; };
-		38285B2B2490C42E00AAEE03 /* EventTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38285B2A2490C42E00AAEE03 /* EventTapGestureDelegate.swift */; };
 		38698FA724BAAB7D00208CF5 /* MKMapItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38698FA624BAAB7D00208CF5 /* MKMapItem+Extension.swift */; };
 		38698FA924BACC8000208CF5 /* ViewTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38698FA824BACC8000208CF5 /* ViewTapGestureDelegate.swift */; };
 		38698FAD24BCFBAE00208CF5 /* Notifcation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38698FAC24BCFBAD00208CF5 /* Notifcation+Extension.swift */; };
@@ -127,7 +126,6 @@
 		38285B23248F09EE00AAEE03 /* SettingsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainerView.swift; sourceTree = "<group>"; };
 		38285B25248F78B800AAEE03 /* NotesContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesContainerView.swift; sourceTree = "<group>"; };
 		38285B282490BCC400AAEE03 /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
-		38285B2A2490C42E00AAEE03 /* EventTapGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTapGestureDelegate.swift; sourceTree = "<group>"; };
 		38698FA624BAAB7D00208CF5 /* MKMapItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapItem+Extension.swift"; sourceTree = "<group>"; };
 		38698FA824BACC8000208CF5 /* ViewTapGestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTapGestureDelegate.swift; sourceTree = "<group>"; };
 		38698FAC24BCFBAD00208CF5 /* Notifcation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notifcation+Extension.swift"; sourceTree = "<group>"; };
@@ -384,7 +382,6 @@
 				38CE861D248579780006D609 /* DatePickerTapGestureDelegate.swift */,
 				38EAF12D248CCB0C00A2FE8C /* KeyboardDelegate.swift */,
 				38EAF129248C62A900A2FE8C /* Shaking.swift */,
-				38285B2A2490C42E00AAEE03 /* EventTapGestureDelegate.swift */,
 				38E51E442498BE1700EBBF5B /* DoneTapGestureDelegate.swift */,
 				38865C7A24A6724400FDFC0D /* ChildViewControllerDelegate.swift */,
 				38698FA824BACC8000208CF5 /* ViewTapGestureDelegate.swift */,
@@ -962,7 +959,6 @@
 				3888D1DE247C48B7009B3966 /* DailyTasksMainView.swift in Sources */,
 				38285B24248F09EE00AAEE03 /* SettingsContainerView.swift in Sources */,
 				38698FA924BACC8000208CF5 /* ViewTapGestureDelegate.swift in Sources */,
-				38285B2B2490C42E00AAEE03 /* EventTapGestureDelegate.swift in Sources */,
 				3888D1CF247B7DF8009B3966 /* FirebaseService.swift in Sources */,
 				3888D2362480B597009B3966 /* DateCounter.swift in Sources */,
 				38E51E3C2496BC9500EBBF5B /* SearchEventViewController.swift in Sources */,

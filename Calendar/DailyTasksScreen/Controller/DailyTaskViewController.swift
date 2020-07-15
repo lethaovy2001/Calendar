@@ -37,7 +37,6 @@ class DailyTaskViewController: UIViewController {
     // MARK: - Setup
     private func setup() {
         setupUI()
-        configureEvents()
         setupSelectors()
         addDelegate()
     }
@@ -65,7 +64,6 @@ class DailyTaskViewController: UIViewController {
     }
     
     private func addDelegate() {
-        dailyTaskView.eventTapGesture = self
         dailyTaskView.setDelegateAndDataSource(viewController: self)
     }
     
@@ -98,15 +96,6 @@ class DailyTaskViewController: UIViewController {
     }
 }
 
-// MARK: - EventTapGestureDelegate
-extension DailyTaskViewController: EventTapGestureDelegate {
-    func didTap(on eventView: EventView) {
-        let viewController = EventDetailsViewController()
-        viewController.viewModel = eventView.viewModel
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
-}
-
 // MARK: - DailyTaskDataSource
 extension DailyTaskViewController: DailyTaskDataSource {
     func numberOfEvents() -> Int {
@@ -125,6 +114,14 @@ extension DailyTaskViewController: DailyTaskDataSource {
     
     func reloadData() {
         self.loadEvents()
+    }
+    
+    func eventView(didSelectEventAt index: Int) {
+        let event = modelController.getEvents()[index]
+        let eventViewModel = EventViewModel(model: event)
+        let viewController = EventDetailsViewController()
+        viewController.viewModel = eventViewModel
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
@@ -147,6 +144,7 @@ protocol DailyTaskDataSource {
     func numberOfEvents() -> Int
     func eventView(forItemAt index: Int) -> EventView
     func reloadData()
+    func eventView(didSelectEventAt index: Int)
 }
 
 protocol DailyTaskDelegateFlowLayout {
