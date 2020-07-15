@@ -45,6 +45,7 @@ class CalendarViewController: UIViewController {
         registerCellId()
         setSelectors()
         loadEvents()
+        addObservers()
     }
     
     private func setupSelf() {
@@ -86,6 +87,14 @@ class CalendarViewController: UIViewController {
         }
     }
     
+    private func addObservers() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadEvents(notification: )),
+                                               name: .deleteEvent,
+                                               object: nil
+        )
+    }
+    
     // MARK: Actions
     @objc private func tapAddButton() {
         let viewController = NewEventViewController()
@@ -108,6 +117,10 @@ class CalendarViewController: UIViewController {
         mainView.nameOfMonth = converter.getMonthName(from: selectedDate)
         mainView.reloadCollectionView()
         mainView.hideDatePicker()
+    }
+    
+    @objc private func reloadEvents(notification: Notification) {
+        loadEvents()
     }
 }
 
