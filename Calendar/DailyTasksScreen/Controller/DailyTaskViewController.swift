@@ -67,14 +67,6 @@ class DailyTaskViewController: UIViewController {
         dailyTaskView.setDelegateAndDataSource(viewController: self)
     }
     
-    private func addObservers() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(reloadEvents(notification: )),
-                                               name: .deleteEvent,
-                                               object: nil
-        )
-    }
-    
     // MARK: Actions
     @objc private func calendarButtonPressed() {
         let viewController = CalendarViewController()
@@ -89,10 +81,6 @@ class DailyTaskViewController: UIViewController {
     @objc private func profileButtonPressed() {
         let viewController = UserSettingsViewController()
         self.navigationController?.pushViewController(viewController, animated: true)
-    }
-    
-    @objc private func reloadEvents(notification: Notification) {
-        self.loadEvents()
     }
 }
 

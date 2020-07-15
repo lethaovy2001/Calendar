@@ -97,7 +97,7 @@ final class NewEventViewController: UIViewController {
         event.eventId = viewModel?.eventId ?? UUID().uuidString
         scheduler.scheduleNotification(for: event)
         database.save(event: event)
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc private func pressedBackButton() {
