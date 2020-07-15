@@ -59,11 +59,6 @@ class EventDetailsViewController: UIViewController {
         mainView.setMoreButtonSelector(selector: #selector(pressedMoreButton), target: self)
     }
     
-    private func postNotification() {
-        let name = Notification.Name.deleteEvent
-        NotificationCenter.default.post(name: name, object: nil)
-    }
-    
     // MARK: Actions
     @objc private func pressedBackButton() {
         self.navigationController?.popViewController(animated: true)
@@ -86,7 +81,6 @@ extension EventDetailsViewController: DropDownProtocol {
         case .delete:
             viewModel?.removeEvent()
             mainView.dismissDropDownMenu()
-            postNotification()
             self.navigationController?.popViewController(animated: true)
         }
     }
