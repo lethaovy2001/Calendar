@@ -38,7 +38,7 @@ class DailyTaskViewController: UIViewController {
     private func setup() {
         setupUI()
         setupSelectors()
-        addDelegate()
+        setDelegateAndDataSource()
     }
     
     private func setupUI() {
@@ -63,7 +63,7 @@ class DailyTaskViewController: UIViewController {
         dailyTaskView.setProfileButtonSelector(selector: #selector(profileButtonPressed), target: self)
     }
     
-    private func addDelegate() {
+    private func setDelegateAndDataSource() {
         dailyTaskView.setDelegateAndDataSource(viewController: self)
     }
     
@@ -103,10 +103,8 @@ extension DailyTaskViewController: DailyTaskDataSource {
     }
     
     func eventView(forItemAt index: Int) -> EventView {
-        let eventLayoutGenerator = EventLayoutGenerator()
         let event = modelController.getEvents()[index]
-        let height = eventLayoutGenerator.estimateHeight(event: event)
-        let eventView = EventView(height: height)
+        let eventView = EventView()
         let eventViewModel = EventViewModel(model: event)
         eventViewModel.configure(eventView)
         return eventView

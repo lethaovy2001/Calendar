@@ -156,6 +156,7 @@ final class DailyTasksMainView: UIView {
     }
 }
 
+// MARK: - Event Views
 extension DailyTasksMainView {
     func deleteAllEventViews() {
         eventViews.forEach { $0.removeFromSuperview() }
@@ -180,6 +181,7 @@ extension DailyTasksMainView {
     }
     
     func configure(_ eventView: EventView, with size: CGSize, offset: CGFloat) {
+        eventView.configureTitle(with: size.height)
         addTapGetsure(eventView: eventView)
         scrollView.insertSubview(eventView, belowSubview: timeLine)
         NSLayoutConstraint.activate([

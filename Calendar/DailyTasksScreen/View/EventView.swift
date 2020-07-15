@@ -28,29 +28,7 @@ final class EventView: CustomContainerView {
         textWeight: .semibold
     )
     private var eventColors = AppColor.pastelEventColors
-    private var height: CGFloat
-    var viewModel: EventViewModel? {
-        didSet {
-            titleLabel.text = viewModel?.name
-            if let location = viewModel?.location {
-                locationLabel.text = location
-            } else {
-                iconButton.isHidden = true
-                locationLabel.isHidden = true
-            }
-        }
-    }
-    
-    // MARK: - Initializer
-    init(height: CGFloat) {
-        self.height = height
-        super.init()
-        setup()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private var height: CGFloat?
     
     // MARK: - Setup
     private func setup() {
@@ -60,6 +38,7 @@ final class EventView: CustomContainerView {
     }
     
     private func setupSelf() {
+        guard let height = height else { return }
         if height <= 0.25 * Constants.spaceBetweenTimeDivider {
             self.setCornerRadius(cornerRadius: 10)
         } else {
@@ -76,6 +55,7 @@ final class EventView: CustomContainerView {
     }
     
     private func setupConstraints() {
+        guard let height = height else { return }
         if height <= 0.25 * Constants.spaceBetweenTimeDivider {
             self.showTitleOnly()
         } else if height <= 0.5 * Constants.spaceBetweenTimeDivider {
@@ -128,5 +108,10 @@ final class EventView: CustomContainerView {
             locationLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
             locationLabel.centerYAnchor.constraint(equalTo: iconButton.centerYAnchor)
         ])
+    }
+    
+    func configureTitle(with height: CGFloat) {
+        self.height = height
+        setup()
     }
 }
