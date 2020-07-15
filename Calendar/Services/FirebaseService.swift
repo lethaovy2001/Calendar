@@ -146,10 +146,10 @@ extension FirebaseService: Database {
         // Filter events that has the same startDate into an eventSection
         func filterEventsBasedOnStartDate(events: [Event]) {
             for (index, event) in events.enumerated() {
-                let startComponents = self.calendar.dateComponents([.day],
+                self.components = self.calendar.dateComponents([.day],
                                                                from: sectionDate ?? Date(),
                                                                to: event.startTime)
-                guard let dayDifference = startComponents.day else { return }
+                guard let dayDifference = self.components.day else { return }
                 if dayDifference > 0 {
                     appendSectionAndEvent(event)
                 } else {
