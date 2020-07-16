@@ -74,6 +74,7 @@
 		38CE8622248842D90006D609 /* CustomNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8621248842D90006D609 /* CustomNotificationView.swift */; };
 		38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8623248845BB0006D609 /* NotificationCell.swift */; };
 		38DD9C4624BFF8A20039B44B /* DailyTaskNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9C4524BFF8A20039B44B /* DailyTaskNavigator.swift */; };
+		38DD9C4824C11A7E0039B44B /* CalendarNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9C4724C11A7E0039B44B /* CalendarNavigator.swift */; };
 		38E51E2F249107D800EBBF5B /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */; };
 		38E51E312491144900EBBF5B /* CalendarModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E302491144900EBBF5B /* CalendarModelController.swift */; };
 		38E51E342491282100EBBF5B /* EventSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E332491282100EBBF5B /* EventSection.swift */; };
@@ -187,6 +188,7 @@
 		38CE8621248842D90006D609 /* CustomNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotificationView.swift; sourceTree = "<group>"; };
 		38CE8623248845BB0006D609 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		38DD9C4524BFF8A20039B44B /* DailyTaskNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskNavigator.swift; sourceTree = "<group>"; };
+		38DD9C4724C11A7E0039B44B /* CalendarNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarNavigator.swift; sourceTree = "<group>"; };
 		38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		38E51E302491144900EBBF5B /* CalendarModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModelController.swift; sourceTree = "<group>"; };
 		38E51E332491282100EBBF5B /* EventSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSection.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 			children = (
 				3888D24124822466009B3966 /* DateConverter.swift */,
 				3888D2352480B597009B3966 /* DateCounter.swift */,
+				38DD9C4724C11A7E0039B44B /* CalendarNavigator.swift */,
 				38E51E32249127BA00EBBF5B /* Model */,
 				3888D223247F909B009B3966 /* Controller */,
 				3888D222247F9096009B3966 /* View */,
@@ -959,6 +962,7 @@
 				38E51E2F249107D800EBBF5B /* UserSettingsViewController.swift in Sources */,
 				3888D1C0247B501F009B3966 /* CustomLabel.swift in Sources */,
 				3888D1DE247C48B7009B3966 /* DailyTasksMainView.swift in Sources */,
+				38DD9C4824C11A7E0039B44B /* CalendarNavigator.swift in Sources */,
 				38285B24248F09EE00AAEE03 /* SettingsContainerView.swift in Sources */,
 				38698FA924BACC8000208CF5 /* ViewTapGestureDelegate.swift in Sources */,
 				38285B2B2490C42E00AAEE03 /* EventTapGestureDelegate.swift in Sources */,

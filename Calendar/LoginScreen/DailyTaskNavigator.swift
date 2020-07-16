@@ -1,5 +1,5 @@
 //
-//  LoginNavigator.swift
+//  DailyTaskNavigator.swift
 //  Calendar
 //
 //  Created by Vy Le on 7/15/20.
@@ -42,7 +42,7 @@ final class DailyTaskNavigator: Navigator {
 
 protocol Navigator {
     associatedtype Destination
+    
+    init(navigationController: UINavigationController)
     func navigate(to destination: Destination)
 }
-
-
