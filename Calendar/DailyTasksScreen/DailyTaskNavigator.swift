@@ -1,20 +1,23 @@
 //
-//  LoginNavigator.swift
+//  DailyTaskNavigator.swift
 //  Calendar
 //
-//  Created by Vy Le on 7/15/20.
+//  Created by Vy Le on 7/16/20.
 //  Copyright © 2020 Vy Le. All rights reserved.
 //
 
 import UIKit
 
 final class DailyTaskNavigator: Navigator {
+    // MARK: - Properties
+    weak var navigationController: UINavigationController?
+    
+    // MARK: - Enums
     enum Destination {
         case userSettings
         case calendar
         case newEvent
     }
-    weak var navigationController: UINavigationController?
     
     // MARK: - Initializer
     init(navigationController: UINavigationController) {
@@ -39,10 +42,3 @@ final class DailyTaskNavigator: Navigator {
         }
     }
 }
-
-protocol Navigator {
-    associatedtype Destination
-    func navigate(to destination: Destination)
-}
-
-
