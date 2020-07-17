@@ -73,6 +73,8 @@
 		38CE861E248579780006D609 /* DatePickerTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE861D248579780006D609 /* DatePickerTapGestureDelegate.swift */; };
 		38CE8622248842D90006D609 /* CustomNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8621248842D90006D609 /* CustomNotificationView.swift */; };
 		38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8623248845BB0006D609 /* NotificationCell.swift */; };
+		38DD9C4A24C11B7A0039B44B /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9C4924C11B7A0039B44B /* Navigator.swift */; };
+		38DD9C4C24C11C150039B44B /* DailyTaskNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9C4B24C11C150039B44B /* DailyTaskNavigator.swift */; };
 		38E51E2F249107D800EBBF5B /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */; };
 		38E51E312491144900EBBF5B /* CalendarModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E302491144900EBBF5B /* CalendarModelController.swift */; };
 		38E51E342491282100EBBF5B /* EventSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E332491282100EBBF5B /* EventSection.swift */; };
@@ -185,6 +187,8 @@
 		38CE861D248579780006D609 /* DatePickerTapGestureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTapGestureDelegate.swift; sourceTree = "<group>"; };
 		38CE8621248842D90006D609 /* CustomNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotificationView.swift; sourceTree = "<group>"; };
 		38CE8623248845BB0006D609 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		38DD9C4924C11B7A0039B44B /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		38DD9C4B24C11C150039B44B /* DailyTaskNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskNavigator.swift; sourceTree = "<group>"; };
 		38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		38E51E302491144900EBBF5B /* CalendarModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModelController.swift; sourceTree = "<group>"; };
 		38E51E332491282100EBBF5B /* EventSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSection.swift; sourceTree = "<group>"; };
@@ -385,6 +389,7 @@
 				38E51E442498BE1700EBBF5B /* DoneTapGestureDelegate.swift */,
 				38865C7A24A6724400FDFC0D /* ChildViewControllerDelegate.swift */,
 				38698FA824BACC8000208CF5 /* ViewTapGestureDelegate.swift */,
+				38DD9C4924C11B7A0039B44B /* Navigator.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 		3888D1DA247C47BD009B3966 /* DailyTasksScreen */ = {
 			isa = PBXGroup;
 			children = (
+				38DD9C4B24C11C150039B44B /* DailyTaskNavigator.swift */,
 				3888D20E247F7982009B3966 /* Logic */,
 				3888D1DB247C47DE009B3966 /* View */,
 				38285B272490BCA100AAEE03 /* ViewModel */,
@@ -938,6 +944,7 @@
 				38285B1C248E078E00AAEE03 /* TitleContainerView.swift in Sources */,
 				3888D230248060D2009B3966 /* DateCell.swift in Sources */,
 				38CE861E248579780006D609 /* DatePickerTapGestureDelegate.swift in Sources */,
+				38DD9C4A24C11B7A0039B44B /* Navigator.swift in Sources */,
 				3888D1A2247AF88E009B3966 /* LoginViewController.swift in Sources */,
 				3888D24424831B72009B3966 /* SlideView.swift in Sources */,
 				38285B1A248E01BD00AAEE03 /* EventDetailsView.swift in Sources */,
@@ -986,6 +993,7 @@
 				3888D2542484154C009B3966 /* SectionTitleLabel.swift in Sources */,
 				3888D207247F5741009B3966 /* BottomBarView.swift in Sources */,
 				38285B292490BCC400AAEE03 /* EventViewModel.swift in Sources */,
+				38DD9C4C24C11C150039B44B /* DailyTaskNavigator.swift in Sources */,
 				38E51E372494295100EBBF5B /* UserSettingsView.swift in Sources */,
 				3888D1BA247B2C5C009B3966 /* IconButton.swift in Sources */,
 				38285B26248F78B800AAEE03 /* NotesContainerView.swift in Sources */,

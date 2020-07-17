@@ -13,6 +13,10 @@ class DailyTaskViewController: UIViewController {
     private let dailyTaskView = DailyTasksMainView()
     private let modelController = DailyTasksModelController()
     private let database: Database
+    lazy var navigator: DailyTaskNavigator = {
+        let navigationController = self.navigationController ?? UINavigationController()
+        return DailyTaskNavigator(navigationController: navigationController)
+    }()
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -76,18 +80,15 @@ class DailyTaskViewController: UIViewController {
     
     // MARK: Actions
     @objc private func calendarButtonPressed() {
-        let viewController = CalendarViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.navigator.navigate(to: .calendar)
     }
     
     @objc private func addButtonPressed() {
-        let viewController = NewEventViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.navigator.navigate(to: .newEvent)
     }
     
     @objc private func profileButtonPressed() {
-        let viewController = UserSettingsViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
+        self.navigator.navigate(to: .userSettings)
     }
 }
 
