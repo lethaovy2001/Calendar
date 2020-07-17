@@ -17,6 +17,10 @@ class CalendarViewController: UIViewController {
     private var selectedDate: Date
     private var converter: DateConverter
     private var modelController = CalendarModelController()
+    private lazy var navigator: CalendarNavigator = {
+        let navigationController = self.navigationController ?? UINavigationController()
+        return CalendarNavigator(navigationController: navigationController)
+    }()
     
     // MARK: - Initializer
     init(database: Database = FirebaseService.shared) {
@@ -88,17 +92,15 @@ class CalendarViewController: UIViewController {
     
     // MARK: Actions
     @objc private func tapAddButton() {
-        let viewController = NewEventViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
+        navigator.navigate(to: .newEvent)
     }
     
     @objc private func tapSearchButton() {
-        let viewController = SearchEventViewController()
-        self.navigationController?.pushViewController(viewController, animated: true)
+         navigator.navigate(to: .searchEvent)
     }
     
     @objc private func tapBackButton() {
-        self.navigationController?.popToRootViewController(animated: true)
+        navigator.navigate(to: .dailyTask)
     }
     
     @objc private func tapDoneButton() {
@@ -196,10 +198,9 @@ extension CalendarViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = EventDetailsViewController()
         let event = modelController.getEvents(at: indexPath.section)[indexPath.row]
-        viewController.viewModel = EventViewModel(model: event)
-        self.navigationController?.pushViewController(viewController, animated: true)
+        let eventViewModel = EventViewModel(model: event)
+        navigator.navigate(to: .eventDetails(eventViewModel))
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
