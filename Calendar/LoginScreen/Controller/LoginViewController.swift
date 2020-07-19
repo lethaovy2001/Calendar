@@ -72,13 +72,14 @@ final class LoginViewController: UIViewController {
             let email = loginView.getEmailAddress(),
             let password = loginView.getPassword()
         else { return }
-        auth.createUser(email: email, password: password) { signInError in
-            if let error = signInError {
+        auth.logUserIn(withEmail: email, password: password) { (result) in
+            switch result {
+            case .success(let user):
+                let viewController = DailyTaskViewController(database: self.database)
+                self.navigationController?.pushViewController(viewController, animated: true)
+            case .failure(let error):
                 self.loginView.showError(message: error.localizedDescription)
-                return
             }
-            let viewController = DailyTaskViewController(database: self.database)
-            self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
     

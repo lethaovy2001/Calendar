@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 protocol Authentication {
     func getCurrentUserId() -> String?
-    func createUser(email: String, password: String, completion: @escaping(Error?) -> Void)
-    func logUserIn(withEmail email: String, password: String, completion: @escaping(Error?) -> Void)
+    func createUser(email: String,
+        password: String,
+        completion: @escaping(Result<AuthDataResult, Error>) -> Void)
+    func logUserIn(withEmail email: String,
+        password: String,
+        completion: @escaping(Result<AuthDataResult, Error>) -> Void)
     func logout()
 }
