@@ -32,7 +32,9 @@ extension FirebaseService: Authentication {
         return auth.currentUser?.uid
     }
     
-    func createUser(email: String, password: String, completion: @escaping (Result<AuthDataResult, Error>) -> Void) {
+    func createUser(email: String,
+                    password: String,
+                    completion: @escaping (Result<AuthDataResult, Error>) -> Void) {
         auth.createUser(withEmail: email, password: password) { (result, error) in
             if let error = error {
                 completion(.failure(error))
@@ -43,7 +45,9 @@ extension FirebaseService: Authentication {
         }
     }
     
-    func logUserIn(withEmail email: String, password: String, completion: @escaping (Result<AuthDataResult, Error>) -> Void) {
+    func logUserIn(withEmail email: String,
+                   password: String,
+                   completion: @escaping (Result<AuthDataResult, Error>) -> Void) {
         auth.signIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
                 completion(.failure(error))
