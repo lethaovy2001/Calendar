@@ -27,10 +27,9 @@ final class CalendarNavigator: Navigator {
     
     // MARK: - Navigator
     func navigate(to destination: Destination) {
-        switch destination {
-        case .dailyTask:
-            navigationController?.popToRootViewController(animated: true)
-        default:
+        if let viewController = existedViewControllerOnStack(destination: destination) {
+            navigationController?.popToViewController(viewController, animated: true)
+        } else {
             let viewController = makeViewController(for: destination)
             navigationController?.pushViewController(viewController, animated: true)
         }
@@ -50,5 +49,25 @@ final class CalendarNavigator: Navigator {
             viewController.viewModel = viewModel
             return viewController
         }
+    }
+    
+    private func existedViewControllerOnStack(destination: Destination) -> UIViewController? {
+        
+        let destinationVC: UIViewController.Type
+        switch destination {
+        case .searchEvent:
+            destinationVC = SearchEventViewController.self
+        case .newEvent:
+            destinationVC = NewEventViewController.self
+        case .dailyTask:
+            destinationVC = DailyTaskViewController.self
+        case .eventDetails(_):
+            destinationVC = EventDetailsViewController.self
+        }
+        guard let stack = self.navigationController?.viewControllers else { return nil }
+        for viewController in stack where viewController.isKind(of: destinationVC) {
+            return viewController
+        }
+        return nil
     }
 }
