@@ -72,6 +72,7 @@
 		38CE861E248579780006D609 /* DatePickerTapGestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE861D248579780006D609 /* DatePickerTapGestureDelegate.swift */; };
 		38CE8622248842D90006D609 /* CustomNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8621248842D90006D609 /* CustomNotificationView.swift */; };
 		38CE8624248845BB0006D609 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CE8623248845BB0006D609 /* NotificationCell.swift */; };
+		38DD9C4424BF87290039B44B /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DD9C4324BF87290039B44B /* Notification+Extension.swift */; };
 		38E51E2F249107D800EBBF5B /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */; };
 		38E51E312491144900EBBF5B /* CalendarModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E302491144900EBBF5B /* CalendarModelController.swift */; };
 		38E51E342491282100EBBF5B /* EventSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E51E332491282100EBBF5B /* EventSection.swift */; };
@@ -183,6 +184,7 @@
 		38CE861D248579780006D609 /* DatePickerTapGestureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTapGestureDelegate.swift; sourceTree = "<group>"; };
 		38CE8621248842D90006D609 /* CustomNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNotificationView.swift; sourceTree = "<group>"; };
 		38CE8623248845BB0006D609 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		38DD9C4324BF87290039B44B /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		38E51E2E249107D800EBBF5B /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		38E51E302491144900EBBF5B /* CalendarModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModelController.swift; sourceTree = "<group>"; };
 		38E51E332491282100EBBF5B /* EventSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSection.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				3888D1BD247B4D5D009B3966 /* UIView+Extension.swift */,
 				38EAF12F248D78FF00A2FE8C /* UIButton+Extension.swift */,
 				38698FA624BAAB7D00208CF5 /* MKMapItem+Extension.swift */,
+				38DD9C4324BF87290039B44B /* Notification+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -939,6 +942,7 @@
 				3888D24424831B72009B3966 /* SlideView.swift in Sources */,
 				38285B1A248E01BD00AAEE03 /* EventDetailsView.swift in Sources */,
 				3888D1BE247B4D5D009B3966 /* UIView+Extension.swift in Sources */,
+				38DD9C4424BF87290039B44B /* Notification+Extension.swift in Sources */,
 				38865C7B24A6724400FDFC0D /* ChildViewControllerDelegate.swift in Sources */,
 				3888D1FA247DE5AD009B3966 /* CustomScrollView.swift in Sources */,
 				38CE8622248842D90006D609 /* CustomNotificationView.swift in Sources */,
