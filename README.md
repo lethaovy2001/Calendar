@@ -7,7 +7,8 @@ You can sign in to the app via Email
 
 <img src="Demo/SignIn.gif" width=25% height=25%>
 
-## Display Today's Events
+## Add New Event
+* You can schedule to get notification
 <img src="Demo/DailyTask.gif" width=25% height=25%>
 
 ## Show Upcoming Events
@@ -20,6 +21,7 @@ You can sign in to the app via Email
 <img src="Demo/Calendar.gif" width=25% height=25%>
 
 ## View Event
+* Click on location will navigate to that location on map
 <img src="Demo/ViewEvent.gif" width=25% height=25%>
 
 ## Edit Event
