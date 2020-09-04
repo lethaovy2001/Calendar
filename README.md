@@ -7,8 +7,8 @@ You can sign in to the app via Email
 
 <img src="Demo/SignIn.gif" width=25% height=25%>
 
-## Add New Event
-* You can schedule to get notification
+## Daily Tasks
+* Scroll to see the schedule for the day
 <img src="Demo/DailyTask.gif" width=25% height=25%>
 
 ## Show Upcoming Events
@@ -20,17 +20,21 @@ You can sign in to the app via Email
 ## See monthly calendar
 <img src="Demo/Calendar.gif" width=25% height=25%>
 
-## View Event
+## Add new event
+* Schedule and get notification about the event
+<img src="Demo/AddEvent.gif" width=25% height=25%>
+
+## View event
 * Click on location will navigate to that location on map
 <img src="Demo/ViewEvent.gif" width=25% height=25%>
 
-## Edit Event
+## Edit event
 <img src="Demo/Edit.gif" width=25% height=25%>
 
-## Search Event
+## Search event
 <img src="Demo/SearchEvent.gif" width=25% height=25%>
 
-## Delete Event
+## Delete event
 <img src="Demo/DeleteEvent.gif" width=25% height=25%>
 
 ## Built With
