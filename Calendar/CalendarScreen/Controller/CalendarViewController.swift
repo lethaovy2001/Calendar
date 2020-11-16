@@ -51,7 +51,7 @@ class CalendarViewController: UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.isNavigationBarHidden = true
     }
-
+    
     private func setupUI() {
         mainView.nameOfMonth = converter.getMonthName(from: selectedDate)
         view.addSubview(mainView)
